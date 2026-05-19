@@ -22,8 +22,16 @@ export async function GET(req: Request) {
   const fromParam = url.searchParams.get("from");
   const dest = fromParam && fromParam.startsWith("/") ? fromParam : "/admin";
 
+  // `req.url` reflects the internal container hostname behind Coolify/Traefik
+  // (e.g. https://22884420a3f8:80). Always anchor redirects to the public site
+  // URL so the browser doesn't try to resolve a Docker container name.
+  const publicBase =
+    process.env.AUTH_URL ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    new URL(req.url).origin;
+
   if (!session?.user?.email) {
-    return NextResponse.redirect(new URL("/admin/login?error=oauth", req.url));
+    return NextResponse.redirect(new URL("/admin/login?error=oauth", publicBase));
   }
 
   const [row] = await db
@@ -33,12 +41,12 @@ export async function GET(req: Request) {
     .limit(1);
   if (!row) {
     return NextResponse.redirect(
-      new URL("/admin/login?error=not-authorized", req.url),
+      new URL("/admin/login?error=not-authorized", publicBase),
     );
   }
 
   const value = mintAdminSessionValue(row.id, row.email);
-  const res = NextResponse.redirect(new URL(dest, req.url));
+  const res = NextResponse.redirect(new URL(dest, publicBase));
   res.cookies.set(ADMIN_COOKIE_NAME, value, adminCookieOptions());
   return res;
 }
