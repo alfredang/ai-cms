@@ -168,6 +168,11 @@ export async function POST(req: Request) {
         options: {
           env: buildClaudeEnv(token),
           systemPrompt,
+          // Nemo is conversational lead qualification — Haiku is fast and
+          // cheap and more than enough. Sonnet is the safety net if Haiku
+          // isn't available on this subscription.
+          model: "haiku",
+          fallbackModel: "sonnet",
           maxTurns: 1,
           allowedTools: [],
           disallowedTools: ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "WebSearch", "WebFetch"],

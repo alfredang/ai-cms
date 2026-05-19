@@ -48,6 +48,7 @@ export default async function LeadsList() {
           company: l.company,
           source: l.source,
           status: l.status,
+          score: l.score,
           createdAt: l.createdAt.toISOString(),
         }))}
         deleteMany={deleteMany}

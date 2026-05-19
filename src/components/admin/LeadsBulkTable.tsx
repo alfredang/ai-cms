@@ -10,8 +10,23 @@ export type LeadRow = {
   company: string | null;
   source: string | null;
   status: "new" | "follow_up" | "contacted" | "qualified" | "converted" | "lost";
+  score: number | null;
   createdAt: string;
 };
+
+function scoreClass(score: number | null): string {
+  if (score === null) return "bg-white/5 text-white/40 border-white/15";
+  if (score <= 3) return "bg-red-500/15 text-red-300 border-red-500/30";
+  if (score <= 7) return "bg-(--color-amber)/15 text-(--color-amber) border-(--color-amber)/30";
+  return "bg-(--color-green)/15 text-(--color-green) border-(--color-green)/30";
+}
+
+function scoreLabel(score: number | null): string {
+  if (score === null) return "—";
+  if (score <= 3) return `${score} · low`;
+  if (score <= 7) return `${score} · warm`;
+  return `${score} · hot`;
+}
 
 const STATUSES: LeadRow["status"][] = ["new", "follow_up", "contacted", "qualified", "converted", "lost"];
 
@@ -133,13 +148,14 @@ export function LeadsBulkTable({
                   className="accent-(--color-cyan)"
                 />
               </th>
-              <th className="px-2 py-2 w-[16%]">Name</th>
-              <th className="px-2 py-2 w-[20%]">Email</th>
-              <th className="px-2 py-2 w-[11%]">Tel</th>
-              <th className="px-2 py-2 w-[16%]">Company</th>
-              <th className="px-2 py-2 w-[13%]">Source</th>
-              <th className="px-2 py-2 w-[10%]">Status</th>
-              <th className="px-2 py-2 w-[13%]">Created</th>
+              <th className="px-2 py-2 w-[14%]">Name</th>
+              <th className="px-2 py-2 w-[18%]">Email</th>
+              <th className="px-2 py-2 w-[10%]">Tel</th>
+              <th className="px-2 py-2 w-[14%]">Company</th>
+              <th className="px-2 py-2 w-[11%]">Source</th>
+              <th className="px-2 py-2 w-[9%]">Score</th>
+              <th className="px-2 py-2 w-[9%]">Status</th>
+              <th className="px-2 py-2 w-[12%]">Created</th>
             </tr>
           </thead>
           <tbody>
@@ -188,6 +204,14 @@ export function LeadsBulkTable({
                   </td>
                   <td className="px-2 py-1.5">
                     <span
+                      className={`px-1.5 py-0.5 rounded text-[10px] font-mono uppercase border ${scoreClass(l.score)}`}
+                      title={l.score === null ? "Not scored" : `Lead score ${l.score}/10`}
+                    >
+                      {scoreLabel(l.score)}
+                    </span>
+                  </td>
+                  <td className="px-2 py-1.5">
+                    <span
                       className={`px-1.5 py-0.5 rounded text-[10px] font-mono uppercase border ${STATUS_CLASS[l.status]}`}
                     >
                       {l.status}
@@ -201,7 +225,7 @@ export function LeadsBulkTable({
             })}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={8} className="px-4 py-8 text-center text-white/50">
+                <td colSpan={9} className="px-4 py-8 text-center text-white/50">
                   No leads yet.
                 </td>
               </tr>
