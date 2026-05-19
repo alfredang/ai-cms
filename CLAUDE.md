@@ -31,6 +31,8 @@ There is no test suite — verification is `npm run build` + browser smoke-testi
 
 **ALWAYS** start the local dev server at `http://localhost:3070/` — never on 3000 or any other port. Use `npm run dev` (which already binds 3070); never `next dev` directly without `-p 3070`. When opening the app in a browser or sharing URLs, use `http://localhost:3070/` (not `localhost:3000`). Before starting, check that 3070 is free with `lsof -ti:3070`; if a stale process is bound, kill it rather than falling back to another port.
 
+**If the user reports `http://localhost:3070/` is down (or "the local site isn't working", "localhost not loading", etc.), bring it back up immediately — do NOT wait for the user to ask explicitly.** Procedure: (1) `lsof -ti:3070` to see if anything is bound; (2) if nothing is bound, run `npm run dev` in the background; (3) verify with `curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:3070/` returning `HTTP 200` before reporting success. Treat dev-server restarts as part of the standard workflow, not a separate task.
+
 ### Ad-hoc TS scripts
 
 `scripts/*.ts` are run via `tsx`. `tsx` does **not** auto-load `.env`. Either invoke them through the npm scripts (which pass `--env-file=.env`) or source the env first:
