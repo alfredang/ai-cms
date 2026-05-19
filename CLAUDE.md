@@ -29,6 +29,8 @@ There is no test suite — verification is `npm run build` + browser smoke-testi
 
 **Port**: this project runs on **3070**, not Next's default 3000 — port 3000 is used by another local app. Both `dev` and `start` pass `-p 3070`; `.env` (`AUTH_URL`, `NEXT_PUBLIC_SITE_URL`) is pinned to `http://localhost:3070`. If you change the port, update all three in lockstep or Auth.js will silently issue cookies for the wrong host.
 
+**ALWAYS** start the local dev server at `http://localhost:3070/` — never on 3000 or any other port. Use `npm run dev` (which already binds 3070); never `next dev` directly without `-p 3070`. When opening the app in a browser or sharing URLs, use `http://localhost:3070/` (not `localhost:3000`). Before starting, check that 3070 is free with `lsof -ti:3070`; if a stale process is bound, kill it rather than falling back to another port.
+
 ### Ad-hoc TS scripts
 
 `scripts/*.ts` are run via `tsx`. `tsx` does **not** auto-load `.env`. Either invoke them through the npm scripts (which pass `--env-file=.env`) or source the env first:
