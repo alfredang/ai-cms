@@ -7,6 +7,7 @@ import { Container } from "@/components/layout/Container";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ShareButtons } from "@/components/blog/ShareButtons";
+import { LikeButton } from "@/components/blog/LikeButton";
 import { HiUser, HiCalendar, HiTag, HiFolder } from "react-icons/hi2";
 import type { Metadata } from "next";
 
@@ -218,8 +219,9 @@ export default async function PostPage({
                     ))}
                   </div>
                 )}
-                <div className="mb-4">
+                <div className="mb-4 flex flex-wrap items-center gap-3">
                   <ShareButtons url={postUrl} title={post.title} />
+                  <LikeButton slug={post.slug} initialCount={post.likeCount ?? 0} />
                 </div>
                 {post.excerpt && (
                   <div className="mb-4 rounded-xl border border-white/10 bg-white/[0.04] p-4">

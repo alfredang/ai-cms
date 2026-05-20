@@ -87,6 +87,7 @@ export const posts = pgTable(
     categoryId: integer("category_id").references(() => categories.id),
     readingTime: integer("reading_time"),
     viewCount: integer("view_count").notNull().default(0),
+    likeCount: integer("like_count").notNull().default(0),
     featured: boolean("featured").notNull().default(false),
   },
   (t) => [

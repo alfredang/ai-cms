@@ -46,6 +46,10 @@ export async function POST(req: Request) {
   await db.execute(sql`ALTER TABLE posts ADD COLUMN IF NOT EXISTS view_count integer NOT NULL DEFAULT 0`);
   ran.push("posts.view_count column");
 
+  // 3b) posts.like_count (reader thumbs-up counter)
+  await db.execute(sql`ALTER TABLE posts ADD COLUMN IF NOT EXISTS like_count integer NOT NULL DEFAULT 0`);
+  ran.push("posts.like_count column");
+
   // 4) posts.featured
   await db.execute(sql`ALTER TABLE posts ADD COLUMN IF NOT EXISTS featured boolean NOT NULL DEFAULT false`);
   ran.push("posts.featured column");
