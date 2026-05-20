@@ -25,11 +25,19 @@ Confirm with the user (or infer from the request):
 - **Primary money keyword** (1) + **secondary keywords** (3–5). Run the keyword choice past the SEO conventions in [.claude/skills/seo-audit/SKILL.md](../seo-audit/SKILL.md).
 - **Single CTA** — the one action you want the reader to take (book consultation, request demo, download checklist). Wire it via `/contact?source=blog-<slug-token>` per [.claude/skills/lead-magnets/SKILL.md](../lead-magnets/SKILL.md).
 
+### 1b. Refresh sources via web search (mandatory for topical posts)
+
+If the post covers a fast-moving topic (AI agents, new framework launches, regulator announcements, anything dated within the last 6 months), **run 1–2 targeted WebSearch / WebFetch queries** before drafting — don't write from memory. Goal: pull at least one 2025/2026 fact (release date, GitHub-star count, official URL, regulator quote) to make the post verifiable.
+
+- Budget tightly: 1 search + at most 1 follow-up fetch. Skim, don't binge. The skill is "find the freshest credible source", not "read the whole internet".
+- Capture the canonical **product / project URL** from the source (e.g. `openhands.dev`, `openhuman.ai`, `hermes-agent.nousresearch.com`) and hyperlink it inline on the relevant phrase — never paste bare URLs in prose.
+- Cite at least one authoritative source (regulator, official blog post, founder announcement). Avoid linking to a competitor's marketing site as a citation.
+
 ### 2. Structure (≈ 1,500–2,500 words)
 
 | Block | Purpose | Length |
 | --- | --- | --- |
-| TL;DR paragraph | One paragraph, ends with the primary CTA link. | 60–90 words |
+| Opening summary paragraph | One paragraph, ends with the primary CTA link. **Do NOT prefix it with the literal label "TL;DR —"** — write the summary directly. Readers find the inline label gimmicky. | 60–90 words |
 | H2 — Problem framing | What's broken in the reader's world right now. Cite a regulator / public source. | 150–250 words |
 | H2 — What "good" looks like | Define the standard / requirement / solution shape. Use H3s for sub-areas. | 350–500 words |
 | H2 — Comparison or framework | Table, checklist, or rubric. Concrete, not abstract. | 250–400 words |

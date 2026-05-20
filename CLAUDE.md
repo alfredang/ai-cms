@@ -78,6 +78,20 @@ The production DB isn't directly reachable. To push local CMS data (menus, setti
 
 To extend the sync surface to a new table, follow the pattern in [.claude/skills/remote-db-sync/SKILL.md](.claude/skills/remote-db-sync/SKILL.md): natural-key upsert, Zod-bounded payload, register the resource in `scripts/push-to-remote.ts` in the correct FK-dependency order.
 
+### Authoring blog posts — always load the `blog-post` skill first
+
+Any request to write, publish, edit, or fix a blog post (`/blog/...`) — phrases like "create a blog on X", "write a post about Y", "add a journal entry", "draft a guide", or any change to body content for an existing post — **must** load [.claude/skills/blog-post/SKILL.md](.claude/skills/blog-post/SKILL.md) **before drafting a single line**. The skill covers the non-obvious must-dos that have bitten us repeatedly:
+
+- The public `/blog/[slug]` page renders **`posts.contentHtml`** (not `content`). If you only set the TipTap JSON, the page looks empty. Always pre-render with [src/lib/tiptap-html.ts](src/lib/tiptap-html.ts) and populate both columns.
+- Do NOT prefix the opening summary with the literal label "TL;DR —" — write the summary directly.
+- Web-search 1–2 fresh sources before drafting topical posts (AI agents, framework launches, regulator news). Hyperlink the canonical product/project URL inline.
+- Every external `<a>` needs `target="_blank" rel="noopener noreferrer"` and a descriptive `title`.
+- At least 3 lead-gen CTAs to `/contact?source=blog-<token>` with distinct tokens per position.
+- At least 2 deep links to specific tertiarycourses.com.sg course pages (never the homepage).
+- Cover image must come from `renderAndUploadCover()` (R2) — never `public/` or local disk.
+
+Also load `seo-audit`, `lead-magnets`, and `blog-cover-image` skills alongside it — the blog-post skill explicitly coordinates with them. After publishing locally, run `npx tsx --env-file=.env scripts/push-to-remote.ts posts` to sync the row to production.
+
 ### AI features run through the Claude Agent SDK with OAuth subscription auth
 
 Both the public AI chatbot ([src/app/api/chat](src/app/api/chat)) and the admin AI Assist buttons ([src/app/api/ai/assist](src/app/api/ai/assist)) use `@anthropic-ai/claude-agent-sdk` rather than the metered Anthropic API. The `anthropic_auth_token` (an `sk-ant-oat-...` OAuth subscription token from `claude setup-token`) is read via `getCredential()` and injected into the SDK subprocess env by [src/lib/anthropic-auth.ts](src/lib/anthropic-auth.ts) — it's never exposed to the browser. No per-call API billing.
