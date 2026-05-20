@@ -45,7 +45,9 @@ export type CredentialKey =
   | "r2_public_url"
   | "r2_endpoint"
   | "turnstile_site_key"
-  | "turnstile_secret";
+  | "turnstile_secret"
+  | "n8n_api_url"
+  | "n8n_api_key";
 
 /**
  * Read a credential. DB-stored encrypted value wins over the env var fallback.
@@ -80,6 +82,8 @@ export async function getCredential(key: CredentialKey): Promise<string | null> 
     r2_endpoint: process.env.R2_ENDPOINT,
     turnstile_site_key: process.env.TURNSTILE_SITE_KEY,
     turnstile_secret: process.env.TURNSTILE_SECRET,
+    n8n_api_url: process.env.N8N_API_URL,
+    n8n_api_key: process.env.N8N_API_KEY,
   };
   return envMap[key] ?? null;
 }
@@ -138,6 +142,8 @@ export async function getCredentialSource(key: CredentialKey): Promise<Credentia
     r2_endpoint: process.env.R2_ENDPOINT,
     turnstile_site_key: process.env.TURNSTILE_SITE_KEY,
     turnstile_secret: process.env.TURNSTILE_SECRET,
+    n8n_api_url: process.env.N8N_API_URL,
+    n8n_api_key: process.env.N8N_API_KEY,
   };
   return envMap[key] ? "env" : "none";
 }

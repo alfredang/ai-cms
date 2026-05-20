@@ -17,7 +17,9 @@ type Key =
   | "r2_public_url"
   | "r2_endpoint"
   | "turnstile_site_key"
-  | "turnstile_secret";
+  | "turnstile_secret"
+  | "n8n_api_url"
+  | "n8n_api_key";
 
 type Group = { title: string; description?: string; keys: Key[] };
 
@@ -101,6 +103,16 @@ const FIELDS: Record<
     hint: "Server-side key for verifying tokens. Shown once when the widget is created.",
     placeholder: "0x4AAAAAAA…",
   },
+  n8n_api_url: {
+    label: "n8n — Base URL",
+    hint: "Root URL of your self-hosted n8n instance (no trailing slash). Used to create + manage workflows from the CMS — e.g. the auto-post-to-LinkedIn/Facebook flow.",
+    placeholder: "https://n8n.yourdomain.com",
+  },
+  n8n_api_key: {
+    label: "n8n — API key",
+    hint: "Personal access token from n8n UI → Settings → API. Pair with the URL above. Encrypted at rest.",
+    placeholder: "n8n_api_…",
+  },
 };
 
 const GROUPS: Group[] = [
@@ -133,6 +145,12 @@ const GROUPS: Group[] = [
     description:
       "Invisible CAPTCHA on public lead forms. Leave blank to disable verification (forms still work).",
     keys: ["turnstile_site_key", "turnstile_secret"],
+  },
+  {
+    title: "n8n (workflow automation)",
+    description:
+      "Self-hosted n8n credentials. Used to build outbound workflows from the CMS — currently the auto-post-to-social pipeline (LinkedIn + Facebook on blog publish).",
+    keys: ["n8n_api_url", "n8n_api_key"],
   },
 ];
 

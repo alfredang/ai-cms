@@ -25,6 +25,8 @@ const ALLOWED: CredentialKey[] = [
   "r2_endpoint",
   "turnstile_site_key",
   "turnstile_secret",
+  "n8n_api_url",
+  "n8n_api_key",
 ];
 
 const payloadSchema = z.record(z.string(), z.string().min(1).max(2000));
