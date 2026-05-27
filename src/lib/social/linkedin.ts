@@ -15,7 +15,10 @@
 import { getCredential } from "@/lib/secrets";
 
 const REST_BASE = "https://api.linkedin.com/rest";
-const REST_VERSION = "202405";
+// LinkedIn retires monthly versions after ~12 months — bump this every
+// few quarters. Format YYYYMM. Check active versions at
+// https://learn.microsoft.com/en-us/linkedin/marketing/versioning
+const REST_VERSION = "202604";
 
 export type LinkedInPostResult = {
   externalId: string;
