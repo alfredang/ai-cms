@@ -44,6 +44,7 @@ type Props = {
   }) => Promise<void>;
   dispatchNow: (ids: number[]) => Promise<DispatchResult>;
   regenerate: (id: number) => Promise<void>;
+  regenerateAndRepost: (id: number) => Promise<DispatchResult>;
 };
 
 const STATUS_PILL: Record<SocialPostRow["status"], string> = {
@@ -73,7 +74,14 @@ function localInputToISO(local: string): string | null {
   return new Date(local).toISOString();
 }
 
-export function SocialPostsTable({ rows, deleteMany, updateRow, dispatchNow, regenerate }: Props) {
+export function SocialPostsTable({
+  rows,
+  deleteMany,
+  updateRow,
+  dispatchNow,
+  regenerate,
+  regenerateAndRepost,
+}: Props) {
   const [selected, setSelected] = useState<Set<number>>(new Set());
   const [editing, setEditing] = useState<Record<number, { content: string; scheduledAt: string }>>(
     Object.fromEntries(
@@ -137,6 +145,23 @@ export function SocialPostsTable({ rows, deleteMany, updateRow, dispatchNow, reg
       setMsg(`Regenerating #${id} via Claude…`);
       await regenerate(id);
       setMsg(`Regenerated #${id} — reload page to see new copy.`);
+    });
+  }
+
+  function repostOne(id: number, platform: string) {
+    const human = platform === "linkedin" ? "LinkedIn" : "Facebook";
+    if (
+      !confirm(
+        `Re-roll the copy with AI and post a NEW ${human} update?\n\nNote: the previous post stays live on ${human} — delete it manually first if you want a clean replacement.`,
+      )
+    )
+      return;
+    startTransition(async () => {
+      setMsg(`Regenerating + posting #${id} to ${human}…`);
+      const r = await regenerateAndRepost(id);
+      const d = r.details[0];
+      if (d?.ok) setMsg(`Re-published: ${d.externalUrl}`);
+      else setMsg(`Failed: ${d?.error ?? "unknown error"}`);
     });
   }
 
@@ -307,6 +332,16 @@ export function SocialPostsTable({ rows, deleteMany, updateRow, dispatchNow, reg
                       className="px-3 py-2 text-sm rounded-lg border border-white/15 text-white/60 hover:text-white disabled:opacity-40"
                     >
                       Cancel
+                    </button>
+                  )}
+                  {r.status === "published" && (
+                    <button
+                      disabled={pending}
+                      onClick={() => repostOne(r.id, r.platform)}
+                      className="px-3 py-2 text-sm rounded-lg border border-(--color-purple)/40 text-(--color-purple) hover:bg-(--color-purple)/10 disabled:opacity-40"
+                      title="Regenerate the copy with AI and post a fresh update on the platform. Previous post stays live unless you delete it manually."
+                    >
+                      🔁 Re-roll &amp; repost
                     </button>
                   )}
                 </div>

@@ -110,6 +110,33 @@ export default async function SocialPostsList() {
     return r;
   }
 
+  /**
+   * Re-roll the copy with a fresh LLM call, reset the row so the dispatcher
+   * treats it as new, then publish a brand-new social post. Used to replace
+   * an earlier published post that was generated with the old (thin) copy.
+   * The user is responsible for deleting the previous post on the platform —
+   * platforms don't expose an "overwrite" call.
+   */
+  async function regenerateAndRepost(id: number) {
+    "use server";
+    await regenerate(id);
+    await db
+      .update(socialPosts)
+      .set({
+        status: "draft",
+        externalId: null,
+        externalUrl: null,
+        publishedAt: null,
+        errorMessage: null,
+        attemptCount: 0,
+        updatedAt: new Date(),
+      })
+      .where(eq(socialPosts.id, id));
+    const r = await dispatchDueSocialPosts({ ids: [id] });
+    revalidatePath("/admin/social");
+    return r;
+  }
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -153,6 +180,7 @@ export default async function SocialPostsList() {
         updateRow={updateRow}
         dispatchNow={dispatchNow}
         regenerate={regenerate}
+        regenerateAndRepost={regenerateAndRepost}
       />
     </div>
   );
