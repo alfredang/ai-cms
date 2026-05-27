@@ -4,10 +4,20 @@ import { desc, eq, inArray } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { SocialPostsTable, type SocialPostRow } from "@/components/admin/SocialPostsTable";
 import { dispatchDueSocialPosts } from "@/lib/social/dispatch";
+import { getSocialAutoPublish, setSocialAutoPublish } from "@/lib/social/settings";
+import { AutoPublishToggle } from "@/components/admin/AutoPublishToggle";
 
 export const dynamic = "force-dynamic";
 
 export default async function SocialPostsList() {
+  const autoPublish = await getSocialAutoPublish();
+
+  async function toggleAutoPublish(enabled: boolean) {
+    "use server";
+    await setSocialAutoPublish(enabled);
+    revalidatePath("/admin/social");
+  }
+
   const rows = await db
     .select({
       id: socialPosts.id,
@@ -76,12 +86,13 @@ export default async function SocialPostsList() {
           <span className="text-sm text-white/50 font-mono">[ {rows.length} total ]</span>
         </div>
       </div>
-      <p className="text-sm text-(--color-muted) mb-6">
+      <p className="text-sm text-(--color-muted) mb-4">
         When a blog post is published, a draft is queued here per platform.
         Edit the copy, pick a schedule time, and the cron dispatcher will
         publish it. <span className="font-mono text-xs">[ POST /api/cron/social-dispatch ]</span>{" "}
         runs every 5 minutes from Coolify cron.
       </p>
+      <AutoPublishToggle enabled={autoPublish} onToggle={toggleAutoPublish} />
       <SocialPostsTable
         rows={rows.map((r) => ({
           id: r.id,

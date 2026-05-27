@@ -7,6 +7,8 @@ import { PostEditorForm, type PostFormData } from "@/components/admin/PostEditor
 import type { JSONContent } from "@tiptap/react";
 import { getAdminSession } from "@/lib/admin-role";
 import { createDraftSocialPosts } from "@/lib/social/draft";
+import { dispatchDueSocialPosts } from "@/lib/social/dispatch";
+import { getSocialAutoPublish } from "@/lib/social/settings";
 
 function slugify(input: string): string {
   return input
@@ -163,10 +165,17 @@ export default async function EditPost({
     // exist for this post, so re-saving a published post doesn't duplicate.
     if (data.status === "published" && !p.publishedAt) {
       try {
-        await createDraftSocialPosts(data.id);
+        const draftIds = await createDraftSocialPosts(data.id);
+        // If the operator has flipped the "Auto-publish on blog publish"
+        // switch on /admin/social, fire the dispatcher immediately so LinkedIn
+        // + Facebook posts go live the moment the blog does.
+        const autoPublish = await getSocialAutoPublish();
+        if (autoPublish && draftIds.length > 0) {
+          await dispatchDueSocialPosts({ ids: draftIds });
+        }
         revalidatePath("/admin/social");
       } catch (e) {
-        console.error("createDraftSocialPosts failed:", e);
+        console.error("social auto-queue failed:", e);
       }
     }
 
@@ -180,6 +189,7 @@ export default async function EditPost({
     "use server";
     await createDraftSocialPosts(p.id);
     revalidatePath("/admin/social");
+    redirect("/admin/social?queued=1");
   }
 
   return (
