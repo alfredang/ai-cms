@@ -372,15 +372,27 @@ export function CredentialsForm({ status, sources, previews }: Props) {
                 <p className="text-xs text-(--color-muted) mt-1">{group.description}</p>
               )}
             </div>
-            {group.keys.includes("linkedin_client_id" as Key) && (
-              <a
-                href="/api/admin/linkedin/auth"
-                className="px-4 py-2 rounded-lg bg-[#0a66c2] hover:bg-[#004182] text-white text-sm font-semibold whitespace-nowrap"
-                title="Run the LinkedIn OAuth flow and auto-fill the access token + author URN"
-              >
-                Connect LinkedIn →
-              </a>
-            )}
+            {group.keys.includes("linkedin_client_id" as Key) && (() => {
+              const ready =
+                status["linkedin_client_id" as Key] &&
+                status["linkedin_client_secret" as Key];
+              return ready ? (
+                <a
+                  href="/api/admin/linkedin/auth"
+                  className="px-4 py-2 rounded-lg bg-[#0a66c2] hover:bg-[#004182] text-white text-sm font-semibold whitespace-nowrap"
+                  title="Run the LinkedIn OAuth flow and auto-fill the access token + author URN"
+                >
+                  Connect LinkedIn →
+                </a>
+              ) : (
+                <span
+                  className="px-4 py-2 rounded-lg bg-white/5 text-white/40 text-sm font-semibold whitespace-nowrap cursor-not-allowed border border-white/10"
+                  title="Save the Client ID and Client Secret first — the OAuth flow reads them from the vault."
+                >
+                  Save Client ID + Secret first
+                </span>
+              );
+            })()}
           </div>
           <div className="grid md:grid-cols-2 gap-x-6 gap-y-7">
             {group.keys.map((k) => {
