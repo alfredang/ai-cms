@@ -1,11 +1,16 @@
 import { db } from "@/db";
-import { socialPosts, posts } from "@/db/schema";
+import { socialPosts, posts, postTags, tags } from "@/db/schema";
 import { desc, eq, inArray } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { SocialPostsTable, type SocialPostRow } from "@/components/admin/SocialPostsTable";
 import { dispatchDueSocialPosts } from "@/lib/social/dispatch";
 import { getSocialAutoPublish, setSocialAutoPublish } from "@/lib/social/settings";
 import { AutoPublishToggle } from "@/components/admin/AutoPublishToggle";
+import { htmlToPlainText } from "@/lib/social/html-to-social";
+import {
+  generateLinkedInPostLLM,
+  generateFacebookPostLLM,
+} from "@/lib/social/llm-generator";
 
 export const dynamic = "force-dynamic";
 
@@ -64,6 +69,39 @@ export default async function SocialPostsList() {
     revalidatePath("/admin/social");
   }
 
+  async function regenerate(id: number) {
+    "use server";
+    const [row] = await db.select().from(socialPosts).where(eq(socialPosts.id, id));
+    if (!row || !row.postId) return;
+    const [post] = await db.select().from(posts).where(eq(posts.id, row.postId));
+    if (!post) return;
+    const tagRows = await db
+      .select({ slug: tags.slug })
+      .from(postTags)
+      .innerJoin(tags, eq(tags.id, postTags.tagId))
+      .where(eq(postTags.postId, post.id));
+    const url =
+      (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tertiaryinfotech.com") +
+      `/blog/${post.slug}`;
+    const input = {
+      title: post.title.trim(),
+      excerpt: (post.excerpt ?? "").trim(),
+      bodyPlainText: post.contentHtml ? htmlToPlainText(post.contentHtml) : "",
+      url,
+      tagSlugs: tagRows.map((t) => t.slug),
+    };
+    const fresh =
+      row.platform === "linkedin"
+        ? await generateLinkedInPostLLM(input)
+        : await generateFacebookPostLLM(input);
+    if (!fresh) return;
+    await db
+      .update(socialPosts)
+      .set({ content: fresh, updatedAt: new Date() })
+      .where(eq(socialPosts.id, id));
+    revalidatePath("/admin/social");
+  }
+
   async function dispatchNow(ids: number[]) {
     "use server";
     if (!Array.isArray(ids) || ids.length === 0) return { picked: 0, published: 0, failed: 0, details: [] };
@@ -114,6 +152,7 @@ export default async function SocialPostsList() {
         deleteMany={deleteMany}
         updateRow={updateRow}
         dispatchNow={dispatchNow}
+        regenerate={regenerate}
       />
     </div>
   );

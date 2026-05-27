@@ -10,6 +10,16 @@
 import { db } from "@/db";
 import { posts, postTags, tags, socialPosts } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import {
+  htmlToPlainText,
+  clipToParagraphs,
+  extractH2Headings,
+  extractFirstParagraph,
+} from "@/lib/social/html-to-social";
+import {
+  generateLinkedInPostLLM,
+  generateFacebookPostLLM,
+} from "@/lib/social/llm-generator";
 
 const SITE_BASE =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tertiaryinfotech.com";
@@ -91,44 +101,61 @@ function buildHashtags(opts: {
 
 function linkedinDraft(opts: {
   title: string;
-  excerpt: string;
+  hook: string;
+  sections: string[];
   url: string;
   hashtags: string[];
 }): string {
-  // LinkedIn caps hashtag impact around 5–8; 6 is a sensible default.
-  const tagLine = opts.hashtags.slice(0, 6).join(" ");
+  const tagLine = opts.hashtags.slice(0, 8).join(" ");
+  // Trim each section to a single line for the bullet list.
+  const bullets = opts.sections
+    .slice(0, 6)
+    .map((s) => `✅ ${s}`)
+    .join("\n");
+  // Hook may include a long paragraph — clip so the whole post stays under
+  // LinkedIn's 3000-char limit even with bullets, URL and hashtags appended.
+  const hook = clipToParagraphs(opts.hook, {
+    maxChars: 600,
+    maxParagraphs: 2,
+  });
   return [
-    `${opts.title}`,
+    `🚀 ${opts.title}`,
     "",
-    opts.excerpt,
+    hook,
     "",
-    `Read the full piece: ${opts.url}`,
+    "🎯 What's inside:",
+    bullets,
+    "",
+    `🔗 Read the full piece → ${opts.url}`,
     "",
     tagLine,
   ]
-    .filter((l) => l.length > 0 || l === "")
     .join("\n")
     .trim();
 }
 
 function facebookDraft(opts: {
   title: string;
-  excerpt: string;
+  body: string;
   url: string;
   hashtags: string[];
 }): string {
-  // Facebook rewards 2–3 focused hashtags more than a long string.
+  // Facebook posts can be very long, but engagement drops sharply past ~500
+  // chars in the visible preview. Clip body around there + 2–3 focused tags.
   const tagLine = opts.hashtags.slice(0, 3).join(" ");
-  const body = opts.excerpt.length > 280
-    ? opts.excerpt.slice(0, 277).trimEnd() + "…"
-    : opts.excerpt;
+  const body = clipToParagraphs(opts.body, {
+    maxChars: 600,
+    maxParagraphs: 3,
+  });
   return [
-    `${opts.title} — ${body}`,
+    opts.title,
+    "",
+    body,
     "",
     opts.url,
+    "",
     tagLine,
   ]
-    .filter(Boolean)
     .join("\n")
     .trim();
 }
@@ -153,14 +180,47 @@ export async function createDraftSocialPosts(postId: number): Promise<number[]> 
   const url = `${SITE_BASE}/blog/${post.slug}`;
   const excerpt = (post.excerpt ?? "").trim();
   const title = post.title.trim();
-  const hashtags = buildHashtags({
-    title,
-    tagSlugs: tagRows.map((t) => t.slug),
-    max: 8,
-  });
+  const tagSlugs = tagRows.map((t) => t.slug);
+  // Plain text of the full rendered blog body — falls back to excerpt for
+  // short pieces. Fed to both the LLM (for context) and the deterministic
+  // formatter (as a safety net).
+  const bodyPlain = post.contentHtml
+    ? htmlToPlainText(post.contentHtml)
+    : excerpt;
+  const hashtags = buildHashtags({ title, tagSlugs, max: 8 });
+  const headings = post.contentHtml
+    ? extractH2Headings(post.contentHtml)
+    : [];
+  const hook =
+    (post.contentHtml ? extractFirstParagraph(post.contentHtml) : excerpt) ||
+    excerpt;
 
-  const liContent = linkedinDraft({ title, excerpt, url, hashtags });
-  const fbContent = facebookDraft({ title, excerpt, url, hashtags });
+  // Try LLM first (Claude Agent SDK, OAuth subscription). If it returns null
+  // — token missing, network failure, suspiciously short output — fall back
+  // to the deterministic template so the publish flow never blocks.
+  const llmInput = {
+    title,
+    excerpt,
+    bodyPlainText: bodyPlain,
+    url,
+    tagSlugs,
+  };
+  const [liLLM, fbLLM] = await Promise.all([
+    generateLinkedInPostLLM(llmInput),
+    generateFacebookPostLLM(llmInput),
+  ]);
+
+  const liContent =
+    liLLM ??
+    linkedinDraft({
+      title,
+      hook,
+      sections: headings.slice(0, 6),
+      url,
+      hashtags,
+    });
+  const fbContent =
+    fbLLM ?? facebookDraft({ title, body: bodyPlain, url, hashtags });
 
   const now = new Date();
   const inserted = await db

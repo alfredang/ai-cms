@@ -43,6 +43,7 @@ type Props = {
     status?: SocialPostRow["status"];
   }) => Promise<void>;
   dispatchNow: (ids: number[]) => Promise<DispatchResult>;
+  regenerate: (id: number) => Promise<void>;
 };
 
 const STATUS_PILL: Record<SocialPostRow["status"], string> = {
@@ -72,7 +73,7 @@ function localInputToISO(local: string): string | null {
   return new Date(local).toISOString();
 }
 
-export function SocialPostsTable({ rows, deleteMany, updateRow, dispatchNow }: Props) {
+export function SocialPostsTable({ rows, deleteMany, updateRow, dispatchNow, regenerate }: Props) {
   const [selected, setSelected] = useState<Set<number>>(new Set());
   const [editing, setEditing] = useState<Record<number, { content: string; scheduledAt: string }>>(
     Object.fromEntries(
@@ -127,6 +128,15 @@ export function SocialPostsTable({ rows, deleteMany, updateRow, dispatchNow }: P
     startTransition(async () => {
       await updateRow({ id, status: "cancelled" });
       setMsg(`Cancelled #${id}`);
+    });
+  }
+
+  function regenerateOne(id: number) {
+    if (!confirm("Regenerate the post copy from the blog using AI? This replaces what's in the textarea.")) return;
+    startTransition(async () => {
+      setMsg(`Regenerating #${id} via Claude…`);
+      await regenerate(id);
+      setMsg(`Regenerated #${id} — reload page to see new copy.`);
     });
   }
 
@@ -261,6 +271,14 @@ export function SocialPostsTable({ rows, deleteMany, updateRow, dispatchNow }: P
                   )}
                 </div>
                 <div className="flex items-center gap-2 flex-wrap">
+                  <button
+                    disabled={!canEdit || pending}
+                    onClick={() => regenerateOne(r.id)}
+                    className="px-3 py-2 text-sm rounded-lg border border-(--color-purple)/40 text-(--color-purple) hover:bg-(--color-purple)/10 disabled:opacity-40"
+                    title="Re-run Claude on the blog content and replace the copy with a fresh version"
+                  >
+                    ✨ Regenerate
+                  </button>
                   <button
                     disabled={!canEdit || pending}
                     onClick={() => saveRow(r.id)}
