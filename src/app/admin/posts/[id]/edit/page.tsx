@@ -176,9 +176,28 @@ export default async function EditPost({
     revalidatePath("/sitemap.xml");
   }
 
+  async function queueSocialDrafts() {
+    "use server";
+    await createDraftSocialPosts(p.id);
+    revalidatePath("/admin/social");
+  }
+
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Edit Post</h1>
+      <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+        <h1 className="text-2xl font-bold">Edit Post</h1>
+        {p.status === "published" && (
+          <form action={queueSocialDrafts}>
+            <button
+              type="submit"
+              className="px-4 py-2 rounded-lg border border-(--color-cyan)/40 text-(--color-cyan) hover:bg-(--color-cyan)/10 text-sm font-mono"
+              title="Create LinkedIn + Facebook draft social posts for this blog post (idempotent — no-op if drafts already exist)"
+            >
+              Queue social drafts →
+            </button>
+          </form>
+        )}
+      </div>
       <PostEditorForm initial={initial} save={save} kind="post" />
     </div>
   );

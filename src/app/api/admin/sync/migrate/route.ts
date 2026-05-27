@@ -116,5 +116,47 @@ export async function POST(req: Request) {
   `);
   ran.push("lead_status: follow_up");
 
+  // 8) social_posts table + enums (LinkedIn + Facebook auto-posting queue)
+  await db.execute(sql`
+    DO $$ BEGIN
+      CREATE TYPE social_platform AS ENUM ('linkedin','facebook');
+    EXCEPTION WHEN duplicate_object THEN null; END $$
+  `);
+  await db.execute(sql`
+    DO $$ BEGIN
+      CREATE TYPE social_post_status AS ENUM
+        ('draft','scheduled','publishing','published','failed','cancelled');
+    EXCEPTION WHEN duplicate_object THEN null; END $$
+  `);
+  await db.execute(sql`
+    CREATE TABLE IF NOT EXISTS social_posts (
+      id serial PRIMARY KEY,
+      post_id integer REFERENCES posts(id) ON DELETE CASCADE,
+      platform social_platform NOT NULL,
+      status social_post_status NOT NULL DEFAULT 'draft',
+      content text NOT NULL,
+      image_url text,
+      link_url text,
+      scheduled_at timestamp,
+      published_at timestamp,
+      external_id varchar(255),
+      external_url text,
+      error_message text,
+      attempt_count integer NOT NULL DEFAULT 0,
+      last_attempt_at timestamp,
+      created_at timestamp NOT NULL DEFAULT now(),
+      updated_at timestamp NOT NULL DEFAULT now()
+    )
+  `);
+  await db.execute(sql`
+    CREATE INDEX IF NOT EXISTS social_posts_status_scheduled_idx
+      ON social_posts (status, scheduled_at)
+  `);
+  await db.execute(sql`
+    CREATE INDEX IF NOT EXISTS social_posts_post_id_idx
+      ON social_posts (post_id)
+  `);
+  ran.push("social_posts table + enums + indexes");
+
   return NextResponse.json({ ok: true, ran });
 }
