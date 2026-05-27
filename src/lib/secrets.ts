@@ -47,7 +47,13 @@ export type CredentialKey =
   | "turnstile_site_key"
   | "turnstile_secret"
   | "n8n_api_url"
-  | "n8n_api_key";
+  | "n8n_api_key"
+  | "linkedin_client_id"
+  | "linkedin_client_secret"
+  | "linkedin_access_token"
+  | "linkedin_author_urn"
+  | "facebook_page_access_token"
+  | "facebook_page_id";
 
 /**
  * Read a credential. DB-stored encrypted value wins over the env var fallback.
@@ -84,6 +90,12 @@ export async function getCredential(key: CredentialKey): Promise<string | null> 
     turnstile_secret: process.env.TURNSTILE_SECRET,
     n8n_api_url: process.env.N8N_API_URL,
     n8n_api_key: process.env.N8N_API_KEY,
+    linkedin_client_id: process.env.LINKEDIN_CLIENT_ID,
+    linkedin_client_secret: process.env.LINKEDIN_CLIENT_SECRET,
+    linkedin_access_token: process.env.LINKEDIN_ACCESS_TOKEN,
+    linkedin_author_urn: process.env.LINKEDIN_AUTHOR_URN,
+    facebook_page_access_token: process.env.FACEBOOK_PAGE_ACCESS_TOKEN,
+    facebook_page_id: process.env.FACEBOOK_PAGE_ID,
   };
   return envMap[key] ?? null;
 }
@@ -144,6 +156,12 @@ export async function getCredentialSource(key: CredentialKey): Promise<Credentia
     turnstile_secret: process.env.TURNSTILE_SECRET,
     n8n_api_url: process.env.N8N_API_URL,
     n8n_api_key: process.env.N8N_API_KEY,
+    linkedin_client_id: process.env.LINKEDIN_CLIENT_ID,
+    linkedin_client_secret: process.env.LINKEDIN_CLIENT_SECRET,
+    linkedin_access_token: process.env.LINKEDIN_ACCESS_TOKEN,
+    linkedin_author_urn: process.env.LINKEDIN_AUTHOR_URN,
+    facebook_page_access_token: process.env.FACEBOOK_PAGE_ACCESS_TOKEN,
+    facebook_page_id: process.env.FACEBOOK_PAGE_ID,
   };
   return envMap[key] ? "env" : "none";
 }

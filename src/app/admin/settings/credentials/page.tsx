@@ -19,6 +19,12 @@ const KEYS: CredentialKey[] = [
   "turnstile_secret",
   "n8n_api_url",
   "n8n_api_key",
+  "linkedin_client_id",
+  "linkedin_client_secret",
+  "linkedin_access_token",
+  "linkedin_author_urn",
+  "facebook_page_access_token",
+  "facebook_page_id",
 ];
 
 /**
@@ -29,7 +35,7 @@ function maskPreview(value: string | null, key: CredentialKey): string {
   if (!value) return "";
   // Email addresses are not secrets — show the local-part fully so admins can
   // tell which Gmail account is configured at a glance.
-  if (key === "gmail_user" || key === "r2_bucket" || key === "r2_public_url" || key === "r2_endpoint" || key === "r2_account_id" || key === "turnstile_site_key" || key === "n8n_api_url") return value;
+  if (key === "gmail_user" || key === "r2_bucket" || key === "r2_public_url" || key === "r2_endpoint" || key === "r2_account_id" || key === "turnstile_site_key" || key === "n8n_api_url" || key === "linkedin_client_id" || key === "linkedin_author_urn" || key === "facebook_page_id") return value;
   if (value.length <= 8) return "•".repeat(value.length);
   const head = value.slice(0, 4);
   const tail = value.slice(-4);

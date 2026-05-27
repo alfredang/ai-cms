@@ -6,6 +6,7 @@ import { eq, inArray } from "drizzle-orm";
 import { PostEditorForm, type PostFormData } from "@/components/admin/PostEditorForm";
 import type { JSONContent } from "@tiptap/react";
 import { getAdminSession } from "@/lib/admin-role";
+import { createDraftSocialPosts } from "@/lib/social/draft";
 
 function slugify(input: string): string {
   return input
@@ -154,6 +155,18 @@ export default async function EditPost({
           .insert(postTags)
           .values(tagIds.map((tagId) => ({ postId: data.id, tagId })))
           .onConflictDoNothing();
+      }
+    }
+
+    // Auto-queue social drafts when transitioning to published.
+    // Safe by design — createDraftSocialPosts is a no-op if drafts already
+    // exist for this post, so re-saving a published post doesn't duplicate.
+    if (data.status === "published" && !p.publishedAt) {
+      try {
+        await createDraftSocialPosts(data.id);
+        revalidatePath("/admin/social");
+      } catch (e) {
+        console.error("createDraftSocialPosts failed:", e);
       }
     }
 

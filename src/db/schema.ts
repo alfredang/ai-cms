@@ -24,6 +24,18 @@ export const leadStatusEnum = pgEnum("lead_status", [
   "lost",
 ]);
 export const categoryTypeEnum = pgEnum("category_type", ["page", "post"]);
+export const socialPlatformEnum = pgEnum("social_platform", [
+  "linkedin",
+  "facebook",
+]);
+export const socialPostStatusEnum = pgEnum("social_post_status", [
+  "draft",
+  "scheduled",
+  "publishing",
+  "published",
+  "failed",
+  "cancelled",
+]);
 
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -192,6 +204,32 @@ export const blogScheduleRuns = pgTable("blog_schedule_runs", {
   durationMs: integer("duration_ms"),
   errorMessage: text("error_message"),
 });
+
+export const socialPosts = pgTable(
+  "social_posts",
+  {
+    id: serial("id").primaryKey(),
+    postId: integer("post_id").references(() => posts.id, { onDelete: "cascade" }),
+    platform: socialPlatformEnum("platform").notNull(),
+    status: socialPostStatusEnum("status").notNull().default("draft"),
+    content: text("content").notNull(),
+    imageUrl: text("image_url"),
+    linkUrl: text("link_url"),
+    scheduledAt: timestamp("scheduled_at"),
+    publishedAt: timestamp("published_at"),
+    externalId: varchar("external_id", { length: 255 }),
+    externalUrl: text("external_url"),
+    errorMessage: text("error_message"),
+    attemptCount: integer("attempt_count").notNull().default(0),
+    lastAttemptAt: timestamp("last_attempt_at"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  },
+  (t) => [
+    index("social_posts_status_scheduled_idx").on(t.status, t.scheduledAt),
+    index("social_posts_post_id_idx").on(t.postId),
+  ],
+);
 
 export const redirects = pgTable("redirects", {
   id: serial("id").primaryKey(),

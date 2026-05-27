@@ -27,6 +27,12 @@ const ALLOWED: CredentialKey[] = [
   "turnstile_secret",
   "n8n_api_url",
   "n8n_api_key",
+  "linkedin_client_id",
+  "linkedin_client_secret",
+  "linkedin_access_token",
+  "linkedin_author_urn",
+  "facebook_page_access_token",
+  "facebook_page_id",
 ];
 
 const payloadSchema = z.record(z.string(), z.string().min(1).max(2000));

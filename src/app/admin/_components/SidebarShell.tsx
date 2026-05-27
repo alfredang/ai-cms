@@ -12,6 +12,7 @@ import {
   HiBars3,
   HiPhoto,
   HiInbox,
+  HiShare,
   HiCog6Tooth,
   HiUsers,
   HiArrowRightOnRectangle,
@@ -28,6 +29,7 @@ const ICONS = {
   menus: HiBars3,
   media: HiPhoto,
   leads: HiInbox,
+  social: HiShare,
   settings: HiCog6Tooth,
   users: HiUsers,
 } as const;

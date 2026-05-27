@@ -14,6 +14,7 @@ const ALL_NAV: (NavItem & { roles: AdminRole[] })[] = [
   { href: "/admin/menus", label: "Menus", icon: "menus", roles: ["admin", "editor"] },
   { href: "/admin/media", label: "Media", icon: "media", roles: ["admin", "editor", "author"] },
   { href: "/admin/leads", label: "Leads", icon: "leads", roles: ["admin", "editor"] },
+  { href: "/admin/social", label: "Social", icon: "social", roles: ["admin", "editor"] },
   { href: "/admin/users", label: "Users", icon: "users", roles: ["admin"] },
   { href: "/admin/settings", label: "Settings", icon: "settings", roles: ["admin", "editor"] },
 ];
