@@ -4,6 +4,7 @@ import { posts } from "@/db/schema";
 import { and, desc, eq } from "drizzle-orm";
 import { Container } from "@/components/layout/Container";
 import { HiArrowUpRight, HiStar } from "react-icons/hi2";
+import { HiThumbUp } from "react-icons/hi";
 
 function snippetFromHtml(html: string | null | undefined, max = 200): string {
   if (!html) return "";
@@ -60,6 +61,7 @@ type PostLite = {
   contentHtml: string | null;
   featuredImage: string | null;
   publishedAt: Date | null;
+  likeCount: number;
 };
 
 function PostCard({ p }: { p: PostLite }) {
@@ -90,9 +92,19 @@ function PostCard({ p }: { p: PostLite }) {
             })}
           </div>
         )}
-        <h3 className="font-display font-bold text-xl text-white group-hover:text-(--color-cyan) transition mb-3">
-          {p.title}
-        </h3>
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <h3 className="font-display font-bold text-xl text-white group-hover:text-(--color-cyan) transition flex-1 min-w-0">
+            {p.title}
+          </h3>
+          <span
+            className="shrink-0 inline-flex items-center gap-1 text-xs font-mono text-(--color-muted) mt-1"
+            aria-label={`${p.likeCount} likes`}
+            title={`${p.likeCount} likes`}
+          >
+            <HiThumbUp className="w-3.5 h-3.5 text-(--color-cyan)" />
+            {p.likeCount}
+          </span>
+        </div>
         {(() => {
           const teaser = p.excerpt || snippetFromHtml(p.contentHtml);
           return teaser ? (
