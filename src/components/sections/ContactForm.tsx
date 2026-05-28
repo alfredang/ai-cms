@@ -13,12 +13,17 @@ export function ContactForm() {
     e.preventDefault();
     setState("sending");
     const fd = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(fd.entries());
+    const payload = Object.fromEntries(fd.entries()) as Record<string, string>;
+    const preferred = (payload.preferredDemo || "").trim();
+    delete payload.preferredDemo;
+    const message = preferred
+      ? `Preferred demo slot: ${formatPreferred(preferred)}\n\n${payload.message ?? ""}`
+      : payload.message;
     try {
       const r = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...payload, source: "home", turnstileToken }),
+        body: JSON.stringify({ ...payload, message, source: "home", turnstileToken }),
       });
       if (!r.ok) throw new Error(await r.text());
       setState("ok");
@@ -51,6 +56,16 @@ export function ContactForm() {
             <Input name="phone" label="Phone" />
           </div>
           <div>
+            <label className="kicker block mb-2">
+              Preferred date & time for demo <span className="text-(--color-muted) normal-case">(optional)</span>
+            </label>
+            <input
+              type="datetime-local"
+              name="preferredDemo"
+              className="w-full px-4 py-3 rounded-lg bg-white/3 border border-white/10 focus:outline-none focus:border-(--color-cyan) focus:ring-2 focus:ring-(--color-cyan)/20 transition text-white [color-scheme:dark]"
+            />
+          </div>
+          <div>
             <label className="kicker block mb-2">Your message</label>
             <textarea
               name="message"
@@ -78,6 +93,20 @@ export function ContactForm() {
       </Container>
     </section>
   );
+}
+
+function formatPreferred(value: string): string {
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return value;
+  return d.toLocaleString("en-SG", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
 }
 
 function Input({
