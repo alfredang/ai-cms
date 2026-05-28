@@ -163,7 +163,7 @@ export default async function BlogIndex({
     <>
       <Navbar />
       <main>
-        <section className="relative pt-24 pb-10 overflow-hidden">
+        <section className="relative pt-8 pb-10 overflow-hidden">
           <div className="grid-bg opacity-60" />
           <div
             className="glow-blob"
