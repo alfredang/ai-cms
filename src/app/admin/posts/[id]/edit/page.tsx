@@ -187,7 +187,12 @@ export default async function EditPost({
 
   async function queueSocialDrafts() {
     "use server";
-    await createDraftSocialPosts(p.id);
+    const ids = await createDraftSocialPosts(p.id);
+    // If the operator has flipped auto-publish ON, treat the manual Queue
+    // Drafts click as "go live now" — saves a second trip to /admin/social.
+    if ((await getSocialAutoPublish()) && ids.length > 0) {
+      await dispatchDueSocialPosts({ ids });
+    }
     revalidatePath("/admin/social");
     redirect("/admin/social?queued=1");
   }
