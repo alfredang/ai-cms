@@ -24,6 +24,7 @@ const postSchema = z.object({
   authorEmail: z.string().email().optional().nullable(),
   categorySlug: z.string().max(255).optional().nullable(),
   tagSlugs: z.array(z.string().max(255)).optional().default([]),
+  likeCount: z.number().int().min(0).optional().nullable(),
   publishedAt: z.string().datetime().optional().nullable(),
   // Preserve original authoring timestamp across sync so the admin list
   // sort ("Newest first") matches local. Without this, remote createdAt
@@ -88,6 +89,7 @@ export async function POST(req: Request) {
       featured: p.featured ?? false,
       authorId,
       categoryId,
+      ...(typeof p.likeCount === "number" ? { likeCount: p.likeCount } : {}),
       publishedAt: p.publishedAt ? new Date(p.publishedAt) : null,
     };
     const createdAt = p.createdAt ? new Date(p.createdAt) : null;

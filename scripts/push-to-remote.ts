@@ -234,6 +234,7 @@ async function pushPosts() {
       authorEmail: await authorEmailById(p.authorId),
       categorySlug: p.categoryId != null ? catById.get(p.categoryId) ?? null : null,
       tagSlugs: tagSlugsByPostId.get(p.id) ?? [],
+      likeCount: p.likeCount ?? 0,
       publishedAt: p.publishedAt ? p.publishedAt.toISOString() : null,
       createdAt: p.createdAt ? p.createdAt.toISOString() : null,
     });
