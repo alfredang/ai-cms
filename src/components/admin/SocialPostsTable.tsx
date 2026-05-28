@@ -61,6 +61,11 @@ const PLATFORM_LABEL: Record<SocialPostRow["platform"], string> = {
   facebook: "Facebook",
 };
 
+const PLATFORM_BRAND: Record<SocialPostRow["platform"], { bg: string; hover: string }> = {
+  linkedin: { bg: "bg-[#0a66c2]", hover: "hover:bg-[#004182]" },
+  facebook: { bg: "bg-[#1877f2]", hover: "hover:bg-[#0c5fc5]" },
+};
+
 /** Convert an ISO string to the format an <input type="datetime-local"> wants. */
 function isoToLocalInput(iso: string | null): string {
   if (!iso) return "";
@@ -205,7 +210,23 @@ export function SocialPostsTable({
             Delete selected ({selected.size})
           </button>
           {msg && (
-            <span className="text-xs text-(--color-cyan) font-mono break-all">{msg}</span>
+            <span className="text-xs text-(--color-cyan) font-mono break-all">
+              {msg.split(/(\bhttps?:\/\/\S+)/g).map((part, i) =>
+                /^https?:\/\//.test(part) ? (
+                  <a
+                    key={i}
+                    href={part}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-(--color-green)"
+                  >
+                    {part}
+                  </a>
+                ) : (
+                  <span key={i}>{part}</span>
+                ),
+              )}
+            </span>
           )}
         </div>
       </div>
@@ -247,9 +268,10 @@ export function SocialPostsTable({
                       href={r.externalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-(--color-green) hover:underline"
+                      title={`Open the live post on ${PLATFORM_LABEL[r.platform]} in a new tab`}
+                      className={`px-3 py-1.5 rounded-md ${PLATFORM_BRAND[r.platform].bg} ${PLATFORM_BRAND[r.platform].hover} text-white text-xs font-semibold whitespace-nowrap`}
                     >
-                      View live ↗
+                      View on {PLATFORM_LABEL[r.platform]} ↗
                     </a>
                   )}
                 </div>

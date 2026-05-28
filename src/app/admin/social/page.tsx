@@ -139,9 +139,15 @@ export default async function SocialPostsList() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
         <h1 className="text-3xl font-bold">Social</h1>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 flex-wrap">
+          <a
+            href="/admin/social/log"
+            className="text-sm text-(--color-cyan) hover:underline"
+          >
+            Activity log →
+          </a>
           <a
             href="/admin/settings/credentials"
             className="text-sm text-(--color-cyan) hover:underline"
