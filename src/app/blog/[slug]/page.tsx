@@ -168,8 +168,8 @@ export default async function PostPage({
   return (
     <>
       <Navbar />
-      <main className="pt-16">
-        <article className="py-6">
+      <main>
+        <article className="pt-2 pb-6">
           <Container className="max-w-4xl">
             <div className="grid md:grid-cols-2 gap-8 items-start mb-6">
               {post.featuredImage && (
