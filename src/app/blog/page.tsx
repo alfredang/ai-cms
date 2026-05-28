@@ -323,17 +323,34 @@ export default async function BlogIndex({
                       )}
                     </div>
                     <div className="p-6 flex-1 flex flex-col">
-                      {p.publishedAt && (
-                        <div className="kicker mb-3">
-                          {new Date(p.publishedAt)
-                            .toLocaleDateString("en-GB", {
-                              day: "2-digit",
-                              month: "2-digit",
-                              year: "numeric",
-                            })
-                            .replace(/\//g, "-")}
-                        </div>
-                      )}
+                      <div className="flex items-center justify-between gap-3 mb-3">
+                        {p.publishedAt ? (
+                          <div className="kicker">
+                            {new Date(p.publishedAt)
+                              .toLocaleDateString("en-GB", {
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "numeric",
+                              })
+                              .replace(/\//g, "-")}
+                          </div>
+                        ) : (
+                          <span />
+                        )}
+                        <span
+                          className="inline-flex items-center gap-1 text-xs font-mono text-(--color-muted)"
+                          title={`${p.likeCount ?? 0} like${(p.likeCount ?? 0) === 1 ? "" : "s"}`}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            viewBox="0 0 24 24"
+                            className="w-3.5 h-3.5 fill-(--color-purple)/70"
+                          >
+                            <path d="M12 21s-7.5-4.6-10-9.3C.4 8.2 2.4 4 6.3 4c2 0 3.4 1 4.4 2.4l1.3 1.8 1.3-1.8C14.3 5 15.7 4 17.7 4c3.9 0 5.9 4.2 4.3 7.7C19.5 16.4 12 21 12 21z" />
+                          </svg>
+                          {p.likeCount ?? 0}
+                        </span>
+                      </div>
                       <h3 className="font-display font-bold text-lg text-white group-hover:text-(--color-cyan) transition mb-2 leading-tight">
                         {p.title}
                       </h3>
