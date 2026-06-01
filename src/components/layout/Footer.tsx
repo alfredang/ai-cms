@@ -1,7 +1,4 @@
 import Link from "next/link";
-import { db } from "@/db";
-import { menus, menuItems } from "@/db/schema";
-import { eq, asc } from "drizzle-orm";
 import { Container } from "./Container";
 import {
   getSiteBrand,
@@ -32,16 +29,6 @@ const SOCIAL_ICONS: Record<SocialLink["platform"], React.ComponentType<{ classNa
   github: FaGithub,
 };
 
-async function loadFooter() {
-  try {
-    const [menu] = await db.select().from(menus).where(eq(menus.location, "footer")).limit(1);
-    if (!menu) return [];
-    return db.select().from(menuItems).where(eq(menuItems.menuId, menu.id)).orderBy(asc(menuItems.sortOrder));
-  } catch {
-    return [];
-  }
-}
-
 function formatPhone(raw: string): string {
   // Reformat compact "+6561000613" → "+65 6100 0613" for display.
   const digits = raw.replace(/[^\d+]/g, "");
@@ -54,9 +41,21 @@ function formatWhatsapp(digits: string): string {
   return m ? `+${m[1]} ${m[2]} ${m[3]}` : `+${digits}`;
 }
 
+const COMPANY_LINKS: { label: string; href: string; external?: boolean }[] = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+  { label: "Contact", href: "/contact" },
+];
+
+const NAVIGATE_LINKS: { label: string; href: string; external?: boolean }[] = [
+  { label: "Training", href: "https://www.tertiarycourses.com.sg/", external: true },
+  { label: "Practice Exam", href: "https://www.tertiaryexams.com/", external: true },
+  { label: "HRMS", href: "https://hrms.tertiaryinfotech.com/", external: true },
+  { label: "LMS/TMS", href: "https://lms-tms.tertiaryinfotech.com/", external: true },
+];
+
 export async function Footer() {
-  const [items, brand, contact, socials] = await Promise.all([
-    loadFooter(),
+  const [brand, contact, socials] = await Promise.all([
     getSiteBrand(),
     getCompanyContact(),
     getSocialLinks(),
@@ -64,8 +63,8 @@ export async function Footer() {
   return (
     <footer className="relative mt-10 border-t border-(--color-border) bg-(--color-bg-elevated)">
       <Container className="py-8">
-        <div className="grid md:grid-cols-3 gap-10">
-          <div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-3">
             <div className="flex items-center gap-2 mb-4">
               {brand.logoUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -101,17 +100,33 @@ export async function Footer() {
               })}
             </div>
           </div>
-          <div>
-            <div className="kicker mb-3">[ NAVIGATE ]</div>
+          <div className="lg:col-span-2 lg:col-start-5">
+            <div className="kicker mb-3">[ COMPANY ]</div>
             <nav className="flex flex-col gap-2 text-sm">
-              {items.map((it) => (
-                <Link key={it.id} href={it.href} className="text-white/80 hover:text-(--color-cyan) transition">
+              {COMPANY_LINKS.map((it) => (
+                <Link key={it.href} href={it.href} className="text-white/80 hover:text-(--color-cyan) transition">
                   {it.label}
                 </Link>
               ))}
             </nav>
           </div>
-          <div>
+          <div className="lg:col-span-2">
+            <div className="kicker mb-3">[ NAVIGATE ]</div>
+            <nav className="flex flex-col gap-2 text-sm">
+              {NAVIGATE_LINKS.map((it) => (
+                <a
+                  key={it.href}
+                  href={it.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-(--color-cyan) transition"
+                >
+                  {it.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+          <div className="lg:col-span-4">
             <div className="kicker mb-3">[ CONTACT ]</div>
             <div className="flex items-start gap-2.5 text-sm text-(--color-muted)">
               <HiMapPin className="w-4 h-4 mt-0.5 shrink-0 text-(--color-cyan)/80" />
