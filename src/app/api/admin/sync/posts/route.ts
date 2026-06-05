@@ -105,9 +105,11 @@ export async function POST(req: Request) {
       featured: p.featured ?? false,
       authorId,
       categoryId,
-      ...(typeof p.likeCount === "number" ? { likeCount: p.likeCount } : {}),
       publishedAt: p.publishedAt ? new Date(p.publishedAt) : null,
     };
+    // NOTE: likeCount is intentionally NOT synced from local — it's a
+    // user-generated counter that accumulates on production. Overwriting it
+    // with the local value (typically 0) would wipe real engagement.
     const createdAt = p.createdAt ? new Date(p.createdAt) : null;
     await db
       .insert(posts)
