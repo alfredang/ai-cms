@@ -52,10 +52,11 @@ const SSG_TOOLS_LINKS: { label: string; href: string; external?: boolean }[] = [
 ];
 
 const NAVIGATE_LINKS: { label: string; href: string; external?: boolean }[] = [
-  { label: "Training", href: "https://www.tertiarycourses.com.sg/", external: true },
+  { label: "WSQ Training", href: "https://www.tertiarycourses.com.sg/", external: true },
   { label: "Practice Exam", href: "https://www.tertiaryexams.com/", external: true },
   { label: "HRMS", href: "https://hrms.tertiaryinfotech.com/", external: true },
   { label: "LMS/TMS", href: "https://lms-tms.tertiaryinfotech.com/", external: true },
+  { label: "Labs", href: "https://www.tertiarytraining.com/", external: true },
 ];
 
 export async function Footer() {
