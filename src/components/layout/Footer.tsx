@@ -49,6 +49,7 @@ const COMPANY_LINKS: { label: string; href: string; external?: boolean }[] = [
 
 const SSG_TOOLS_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "RTP SOP Generator", href: "https://ssg-ato-generator.streamlit.app/", external: true },
+  { label: "CP Generator", href: "https://ssg-cp-generator.streamlit.app/", external: true },
 ];
 
 const NAVIGATE_LINKS: { label: string; href: string; external?: boolean }[] = [
