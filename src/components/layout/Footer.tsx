@@ -47,6 +47,10 @@ const COMPANY_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "Contact", href: "/contact" },
 ];
 
+const SSG_TOOLS_LINKS: { label: string; href: string; external?: boolean }[] = [
+  { label: "RTP SOP Generator", href: "https://ssg-ato-generator.streamlit.app/", external: true },
+];
+
 const NAVIGATE_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "Training", href: "https://www.tertiarycourses.com.sg/", external: true },
   { label: "Practice Exam", href: "https://www.tertiaryexams.com/", external: true },
@@ -100,13 +104,29 @@ export async function Footer() {
               })}
             </div>
           </div>
-          <div className="lg:col-span-2 lg:col-start-5">
+          <div className="lg:col-span-2 lg:col-start-4">
             <div className="kicker mb-3">[ COMPANY ]</div>
             <nav className="flex flex-col gap-2 text-sm">
               {COMPANY_LINKS.map((it) => (
                 <Link key={it.href} href={it.href} className="text-white/80 hover:text-(--color-cyan) transition">
                   {it.label}
                 </Link>
+              ))}
+            </nav>
+          </div>
+          <div className="lg:col-span-2">
+            <div className="kicker mb-3">[ SSG TOOLS ]</div>
+            <nav className="flex flex-col gap-2 text-sm">
+              {SSG_TOOLS_LINKS.map((it) => (
+                <a
+                  key={it.href}
+                  href={it.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-(--color-cyan) transition"
+                >
+                  {it.label}
+                </a>
               ))}
             </nav>
           </div>
@@ -126,7 +146,7 @@ export async function Footer() {
               ))}
             </nav>
           </div>
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <div className="kicker mb-3">[ CONTACT ]</div>
             <div className="flex items-start gap-2.5 text-sm text-(--color-muted)">
               <HiMapPin className="w-4 h-4 mt-0.5 shrink-0 text-(--color-cyan)/80" />
