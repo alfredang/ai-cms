@@ -161,6 +161,30 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ---------------------------------------------------------------------------
+   Global page top-spacing.
+   The Navbar is `sticky top-0` (in normal flow), so public pages do NOT need
+   large hero top padding to clear it — the assorted per-page pt-24 / pt-32 /
+   py-10 values only left dead space below the navbar. Normalize it in ONE
+   place: neutralize any top padding the <main> itself sets, then apply a
+   single tight top offset to whatever block renders first inside it.
+
+   Scoped to `body > main` so it targets every PUBLIC page (which renders
+   <Navbar/> + <main> as direct children of <body>) but never the admin
+   dashboard (whose <main> is nested as `body > div > main`).
+   --------------------------------------------------------------------------- */
+body > main {
+  padding-top: 0 !important;
+}
+body > main > *:first-child {
+  padding-top: 1.25rem !important;
+}
+@media (min-width: 768px) {
+  body > main > *:first-child {
+    padding-top: 1.75rem !important;
+  }
+}
+
 /* Subtle global vignette */
 body::before {
   content: "";

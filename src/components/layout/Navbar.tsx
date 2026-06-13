@@ -22,7 +22,7 @@ const FALLBACK = [
   { label: "Home", href: "/" },
   { label: "SSG Services", href: "/#ssg-services" },
   { label: "AI Services", href: "/#ai-services" },
-  { label: "AI Chatbots", href: "/ai-chatbot-portfolio" },
+  { label: "Free Ed Tools", href: "/#free-ed-tools" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -51,13 +51,13 @@ export async function Navbar() {
           )}
           <span className="font-display font-bold text-lg tracking-tight">{brand.shortName}</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden xl:flex items-center gap-1">
           {links.map((l) => (
             <Link
               key={l.href + l.label}
               href={l.href}
               target={"openInNewTab" in l && l.openInNewTab ? "_blank" : undefined}
-              className="px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 rounded-md transition"
+              className="px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 rounded-md transition whitespace-nowrap"
             >
               {l.label}
             </Link>
@@ -65,14 +65,14 @@ export async function Navbar() {
         </nav>
         <Link
           href="/#contact"
-          className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-(--color-cyan)/40 text-sm text-(--color-cyan) hover:bg-(--color-cyan)/10 transition"
+          className="hidden xl:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-(--color-cyan)/40 text-sm text-(--color-cyan) hover:bg-(--color-cyan)/10 transition whitespace-nowrap"
         >
           Get a quote
           <span aria-hidden>→</span>
         </Link>
 
         {/* Mobile quick-actions: phone + WhatsApp icons next to the burger */}
-        <div className="md:hidden flex items-center gap-1">
+        <div className="xl:hidden flex items-center gap-1">
           {contact.tel && (
             <a
               href={`tel:${contact.tel.replace(/\s+/g, "")}`}

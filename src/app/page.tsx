@@ -7,6 +7,7 @@ import { ELearningShowcase } from "@/components/sections/ELearningShowcase";
 import { CMSShowcase } from "@/components/sections/CMSShowcase";
 import { Services } from "@/components/sections/Services";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { FeaturedEdTools } from "@/components/sections/FeaturedEdTools";
 import { FeaturedPosts } from "@/components/sections/FeaturedPosts";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Navbar } from "@/components/layout/Navbar";
@@ -49,6 +50,7 @@ export default function HomePage() {
         <CMSShowcase />
         <Services />
         <WhyChooseUs />
+        <FeaturedEdTools />
         <FeaturedPosts />
         <ContactForm />
       </main>

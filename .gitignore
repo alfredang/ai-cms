@@ -34,3 +34,8 @@ tsconfig.tsbuildinfo
 *.sql.gz
 wp-*.sql*
 .claude/scheduled_tasks.lock
+
+# Local agent/skills tooling (not part of the deployed app)
+.agents/
+skills-lock.json
+.claude/skills/find-skills

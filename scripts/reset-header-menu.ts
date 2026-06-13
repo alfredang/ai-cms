@@ -6,9 +6,9 @@ const ITEMS = [
   { label: "Home", href: "/" },
   { label: "SSG Services", href: "/#ssg-services" },
   { label: "AI Services", href: "/#ai-services" },
-  { label: "AI Chatbots", href: "/ai-chatbot-portfolio" },
   { label: "LMS/TMS", href: "/#ai-lms-tms" },
   { label: "e-Learning", href: "/#e-learning" },
+  { label: "Free Ed Tools", href: "/#free-ed-tools" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
