@@ -22,7 +22,6 @@ npm run db:generate    # Generate migrations from schema changes
 npm run db:studio      # Drizzle Studio (DB browser)
 
 npm run seed:admin     # Seed initial admin user + default menus + settings (one-time)
-npm run migrate:wp     # Import a WordPress SQL dump (parses wp_*, downloads images, writes 301 redirects)
 ```
 
 There is no test suite — verification is `npm run build` + browser smoke-testing the dev server. The Next build also runs the TS type-check, so it's the canonical "is this broken" gate.
@@ -105,7 +104,7 @@ Both the public AI chatbot ([src/app/api/chat](src/app/api/chat)) and the admin 
 ### Public route layout & SEO
 
 - Single landing page composes section components from [src/components/sections/](src/components/sections/) — `SERVICES` in [src/lib/site-content.ts](src/lib/site-content.ts) is the source of truth for the services grid; items can carry an optional `href` to make the card route to a dedicated page (see the SSG ATO example).
-- `[slug]` (dynamic CMS page) and `blog/[slug]` consult `redirects` first before 404'ing — preserves WordPress URLs after migration.
+- `[slug]` (dynamic CMS page) and `blog/[slug]` consult `redirects` first before 404'ing — preserves legacy URLs.
 - Each public route exports `metadata` (or `generateMetadata`) plus inline JSON-LD via `dangerouslySetInnerHTML`. `sitemap.ts` enumerates hardcoded routes + DB-published pages and posts.
 - The SEO conventions for this codebase (canonical URL, OG, money keywords, schema choices per page type, British/Singapore spelling) are in [.claude/skills/seo-audit/SKILL.md](.claude/skills/seo-audit/SKILL.md) — load that skill whenever creating or auditing a public route.
 

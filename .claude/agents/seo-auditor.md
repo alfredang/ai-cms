@@ -18,7 +18,7 @@ description: |
 
   Stop conditions: never edit `.env`, never call any external paid API, never
   introduce an Anthropic API key (use only Claude Agent SDK with the OAuth
-  subscription token per CLAUDE.md). Never rewrite published WordPress-imported
+  subscription token per CLAUDE.md). Never rewrite published legacy-imported
   slugs without writing a 301 in the `redirects` table.
 tools: All tools
 model: opus

@@ -45,6 +45,22 @@ async function resolveAuthorId(email: string | null | undefined) {
   return u?.id ?? null;
 }
 
+// --- Site isolation guard ---------------------------------------------------
+// This CMS serves tertiaryinfotech.com ONLY. Content authored under another
+// site's account (e.g. admin@tertiaryinfotech.edu.sg from the ai-pei clone)
+// must never be written here. We once had .edu.sg posts leak in via a
+// cross-DB copy; this is the boundary that refuses foreign content at the API.
+const ALLOWED_AUTHOR_DOMAINS = (process.env.ALLOWED_AUTHOR_DOMAINS ?? "tertiaryinfotech.com")
+  .split(",")
+  .map((d) => d.trim().toLowerCase())
+  .filter(Boolean);
+
+function isForeignAuthor(email: string | null | undefined): boolean {
+  if (!email) return false; // null author is fine (orphan), not a cross-site leak
+  const domain = email.split("@")[1]?.toLowerCase();
+  return !domain || !ALLOWED_AUTHOR_DOMAINS.includes(domain);
+}
+
 async function resolveCategoryId(slug: string | null | undefined) {
   if (!slug) return null;
   const [c] = await db.select().from(categories).where(eq(categories.slug, slug)).limit(1);
@@ -65,6 +81,20 @@ export async function POST(req: Request) {
   const parsed = payloadSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
+  }
+
+  // Site-isolation: reject the whole batch if any post is authored under a
+  // foreign site account. Fail closed — better to block a sync than to let
+  // another site's content cross over.
+  const foreign = parsed.data.posts.filter((p) => isForeignAuthor(p.authorEmail));
+  if (foreign.length > 0) {
+    return NextResponse.json(
+      {
+        error: "Foreign author rejected — this CMS only accepts content authored under: " + ALLOWED_AUTHOR_DOMAINS.join(", "),
+        rejected: foreign.map((p) => ({ slug: p.slug, authorEmail: p.authorEmail })),
+      },
+      { status: 422 },
+    );
   }
 
   let upserted = 0;

@@ -34,10 +34,27 @@ const ALL: Resource[] = ["menus", "settings", "taxonomy", "pages", "posts"];
 // taxonomy must run before posts (FK by slug); users runs first so pages/posts can resolve authors
 const ORDER: Resource[] = ["users", "taxonomy", "settings", "menus", "pages", "posts"];
 
+// Site-isolation guard: this repo serves tertiaryinfotech.com ONLY. Refuse to
+// push to any other host (e.g. the .edu.sg ai-pei clone) so a mis-set
+// REMOTE_SYNC_URL can never cross-contaminate the wrong production DB.
+const EXPECTED_REMOTE_HOST = process.env.EXPECTED_REMOTE_HOST ?? "tertiaryinfotech.com";
+
 function getEnv() {
   const baseUrl = process.env.REMOTE_SYNC_URL?.replace(/\/$/, "");
   if (!baseUrl)
     throw new Error("REMOTE_SYNC_URL is not set (e.g. https://www.tertiaryinfotech.com)");
+  let host: string;
+  try {
+    host = new URL(baseUrl).hostname.toLowerCase();
+  } catch {
+    throw new Error(`REMOTE_SYNC_URL is not a valid URL: ${baseUrl}`);
+  }
+  if (host !== EXPECTED_REMOTE_HOST && host !== `www.${EXPECTED_REMOTE_HOST}`) {
+    throw new Error(
+      `Refusing to push: REMOTE_SYNC_URL host '${host}' is not '${EXPECTED_REMOTE_HOST}'. ` +
+        `This repo only syncs to tertiaryinfotech.com. (Override with EXPECTED_REMOTE_HOST if intentional.)`,
+    );
+  }
   const token = process.env.SYNC_API_TOKEN;
   const email = process.env.ADMIN_EMAIL;
   const password = process.env.ADMIN_PASSWORD;

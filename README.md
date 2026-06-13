@@ -30,7 +30,7 @@ AI-Powered CMS is a production-grade marketing platform built on Next.js 16, eng
 
 Frontend and backend are fully **customizable** from the admin — hero copy, KPI cards, section headings, service-page content, FAQs, menu, social links, brand identity — all editable without redeploys. AI-driven content generation is built in: admin **AI Assist** drafts, rewrites, summarizes and proposes SEO metadata; the public **AI chatbot** answers visitor questions with your FAQ as authoritative context. All AI is powered by your **Claude subscription OAuth token** through the official Claude Agent SDK — **no metered API billing, no vendor lock-in**.
 
-Originally built to replace a legacy WordPress site for Tertiary Infotech Pte Ltd, the codebase is structured to be re-used as a starting point for any marketing site that needs a real CMS, SEO, lead-gen, and AI authoring.
+Built for Tertiary Infotech Pte Ltd, the codebase is structured to be re-used as a starting point for any marketing site that needs a real CMS, SEO, lead-gen, and AI authoring.
 
 ## Key Features
 
@@ -61,7 +61,6 @@ Originally built to replace a legacy WordPress site for Tertiary Infotech Pte Lt
 - **Tags admin** — compact table view with post-count column, search box, sort (popular / name / slug), pagination at 50/page
 - **Dashboard cards** — clickable KPI tiles plus dedicated panels for 10 Most Popular Tags, 5 Latest Posts, and 5 Latest Leads
 - **Encrypted credentials vault** — AES-256-GCM at rest, eye-reveal for admins, one-click env → DB migration
-- **WordPress migration** — `scripts/migrate-wp.ts` imports a `wp_*` SQL dump, downloads images, preserves Yoast/RankMath SEO, writes 301 redirects
 - **Portfolio / Bespoke-Apps pages** — split page-vs-blog categories, a dedicated Portfolio category, lead-gen project pages auto-populated from `alfredang/<repo>` GitHub repos, each carrying a live GitHub repo badge and a lead form
 - **Local ⇄ Remote DB sync** — push menus, settings, pages, posts, taxonomy from local to production via a bearer-token API (preserving `createdAt`); pull leads from production back to local (`scripts/pull-leads.ts`); idempotent prod-side schema migration runner at `POST /api/admin/sync/migrate`
 
@@ -167,13 +166,6 @@ Visit:
 - `http://localhost:3000` — public site
 - `http://localhost:3000/admin` — admin (redirects to `/admin/login`)
 
-### Optional: Import from WordPress
-
-```bash
-npm run migrate:wp    # parses a wp_*.sql dump, imports posts/pages,
-                      # downloads images, writes 301 redirects
-```
-
 ## Configuring AI Chatbot (public chatbot)
 
 1. Generate a Claude OAuth subscription token: `claude setup-token`
@@ -230,7 +222,6 @@ src/
 scripts/
   seed-admin.ts               Admin user + default menus + settings
   seed-categories.ts          Default category taxonomy
-  migrate-wp.ts               WordPress → Postgres importer
   reset-header-menu.ts        Rewrite header menu items
 ```
 
@@ -244,7 +235,6 @@ scripts/
 | `npm run db:push` | Apply schema to DB (dev only) |
 | `npm run db:migrate` | Run migrations (production) |
 | `npm run seed:admin` | Seed admin user + default menus |
-| `npm run migrate:wp` | Import a WordPress SQL dump |
 
 ## Deployment
 

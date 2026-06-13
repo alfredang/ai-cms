@@ -370,7 +370,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
     ],
     faq: [
       { q: "How is this different from WordPress?", a: "Next.js performance + native AI authoring + first-class SEO/JSON-LD + no plugin sprawl. The codebase is yours; we don't host you or charge per-seat." },
-      { q: "Can you migrate our existing WordPress site?", a: "Yes — scripts/migrate-wp.ts imports a SQL dump, downloads images, preserves Yoast/RankMath SEO and writes 301 redirects." },
+      { q: "Can you migrate our existing WordPress site?", a: "Yes — we import your WordPress export (posts, pages, images), preserve your Yoast/RankMath SEO, and write 301 redirects so your search rankings carry over." },
       { q: "Is the AI metered?", a: "No. The chatbot and admin AI Assist use your Claude OAuth subscription token via the official Agent SDK — flat subscription, no per-call billing." },
       { q: "Can we customize the design?", a: "Yes — every component is a Next.js Server Component you can edit. We also expose homepage + service-page copy in the admin so non-devs can update without redeploys." },
     ],
