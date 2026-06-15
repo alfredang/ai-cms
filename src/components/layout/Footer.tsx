@@ -53,11 +53,12 @@ const SSG_TOOLS_LINKS: { label: string; href: string; external?: boolean }[] = [
 ];
 
 const NAVIGATE_LINKS: { label: string; href: string; external?: boolean }[] = [
-  { label: "WSQ Training", href: "https://www.tertiarycourses.com.sg/", external: true },
-  { label: "Practice Exam", href: "https://www.tertiaryexams.com/", external: true },
-  { label: "HRMS", href: "https://hrms.tertiaryinfotech.com/", external: true },
-  { label: "LMS/TMS", href: "https://lms-tms.tertiaryinfotech.com/", external: true },
-  { label: "Labs", href: "https://www.tertiarytraining.com/", external: true },
+  { label: "Tertiary Courses", href: "https://www.tertiarycourses.com.sg/", external: true },
+  { label: "Tertiary Exams", href: "https://exams.tertiaryinfotech.com/", external: true },
+  { label: "Tertiary HRMS", href: "https://hrms.tertiaryinfotech.com/", external: true },
+  { label: "Tertiary LMS/TMS", href: "https://lms-tms.tertiaryinfotech.com/", external: true },
+  { label: "Tertiary Training", href: "https://www.tertiarytraining.com/", external: true },
+  { label: "Tertiary Kids", href: "https://ai4kids.tertiarycourses.com.sg/", external: true },
 ];
 
 export async function Footer() {

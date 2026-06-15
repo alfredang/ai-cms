@@ -4,6 +4,7 @@ import { ADMIN_COOKIE_NAME } from "@/lib/admin-session";
 import { getSiteBrand } from "@/lib/site-settings";
 import { getAdminSession, canAccessRoute, type AdminRole } from "@/lib/admin-role";
 import { SidebarShell, type NavItem } from "./_components/SidebarShell";
+import { ChatBot } from "@/components/ui/ChatBot";
 
 const ALL_NAV: (NavItem & { roles: AdminRole[] })[] = [
   { href: "/admin", label: "Dashboard", icon: "dashboard", roles: ["admin", "editor", "author"] },
@@ -77,6 +78,7 @@ export default async function AdminLayout({
         signOutAction={signOutAction}
       />
       <main className="flex-1 min-w-0 px-8 py-10">{children}</main>
+      <ChatBot />
     </div>
   );
 }
