@@ -59,6 +59,7 @@ const NAVIGATE_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "Tertiary LMS/TMS", href: "https://lms-tms.tertiaryinfotech.com/", external: true },
   { label: "Tertiary Training", href: "https://www.tertiarytraining.com/", external: true },
   { label: "Tertiary Kids", href: "https://ai4kids.tertiarycourses.com.sg/", external: true },
+  { label: "Tertiary Tapcard", href: "https://tapcard.tertiaryinfotech.com/", external: true },
 ];
 
 export async function Footer() {

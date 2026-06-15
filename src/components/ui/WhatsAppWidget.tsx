@@ -41,8 +41,8 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
           aria-label="Chat with us on WhatsApp"
           className="fixed bottom-24 right-6 z-50 w-[min(92vw,360px)] glass rounded-2xl flex flex-col overflow-hidden border border-white/15 shadow-2xl"
         >
-          <header className="flex items-center gap-3 px-4 py-3 bg-[#25D366]/15 border-b border-white/10">
-            <span className="w-9 h-9 rounded-full bg-[#25D366] grid place-items-center shrink-0">
+          <header className="flex items-center gap-3 px-4 py-3 bg-[#0B6E4F]/15 border-b border-white/10">
+            <span className="w-9 h-9 rounded-full bg-[#0B6E4F] grid place-items-center shrink-0">
               <FaWhatsapp className="w-5 h-5 text-white" />
             </span>
             <div className="min-w-0">
@@ -69,10 +69,10 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={`Message us on WhatsApp: ${q.label}`}
-                className="group flex items-center gap-2 px-3 py-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#25D366]/50 hover:bg-[#25D366]/10 text-sm text-white/90 transition"
+                className="group flex items-center gap-2 px-3 py-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#0B6E4F]/50 hover:bg-[#0B6E4F]/10 text-sm text-white/90 transition"
               >
                 <span className="flex-1">{q.label}</span>
-                <HiArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-[#25D366] transition" />
+                <HiArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-[#0B6E4F] transition" />
               </a>
             ))}
             <a
@@ -80,7 +80,7 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
               target="_blank"
               rel="noopener noreferrer"
               title="Start a WhatsApp chat"
-              className="flex items-center justify-center gap-2 mt-1 px-4 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#1ebe5b] text-sm font-semibold text-white transition"
+              className="flex items-center justify-center gap-2 mt-1 px-4 py-2.5 rounded-lg bg-[#0B6E4F] hover:bg-[#095a40] text-sm font-semibold text-white transition"
             >
               <FaWhatsapp className="w-4 h-4" />
               Start a chat
@@ -93,7 +93,7 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close WhatsApp menu" : "Chat on WhatsApp"}
         aria-expanded={open}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] shadow-[0_8px_30px_rgba(37,211,102,0.45)] flex items-center justify-center hover:scale-105 transition"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#0B6E4F] shadow-[0_8px_30px_rgba(11,110,79,0.45)] flex items-center justify-center hover:scale-105 transition"
       >
         {open ? (
           <HiXMark className="w-7 h-7 text-white" />
