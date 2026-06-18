@@ -61,6 +61,7 @@ const NAVIGATE_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "Tertiary Kids", href: "https://ai4kids.tertiarycourses.com.sg/", external: true },
   { label: "Tertiary Tapcard", href: "https://tapcard.tertiaryinfotech.com/", external: true },
   { label: "Tertiary IoT", href: "https://iot.tertiaryinfotech.com/", external: true },
+  { label: "SSG API", href: "https://ssg-api.tertiaryinfotech.com/", external: true },
 ];
 
 export async function Footer() {
