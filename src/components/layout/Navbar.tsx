@@ -22,6 +22,8 @@ const FALLBACK = [
   { label: "Home", href: "/" },
   { label: "SSG Services", href: "/#ssg-services" },
   { label: "AI Services", href: "/#ai-services" },
+  { label: "LMS/TMS", href: "/#ai-lms-tms" },
+  { label: "Mobile Apps Dev", href: "/#mobile-apps" },
   { label: "Free Ed Tools", href: "/#free-ed-tools" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },

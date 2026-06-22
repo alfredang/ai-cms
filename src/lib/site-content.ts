@@ -14,6 +14,7 @@ import {
   HiNewspaper,
   HiUserGroup,
   HiBolt,
+  HiDevicePhoneMobile,
 } from "react-icons/hi2";
 
 export const SERVICES = [
@@ -113,6 +114,38 @@ export const SERVICES = [
     ],
     accent: "purple" as const,
     href: "/ai-solutions",
+    category: "ai" as const,
+  },
+  {
+    id: "marketplace",
+    icon: HiBuildingOffice2,
+    title: "Marketplace App Development",
+    description:
+      "Two-sided marketplace platforms built end to end — full-stack web app plus native iOS and Android, all on one shared API. See the Potluckhub build.",
+    features: [
+      "Web marketplace + checkout (Next.js)",
+      "Native iOS (SwiftUI) & Android (Compose)",
+      "One shared API · payments · payouts",
+      "Verification, reviews & ratings built in",
+    ],
+    accent: "purple" as const,
+    href: "/marketplace-development",
+    category: "ai" as const,
+  },
+  {
+    id: "mobile",
+    icon: HiDevicePhoneMobile,
+    title: "Mobile App Development",
+    description:
+      "Native iOS and Android apps — SwiftUI and Jetpack Compose — designed, built and shipped to the App Store and Google Play. See the apps we've launched.",
+    features: [
+      "Native iOS (SwiftUI) & Android (Compose)",
+      "Backend / shared API when you need one",
+      "Push, in-app purchase & on-device AI",
+      "App Store + Google Play submission",
+    ],
+    accent: "cyan" as const,
+    href: "/mobile-app-development",
     category: "ai" as const,
   },
   {

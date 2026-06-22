@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { AILmsTmsShowcase } from "@/components/sections/AILmsTmsShowcase";
 import { ELearningShowcase } from "@/components/sections/ELearningShowcase";
+import { MobileAppsShowcase } from "@/components/sections/MobileAppsShowcase";
 import { CMSShowcase } from "@/components/sections/CMSShowcase";
 import { Services } from "@/components/sections/Services";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
@@ -48,6 +49,7 @@ export default function HomePage() {
         <AILmsTmsShowcase />
         <ELearningShowcase />
         <CMSShowcase />
+        <MobileAppsShowcase />
         <Services />
         <WhyChooseUs />
         <FeaturedEdTools />

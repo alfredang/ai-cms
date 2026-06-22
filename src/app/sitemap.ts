@@ -20,6 +20,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/wsq-course-development`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/tpqa-consultancy`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/content-management-system`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/marketplace-development`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/mobile-app-development`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/hr-management-system`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/ai-agent-deployment`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/contact`, changeFrequency: "monthly", priority: 0.7 },
