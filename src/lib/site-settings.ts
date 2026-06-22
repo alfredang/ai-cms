@@ -284,7 +284,7 @@ export type HomepageCopy = {
 };
 
 export const HOMEPAGE_COPY_DEFAULTS: HomepageCopy = {
-  heroKicker: "EDTECH · AGENTIC AI · VIBE CODING",
+  heroKicker: "EDTECH · AGENTIC AI · MOBILE APPS",
   heroHeadlineHtml:
     'The AI-powered <span class="gradient-text">LMS &amp; TMS</span> built for <span class="text-white/85">WSQ compliance and TPQA audits</span>',
   heroSubheadHtml:

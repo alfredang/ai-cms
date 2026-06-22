@@ -15,10 +15,11 @@ import { HiXMark, HiArrowUpRight } from "react-icons/hi2";
 // One-tap topics. `label` shows on the chip; `text` is pre-filled into WhatsApp.
 const QUERIES: { label: string; text: string }[] = [
   { label: "Book a free consultation", text: "Hi Tertiary Infotech Academy! I'd like to book a free consultation." },
-  { label: "SSG ATO application help", text: "Hi! I need help with my SSG ATO application." },
+  { label: "SSG/IBF ATO applications", text: "Hi! I need help with my SSG/IBF ATO application." },
   { label: "LMS / TMS demo", text: "Hi! Can I see a demo of your LMS / TMS?" },
-  { label: "AI services enquiry", text: "Hi! I'm interested in your AI services for my organisation." },
-  { label: "WSQ course development", text: "Hi! I'd like to discuss WSQ course development." },
+  { label: "AI agent services enquiries", text: "Hi! I'm interested in your AI agent services for my organisation." },
+  { label: "Mobile apps development", text: "Hi! I'd like to discuss building a native iOS / Android mobile app." },
+  { label: "WSQ/CASL course development", text: "Hi! I'd like to discuss WSQ/CASL course development." },
   { label: "Pricing & quotation", text: "Hi! Could you send me pricing and a quotation?" },
 ];
 
