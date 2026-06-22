@@ -31,7 +31,7 @@ function snippetFromHtml(html: string | null | undefined, max = 200): string {
 export const metadata: Metadata = {
   title: "Journal",
   description:
-    "Field notes from SSG and AI services and building Agentic AI workflows — AI Agents, LMS and TMS case studies from Tertiary Infotech Academy.",
+    "Field notes from SSG services and building Agentic AI applications and native mobile apps — AI Agents, LMS, TMS and mobile app case studies from Tertiary Infotech Academy.",
   keywords:
     "AI agents Singapore, WSQ LMS blog, training provider blog, SSG ATO insights, TPQA case studies, agentic AI Singapore",
   alternates: { canonical: "/blog" },
@@ -178,8 +178,8 @@ export default async function BlogIndex({
           <Container className="relative">
             <div className="kicker mb-4">[ JOURNAL ]</div>
             <h1 className="font-display text-[clamp(1.75rem,4vw,3rem)] font-extrabold leading-[1.15]">
-              Field notes from SSG and AI services and{" "}
-              <span className="gradient-text">building Agentic AI workflows</span>.
+              Field notes from SSG services and{" "}
+              <span className="gradient-text">building Agentic AI applications and native mobile apps</span>.
             </h1>
             <p className="mt-5 text-(--color-muted) text-lg max-w-2xl">
               AI Agents, LMS and TMS case studies from the Tertiary Infotech Academy.

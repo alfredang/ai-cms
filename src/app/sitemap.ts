@@ -3,6 +3,7 @@ import { db } from "@/db";
 import { pages, posts } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { EDTOOLS } from "@/lib/edtools-data";
+import { MOBILE_APPS } from "@/lib/mobile-apps";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tertiaryinfotech.com";
 
@@ -22,6 +23,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/content-management-system`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/marketplace-development`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/mobile-app-development`, changeFrequency: "monthly", priority: 0.9 },
+    ...MOBILE_APPS.map((a) => ({
+      url: `${BASE}/apps/${a.id}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     { url: `${BASE}/hr-management-system`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/ai-agent-deployment`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/contact`, changeFrequency: "monthly", priority: 0.7 },

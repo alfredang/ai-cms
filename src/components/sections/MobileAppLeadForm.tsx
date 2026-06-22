@@ -3,7 +3,13 @@
 import { useState } from "react";
 import { TurnstileWidget } from "@/components/forms/TurnstileWidget";
 
-export function MobileAppLeadForm({ compact = false }: { compact?: boolean }) {
+export function MobileAppLeadForm({
+  compact = false,
+  source = "mobile-app-page",
+}: {
+  compact?: boolean;
+  source?: string;
+}) {
   const [state, setState] = useState<"idle" | "sending" | "ok" | "err">("idle");
   const [msg, setMsg] = useState<string>("");
   const [turnstileToken, setTurnstileToken] = useState<string>("");
@@ -17,7 +23,7 @@ export function MobileAppLeadForm({ compact = false }: { compact?: boolean }) {
       const r = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...payload, source: "mobile-app-page", turnstileToken }),
+        body: JSON.stringify({ ...payload, source, turnstileToken }),
       });
       if (!r.ok) throw new Error(await r.text());
       setState("ok");

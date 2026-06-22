@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { FaApple, FaGooglePlay, FaGithub } from "react-icons/fa6";
+import { HiArrowRight } from "react-icons/hi2";
 import type { MobileApp } from "@/lib/mobile-apps";
 
 const ACCENT: Record<MobileApp["accent"], { line: string; chip: string; glow: string }> = {
@@ -39,7 +41,11 @@ export function MobileAppCard({ app }: { app: MobileApp }) {
       />
       <div className="flex items-start justify-between gap-3 mb-3">
         <div>
-          <h3 className="font-display font-bold text-lg leading-tight">{app.name}</h3>
+          <h3 className="font-display font-bold text-lg leading-tight">
+            <Link href={`/apps/${app.id}`} className="hover:text-(--color-cyan) transition">
+              {app.name}
+            </Link>
+          </h3>
           <p className="text-sm text-(--color-cyan) mt-0.5">{app.tagline}</p>
         </div>
         <span className={`shrink-0 px-2.5 py-1 rounded-full text-[10px] font-mono border ${a.chip}`}>
@@ -63,6 +69,12 @@ export function MobileAppCard({ app }: { app: MobileApp }) {
           <StoreLink href={app.github} label="GitHub" icon={<FaGithub className="w-3.5 h-3.5" />} />
         )}
       </div>
+      <Link
+        href={`/apps/${app.id}`}
+        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-(--color-cyan) hover:gap-2.5 transition-all"
+      >
+        View app details <HiArrowRight className="w-4 h-4" />
+      </Link>
     </div>
   );
 }
