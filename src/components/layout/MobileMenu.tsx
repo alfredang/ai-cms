@@ -52,26 +52,43 @@ export function MobileMenu({ links }: { links: MenuLink[] }) {
       {open && (
         <div className="absolute left-0 right-0 top-16 bg-(--color-bg) border-b border-(--color-border) shadow-lg">
           <nav className="flex flex-col p-4 gap-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            {links.map((l) => (
-              <Link
-                key={l.href + l.label}
-                href={l.href}
-                target={l.openInNewTab ? "_blank" : undefined}
-                rel={l.openInNewTab ? "noopener noreferrer" : undefined}
-                onClick={() => setOpen(false)}
-                className="px-4 py-3 text-base text-white/90 hover:text-white hover:bg-white/5 rounded-md transition"
-              >
-                {l.label}
-              </Link>
-            ))}
-            <Link
+            {links.map((l) => {
+              const cls =
+                "px-4 py-3 text-base text-white/90 hover:text-white hover:bg-white/5 rounded-md transition";
+              // Anchor links use a plain <a> — next/link double-appends the
+              // hash on repeat clicks ("/#x#x").
+              return l.href.includes("#") ? (
+                <a
+                  key={l.href + l.label}
+                  href={l.href}
+                  target={l.openInNewTab ? "_blank" : undefined}
+                  rel={l.openInNewTab ? "noopener noreferrer" : undefined}
+                  onClick={() => setOpen(false)}
+                  className={cls}
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <Link
+                  key={l.href + l.label}
+                  href={l.href}
+                  target={l.openInNewTab ? "_blank" : undefined}
+                  rel={l.openInNewTab ? "noopener noreferrer" : undefined}
+                  onClick={() => setOpen(false)}
+                  className={cls}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
+            <a
               href="/#contact"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-white/5 border border-(--color-cyan)/40 text-base text-(--color-cyan) hover:bg-(--color-cyan)/10 transition"
             >
               Get a quote
               <span aria-hidden>→</span>
-            </Link>
+            </a>
           </nav>
         </div>
       )}

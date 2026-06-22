@@ -54,24 +54,40 @@ export async function Navbar() {
           <span className="font-display font-bold text-lg tracking-tight">{brand.shortName}</span>
         </Link>
         <nav className="hidden xl:flex items-center gap-1">
-          {links.map((l) => (
-            <Link
-              key={l.href + l.label}
-              href={l.href}
-              target={"openInNewTab" in l && l.openInNewTab ? "_blank" : undefined}
-              className="px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 rounded-md transition whitespace-nowrap"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const cls =
+              "px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 rounded-md transition whitespace-nowrap";
+            const newTab = "openInNewTab" in l && l.openInNewTab;
+            // Anchor links (e.g. "/#mobile-apps") use a plain <a> — next/link
+            // double-appends the hash on repeat clicks ("/#x#x").
+            return l.href.includes("#") ? (
+              <a
+                key={l.href + l.label}
+                href={l.href}
+                target={newTab ? "_blank" : undefined}
+                className={cls}
+              >
+                {l.label}
+              </a>
+            ) : (
+              <Link
+                key={l.href + l.label}
+                href={l.href}
+                target={newTab ? "_blank" : undefined}
+                className={cls}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </nav>
-        <Link
+        <a
           href="/#contact"
           className="hidden xl:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-(--color-cyan)/40 text-sm text-(--color-cyan) hover:bg-(--color-cyan)/10 transition whitespace-nowrap"
         >
           Get a quote
           <span aria-hidden>→</span>
-        </Link>
+        </a>
 
         {/* Mobile quick-actions: phone + WhatsApp icons next to the burger */}
         <div className="xl:hidden flex items-center gap-1">
