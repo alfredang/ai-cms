@@ -34,4 +34,9 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a9/4d/48/a94d48eb-2253-3f22-bc25-68738b766695/0_Electric_Julia.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cd/5e/1b/cd5e1bf0-434e-aae6-3e61-f2edafbe9fa5/Burning_Bow.png/600x1300bb.webp",
   ],
+  ai4kids: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/80/95/bc/8095bcb6-5880-f6be-747f-1df1ce6ac533/ip-01.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/fe/62/52/fe6252f1-e468-9b6b-55b5-a39cc8abe928/ip-02.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/fb/a8/a0/fba8a043-598e-7bd8-8467-84f86217c012/ip-03.png/600x1300bb.webp",
+  ],
 };

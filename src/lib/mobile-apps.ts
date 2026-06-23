@@ -169,6 +169,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6780266278",
     github: "https://github.com/alfredang/fractalapp",
   },
+  {
+    id: "ai4kids",
+    name: "AI4Kids",
+    tagline: "Play-and-learn for ages 4–16",
+    category: "Education · Kids",
+    blurb:
+      "A bright, fully offline learning app where children play through phonics, story-building and code puzzles — no login, no ads and no data collection.",
+    about: [
+      "AI4Kids is a friendly, fully offline learning app for children aged 4 to 16. Kids play and learn through four hands-on activities — from early phonics to simple coding — with no login, no ads and no data collection, so families can use it safely at home, in class or on the go.",
+      "The activities scale with age: Phonics Playground builds early reading for ages 4–6, Story Builder creates page-by-page stories for ages 7–9, and Code Puzzles introduce sequencing and logic for ages 10–12 — all in a native iPhone and iPad app designed for small hands.",
+    ],
+    highlights: [
+      "Four play-and-learn activities for ages 4–16",
+      "Phonics, story-building and code puzzles",
+      "Fully offline — no login, no ads, no data collection",
+      "Safe for home and classroom use",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI",
+    accent: "green",
+    ios: "https://apps.apple.com/app/id6780267161",
+    github: "https://github.com/alfredang/ai4kidsapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
