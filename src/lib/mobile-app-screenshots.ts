@@ -52,4 +52,12 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/8c/e6/d7/8ce6d730-36c6-3698-cff6-27425594ce44/v1-iphone-main.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/11/cf/c6/11cfc654-8fd4-e4cd-3da0-fed74825ac76/v1-iphone-dark.png/600x1300bb.webp",
   ],
+  hanyupinyin: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/5a/cb/1a/5acb1af4-3c09-5536-a9cf-17044f52afee/01-learn.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/7a/00/10/7a00103d-f0a5-d2e5-bcb0-6ceff3fa8d15/02-practice.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bd/e3/41/bde34166-ce22-ac54-5854-4774d5f32a68/03-typing.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/9b/c1/12/9bc112be-c334-845a-0132-d2090a5ca3fd/04-about.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cb/fc/e1/cbfce15c-18ec-30cd-3f1b-ba248cf9fcb4/05-settings.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/09/fc/6c/09fc6c1c-3a4a-58a7-470f-d90f773bf031/06-sentences.png/600x1300bb.webp",
+  ],
 };

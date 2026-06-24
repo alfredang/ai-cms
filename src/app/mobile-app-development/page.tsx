@@ -183,7 +183,7 @@ const FAQ = [
   },
   {
     q: "What's a real example of what you ship?",
-    a: `We've published ${IOS_COUNT} apps on the App Store and ${ANDROID_COUNT} on Google Play — PotLuckHub (a home-cook marketplace), RunTrack GPS, Tertiary Tapcard and Tertiary Sudoku, plus open-source builds like NotePad and Fractal. They're all listed above with their store and GitHub links.`,
+    a: `We've published ${IOS_COUNT} apps on the App Store and ${ANDROID_COUNT} on Google Play — PotLuckHub (a home-cook marketplace), RunTrack GPS, Tertiary Tapcard and Tertiary Sudoku, plus open-source builds like NotePad, Fractal and Hanyu Pinyin. They're all listed above with their store and GitHub links.`,
   },
 ];
 
