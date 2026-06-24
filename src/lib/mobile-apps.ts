@@ -354,6 +354,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6782430909",
     github: "https://github.com/alfredang/passportphoto",
   },
+  {
+    id: "speedtyping",
+    name: "Tertiary SpeedTyping",
+    tagline: "Learn fast, accurate touch-typing",
+    category: "Education",
+    blurb:
+      "Learn to type fast and accurately on iPad — a colour-coded fingering guide, graded practice articles and drills, and timed WPM/CPM tests with accuracy.",
+    about: [
+      "Tertiary SpeedTyping teaches correct touch-typing on iPad. Start with a hand-position and fingering guide on a colour-coded keyboard that shows which finger presses every key, then build speed with graded practice articles from Basic to Expert and repetitive drills — home row, reaches, bigrams, pinky power and numbers.",
+      "Live words-per-minute and characters-per-minute scoring with accuracy tracks your progress, and graded typing tests with a configurable passing speed let you prove your improvement — all in a native iPad app for focused, distraction-free practice.",
+    ],
+    highlights: [
+      "Colour-coded fingering and hand-position guide",
+      "Graded practice articles from Basic to Expert",
+      "Repetitive drills — home row, reaches, bigrams, numbers",
+      "Live WPM/CPM scoring and graded timed tests",
+    ],
+    platform: "iPad",
+    tech: "SwiftUI",
+    accent: "amber",
+    ios: "https://apps.apple.com/app/id6782661288",
+    github: "https://github.com/alfredang/speedtypingapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {

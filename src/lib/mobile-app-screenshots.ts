@@ -72,4 +72,9 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/dd/dd/ed/dddded50-a90b-2dd5-0aa4-be53a6058eed/2_feedback.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/64/40/8b/64408bea-1ab4-9930-6363-36fd102531ed/3_about.png/600x1300bb.webp",
   ],
+  speedtyping: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/52/63/b8/5263b880-adfc-2731-88a8-5db39d7b61bc/learn.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/98/71/16/9871169b-eca1-259e-4f9a-303ee5c9460f/practice.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/7c/11/83/7c11839b-e2e2-5940-0500-9413897ee113/test.png/600x1300bb.webp",
+  ],
 };
