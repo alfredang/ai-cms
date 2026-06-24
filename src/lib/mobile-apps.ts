@@ -284,6 +284,30 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6782321279",
     github: "https://github.com/alfredang/sgbusapp",
   },
+  {
+    id: "hanyupinyin",
+    name: "汉语拼音 Hanyu Pinyin",
+    tagline: "Learn pinyin and type faster",
+    category: "Education · Chinese",
+    blurb:
+      "A fully offline Chinese-learning app for Hanyu Pinyin foundations and pinyin typing practice — initials, finals, tones, pronunciation and scored drills.",
+    about: [
+      "汉语拼音 Hanyu Pinyin helps Chinese learners build the foundations of Mandarin pronunciation and pinyin input. Study initials, finals, the four tones and pinyin typing rules, each paired with example characters for context.",
+      "The app includes tap-to-hear Mandarin pronunciation on pinyin cards and practice questions, plus five drill modes covering characters, words, initials, finals and mixed exercises. It scores by accuracy and words per minute, so learners can see their typing speed improve over time.",
+      "Everything runs offline in a native SwiftUI iPhone app. There is no registration, no network dependency and no data collection.",
+    ],
+    highlights: [
+      "Initials, finals, tones and pinyin input lessons",
+      "Tap-to-hear Mandarin pronunciation with AVSpeech",
+      "Five scored practice modes for pinyin typing",
+      "Fully offline — no account, no data collection",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · AVSpeech",
+    accent: "cyan",
+    ios: "https://apps.apple.com/us/app/%E6%B1%89%E8%AF%AD%E6%8B%BC%E9%9F%B3-hanyu-pinyin/id6782562028",
+    github: "https://github.com/alfredang/hanyupinyinapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
