@@ -48,4 +48,8 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
   wordsearch: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/3c/76/2c/3c762c5d-5959-728c-99dd-f3c110952130/iphone-65-1.png/600x1300bb.webp",
   ],
+  sgbus: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/8c/e6/d7/8ce6d730-36c6-3698-cff6-27425594ce44/v1-iphone-main.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/11/cf/c6/11cfc654-8fd4-e4cd-3da0-fed74825ac76/v1-iphone-dark.png/600x1300bb.webp",
+  ],
 };

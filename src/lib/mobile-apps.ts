@@ -261,6 +261,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6782542492",
     github: "https://github.com/alfredang/tangpeomapp",
   },
+  {
+    id: "sgbus",
+    name: "SG Bus Live",
+    tagline: "Live Singapore bus arrivals",
+    category: "Navigation · Transit",
+    blurb:
+      "Live Singapore bus arrival timings for any stop — search by code, road or landmark and see the next three buses, minutes away and how full they are. Data from LTA DataMall.",
+    about: [
+      "SG Bus Live gives quick access to real-time Singapore bus arrival timings. Search any bus stop by code, road or landmark, then refresh to see live arrivals — for each service you can compare the next three buses at a glance, including how many minutes away they are and how crowded they are (Seats Available, Standing or Limited Standing).",
+      "Arrival data is sourced from Singapore's LTA DataMall, and no sign-in or account is required — just open the app and start checking your stops. A native SwiftUI app for iPhone.",
+    ],
+    highlights: [
+      "Live bus arrivals for any Singapore bus stop",
+      "Search by stop code, road name or landmark",
+      "Next three buses with arrival time and crowding",
+      "No sign-in — data from LTA DataMall",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · LTA DataMall",
+    accent: "green",
+    ios: "https://apps.apple.com/app/id6782321279",
+    github: "https://github.com/alfredang/sgbusapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
