@@ -67,4 +67,9 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f6/bd/b0/f6bdb0bf-ec26-3488-9595-18133de9603b/4-player.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/df/c2/b4/dfc2b4f8-37d1-899b-7ffb-56d974d606dd/5-about.png/600x1300bb.webp",
   ],
+  passportphoto: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c1/e3/99/c1e3997b-7100-3dc1-39dc-5b01e8ecff6a/1_photo.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/dd/dd/ed/dddded50-a90b-2dd5-0aa4-be53a6058eed/2_feedback.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/64/40/8b/64408bea-1ab4-9930-6363-36fd102531ed/3_about.png/600x1300bb.webp",
+  ],
 };

@@ -331,6 +331,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6782540959",
     github: "https://github.com/alfredang/yogaapp",
   },
+  {
+    id: "passportphoto",
+    name: "Tertiary Passport Photo",
+    tagline: "Compliant passport photos in seconds",
+    category: "Photo & Video",
+    blurb:
+      "Turn a selfie into a clean, compliant passport or visa photo — automatic background removal, face-aware cropping to official sizes, and a print-ready 300 DPI export. On-device and private.",
+    about: [
+      "Tertiary Passport Photo creates a clean, compliant passport or visa photo in seconds, right on your iPhone. Take a selfie or pick one from your library and the app automatically removes the background and replaces it with clean white, filters out clutter behind you, detects your face and crops to the official size for your country, then exports a print-ready photo at 300 DPI.",
+      "It supports official sizes for Singapore (default), the United States, United Kingdom, EU / Schengen, Australia, Canada, India, China, Japan and Malaysia. Everything happens on-device, so your photos stay private — no upload, no account.",
+    ],
+    highlights: [
+      "Selfie to compliant passport photo in seconds",
+      "Automatic white-background replacement and crop",
+      "Official sizes for 10 countries (Singapore default)",
+      "On-device and private — print-ready 300 DPI export",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · Vision · on-device ML",
+    accent: "green",
+    ios: "https://apps.apple.com/app/id6782430909",
+    github: "https://github.com/alfredang/passportphoto",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
