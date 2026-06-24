@@ -192,6 +192,52 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6780267161",
     github: "https://github.com/alfredang/ai4kidsapp",
   },
+  {
+    id: "iotflow",
+    name: "IoTFlow",
+    tagline: "Monitor your IoT devices on the go",
+    category: "Utilities · IoT",
+    blurb:
+      "The mobile client for the self-hosted IoTFlow platform — monitor connected devices, watch live telemetry and stay on top of alerts from anywhere.",
+    about: [
+      "IoTFlow is the iPhone client for the self-hosted IoTFlow IoT platform. See total, online and offline device counts and active alerts at a glance, then drill into live sensor telemetry streaming in from your devices in real time.",
+      "Browse every device by status and protocol (HTTP, MQTT, WebSocket), inspect device IDs, location and metadata, register a new device and get its connection token in seconds, and review recent alerts so you never miss an offline device or a threshold breach — all in a native SwiftUI app pointed at your own platform.",
+    ],
+    highlights: [
+      "Dashboard — device counts and active alerts at a glance",
+      "Live sensor telemetry streaming from your devices",
+      "Browse devices by status and protocol (HTTP/MQTT/WebSocket)",
+      "Register new devices and review alerts on the go",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · MQTT · WebSocket",
+    accent: "cyan",
+    ios: "https://apps.apple.com/app/id6781005693",
+    github: "https://github.com/alfredang/iotplatformapp",
+  },
+  {
+    id: "wordsearch",
+    name: "Tertiary Word Search",
+    tagline: "Quick, focused word puzzles",
+    category: "Games · Word",
+    blurb:
+      "A native word-search game — drag across letters to find hidden words on Easy, Medium or Hard grids, with hints and progress tracking. Offline, no account.",
+    about: [
+      "Tertiary Word Search is a native word game for teenagers and adults who enjoy quick, focused word puzzles. Choose Easy, Medium or Hard grids, drag across letters to find each hidden word, and use hints whenever you need a nudge.",
+      "Found words are highlighted, your progress is tracked, and the whole game plays offline with no account required — built natively in SwiftUI for iPhone and iPad.",
+    ],
+    highlights: [
+      "Easy, Medium and Hard word-search grids",
+      "Finger-drag word selection with found-word highlights",
+      "Hints when you need help",
+      "Offline play — no account required",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI",
+    accent: "amber",
+    ios: "https://apps.apple.com/app/id6781685014",
+    github: "https://github.com/alfredang/crosswordpuzzleapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {

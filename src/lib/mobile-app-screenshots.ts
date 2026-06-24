@@ -39,4 +39,13 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/fe/62/52/fe6252f1-e468-9b6b-55b5-a39cc8abe928/ip-02.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/fb/a8/a0/fba8a043-598e-7bd8-8467-84f86217c012/ip-03.png/600x1300bb.webp",
   ],
+  iotflow: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bb/f8/01/bbf801d9-ed8c-3eff-b162-b5993c06d5e7/1-dashboard.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/2c/90/fa/2c90fa30-216d-5815-15df-62d609503fad/2-devices.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9a/bf/ee/9abfee45-e918-402b-30c8-4bad6571f32c/3-detail.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/92/83/63/92836301-25b8-4e86-60fd-98e17ef9febc/4-settings.png/600x1300bb.webp",
+  ],
+  wordsearch: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/3c/76/2c/3c762c5d-5959-728c-99dd-f3c110952130/iphone-65-1.png/600x1300bb.webp",
+  ],
 };
