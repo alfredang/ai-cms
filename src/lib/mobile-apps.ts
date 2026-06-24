@@ -238,6 +238,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6781685014",
     github: "https://github.com/alfredang/crosswordpuzzleapp",
   },
+  {
+    id: "tangpoems",
+    name: "Tang Poems 唐诗三百首",
+    tagline: "300 classic Tang dynasty poems",
+    category: "Books · Education",
+    blurb:
+      "A pocket reader for the classic 300 Tang dynasty poems — per-character Hanyu Pinyin, offline Mandarin read-aloud, poem appreciation and poet biographies.",
+    about: [
+      "Tang Poems (唐诗三百首) is a beautifully simple reader for the classic anthology of 300 Tang dynasty poems. Every Chinese character is annotated with toned Hanyu Pinyin so learners can read along and correct their pronunciation, and a built-in offline Mandarin male voice reads each poem aloud — no network required.",
+      "Each poem comes with its background and appreciation to bring out its meaning, plus biographies of famous poets like Li Bai, Du Fu, Wang Wei and Bai Juyi. Search by poem title, poet or keyword (including pinyin), all in a clean white design built natively for iPhone and iPad.",
+    ],
+    highlights: [
+      "300 classic Tang dynasty poems",
+      "Per-character Hanyu Pinyin for read-along learning",
+      "Offline Mandarin male-voice read-aloud",
+      "Poem appreciation, poet bios and pinyin search",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI",
+    accent: "purple",
+    ios: "https://apps.apple.com/app/id6782542492",
+    github: "https://github.com/alfredang/tangpeomapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
