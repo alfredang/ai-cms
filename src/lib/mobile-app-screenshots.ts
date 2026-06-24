@@ -60,4 +60,11 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cb/fc/e1/cbfce15c-18ec-30cd-3f1b-ba248cf9fcb4/05-settings.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/09/fc/6c/09fc6c1c-3a4a-58a7-470f-d90f773bf031/06-sentences.png/600x1300bb.webp",
   ],
+  zenasana: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ae/f7/5a/aef75a8c-23ba-8508-c068-2632205779e6/1-poses.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ec/40/54/ec4054c4-7ac9-1fc3-c53d-8c5bdb8d0c9f/2-detail.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/b0/1e/29/b01e290e-592d-9903-b73e-9fef80d53017/3-sequences.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f6/bd/b0/f6bdb0bf-ec26-3488-9595-18133de9603b/4-player.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/df/c2/b4/dfc2b4f8-37d1-899b-7ffb-56d974d606dd/5-about.png/600x1300bb.webp",
+  ],
 };

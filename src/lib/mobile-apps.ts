@@ -308,6 +308,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/us/app/%E6%B1%89%E8%AF%AD%E6%8B%BC%E9%9F%B3-hanyu-pinyin/id6782562028",
     github: "https://github.com/alfredang/hanyupinyinapp",
   },
+  {
+    id: "zenasana",
+    name: "ZenAsana",
+    tagline: "A calm yoga companion",
+    category: "Health & Fitness · Yoga",
+    blurb:
+      "A beautifully simple yoga companion — browse essential poses with Sanskrit names, animated figures and step-by-step instructions, then flow through guided sequences.",
+    about: [
+      "ZenAsana is a calm, beautifully simple yoga companion for iPhone and iPad. Browse a library of essential poses, each with its common and Sanskrit name, an animated figure, difficulty level, clear step-by-step instructions and key benefits. Poses are organised by stance state — Standing, Seated, Supine, Prone, Kneeling, Balancing, Inversion and Restorative — so you can quickly find exactly what your body needs.",
+      "When you are ready to move, flow through popular guided sequences like Sun Salutation A and a morning wake-up, with a timed player to keep you in rhythm. Filter by stance or search by name, all in a clean white design built natively in SwiftUI.",
+    ],
+    highlights: [
+      "Library of essential poses with Sanskrit names",
+      "Animated figures, instructions and key benefits",
+      "Organised by stance state — filter or search",
+      "Timed guided sequences like Sun Salutation A",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI",
+    accent: "blue",
+    ios: "https://apps.apple.com/app/id6782540959",
+    github: "https://github.com/alfredang/yogaapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
