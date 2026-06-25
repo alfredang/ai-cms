@@ -423,6 +423,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6782157783",
     github: "https://github.com/alfredang/freefoodapp",
   },
+  {
+    id: "sgcarpark",
+    name: "SG Carpark Live",
+    tagline: "Live Singapore carpark availability",
+    category: "Navigation · Travel",
+    blurb:
+      "Check live Singapore carpark availability — see how many lots are free at carparks near you or your destination, sourced from LTA DataMall. No sign-in required.",
+    about: [
+      "SG Carpark Live shows real-time carpark availability across Singapore. Find how many lots are free at carparks near you or your destination before you set off, so you spend less time circling for a space.",
+      "Availability data is sourced from Singapore's LTA DataMall and updates live, with no sign-in or account required — a native SwiftUI app for iPhone.",
+    ],
+    highlights: [
+      "Live lot availability for Singapore carparks",
+      "Find free spaces near you or your destination",
+      "Data sourced from LTA DataMall",
+      "No sign-in — just open and check",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · LTA DataMall",
+    accent: "cyan",
+    ios: "https://apps.apple.com/app/id6781785702",
+    github: "https://github.com/alfredang/sgcarparkapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
