@@ -83,4 +83,11 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/5b/51/d7/5b51d709-6545-2f9a-40c8-f9f2b302d9f7/03-feedback.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d4/e2/d9/d4e2d919-50f2-b859-df2b-e77387da7d17/04-about.png/600x1300bb.webp",
   ],
+  phonics: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/74/f0/d6/74f0d607-00c8-5e43-17fb-1107078e4505/1-learn.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/0f/5d/8e/0f5d8e31-d2d4-4b87-dfbf-bbe351b1adcf/2-detail.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/21/9c/0e/219c0e9d-36a8-3bed-c2f9-b96ec74cda8f/3-practice.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/32/06/b7/3206b7d1-6edd-b6fe-009b-5deb989b2ff9/4-minimalpairs.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/84/71/63/847163b3-6553-1564-9548-c1709e2e0f6f/5-phonemelist.png/600x1300bb.webp",
+  ],
 };

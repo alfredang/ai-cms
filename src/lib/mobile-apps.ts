@@ -446,6 +446,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6781785702",
     github: "https://github.com/alfredang/sgcarparkapp",
   },
+  {
+    id: "phonics",
+    name: "Phonics Pronunciation Coach",
+    tagline: "Speak English clearly & confidently",
+    category: "Education · Language",
+    blurb:
+      "Learn clear English pronunciation with synthetic phonics — hear every sound, word and sentence in a British or American accent, with IPA, articulation tips and out-loud practice. Fully offline.",
+    about: [
+      "Phonics Pronunciation Coach helps adults speak English clearly and confidently. Built on proven synthetic-phonics methods, it covers the full curriculum — consonants, short and long vowels, digraphs, blends, vowel teams, diphthongs, r-controlled vowels and soft c/g — with IPA, a plain-language articulation tip and example words for every sound. Tap anything to hear it spoken instantly.",
+      "Practise out loud with minimal pairs, words and sentences in a British or American accent and a male or female voice, all working completely offline — a native SwiftUI app for focused pronunciation practice.",
+    ],
+    highlights: [
+      "Full synthetic-phonics curriculum with IPA",
+      "British or American accent, male or female voice",
+      "Articulation tips and example words for every sound",
+      "Minimal-pairs practice — fully offline",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI · AVSpeech",
+    accent: "blue",
+    ios: "https://apps.apple.com/app/id6782569616",
+    github: "https://github.com/alfredang/phonicsapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
