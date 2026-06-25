@@ -400,6 +400,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6782566345",
     github: "https://github.com/alfredang/spinningwheelapp",
   },
+  {
+    id: "freefood",
+    name: "FreeFood: Share Leftovers",
+    tagline: "Share & find free food nearby",
+    category: "Food & Drink · Community",
+    blurb:
+      "Share and discover free leftover food nearby — post a photo, location and pickup time window on a map so good food finds a neighbour instead of the bin. No account required.",
+    about: [
+      "FreeFood: Share Leftovers helps neighbours share surplus food instead of throwing it away. Post what you have with a photo, drop a pin on the map and set a pickup time window, and anyone nearby can discover it and arrange to collect — cutting waste and helping out at the same time.",
+      "Listings appear on an Apple Map so you can see what is available around you at a glance, and everything syncs through CloudKit's public database with no account required. A native SwiftUI app for iPhone.",
+    ],
+    highlights: [
+      "Share leftover food with a photo and location",
+      "Set a pickup time window on a map",
+      "Discover free food nearby on Apple Maps",
+      "No account required — syncs via CloudKit",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · MapKit · CloudKit",
+    accent: "green",
+    ios: "https://apps.apple.com/app/id6782157783",
+    github: "https://github.com/alfredang/freefoodapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
