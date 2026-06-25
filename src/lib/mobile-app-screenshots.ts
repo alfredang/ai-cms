@@ -77,4 +77,10 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/98/71/16/9871169b-eca1-259e-4f9a-303ee5c9460f/practice.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/7c/11/83/7c11839b-e2e2-5940-0500-9413897ee113/test.png/600x1300bb.webp",
   ],
+  spinwheel: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/cd/fb/d9/cdfbd91f-9329-dba7-56c4-5267ffd4027f/01-wheel.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/b9/24/5d/b9245d7a-eeaa-6f68-4a3d-f041385a00f1/02-celebration.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/5b/51/d7/5b51d709-6545-2f9a-40c8-f9f2b302d9f7/03-feedback.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d4/e2/d9/d4e2d919-50f2-b859-df2b-e77387da7d17/04-about.png/600x1300bb.webp",
+  ],
 };

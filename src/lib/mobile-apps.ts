@@ -377,6 +377,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6782661288",
     github: "https://github.com/alfredang/speedtypingapp",
   },
+  {
+    id: "spinwheel",
+    name: "Spin Wheel Fun",
+    tagline: "Let the wheel decide",
+    category: "Entertainment",
+    blurb:
+      "A colourful fortune wheel for fair decisions — add up to 20 choices, press SPIN, and let the pointer pick a random winner with sound, confetti and celebration.",
+    about: [
+      "Spin Wheel Fun turns every decision into a celebration. Can't decide what to eat, who goes first or which task to tackle next? Add your choices, press the big SPIN button, and let the wheel pick for you — fair and square.",
+      "Add up to 20 custom labels (names, foods, chores, prizes — anything), enjoy a smooth, realistic spin with sound effects, and watch the balloons, confetti and celebration music when a winner lands. Sound, music and effects are all toggleable, in a native SwiftUI iPhone app.",
+    ],
+    highlights: [
+      "Add up to 20 custom choices",
+      "One big SPIN button with a realistic spin",
+      "Celebration music, balloons and confetti on a win",
+      "Toggle sound, music and effects",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI",
+    accent: "purple",
+    ios: "https://apps.apple.com/app/id6782566345",
+    github: "https://github.com/alfredang/spinningwheelapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
