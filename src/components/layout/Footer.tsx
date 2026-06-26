@@ -57,6 +57,7 @@ const NAVIGATE_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "Tertiary Exams", href: "https://exams.tertiaryinfotech.com/", external: true },
   { label: "Tertiary HRMS", href: "https://hrms.tertiaryinfotech.com/", external: true },
   { label: "Tertiary LMS/TMS", href: "https://lms-tms.tertiaryinfotech.com/", external: true },
+  { label: "Tertiary Workplace Learning", href: "https://workplacelearning.tertiaryinfotech.com/", external: true },
   { label: "Tertiary Training", href: "https://www.tertiarytraining.com/", external: true },
   { label: "Tertiary Kids", href: "https://ai4kids.tertiarycourses.com.sg/", external: true },
   { label: "Tertiary Tapcard", href: "https://tapcard.tertiaryinfotech.com/", external: true },
@@ -136,7 +137,7 @@ export async function Footer() {
               ))}
             </nav>
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <div className="kicker mb-3">[ NAVIGATE ]</div>
             <nav className="flex flex-col gap-2 text-sm">
               {NAVIGATE_LINKS.map((it) => (
@@ -145,14 +146,14 @@ export async function Footer() {
                   href={it.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-(--color-cyan) transition"
+                  className="whitespace-nowrap text-white/80 hover:text-(--color-cyan) transition"
                 >
                   {it.label}
                 </a>
               ))}
             </nav>
           </div>
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <div className="kicker mb-3">[ CONTACT ]</div>
             <div className="flex items-start gap-2.5 text-sm text-(--color-muted)">
               <HiMapPin className="w-4 h-4 mt-0.5 shrink-0 text-(--color-cyan)/80" />
