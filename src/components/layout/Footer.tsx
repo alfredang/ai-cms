@@ -74,7 +74,7 @@ export async function Footer() {
   return (
     <footer className="relative mt-10 border-t border-(--color-border) bg-(--color-bg-elevated)">
       <Container className="py-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 xl:grid-cols-[minmax(220px,1fr)_minmax(92px,0.45fr)_minmax(132px,0.55fr)_minmax(270px,0.85fr)_minmax(320px,1fr)] gap-8 xl:gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 xl:grid-cols-[minmax(300px,1fr)_minmax(82px,0.35fr)_minmax(120px,0.45fr)_minmax(250px,0.75fr)_minmax(300px,0.95fr)] gap-8 xl:gap-6 2xl:gap-10">
           <div className="lg:col-span-3 xl:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               {brand.logoUrl ? (
@@ -89,9 +89,14 @@ export async function Footer() {
               )}
               <span className="font-display font-bold text-lg">{brand.shortName}</span>
             </div>
-            <p className="text-sm text-(--color-muted) max-w-xs">
-              We are a bespoke EdTech solution provider, specializing in full-stack IT and AI solutions to power your business to the next level.
-            </p>
+            <div className="space-y-3 text-sm leading-6 text-(--color-muted) max-w-sm">
+              <p>
+                We are a bespoke EdTech and business technology partner, building full-stack IT and AI solutions that help organisations work smarter and scale with confidence.
+              </p>
+              <p>
+                Our team develops custom mobile apps, web platforms, LMS/TMS systems, AI agents, automation workflows, and SSG-ready digital tools tailored to real operational needs.
+              </p>
+            </div>
             <div className="mt-5 flex items-center gap-2">
               {socials.map((s) => {
                 const Icon = SOCIAL_ICONS[s.platform];
