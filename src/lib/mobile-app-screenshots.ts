@@ -77,6 +77,13 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/98/71/16/9871169b-eca1-259e-4f9a-303ee5c9460f/practice.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/7c/11/83/7c11839b-e2e2-5940-0500-9413897ee113/test.png/600x1300bb.webp",
   ],
+  "music-theory-maestro": [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/b9/ca/77/b9ca77ad-d08b-406c-5900-a8af97746f40/1-learn.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3a/a7/fe/3aa7fe15-04d9-30c2-a902-88a1304b6d2a/2-scales-wheel.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/42/e3/1b/42e31b6a-0c5a-a380-e9f5-a6926fd9a314/3-notation-exam.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/93/07/9c/93079cda-f4ca-d991-f2df-c3ccfb23271d/4-chords.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a5/ec/19/a5ec19ba-2832-44ec-6ec7-412521d84935/5-exams.png/600x1300bb.webp",
+  ],
   spinwheel: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/cd/fb/d9/cdfbd91f-9329-dba7-56c4-5267ffd4027f/01-wheel.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/b9/24/5d/b9245d7a-eeaa-6f68-4a3d-f041385a00f1/02-celebration.png/600x1300bb.webp",

@@ -378,6 +378,30 @@ export const MOBILE_APPS: MobileApp[] = [
     github: "https://github.com/alfredang/speedtypingapp",
   },
   {
+    id: "music-theory-maestro",
+    name: "Music Theory Maestro",
+    tagline: "Scales, chords & grade exams",
+    category: "Education · Music",
+    blurb:
+      "A complete interactive music-theory tutor for iPhone and iPad — notation, clefs, the Wheel of Scales, chords, playable examples and Grade 1-8 mock exams. Offline, no account required.",
+    about: [
+      "Music Theory Maestro teaches music theory from the first note through advanced harmony. Learners work through notation, staff reading, ledger lines, treble, bass and alto clefs, rhythm, intervals, key signatures, cadences, modes, transposition and modulation in a native iPhone and iPad app.",
+      "The app makes theory audible and visual: a custom SwiftUI notation engine renders real staff examples, an interactive piano highlights notes, the Wheel of Scales maps the circle of fifths, and built-in audio plays notes, scales, chords and progressions so learners can connect symbols with sound.",
+      "For exam preparation, Grade 1-8 mock exams combine notation-reading questions, multiple-choice theory checks, instant explanations, scoring and best-score tracking. Everything works offline with no account and no data collection.",
+    ],
+    highlights: [
+      "Structured lessons from basics to advanced harmony",
+      "Custom notation, piano keyboard and Wheel of Scales",
+      "Playable scales, chords, modes and progressions",
+      "Grade 1-8 mock exams with scoring and explanations",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI · AVAudioEngine · Canvas",
+    accent: "cyan",
+    ios: "https://apps.apple.com/us/app/music-theory-maestro/id6782606403",
+    github: "https://github.com/alfredang/musictheoryapp",
+  },
+  {
     id: "spinwheel",
     name: "Spin Wheel Fun",
     tagline: "Let the wheel decide",
