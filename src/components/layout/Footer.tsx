@@ -74,8 +74,8 @@ export async function Footer() {
   return (
     <footer className="relative mt-10 border-t border-(--color-border) bg-(--color-bg-elevated)">
       <Container className="py-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
-          <div className="lg:col-span-3">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 xl:grid-cols-[minmax(220px,1fr)_minmax(92px,0.45fr)_minmax(132px,0.55fr)_minmax(270px,0.85fr)_minmax(320px,1fr)] gap-8 xl:gap-10">
+          <div className="lg:col-span-3 xl:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               {brand.logoUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -111,7 +111,7 @@ export async function Footer() {
               })}
             </div>
           </div>
-          <div className="lg:col-span-2 lg:col-start-4">
+          <div className="lg:col-span-2 lg:col-start-4 xl:col-span-1 xl:col-start-auto">
             <div className="kicker mb-3">[ COMPANY ]</div>
             <nav className="flex flex-col gap-2 text-sm">
               {COMPANY_LINKS.map((it) => (
@@ -121,7 +121,7 @@ export async function Footer() {
               ))}
             </nav>
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 xl:col-span-1">
             <div className="kicker mb-3">[ SSG TOOLS ]</div>
             <nav className="flex flex-col gap-2 text-sm">
               {SSG_TOOLS_LINKS.map((it) => (
@@ -137,7 +137,7 @@ export async function Footer() {
               ))}
             </nav>
           </div>
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 xl:col-span-1">
             <div className="kicker mb-3">[ NAVIGATE ]</div>
             <nav className="flex flex-col gap-2 text-sm">
               {NAVIGATE_LINKS.map((it) => (
@@ -146,14 +146,14 @@ export async function Footer() {
                   href={it.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="whitespace-nowrap text-white/80 hover:text-(--color-cyan) transition"
+                  className="xl:whitespace-nowrap text-white/80 hover:text-(--color-cyan) transition"
                 >
                   {it.label}
                 </a>
               ))}
             </nav>
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 xl:col-span-1 lg:pr-8 xl:pr-12">
             <div className="kicker mb-3">[ CONTACT ]</div>
             <div className="flex items-start gap-2.5 text-sm text-(--color-muted)">
               <HiMapPin className="w-4 h-4 mt-0.5 shrink-0 text-(--color-cyan)/80" />
