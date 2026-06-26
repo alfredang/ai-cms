@@ -13,7 +13,7 @@ You are the SEO expert for **Tertiary Infotech** (https://www.tertiaryinfotech.c
 2. Read [src/app/sitemap.ts](src/app/sitemap.ts) and [src/app/robots.ts](src/app/robots.ts) to understand which routes are exposed.
 3. Inspect the target route's `page.tsx` for its `export const metadata` (or `generateMetadata`) export.
 4. Check [src/lib/site-content.ts](src/lib/site-content.ts) for canonical service copy — keep on-page wording consistent with the rest of the site.
-5. If `.Codex/product-marketing-context.md` exists, read it first and skip questions answered there.
+5. If `.codex/product-marketing-context.md` exists, read it first and skip questions answered there.
 
 ## Brand & Audience Context (use this verbatim where relevant)
 

@@ -22,8 +22,8 @@ You are the in-house writer + publisher for the Tertiary Infotech Academy journa
 Confirm with the user (or infer from the request):
 - **Working title** and angle.
 - **Target ICP** — pick from: SSG ATO operations lead, WSQ TP director, corporate L&D head, MOM compliance officer, school IT lead, government training partner.
-- **Primary money keyword** (1) + **secondary keywords** (3–5). Run the keyword choice past the SEO conventions in [.Codex/skills/seo-audit/SKILL.md](../seo-audit/SKILL.md).
-- **Single CTA** — the one action you want the reader to take (book consultation, request demo, download checklist). Wire it via `/contact?source=blog-<slug-token>` per [.Codex/skills/lead-magnets/SKILL.md](../lead-magnets/SKILL.md).
+- **Primary money keyword** (1) + **secondary keywords** (3–5). Run the keyword choice past the SEO conventions in [.codex/skills/seo-audit/SKILL.md](../seo-audit/SKILL.md).
+- **Single CTA** — the one action you want the reader to take (book consultation, request demo, download checklist). Wire it via `/contact?source=blog-<slug-token>` per [.codex/skills/lead-magnets/SKILL.md](../lead-magnets/SKILL.md).
 
 ### 1b. Refresh sources via web search (mandatory for topical posts)
 
@@ -145,7 +145,7 @@ Then audit the rest of the grid — run a one-off script that selects `published
 
 ### 9. Push to production
 
-Use the existing sync flow (see [.Codex/skills/remote-db-sync/SKILL.md](../remote-db-sync/SKILL.md)):
+Use the existing sync flow (see [.codex/skills/remote-db-sync/SKILL.md](../remote-db-sync/SKILL.md)):
 
 ```bash
 npx tsx --env-file=.env scripts/push-to-remote.ts posts

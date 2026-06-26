@@ -57,7 +57,7 @@ npx tsx scripts/push-to-remote.ts taxonomy posts
 npx tsx scripts/push-to-remote.ts all
 ```
 
-The slash command `/push-to-remote` wraps this with safety prompts. See [.Codex/commands/push-to-remote.md](../../commands/push-to-remote.md).
+The slash command `/push-to-remote` wraps this with safety prompts. See [.codex/commands/push-to-remote.md](../../commands/push-to-remote.md).
 
 ## Conventions & Safety
 
@@ -79,7 +79,7 @@ To sync a new table:
    - Resolve FKs by natural key, not by numeric id.
    - Use `db.insert(...).onConflictDoUpdate({ target: <unique col>, set: {...} })`.
 3. Add a handler in [scripts/push-to-remote.ts](../../../scripts/push-to-remote.ts) and register it in `HANDLERS` + `ORDER` (mind FK dependency order).
-4. Document the new resource in this skill file and in [.Codex/commands/push-to-remote.md](../../commands/push-to-remote.md).
+4. Document the new resource in this skill file and in [.codex/commands/push-to-remote.md](../../commands/push-to-remote.md).
 
 ## Common failure modes
 

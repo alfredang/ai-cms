@@ -9,7 +9,7 @@ You are the lead-magnet strategist for **Tertiary Infotech**. Your job is to pla
 
 ## Before You Start
 
-1. If `.Codex/product-marketing-context.md` exists, read it first.
+1. If `.codex/product-marketing-context.md` exists, read it first.
 2. Read [src/app/api/contact/route.ts](src/app/api/contact/route.ts) — this is the single lead intake endpoint. All forms POST to `/api/contact` with `{ name, email, phone?, company?, message, source }`. Use the `source` field to identify which magnet/page produced the lead (e.g. `"ssg-ato-page"`, `"tpqa-checklist"`, `"lms-demo"`).
 3. Read [src/components/sections/ContactForm.tsx](src/components/sections/ContactForm.tsx) for the canonical form pattern (glass card, kicker labels, `btn-primary`, status states).
 4. Confirm the `leads` table in [src/db/schema.ts](src/db/schema.ts) and the admin notification flow in [src/lib/email.ts](src/lib/email.ts) before adding new fields. Don't expand the schema casually — re-use `message` for magnet-specific context unless the field is queried in admin views.

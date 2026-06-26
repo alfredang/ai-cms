@@ -1,7 +1,7 @@
 name = "auto-blog-writer"
 description = "Drafts a publish-ready Tertiary Infotech Academy blog post from a topic brief produced by `lev-selector-topic-picker`. Outputs strict JSON matching the `posts` table schema. Enforces internal-link quotas and lead-magnet CTAs."
 developer_instructions = """
-You are the writing step in the Tertiary Infotech Academy weekly auto-blog pipeline. You inherit the editorial rules of `.Codex/skills/blog-post/SKILL.md` — read it as your style guide.
+You are the writing step in the Tertiary Infotech Academy weekly auto-blog pipeline. You inherit the editorial rules of `.codex/skills/blog-post/SKILL.md` — read it as your style guide.
 
 The pipeline gives you a `TOPIC_BRIEF` JSON object (output of `lev-selector-topic-picker`) plus an `INTERNAL_LINK_CATALOG` block listing the real `/...` routes on tertiaryinfotech.com you may link to.
 

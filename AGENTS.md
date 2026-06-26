@@ -73,13 +73,13 @@ The production DB isn't directly reachable. To push local CMS data (menus, setti
 - **HTTPS API**: `POST /api/admin/sync/{menus,settings,taxonomy,pages,posts}` under [src/app/api/admin/sync/](src/app/api/admin/sync/).
 - **Auth**: shared by [src/lib/sync-auth.ts](src/lib/sync-auth.ts) — accepts **either** `Authorization: Bearer <SYNC_API_TOKEN>` (matching env on both sides) or `Authorization: Basic <base64(email:password)>` (validated against the `users` table via bcrypt). Fails closed.
 - **CLI**: [scripts/push-to-remote.ts](scripts/push-to-remote.ts) — reads local DB, resolves FKs by natural key (authors by email, categories/tags by slug), POSTs in dependency order (`taxonomy → settings → menus → pages → posts`). The CLI auto-picks bearer if `SYNC_API_TOKEN` is set locally, otherwise Basic with `ADMIN_EMAIL` / `ADMIN_PASSWORD`.
-- **Slash command**: `/push-to-remote [resource...|all]` — wraps the CLI with a preview + confirmation flow. See [.Codex/commands/push-to-remote.md](.Codex/commands/push-to-remote.md).
+- **Slash command**: `/push-to-remote [resource...|all]` — wraps the CLI with a preview + confirmation flow. See [.codex/commands/push-to-remote.md](.codex/commands/push-to-remote.md).
 
-To extend the sync surface to a new table, follow the pattern in [.Codex/skills/remote-db-sync/SKILL.md](.Codex/skills/remote-db-sync/SKILL.md): natural-key upsert, Zod-bounded payload, register the resource in `scripts/push-to-remote.ts` in the correct FK-dependency order.
+To extend the sync surface to a new table, follow the pattern in [.codex/skills/remote-db-sync/SKILL.md](.codex/skills/remote-db-sync/SKILL.md): natural-key upsert, Zod-bounded payload, register the resource in `scripts/push-to-remote.ts` in the correct FK-dependency order.
 
 ### Authoring blog posts — always load the `blog-post` skill first
 
-Any request to write, publish, edit, or fix a blog post (`/blog/...`) — phrases like "create a blog on X", "write a post about Y", "add a journal entry", "draft a guide", or any change to body content for an existing post — **must** load [.Codex/skills/blog-post/SKILL.md](.Codex/skills/blog-post/SKILL.md) **before drafting a single line**. The skill covers the non-obvious must-dos that have bitten us repeatedly:
+Any request to write, publish, edit, or fix a blog post (`/blog/...`) — phrases like "create a blog on X", "write a post about Y", "add a journal entry", "draft a guide", or any change to body content for an existing post — **must** load [.codex/skills/blog-post/SKILL.md](.codex/skills/blog-post/SKILL.md) **before drafting a single line**. The skill covers the non-obvious must-dos that have bitten us repeatedly:
 
 - The public `/blog/[slug]` page renders **`posts.contentHtml`** (not `content`). If you only set the TipTap JSON, the page looks empty. Always pre-render with [src/lib/tiptap-html.ts](src/lib/tiptap-html.ts) and populate both columns.
 - Do NOT prefix the opening summary with the literal label "TL;DR —" — write the summary directly.
@@ -106,15 +106,15 @@ Both the public AI chatbot ([src/app/api/chat](src/app/api/chat)) and the admin 
 - Single landing page composes section components from [src/components/sections/](src/components/sections/) — `SERVICES` in [src/lib/site-content.ts](src/lib/site-content.ts) is the source of truth for the services grid; items can carry an optional `href` to make the card route to a dedicated page (see the SSG ATO example).
 - `[slug]` (dynamic CMS page) and `blog/[slug]` consult `redirects` first before 404'ing — preserves legacy URLs.
 - Each public route exports `metadata` (or `generateMetadata`) plus inline JSON-LD via `dangerouslySetInnerHTML`. `sitemap.ts` enumerates hardcoded routes + DB-published pages and posts.
-- The SEO conventions for this codebase (canonical URL, OG, money keywords, schema choices per page type, British/Singapore spelling) are in [.Codex/skills/seo-audit/SKILL.md](.Codex/skills/seo-audit/SKILL.md) — load that skill whenever creating or auditing a public route.
+- The SEO conventions for this codebase (canonical URL, OG, money keywords, schema choices per page type, British/Singapore spelling) are in [.codex/skills/seo-audit/SKILL.md](.codex/skills/seo-audit/SKILL.md) — load that skill whenever creating or auditing a public route.
 
 ### Lead capture
 
-Every public form (contact form, SSG ATO consultation form, etc.) POSTs to `/api/contact` with `{ name, email, phone?, company?, message, source }`. The `source` field identifies which page/magnet produced the lead — set it per form (e.g. `"home"`, `"ssg-ato-page"`). Submissions land in `leads` and also send a Gmail notification via the OAuth2 credentials stored in the vault. The lead-magnet conventions for this codebase (ICPs, form-field rules, page anatomy) are in [.Codex/skills/lead-magnets/SKILL.md](.Codex/skills/lead-magnets/SKILL.md).
+Every public form (contact form, SSG ATO consultation form, etc.) POSTs to `/api/contact` with `{ name, email, phone?, company?, message, source }`. The `source` field identifies which page/magnet produced the lead — set it per form (e.g. `"home"`, `"ssg-ato-page"`). Submissions land in `leads` and also send a Gmail notification via the OAuth2 credentials stored in the vault. The lead-magnet conventions for this codebase (ICPs, form-field rules, page anatomy) are in [.codex/skills/lead-magnets/SKILL.md](.codex/skills/lead-magnets/SKILL.md).
 
 ### Design system
 
-Dark sci-fi/robotics aesthetic. Tailwind 4 with `@theme` design tokens in [src/app/globals.css](src/app/globals.css) — colors are CSS vars consumed as `(--color-cyan)`, `(--color-purple)`, etc. Utility classes: `glass`, `card-hover`, `btn-primary`, `kicker`, `gradient-text`, `gradient-text-warm`, `glow-blob`. Fonts: Exo 2 (display), Inter (sans), JetBrains Mono (mono) — already loaded in [src/app/layout.tsx](src/app/layout.tsx) via `next/font`; do not re-import Google Fonts elsewhere. All UI work in this repo should follow [.Codex/skills/frontend-design/SKILL.md](.Codex/skills/frontend-design/SKILL.md).
+Dark sci-fi/robotics aesthetic. Tailwind 4 with `@theme` design tokens in [src/app/globals.css](src/app/globals.css) — colors are CSS vars consumed as `(--color-cyan)`, `(--color-purple)`, etc. Utility classes: `glass`, `card-hover`, `btn-primary`, `kicker`, `gradient-text`, `gradient-text-warm`, `glow-blob`. Fonts: Exo 2 (display), Inter (sans), JetBrains Mono (mono) — already loaded in [src/app/layout.tsx](src/app/layout.tsx) via `next/font`; do not re-import Google Fonts elsewhere. All UI work in this repo should follow [.codex/skills/frontend-design/SKILL.md](.codex/skills/frontend-design/SKILL.md).
 
 ## Deployment
 
