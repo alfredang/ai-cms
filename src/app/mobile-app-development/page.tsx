@@ -183,7 +183,7 @@ const FAQ = [
   },
   {
     q: "What's a real example of what you ship?",
-    a: `We've published ${IOS_COUNT} apps on the App Store and ${ANDROID_COUNT} on Google Play — PotLuckHub (a home-cook marketplace), RunTrack GPS, Tertiary Tapcard and Tertiary Sudoku, plus open-source builds like NotePad, Fractal and Hanyu Pinyin. They're all listed above with their store and GitHub links.`,
+    a: `We've published ${IOS_COUNT} apps on the App Store and ${ANDROID_COUNT} on Google Play — PotLuckHub (a home-cook marketplace), SG MRT (a Singapore MRT journey planner), RunTrack GPS, Tertiary Tapcard and Tertiary Sudoku, plus open-source builds like NotePad, Fractal and Hanyu Pinyin. They're all listed above with their store and GitHub links.`,
   },
 ];
 
@@ -262,9 +262,9 @@ export default function MobileAppDevelopmentPage() {
                 </h1>
                 <p className="text-(--color-muted) text-lg max-w-2xl mb-6">
                   Native iOS and Android apps in SwiftUI and Jetpack Compose — from a
-                  Singapore home-cook marketplace to GPS run tracking, OCR business cards
-                  and offline games. We take the idea to the App Store and Google Play, and
-                  hand you the keys.
+                  Singapore home-cook marketplace to MRT route planning, GPS run tracking,
+                  OCR business cards and offline games. We take the idea to the App Store
+                  and Google Play, and hand you the keys.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mb-6">
                   <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-cyan)/10 text-(--color-cyan) border border-(--color-cyan)/30">

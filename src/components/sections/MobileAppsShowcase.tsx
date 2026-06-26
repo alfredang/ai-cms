@@ -33,8 +33,8 @@ export function MobileAppsShowcase() {
               <span className="gradient-text">native mobile apps</span>.
             </h2>
             <p className="mt-6 text-(--color-muted) text-lg max-w-2xl">
-              From a Singapore home-cook marketplace to GPS run tracking, OCR business
-              cards and offline games — {appCount}{" "}native SwiftUI / Jetpack Compose
+              From a Singapore home-cook marketplace to MRT route planning, GPS run tracking,
+              OCR business cards and offline games — {appCount}{" "}native SwiftUI / Jetpack Compose
               apps we&apos;ve designed, built and published to the App Store and Google Play.
             </p>
           </div>

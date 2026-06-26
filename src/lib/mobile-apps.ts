@@ -55,6 +55,29 @@ export const MOBILE_APPS: MobileApp[] = [
     github: "https://github.com/alfredang/potluckapp",
   },
   {
+    id: "sgmrt",
+    name: "SG MRT",
+    tagline: "Singapore MRT journey planner",
+    category: "Navigation · Transit",
+    blurb:
+      "Plan trips across Singapore's MRT network with shortest-route estimates, line-by-line station browsing, favourites, a bundled system map and optional live LTA context.",
+    about: [
+      "SG MRT is a native iPhone app for planning trips across Singapore's MRT network. Choose your start and destination stations to calculate the shortest route, estimated travel time, station count and transfers, then follow the route step by step by MRT line.",
+      "The app also includes a line browser with interchange stations marked, favourites for repeat journeys, a built-in Singapore MRT system map, GPS nearest-station support and optional live LTA DataMall context for service alerts and crowd density.",
+    ],
+    highlights: [
+      "Shortest-route planning across Singapore's MRT network",
+      "Estimated time, station count and transfer breakdown",
+      "Line browser, favourites and bundled MRT system map",
+      "GPS nearest station plus optional live LTA context",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · CoreLocation · LTA DataMall",
+    accent: "cyan",
+    ios: "https://apps.apple.com/app/sgmrt/id6781980848",
+    github: "https://github.com/alfredang/sgmrtapp",
+  },
+  {
     id: "tapcard",
     name: "Tertiary Tapcard",
     tagline: "Scan paper cards into digital cards",
