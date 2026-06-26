@@ -81,11 +81,11 @@ async function main() {
     company_whatsapp: "6588666375",
     company_address: "12 Woodlands Square #07-85/86/87 Woods Square Tower 1, Singapore 737715",
     social_links: [
-      { platform: "facebook", href: "https://www.facebook.com/TertiaryCourses/", label: "Facebook" },
+      { platform: "github", href: "https://github.com/alfredang", label: "GitHub" },
       { platform: "youtube", href: "https://www.youtube.com/@TertiaryCourses", label: "YouTube" },
       {
         platform: "linkedin",
-        href: "https://www.linkedin.com/company/tertiaryinfotech/?originalSubdomain=sg",
+        href: "https://www.linkedin.com/in/angchewhoe/",
         label: "LinkedIn",
       },
       { platform: "whatsapp", href: "https://wa.me/6588666375", label: "WhatsApp" },

@@ -22,7 +22,7 @@
 
 ## Screenshot
 
-![Screenshot](public/screenshot-cms.png)
+![Project home screen](screenshot.png)
 
 ## About
 

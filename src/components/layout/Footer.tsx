@@ -208,7 +208,20 @@ export async function Footer() {
             © {new Date().getFullYear()} {brand.fullName.toUpperCase()}
             {brand.uen ? ` · UEN ${brand.uen}` : ""}
           </p>
-          <p>BUILT WITH NEXT.JS · POSTGRES · CLAUDE AGENT SDK</p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <p>BUILT WITH NEXT.JS · POSTGRES · CLAUDE AGENT SDK</p>
+            <p className="powered-by">
+              Powered by{" "}
+              <a
+                href="https://www.tertiaryinfotech.com/"
+                target="_blank"
+                rel="noopener"
+                className="text-white/70 hover:text-(--color-cyan) transition"
+              >
+                Tertiary Infotech Academy Pte Ltd
+              </a>
+            </p>
+          </div>
         </div>
       </Container>
     </footer>
