@@ -516,6 +516,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/id6782569616",
     github: "https://github.com/alfredang/phonicsapp",
   },
+  {
+    id: "hrms",
+    name: "Tertiary HRMS",
+    tagline: "Your HR portal, in your pocket",
+    category: "Business · HR",
+    blurb:
+      "The native iPhone companion to the Tertiary HRMS portal — check leave balances, request leave, view payslips, browse the team directory and track expenses, all from your phone.",
+    about: [
+      "Tertiary HRMS is the native iPhone client for the Tertiary Infotech HR Management System. Sign in securely with email and password or OTP, then see your leave balances, expense claims and pending approvals at a glance on the dashboard.",
+      "Request leave with automatic working-day calculation, open authenticated payslips in a built-in PDF viewer, browse the team directory with richer details for managers, and review holidays, events and approved leave by month — plus weekly timesheets and your full employee profile. A genuine native SwiftUI app talking to the same secure backend that powers the HRMS web portal.",
+    ],
+    highlights: [
+      "Secure email/password or OTP sign-in with session persistence",
+      "Dashboard — leave balances, expenses and approval queues",
+      "Request leave with automatic working-day calculation",
+      "Native PDF payslips, team directory, calendar and timesheet",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · MVVM · PDFKit",
+    accent: "blue",
+    ios: "https://apps.apple.com/app/tertiary-hrms/id6759821144",
+    github: "https://github.com/alfredang/hrmsapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {

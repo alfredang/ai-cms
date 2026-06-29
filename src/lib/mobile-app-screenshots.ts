@@ -97,4 +97,12 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/32/06/b7/3206b7d1-6edd-b6fe-009b-5deb989b2ff9/4-minimalpairs.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/84/71/63/847163b3-6553-1564-9548-c1709e2e0f6f/5-phonemelist.png/600x1300bb.webp",
   ],
+  hrms: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/11/13/23/111323c3-3364-5041-39bc-7e18443bdc88/01-dashboard.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/0c/3e/6d/0c3e6d8e-8c78-553e-6d1f-89ec85bbea76/02-leave.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/63/74/82/6374820f-119e-f2fe-c476-a054b6c0c2b9/03-team.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/52/0d/42/520d4201-8db8-6a6c-79e3-5babd8a666c3/04-payslips.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d0/e6/90/d0e6909f-5b22-f89a-7696-1cbf60466e0f/05-calendar.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d2/23/dc/d223dc75-c1d5-e4fd-1b0d-5935c5534756/06-profile.png/600x1300bb.webp",
+  ],
 };
