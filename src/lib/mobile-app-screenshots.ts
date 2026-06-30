@@ -109,4 +109,10 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/b6/19/49/b61949ba-36b4-5544-154a-483f437a43c7/iph69_1_light.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fc/ef/6a/fcef6a07-0ff6-3de9-7eac-3e6ab0eab481/iph69_2_dark.png/600x1300bb.webp",
   ],
+  wifispeed: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/2d/6e/ff/2d6effd0-1252-7eaa-0173-a871669de3a3/02_result.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/69/1b/b4/691bb484-9391-8e57-352f-7ae531c189b6/05_history.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d9/e6/8b/d9e68b2d-4980-4da3-6f6a-5d0d824871b2/03_about.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/94/47/b4/9447b4a2-3194-01b6-e4e2-5f53ad6d3c2b/04_feedback.png/600x1300bb.webp",
+  ],
 };

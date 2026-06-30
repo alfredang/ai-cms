@@ -562,6 +562,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/us/app/tertiary-markdown/id6782659815",
     github: "https://github.com/alfredang/markdownapp",
   },
+  {
+    id: "wifispeed",
+    name: "Tertiary WiFi Speed",
+    tagline: "Test your internet speed",
+    category: "Utilities",
+    blurb:
+      "A native internet speed test for iPhone — measure real download and upload throughput, ping and jitter with a live animated gauge, on-device history and Wi-Fi vs cellular awareness.",
+    about: [
+      "Tertiary WiFi Speed measures your real internet performance — download and upload throughput, ping latency and jitter — by fanning out multiple parallel connections for an accurate reading. A live animated gauge shows your speed in real time as the test runs, and every result is saved to on-device history so you can compare connections over time.",
+      "The app is connection-aware: it distinguishes Wi-Fi from cellular and flags metered links, and runs its tests against Cloudflare's public speed-test infrastructure with all measurement calculated locally. A native SwiftUI iPhone app built on Swift concurrency and the Network framework, with a built-in WhatsApp feedback option.",
+    ],
+    highlights: [
+      "Real download and upload throughput via parallel connections",
+      "Live animated gauge with ping and jitter",
+      "On-device history to compare results over time",
+      "Wi-Fi vs cellular awareness and metered-link flagging",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · Network framework · Cloudflare",
+    accent: "green",
+    ios: "https://apps.apple.com/us/app/tertiary-wifi-speed/id6783438022",
+    github: "https://github.com/alfredang/wifispeedapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
