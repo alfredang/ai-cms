@@ -105,4 +105,8 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d0/e6/90/d0e6909f-5b22-f89a-7696-1cbf60466e0f/05-calendar.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d2/23/dc/d223dc75-c1d5-e4fd-1b0d-5935c5534756/06-profile.png/600x1300bb.webp",
   ],
+  markdown: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/b6/19/49/b61949ba-36b4-5544-154a-483f437a43c7/iph69_1_light.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fc/ef/6a/fcef6a07-0ff6-3de9-7eac-3e6ab0eab481/iph69_2_dark.png/600x1300bb.webp",
+  ],
 };

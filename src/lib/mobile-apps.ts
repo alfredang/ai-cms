@@ -539,6 +539,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/tertiary-hrms/id6759821144",
     github: "https://github.com/alfredang/hrmsapp",
   },
+  {
+    id: "markdown",
+    name: "Tertiary Markdown",
+    tagline: "Obsidian-compatible Markdown notes",
+    category: "Productivity",
+    blurb:
+      "A native Markdown editor for iPhone, iPad and Mac — edit, split and preview notes stored as plain .md files in Obsidian-compatible vaults, fully offline with no proprietary lock-in.",
+    about: [
+      "Tertiary Markdown is a native note-taking app that keeps your notes as plain .md files in local folders, compatible with Obsidian vaults — no proprietary format, no lock-in. Switch between Edit, Split and Preview modes with autosave, manage notes through a sidebar file tree, and render images, tables, checklists, code blocks and headings with a custom, dependency-free Markdown engine.",
+      "On Mac it opens into a VS Code-style workspace with an activity bar, explorer, editor and embedded tabbed terminals (powered by SwiftTerm), plus slash commands for inserting snippets and an extension marketplace including GitHub integration and an LLM-powered wiki. Built from a single SwiftUI codebase for macOS, iPad and iPhone, and fully offline on-device.",
+    ],
+    highlights: [
+      "Edit, Split and Preview modes with autosave",
+      "Plain .md files in Obsidian-compatible vaults — no lock-in",
+      "Sidebar file tree, slash commands and interactive checkboxes",
+      "Mac workspace with embedded terminals; fully offline",
+    ],
+    platform: "iPhone, iPad & Mac",
+    tech: "SwiftUI · NSTextView · SwiftTerm",
+    accent: "cyan",
+    ios: "https://apps.apple.com/us/app/tertiary-markdown/id6782659815",
+    github: "https://github.com/alfredang/markdownapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
