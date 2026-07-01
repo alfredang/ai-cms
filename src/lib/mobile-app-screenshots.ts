@@ -115,4 +115,16 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d9/e6/8b/d9e68b2d-4980-4da3-6f6a-5d0d824871b2/03_about.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/94/47/b4/9447b4a2-3194-01b6-e4e2-5f53ad6d3c2b/04_feedback.png/600x1300bb.webp",
   ],
+  daodejing: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ae/4b/c4/ae4bc453-5d54-7732-e87c-07c63d18cbe2/01-home.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/5b/ce/c0/5bcec0ff-7d24-d601-31ce-8bd26d8f4a9d/02-chapter1.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/85/cb/eb/85cbeb4c-dd2a-0d1c-67e8-dd78a99ffd19/03-chapter8.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/61/25/37/61253779-4f6c-9b88-5b84-a686cd18f907/04-about.png/600x1300bb.webp",
+  ],
+  diamondsutra: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/5f/59/46/5f59464c-502a-5522-ddb0-e5c37b2c1f13/asc_01_home.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/4b/0d/26/4b0d2683-6dca-8faf-d1ec-ef9d097436c5/asc_02_reader.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/fe/f8/44/fef8440e-cb20-0c88-26da-0277ce46b8ca/asc_03_about.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/67/e8/05/67e80578-20d5-f626-eaee-517c48e1b9dc/asc_04_feedback.png/600x1300bb.webp",
+  ],
 };

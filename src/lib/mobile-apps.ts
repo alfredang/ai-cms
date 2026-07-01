@@ -585,6 +585,52 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/us/app/tertiary-wifi-speed/id6783438022",
     github: "https://github.com/alfredang/wifispeedapp",
   },
+  {
+    id: "daodejing",
+    name: "Dao De Jing 道德经",
+    tagline: "Laozi's classic, read and heard",
+    category: "Books · Reference",
+    blurb:
+      "A native iPhone reader for Laozi's Dao De Jing — the original classical Chinese paired with modern explanations, plus offline Mandarin narration. Fully offline, no accounts, no tracking.",
+    about: [
+      "Dao De Jing 道德经 is a native iPhone reader for Laozi's classical Daoist text, organised into six thematic sections that move from the foundational principles and the nature of the Dao through personal cultivation, virtue, governance and practical wisdom. Every passage pairs the original classical Chinese with a clear modern-Chinese explanation, so the text stays approachable without losing its source.",
+      "Built-in Mandarin text-to-speech reads any passage aloud with adjustable speed using Apple's on-device speech synthesiser, so the whole app works completely offline — no network, no accounts and no data collection. A native SwiftUI app with a Read / Feedback / About bottom navigation and semantic colours that adapt to light and dark mode.",
+    ],
+    highlights: [
+      "Six thematic sections covering the full text",
+      "Original classical Chinese paired with modern explanations",
+      "Offline Mandarin narration with adjustable speed",
+      "Fully offline — no accounts, no data collection",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · AVSpeechSynthesizer · NavigationStack",
+    accent: "amber",
+    ios: "https://apps.apple.com/us/app/dao-de-jing-%E9%81%93%E5%BE%B7%E7%BB%8F/id6784239162",
+    github: "https://github.com/alfredang/daodejingapp",
+  },
+  {
+    id: "diamondsutra",
+    name: "Diamond Sutra 金刚经",
+    tagline: "The full sutra, read and recited",
+    category: "Books · Reference",
+    blurb:
+      "A native iPhone and iPad reader for the complete 32-chapter Diamond Sutra — with Mandarin narration, live sentence highlighting, a recitation counter and daily reminders. Fully offline.",
+    about: [
+      "Diamond Sutra 金刚经 is a native reader for the complete Buddhist scripture across all 32 chapters, with chapter-by-chapter or continuous full-text reading and full-text search. Mandarin text-to-speech narrates any passage with live sentence highlighting and adjustable speed, so you can follow along as it reads.",
+      "A built-in recitation counter tracks your daily and lifetime totals against a target you set, while bookmarks, per-chapter progress indicators and daily verse reminders help build a steady practice. Adjustable text size and light/dark themes round it out — a universal SwiftUI app for iPhone and iPad that runs completely offline with no data collection.",
+    ],
+    highlights: [
+      "Complete 32-chapter text with full-text search",
+      "Mandarin narration with live sentence highlighting",
+      "Recitation counter with daily and lifetime totals",
+      "Bookmarks, progress tracking and daily reminders",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI · AVSpeechSynthesizer · UserNotifications",
+    accent: "purple",
+    ios: "https://apps.apple.com/us/app/diamond-sutra-%E9%87%91%E5%88%9A%E7%BB%8F/id6784362803",
+    github: "https://github.com/alfredang/jinganjinapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
