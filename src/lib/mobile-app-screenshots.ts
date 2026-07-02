@@ -127,4 +127,7 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/fe/f8/44/fef8440e-cb20-0c88-26da-0277ce46b8ca/asc_03_about.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/67/e8/05/67e80578-20d5-f626-eaee-517c48e1b9dc/asc_04_feedback.png/600x1300bb.webp",
   ],
+  weather: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/b5/44/16/b544169f-f622-54d5-8271-049518c67804/01-search-65.png/600x1300bb.webp",
+  ],
 };

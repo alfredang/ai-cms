@@ -631,6 +631,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/us/app/diamond-sutra-%E9%87%91%E5%88%9A%E7%BB%8F/id6784362803",
     github: "https://github.com/alfredang/jinganjinapp",
   },
+  {
+    id: "weather",
+    name: "Tertiary Weather",
+    tagline: "Current conditions, anywhere",
+    category: "Weather",
+    blurb:
+      "A fast, clean native weather app for iPhone and iPad — search any city worldwide for live temperature, feels-like, humidity, wind and sky conditions, pinned on an interactive Apple Map.",
+    about: [
+      "Tertiary Weather is a fast, clean way to check current conditions anywhere in the world. Search for any city, town or place and instantly see the temperature, apparent (\"feels like\") temperature, humidity, wind speed and a clear sky-condition summary with day- and night-aware icons — with the exact location pinned on an interactive Apple Map.",
+      "A genuine native SwiftUI app for iPhone and iPad, it pulls live data from the free Open-Meteo API over async/await URLSession, uses MapKit for the location view, and ships with full light/dark mode, Dynamic Type, VoiceOver support and a Weather / Feedback / About bottom navigation.",
+    ],
+    highlights: [
+      "Search any city or place worldwide",
+      "Temperature, feels-like, humidity, wind and sky conditions",
+      "Location pinned on an interactive Apple Map",
+      "Native SwiftUI with full light and dark mode",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI · MapKit · Open-Meteo",
+    accent: "blue",
+    ios: "https://apps.apple.com/us/app/tertiary-weather/id6785375222",
+    github: "https://github.com/alfredang/weatherapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
