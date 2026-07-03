@@ -130,4 +130,7 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
   weather: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/b5/44/16/b544169f-f622-54d5-8271-049518c67804/01-search-65.png/600x1300bb.webp",
   ],
+  planner: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/41/a4/e2/41a4e2c4-c0e8-6ea8-8fce-ed265d5a1d55/appstore_65_1.png/600x1300bb.webp",
+  ],
 };

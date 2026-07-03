@@ -654,6 +654,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/us/app/tertiary-weather/id6785375222",
     github: "https://github.com/alfredang/weatherapp",
   },
+  {
+    id: "planner",
+    name: "Tertiary Planner",
+    tagline: "Talk to plan your day",
+    category: "Productivity",
+    blurb:
+      "A fast, private to-do and planner for iPhone with a chat-style assistant — type or speak your intent and Apple Intelligence drafts a clean to-do or appointment on-device. Nothing leaves your phone.",
+    about: [
+      "Tertiary Planner turns a sentence into a plan. Tell it what you need to do — by text or voice — and a chat-style assistant drafts a nicely worded to-do or appointment and saves it instantly. On supported devices it uses Apple Intelligence running entirely on-device to understand your intent; on others the same job is done by Apple's Natural Language and Speech frameworks, so nothing you type or say ever leaves your phone to any third party.",
+      "To-dos and appointments live together in one clean list with a built-in calendar that shows your day, checked-off items auto-archive (and can be restored or cleared anytime), and everything syncs through your own private iCloud database. A genuine native SwiftUI app built on SwiftData + CloudKit with full light and dark mode — no accounts, no tracking, no third-party AI.",
+    ],
+    highlights: [
+      "Chat-style assistant — type or speak, get a clean item",
+      "Apple Intelligence intent understanding, fully on-device",
+      "To-dos and appointments together with a built-in calendar",
+      "Private iCloud sync — no accounts, no tracking",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · Apple Intelligence · SwiftData + CloudKit",
+    accent: "cyan",
+    ios: "https://apps.apple.com/app/tertiary-planner/id6785397240",
+    github: "https://github.com/alfredang/plannerapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
