@@ -133,4 +133,7 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
   planner: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/41/a4/e2/41a4e2c4-c0e8-6ea8-8fce-ed265d5a1d55/appstore_65_1.png/600x1300bb.webp",
   ],
+  sgevcharging: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e5/34/2c/e5342c15-ef4a-c970-487b-44c4791c5b81/iphone_65_1242x2688.png/600x1300bb.webp",
+  ],
 };

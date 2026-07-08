@@ -677,6 +677,29 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/tertiary-planner/id6785397240",
     github: "https://github.com/alfredang/plannerapp",
   },
+  {
+    id: "sgevcharging",
+    name: "SG EV Charging",
+    tagline: "Find Singapore EV chargers",
+    category: "Navigation",
+    blurb:
+      "Locate electric-vehicle charging points across Singapore on a map-first native app — powered by live LTA DataMall data, with connector availability, plug types, charging speeds and Apple Maps directions.",
+    about: [
+      "SG EV Charging helps EV drivers in Singapore find a place to charge, fast. It pulls live charging-point data from LTA DataMall and plots it on an interactive Apple Map centred on your current location, a postal code, or any place you search — highlighting the nearest charger and ranking the rest by distance.",
+      "Tap a charging point to see its available connectors, plug types, power ratings, operator and the last-updated time from the LTA feed, then get turn-by-turn driving directions straight through Apple Maps. A genuine native SwiftUI app for iPhone and iPad built on MapKit and CoreLocation, with a clean map-first workflow for quick station switching.",
+    ],
+    highlights: [
+      "Live LTA DataMall charging-point data for Singapore",
+      "Nearest charger by current location, postal code or search",
+      "Connector availability, plug type, power rating and operator",
+      "Apple Maps driving directions to any charging point",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI · MapKit · LTA DataMall",
+    accent: "green",
+    ios: "https://apps.apple.com/app/sg-ev-charging/id6782317854",
+    github: "https://github.com/alfredang/sgevchargingapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
