@@ -700,6 +700,30 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/sg-ev-charging/id6782317854",
     github: "https://github.com/alfredang/sgevchargingapp",
   },
+  {
+    id: "travelexpense",
+    name: "Tertiary Travel Expense",
+    tagline: "Track trip spending by voice",
+    category: "Finance · Travel",
+    blurb:
+      "Log a travel expense by typing or speaking one sentence — on-device Apple Intelligence words it cleanly, live ECB rates convert it to your home currency, and a MapKit itinerary planner rounds out the trip.",
+    about: [
+      "Tertiary Travel Expense is the fastest way to track spending on a trip. Tell the built-in assistant what you spent — by typing or dictating a single sentence like \"Ramen lunch 1200 yen at Ichiran Shibuya\" — and the expense is logged, worded nicely, and converted to your home currency in one step. Foreign price and home-currency price sit side by side using European Central Bank reference rates across 30+ currencies, with the trip total grouped by day.",
+      "Apple Intelligence Foundation Models phrase each entry entirely on-device, so nothing leaves your iPhone. Purchases can carry the shop or place they happened at and open in Apple Maps with one tap, and a MapKit itinerary planner lets you plan stops day by day with real place search and directions. A native SwiftUI app built on SwiftData with iCloud sync — no account, no ads, no tracking.",
+    ],
+    highlights: [
+      "Chat-style entry — type or dictate an expense in one sentence",
+      "On-device Apple Intelligence wording, nothing leaves your iPhone",
+      "Live ECB rates convert 30+ currencies to your home currency",
+      "MapKit itinerary planner and Apple Maps purchase locations",
+      "iCloud sync with no account, no ads and no tracking",
+    ],
+    platform: "iPhone & iPad",
+    tech: "SwiftUI · SwiftData · Apple Intelligence · MapKit",
+    accent: "amber",
+    ios: "https://apps.apple.com/app/tertiary-travel-expense/id6786986762",
+    github: "https://github.com/alfredang/travelexpensetrackingapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {

@@ -136,4 +136,9 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
   sgevcharging: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e5/34/2c/e5342c15-ef4a-c970-487b-44c4791c5b81/iphone_65_1242x2688.png/600x1300bb.webp",
   ],
+  travelexpense: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/7d/56/e8/7d56e8c4-37ec-3c0f-b65a-6e414dfd328c/1-assistant.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/76/2a/9d/762a9db0-89a3-7d25-cf00-ed127e5821e0/2-expenses.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d5/c3/1c/d5c31c77-3e4c-945b-7b84-fbc80df94e13/3-itinerary.png/600x1300bb.webp",
+  ],
 };
