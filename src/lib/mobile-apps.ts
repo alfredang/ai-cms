@@ -724,6 +724,30 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/tertiary-travel-expense/id6786986762",
     github: "https://github.com/alfredang/travelexpensetrackingapp",
   },
+  {
+    id: "tertiarycourses",
+    name: "Tertiary Courses",
+    tagline: "WSQ courses and grant estimates",
+    category: "Education · Training",
+    blurb:
+      "The official companion app for Tertiary Courses Singapore — browse the WSQ-certified course catalogue with TGS codes, fees and funding badges, then estimate your SSG grant in seconds.",
+    about: [
+      "Tertiary Courses is the official companion app for Tertiary Courses Singapore, a leading SkillsFuture Singapore approved training provider. Browse WSQ-certified courses across programming, data analytics, cybersecurity and automation, each showing its TGS course code, duration, fees before and with GST, and learning outcomes — with WSQ, SFC, SFEC, PSEA and UTAP badges making funding eligibility clear at a glance.",
+      "A built-in grant calculator estimates your SSG subsidy in seconds: the 50% baseline for Singapore Citizens below 40, the 70% enhanced MCES rate for those 40 and above, 50% for Singapore PRs and 70% for SME employer-sponsored learners. GST is always computed on the original course fee, and entering your SkillsFuture Credit reveals the net fee payable. Enquiries reach the team by WhatsApp, phone or email straight from the app.",
+    ],
+    highlights: [
+      "Browse the WSQ-certified catalogue with TGS codes and fees",
+      "WSQ, SFC, SFEC, PSEA and UTAP funding badges at a glance",
+      "Grant calculator covering baseline, MCES, PR and SME rates",
+      "Apply SkillsFuture Credit to see the net fee payable",
+      "Enquire by WhatsApp, phone or email from the app",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI · XcodeGen",
+    accent: "purple",
+    ios: "https://apps.apple.com/app/tertiary-courses/id6787036413",
+    github: "https://github.com/alfredang/tertiarycoursesapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {

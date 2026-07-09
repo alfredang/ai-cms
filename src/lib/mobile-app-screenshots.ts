@@ -136,6 +136,12 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
   sgevcharging: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e5/34/2c/e5342c15-ef4a-c970-487b-44c4791c5b81/iphone_65_1242x2688.png/600x1300bb.webp",
   ],
+  tertiarycourses: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bf/ee/ae/bfeeaeca-9624-09ce-b370-c7b1a469e431/01-catalog.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/16/6d/ad/166dad27-c238-9cfe-4031-e39ab1eb83f2/02-grant-calculator.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/81/e9/75/81e975cc-e125-a863-6137-210412a122f9/03-feedback.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d8/a7/c9/d8a7c968-4420-7bf0-4850-bbbebc6dd203/04-about.png/600x1300bb.webp",
+  ],
   travelexpense: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/7d/56/e8/7d56e8c4-37ec-3c0f-b65a-6e414dfd328c/1-assistant.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/76/2a/9d/762a9db0-89a3-7d25-cf00-ed127e5821e0/2-expenses.png/600x1300bb.webp",
