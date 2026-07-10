@@ -74,7 +74,7 @@ export const MOBILE_APPS: MobileApp[] = [
     platform: "iPhone",
     tech: "SwiftUI · CoreLocation · LTA DataMall",
     accent: "cyan",
-    ios: "https://apps.apple.com/app/sgmrt/id6781980848",
+    ios: "https://apps.apple.com/sg/app/sgmrt/id6781980848",
     github: "https://github.com/alfredang/sgmrtapp",
   },
   {
@@ -467,7 +467,7 @@ export const MOBILE_APPS: MobileApp[] = [
     platform: "iPhone",
     tech: "SwiftUI · MapKit · CloudKit",
     accent: "green",
-    ios: "https://apps.apple.com/app/id6782157783",
+    ios: "https://apps.apple.com/sg/app/freefood-share-leftovers/id6782157783",
     github: "https://github.com/alfredang/freefoodapp",
   },
   {
@@ -490,7 +490,7 @@ export const MOBILE_APPS: MobileApp[] = [
     platform: "iPhone",
     tech: "SwiftUI · LTA DataMall",
     accent: "cyan",
-    ios: "https://apps.apple.com/app/id6781785702",
+    ios: "https://apps.apple.com/sg/app/sg-carpark-live/id6781785702",
     github: "https://github.com/alfredang/sgcarparkapp",
   },
   {
@@ -536,7 +536,7 @@ export const MOBILE_APPS: MobileApp[] = [
     platform: "iPhone",
     tech: "SwiftUI · MVVM · PDFKit",
     accent: "blue",
-    ios: "https://apps.apple.com/app/tertiary-hrms/id6759821144",
+    ios: "https://apps.apple.com/sg/app/tertiary-hrms/id6759821144",
     github: "https://github.com/alfredang/hrmsapp",
   },
   {
@@ -769,8 +769,8 @@ export const MOBILE_APPS: MobileApp[] = [
     platform: "iPhone",
     tech: "SwiftUI",
     accent: "blue",
-    ios: "https://apps.apple.com/app/tertiary-sgtutors/id6787160558",
-    github: "https://github.com/alfredang/sgtutors",
+    ios: "https://apps.apple.com/sg/app/tertiary-sgtutors/id6787160558",
+    github: "https://github.com/alfredang/sgtutorsapp",
   },
   {
     id: "localtourguides",
@@ -793,7 +793,7 @@ export const MOBILE_APPS: MobileApp[] = [
     platform: "iPhone",
     tech: "SwiftUI",
     accent: "amber",
-    ios: "https://apps.apple.com/app/localtourguides/id6787895187",
+    ios: "https://apps.apple.com/sg/app/localtourguides/id6787895187",
     github: "https://github.com/alfredang/localtourguidesapp",
   },
 ];
