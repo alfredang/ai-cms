@@ -94,7 +94,7 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close WhatsApp menu" : "Chat on WhatsApp"}
         aria-expanded={open}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#0B6E4F] shadow-[0_8px_30px_rgba(11,110,79,0.45)] flex items-center justify-center hover:scale-105 transition"
+        className="wa-launcher fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#0B6E4F] shadow-[0_8px_30px_rgba(11,110,79,0.45)] flex items-center justify-center hover:scale-105 transition"
       >
         {open ? (
           <HiXMark className="w-7 h-7 text-white" />

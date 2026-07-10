@@ -30,7 +30,7 @@ AI-Powered CMS is a production-grade marketing platform built on Next.js 16, eng
 
 Frontend and backend are fully **customizable** from the admin — hero copy, KPI cards, section headings, service-page content, FAQs, menu, social links, brand identity — all editable without redeploys. AI-driven content generation is built in: admin **AI Assist** drafts, rewrites, summarizes and proposes SEO metadata; the public **AI chatbot** answers visitor questions with your FAQ as authoritative context. All AI is powered by your **Claude subscription OAuth token** through the official Claude Agent SDK — **no metered API billing, no vendor lock-in**.
 
-Built for Tertiary Infotech Pte Ltd, the codebase is structured to be re-used as a starting point for any marketing site that needs a real CMS, SEO, lead-gen, and AI authoring.
+Built for Tertiary Infotech Academy, the codebase is structured to be re-used as a starting point for any marketing site that needs a real CMS, SEO, lead-gen, and AI authoring.
 
 ## Key Features
 
@@ -45,7 +45,8 @@ Built for Tertiary Infotech Pte Ltd, the codebase is structured to be re-used as
 
 ### Lead generation in every page
 - **Dedicated service landing pages** with visual 5-step timeline, sticky lead form, FAQ accordion, benefits grid
-- **Persistent CTAs** — sticky Get-a-Quote button (desktop), tap-to-call + WhatsApp icons (mobile), AI chatbot above the fold
+- **Persistent CTAs** — sticky Get-a-Quote button (desktop), tap-to-call + WhatsApp icons (mobile), floating WhatsApp widget above the fold
+- **Floating WhatsApp widget** ([src/components/ui/WhatsAppWidget.tsx](src/components/ui/WhatsAppWidget.tsx)) — an attention-pulsing launcher (halo pulse + expanding ripple ring, paused on hover/open and disabled under `prefers-reduced-motion`) opens a one-tap topic picker; each chip deep-links to `wa.me` with a pre-filled message. Hidden on `/admin/*`
 - **Source-tagged forms** — every form POSTs to `/api/contact` with a `source` label so leads are attributable per page
 - **Gmail OAuth2 notification pipeline** — every submission lands in `/admin/leads` *and* emails sales in under 1 second
 - **Lead-magnet skill** — built-in conventions for ICP targeting, form-field rules, page anatomy
@@ -65,7 +66,7 @@ Built for Tertiary Infotech Pte Ltd, the codebase is structured to be re-used as
 - **Local ⇄ Remote DB sync** — push menus, settings, pages, posts, taxonomy from local to production via a bearer-token API (preserving `createdAt`); pull leads from production back to local (`scripts/pull-leads.ts`); idempotent prod-side schema migration runner at `POST /api/admin/sync/migrate`
 
 ### AI built in — Nemo self-improving lead-gen chatbot + Admin AI Assist
-- **Nemo AI chatbot** on every public page — branded floating widget that answers visitor questions about your services and routes warm leads to your contact form
+- **Nemo AI chatbot** — branded floating widget that answers questions about your services and routes warm leads to your contact form. It now lives in the `/admin` back office ([src/app/admin/layout.tsx](src/app/admin/layout.tsx)); the customer-facing site fronts the WhatsApp widget instead
 - **Self-improving loop** ([src/lib/nemo-reflect.ts](src/lib/nemo-reflect.ts)) — after every captured lead, Nemo replays the transcript through the Claude Agent SDK, extracts ONE concrete tactical lesson (or skips if already optimal), and appends it to the `chat:nemo_lessons` DB row. The next visitor's system prompt includes the growing lessons list, so each new conversation is coached toward a higher lead score. Capped at 25 lessons, deduped, fire-and-forget so the chat response stays snappy.
 - **Mission file at the repo root** ([NEMO.md](NEMO.md)) — mission, five qualification signals (interest / use-case / budget / timeline / implementation), and curated seed lessons. Loaded into the system prompt verbatim every turn.
 - **Knowledge base + live CMS awareness** — a curated [src/lib/chatbot-knowledge.md](src/lib/chatbot-knowledge.md) covers the AI + SSG service lines with indicative pricing, and `getCmsKnowledgeSnippet()` injects up to 40 published pages + 20 most recent blog posts (5-min TTL) so Nemo can cite and link to live on-site content
@@ -77,7 +78,7 @@ Built for Tertiary Infotech Pte Ltd, the codebase is structured to be re-used as
   - **FAQ matcher** — substring + 60% token-overlap match against admin-configured FAQ → instant DB lookup
   - **Agent SDK fallback** — anything not matched falls through to Claude with `maxTurns: 1` and tools disabled
 - **System prompt + FAQ editable in `/admin/settings/chatbot`** with `{COMPANY_NAME}`, `{COMPANY_EMAIL}`, `{COMPANY_UEN}` placeholders auto-resolved at chat time
-- **Hidden on `/admin/*` routes** — Nemo is a customer-facing widget; it never appears in the back office
+- **Mounted on `/admin/*` routes** — Nemo is rendered from the admin layout; the public site's floating widget is WhatsApp
 - **Admin AI Assist** — `Draft post`, `Rewrite`, `Summarize`, `Suggest SEO meta` powered by the same Claude Agent SDK
 - **Subscription-only — no metered API**: the only LLM path in the codebase is `@anthropic-ai/claude-agent-sdk` authenticated with a `sk-ant-oat-*` OAuth subscription token. No `sk-ant-api-*` keys, no `https://api.anthropic.com` calls — see [CLAUDE.md](CLAUDE.md) for the policy
 - **Production-safe SDK bundling** — `next.config.ts` force-includes `node_modules/@anthropic-ai/**` via `outputFileTracingIncludes` so the native CLI binary (linux-x64 / arm64) ships in the standalone Docker image
@@ -163,8 +164,10 @@ npm run dev
 ```
 
 Visit:
-- `http://localhost:3000` — public site
-- `http://localhost:3000/admin` — admin (redirects to `/admin/login`)
+- `http://localhost:3070` — public site
+- `http://localhost:3070/admin` — admin (redirects to `/admin/login`)
+
+> This project runs on **port 3070**, not Next's default 3000. `AUTH_URL` and `NEXT_PUBLIC_SITE_URL` in `.env` must agree with it or Auth.js will issue cookies for the wrong host.
 
 ## Configuring AI Chatbot (public chatbot)
 
@@ -209,7 +212,7 @@ src/
     layout/                   Navbar, Footer (DB-driven menus), Container
     sections/                 Hero · AILmsTmsShowcase · ELearningShowcase · EdToolsShowcase · Services · WhyChooseUs · FeaturedPosts · ContactForm
     admin/                    Editor, PostEditorForm, AIAssistButton, MediaUploader, CredentialsForm
-    ui/                       ChatBot (AI Chatbot)
+    ui/                       ChatBot (Nemo, admin-only) · WhatsAppWidget (public, pulsing launcher)
   db/                         Drizzle schema + connection
   lib/
     auth.ts                   Auth.js v5 setup

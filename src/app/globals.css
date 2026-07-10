@@ -300,6 +300,38 @@ body::before {
 }
 .btn-secondary:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(89, 235, 253, 0.4); }
 
+/* Floating WhatsApp launcher — attention pulse + expanding ripple ring */
+.wa-launcher {
+  animation: wa-pulse 2s ease-in-out infinite;
+}
+.wa-launcher::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #0B6E4F;
+  z-index: -1;
+  animation: wa-ring 2s ease-out infinite;
+}
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 8px 30px rgba(11, 110, 79, 0.45), 0 0 0 0 rgba(11, 110, 79, 0.55); }
+  50%      { box-shadow: 0 8px 30px rgba(11, 110, 79, 0.45), 0 0 0 10px rgba(11, 110, 79, 0); }
+}
+@keyframes wa-ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+/* Stop competing for attention once the user engages */
+.wa-launcher:hover,
+.wa-launcher[aria-expanded="true"] { animation: none; }
+.wa-launcher:hover::before,
+.wa-launcher[aria-expanded="true"]::before { animation: none; opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .wa-launcher,
+  .wa-launcher::before { animation: none; }
+  .wa-launcher::before { opacity: 0; }
+}
+
 .reveal { animation: reveal-up 600ms cubic-bezier(.22,.61,.36,1) both; }
 .reveal-d1 { animation-delay: 80ms; }
 .reveal-d2 { animation-delay: 160ms; }
