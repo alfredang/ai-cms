@@ -136,6 +136,12 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
   sgevcharging: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e5/34/2c/e5342c15-ef4a-c970-487b-44c4791c5b81/iphone_65_1242x2688.png/600x1300bb.webp",
   ],
+  sgtutors: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/46/4b/db/464bdb08-e5ed-d630-0370-848d02ca219c/1-home.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/73/86/c2/7386c2f6-e73c-a27f-6a91-063bc32489cf/2-detail.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/8c/5e/2b/8c5e2b48-0c50-29ce-ded2-1437b9e32161/3-enquiry.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ce/6f/9a/ce6f9a72-a688-e584-179e-69e6c4afafed/4-home-dark.png/600x1300bb.webp",
+  ],
   tertiarycourses: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bf/ee/ae/bfeeaeca-9624-09ce-b370-c7b1a469e431/01-catalog.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/16/6d/ad/166dad27-c238-9cfe-4031-e39ab1eb83f2/02-grant-calculator.png/600x1300bb.webp",

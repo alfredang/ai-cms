@@ -748,6 +748,30 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/tertiary-courses/id6787036413",
     github: "https://github.com/alfredang/tertiarycoursesapp",
   },
+  {
+    id: "sgtutors",
+    name: "Tertiary SGTutors",
+    tagline: "Find a verified home tutor in Singapore",
+    category: "Education · Marketplace",
+    blurb:
+      "Browse verified Singapore home tutors by subject, level, region and gender, read parent reviews, and enquire directly — no account, no login, no tracking.",
+    about: [
+      "Tertiary SGTutors helps students and parents in Singapore find the right home tutor in minutes. Search by name, subject or keyword, then narrow the list by subject, level from Primary to Junior College, region and gender. Every tutor profile carries their qualifications, years of experience, students taught, ratings and reviews from other parents.",
+      "Verified tutors have passed identity checks and a qualification review, so families can engage with confidence, and featured tutors surface experienced, highly-rated educators first. Enquiries go straight from the app to the tutor, who replies to you directly — there is no account to create, no login and no tracking. Tutor data is served live from the sgtutors.tertiaryinfotech.com marketplace.",
+    ],
+    highlights: [
+      "Search tutors by name, subject or keyword",
+      "Filter by subject, level, region and gender",
+      "Verified badges on identity-checked tutors",
+      "Parent reviews, qualifications and experience on every profile",
+      "Enquire straight from the app — no account, no login, no tracking",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI",
+    accent: "blue",
+    ios: "https://apps.apple.com/app/tertiary-sgtutors/id6787160558",
+    github: "https://github.com/alfredang/sgtutors",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
