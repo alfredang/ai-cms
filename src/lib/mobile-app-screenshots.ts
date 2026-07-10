@@ -142,6 +142,12 @@ export const APP_SCREENSHOTS: Record<string, string[]> = {
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/8c/5e/2b/8c5e2b48-0c50-29ce-ded2-1437b9e32161/3-enquiry.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ce/6f/9a/ce6f9a72-a688-e584-179e-69e6c4afafed/4-home-dark.png/600x1300bb.webp",
   ],
+  localtourguides: [
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/96/3f/ca/963fcaa3-46ff-9b5c-3586-8d4708a861be/ltg-01-explore.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/fc/94/d6/fc94d684-7492-a8e6-6cab-9abfddcf14b5/ltg-02-guide.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/70/35/f4/7035f451-7209-61f1-4239-1ca661be499c/ltg-03-itinerary.png/600x1300bb.webp",
+    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d3/a4/dd/d3a4ddc4-bb3b-6899-3253-324d768f4b95/ltg-04-enquiry.png/600x1300bb.webp",
+  ],
   tertiarycourses: [
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bf/ee/ae/bfeeaeca-9624-09ce-b370-c7b1a469e431/01-catalog.png/600x1300bb.webp",
     "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/16/6d/ad/166dad27-c238-9cfe-4031-e39ab1eb83f2/02-grant-calculator.png/600x1300bb.webp",

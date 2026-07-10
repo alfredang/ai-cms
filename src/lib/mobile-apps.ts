@@ -772,6 +772,30 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/app/tertiary-sgtutors/id6787160558",
     github: "https://github.com/alfredang/sgtutors",
   },
+  {
+    id: "localtourguides",
+    name: "LocalTourGuides",
+    tagline: "Explore like a local, with a local",
+    category: "Travel · Marketplace",
+    blurb:
+      "Browse verified local tour guides and their handcrafted itineraries across Singapore, Malaysia, China, Japan and South Korea, then send a free enquiry — no booking fees and no account.",
+    about: [
+      "LocalTourGuides connects travellers with verified local tour guides across Singapore, Malaysia, China, Japan and South Korea. Search and filter guides by country, read their stories, languages and specialties, and see real traveller ratings and reviews before you commit to anything.",
+      "Every guide publishes a full itinerary with stop-by-stop timings, highlights and prices — hawker food trails, heritage walks, temple mornings, night markets and hidden neighbourhoods — so you know exactly what your day looks like. Featured and verified guides rank first, and the green Verified badge means the guide passed identity checks and a live online interview, not just a form submission. Enquiries are free and account-free: send your dates, group size and interests, and your details reach only that guide.",
+    ],
+    highlights: [
+      "Verified guides across Singapore, Malaysia, China, Japan and South Korea",
+      "Trust-first ranking — Verified means identity checks and a live interview",
+      "Full itineraries with stop-by-stop timings, highlights and prices",
+      "Free enquiries — no booking fees, no account, no sign-in",
+      "The Travel Table: city guides and food stories from local guides",
+    ],
+    platform: "iPhone",
+    tech: "SwiftUI",
+    accent: "amber",
+    ios: "https://apps.apple.com/app/localtourguides/id6787895187",
+    github: "https://github.com/alfredang/localtourguidesapp",
+  },
 ];
 
 export function getMobileApp(slug: string): MobileApp | undefined {
