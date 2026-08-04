@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "@/db";
 import { leads } from "@/db/schema";
-import { sendLeadEmail } from "@/lib/email";
+import { sendLeadAutoreply, sendLeadEmail } from "@/lib/email";
 import { verifyTurnstileToken } from "@/lib/turnstile";
 import { checkBlocklist } from "@/lib/lead-blocklist";
 import { computeLeadScore } from "@/lib/lead-score";
@@ -67,19 +67,28 @@ export async function POST(req: Request) {
     score,
   });
 
-  try {
-    await sendLeadEmail({
-      name: data.name,
-      email: data.email,
-      phone: data.phone ?? undefined,
-      company: data.company,
-      message: data.message,
-      source: data.source ?? undefined,
-    });
-  } catch (err) {
-    console.error("[contact] email send failed", err);
-    // Lead is still saved in DB; don't fail the request
-  }
+  const leadPayload = {
+    name: data.name,
+    email: data.email,
+    phone: data.phone ?? undefined,
+    company: data.company,
+    message: data.message,
+    source: data.source ?? undefined,
+  };
+
+  // Internal notification and the enquirer's acknowledgement are sent
+  // independently — a failure in one must not suppress the other, and neither
+  // may fail the request (the lead is already persisted).
+  await Promise.allSettled([
+    sendLeadEmail(leadPayload).catch((err) => {
+      console.error("[contact] notification email failed", err);
+      throw err;
+    }),
+    sendLeadAutoreply(leadPayload).catch((err) => {
+      console.error("[contact] auto-reply email failed", err);
+      throw err;
+    }),
+  ]);
 
   return NextResponse.json({ ok: true });
 }

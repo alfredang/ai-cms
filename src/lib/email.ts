@@ -1,5 +1,10 @@
 import { google } from "googleapis";
-import { getLeadEmailConfig, getLeadSourceLabels, resolveSourceLabel } from "./site-settings";
+import {
+  getLeadAutoreplyConfig,
+  getLeadEmailConfig,
+  getLeadSourceLabels,
+  resolveSourceLabel,
+} from "./site-settings";
 import { getCredential } from "./secrets";
 
 const OAuth2 = google.auth.OAuth2;
@@ -122,6 +127,56 @@ export async function sendLeadEmail(lead: {
     userId: "me",
     requestBody: { raw },
   });
+}
+
+/**
+ * Acknowledgement sent to the person who submitted the form. Unlike the internal
+ * notification, Reply-To points at our own inbox — the recipient IS the lead, so
+ * replies must come back to us.
+ */
+export async function sendLeadAutoreply(lead: {
+  name: string;
+  email: string;
+  company?: string;
+  phone?: string;
+  message: string;
+  source?: string;
+}) {
+  const [cfg, labels, gmailClient] = await Promise.all([
+    getLeadAutoreplyConfig(),
+    getLeadSourceLabels(),
+    getGmailClient(),
+  ]);
+  if (!cfg.enabled) return;
+  const { gmail, user: fromUser } = gmailClient;
+
+  const vars: Record<string, string> = {
+    NAME: lead.name,
+    EMAIL: lead.email,
+    PHONE: lead.phone ?? "",
+    COMPANY: lead.company ?? "",
+    MESSAGE: lead.message,
+    SOURCE: lead.source ?? "",
+    SOURCE_LABEL: resolveSourceLabel(lead.source, labels),
+  };
+
+  const subject = renderTemplate(cfg.subject, vars, { escapeHtml: false });
+  const html = renderTemplate(cfg.body, vars, { escapeHtml: true });
+  const cc = cfg.cc
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const raw = buildRawMessage({
+    from: `"Tertiary Infotech Academy" <${fromUser}>`,
+    to: lead.email,
+    cc,
+    replyTo: fromUser,
+    subject,
+    html,
+  });
+
+  await gmail.users.messages.send({ userId: "me", requestBody: { raw } });
 }
 
 function escape(s: string) {

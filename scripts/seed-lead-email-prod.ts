@@ -10,7 +10,12 @@
  * Falls back to ADMIN_EMAIL + ADMIN_PASSWORD Basic auth if no token.
  */
 
-import { LEAD_EMAIL_DEFAULTS, DEFAULT_LEAD_SOURCE_LABELS, LEAD_SOURCE_LABELS_KEY } from "../src/lib/site-settings";
+import {
+  LEAD_EMAIL_DEFAULTS,
+  LEAD_AUTOREPLY_DEFAULTS,
+  DEFAULT_LEAD_SOURCE_LABELS,
+  LEAD_SOURCE_LABELS_KEY,
+} from "../src/lib/site-settings";
 
 function getAuth(): string {
   const token = process.env.SYNC_API_TOKEN;
@@ -28,6 +33,10 @@ async function main() {
   const entries = [
     { key: "lead_email_subject", value: LEAD_EMAIL_DEFAULTS.subject },
     { key: "lead_email_body", value: LEAD_EMAIL_DEFAULTS.body },
+    { key: "lead_autoreply_enabled", value: LEAD_AUTOREPLY_DEFAULTS.enabled ? "1" : "0" },
+    { key: "lead_autoreply_cc", value: LEAD_AUTOREPLY_DEFAULTS.cc },
+    { key: "lead_autoreply_subject", value: LEAD_AUTOREPLY_DEFAULTS.subject },
+    { key: "lead_autoreply_body", value: LEAD_AUTOREPLY_DEFAULTS.body },
     { key: LEAD_SOURCE_LABELS_KEY, value: DEFAULT_LEAD_SOURCE_LABELS },
   ];
 

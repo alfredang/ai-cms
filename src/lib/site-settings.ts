@@ -43,15 +43,119 @@ export const LEAD_EMAIL_DEFAULTS: LeadEmailConfig = {
   to: "angch@tertiaryinfotech.com",
   cc: "",
   subject: "Lead from {SOURCE_LABEL}: {NAME}",
-  body: `<h2>Lead from {SOURCE_LABEL}</h2>
-<p><strong>Name:</strong> {NAME}</p>
-<p><strong>Email:</strong> <a href="mailto:{EMAIL}">{EMAIL}</a></p>
-<p><strong>Company:</strong> {COMPANY}</p>
-<p><strong>Phone:</strong> {PHONE}</p>
-<p><strong>Source code:</strong> {SOURCE}</p>
-<hr/>
-<p style="white-space:pre-wrap">{MESSAGE}</p>`,
+  body: `<div style="margin:0;padding:24px 12px;background:#f5f7fa;font-family:Arial,Helvetica,sans-serif;">
+  <div style="max-width:640px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+    <div style="background:linear-gradient(135deg,#1e3a8a 0%,#3b64e3 100%);padding:28px 32px;">
+      <div style="color:#c7d5f7;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">Tertiary Infotech Academy</div>
+      <div style="color:#ffffff;font-size:26px;font-weight:bold;">New Lead: {SOURCE_LABEL}</div>
+    </div>
+    <div style="padding:32px;">
+      <table style="width:100%;border-collapse:collapse;font-size:15px;color:#1f2937;">
+        <tr><td style="padding:8px 0;width:110px;font-weight:bold;">Name</td><td style="padding:8px 0;">{NAME}</td></tr>
+        <tr><td style="padding:8px 0;font-weight:bold;">Email</td><td style="padding:8px 0;"><a href="mailto:{EMAIL}" style="color:#2563eb;">{EMAIL}</a></td></tr>
+        <tr><td style="padding:8px 0;font-weight:bold;">Company</td><td style="padding:8px 0;">{COMPANY}</td></tr>
+        <tr><td style="padding:8px 0;font-weight:bold;">Phone</td><td style="padding:8px 0;">{PHONE}</td></tr>
+        <tr><td style="padding:8px 0;font-weight:bold;">Source</td><td style="padding:8px 0;color:#6b7280;">{SOURCE}</td></tr>
+      </table>
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid #e5e7eb;">
+        <div style="font-size:13px;font-weight:bold;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Message</div>
+        <div style="font-size:15px;line-height:1.65;color:#1f2937;white-space:pre-wrap;">{MESSAGE}</div>
+      </div>
+      <div style="margin-top:28px;">
+        <a href="mailto:{EMAIL}" style="display:inline-block;background:#2563eb;color:#ffffff;text-decoration:none;font-size:15px;font-weight:bold;padding:12px 26px;border-radius:8px;">Reply to {NAME}</a>
+      </div>
+    </div>
+    <div style="padding:18px 32px;background:#f9fafb;border-top:1px solid #e5e7eb;color:#6b7280;font-size:12px;line-height:1.6;">
+      Automated lead notification from the contact form on
+      <a href="https://www.tertiaryinfotech.com" style="color:#2563eb;">www.tertiaryinfotech.com</a>.
+      Reply directly to this email to reach the enquirer.
+    </div>
+  </div>
+</div>`,
 };
+
+const AUTOREPLY_KEYS = [
+  "lead_autoreply_enabled",
+  "lead_autoreply_cc",
+  "lead_autoreply_subject",
+  "lead_autoreply_body",
+] as const;
+type AutoreplyKey = (typeof AUTOREPLY_KEYS)[number];
+
+export type LeadAutoreplyConfig = {
+  enabled: boolean;
+  cc: string;
+  subject: string;
+  body: string;
+};
+
+export const LEAD_AUTOREPLY_DEFAULTS: LeadAutoreplyConfig = {
+  enabled: true,
+  cc: "angch@tertiaryinfotech.com",
+  subject: "Thank you for your enquiry — Tertiary Infotech Academy",
+  body: `<div style="margin:0;padding:24px 12px;background:#f5f7fa;font-family:Arial,Helvetica,sans-serif;">
+  <div style="max-width:640px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+    <div style="background:linear-gradient(135deg,#1e3a8a 0%,#3b64e3 100%);padding:28px 32px;">
+      <div style="color:#c7d5f7;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">Tertiary Infotech Academy</div>
+      <div style="color:#ffffff;font-size:28px;font-weight:bold;">Thank you for your enquiry</div>
+    </div>
+    <div style="padding:32px;font-size:15px;line-height:1.7;color:#1f2937;">
+      <p style="margin:0 0 18px;">Dear {NAME},</p>
+      <p style="margin:0 0 18px;">Thank you for your interest in our services. I hope this message finds you well.</p>
+      <p style="margin:0 0 18px;">
+        Our consultants will personally follow up to recommend the best-fit solution for your goals.
+        <strong>We will get back to you within 3 business days.</strong>
+        In the meantime, you are welcome to browse our services here:
+        <a href="https://www.tertiaryinfotech.com" style="color:#2563eb;">https://www.tertiaryinfotech.com</a>
+      </p>
+      <p style="margin:0 0 18px;">
+        If you have any questions in the meantime, simply reply to this email and our consultants will be glad to help.
+      </p>
+      <div style="margin:26px 0;padding:20px 22px;background:#f9fafb;border:1px solid #e5e7eb;border-left:4px solid #2563eb;border-radius:8px;">
+        <div style="font-size:13px;font-weight:bold;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">
+          Not heard from us in 3 business days?
+        </div>
+        <div style="font-size:15px;line-height:1.7;color:#1f2937;">
+          Please reach out to me directly and I will personally look into it.<br/><br/>
+          <strong>Dr Alfred Ang</strong><br/>
+          Email: <a href="mailto:angch@tertiaryinfotech.com" style="color:#2563eb;">angch@tertiaryinfotech.com</a><br/>
+          WhatsApp: <a href="https://wa.me/6596983731" style="color:#2563eb;">+65 9698 3731</a>
+        </div>
+      </div>
+      <p style="margin:0 0 6px;">We look forward to hearing from you.</p>
+      <p style="margin:18px 0 0;">Yours sincerely,<br/><strong>Tertiary Infotech Academy</strong></p>
+    </div>
+    <div style="padding:18px 32px;background:#f9fafb;border-top:1px solid #e5e7eb;color:#6b7280;font-size:12px;line-height:1.6;">
+      This is an automated acknowledgement of your contact-form enquiry on
+      <a href="https://www.tertiaryinfotech.com" style="color:#2563eb;">www.tertiaryinfotech.com</a>.
+      Please do not treat this as our full reply — a consultant will respond personally.
+    </div>
+  </div>
+</div>`,
+};
+
+export async function getLeadAutoreplyConfig(): Promise<LeadAutoreplyConfig> {
+  try {
+    const rows = await db
+      .select()
+      .from(settings)
+      .where(inArray(settings.key, AUTOREPLY_KEYS as unknown as string[]));
+    const map = new Map<AutoreplyKey, string>();
+    for (const r of rows) {
+      const v = typeof r.value === "string" ? r.value : "";
+      map.set(r.key as AutoreplyKey, v);
+    }
+    const enabledRaw = map.get("lead_autoreply_enabled");
+    return {
+      enabled: enabledRaw === undefined ? LEAD_AUTOREPLY_DEFAULTS.enabled : enabledRaw === "1",
+      cc: map.get("lead_autoreply_cc") ?? LEAD_AUTOREPLY_DEFAULTS.cc,
+      subject: map.get("lead_autoreply_subject") || LEAD_AUTOREPLY_DEFAULTS.subject,
+      body: map.get("lead_autoreply_body") || LEAD_AUTOREPLY_DEFAULTS.body,
+    };
+  } catch {
+    return LEAD_AUTOREPLY_DEFAULTS;
+  }
+}
 
 export const LEAD_SOURCE_LABELS_KEY = "lead_source_labels";
 

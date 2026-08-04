@@ -45,6 +45,12 @@ id_ed25519
 .npmrc
 tsconfig.tsbuildinfo
 .playwright-mcp/
+
+# Distribution archives (rebuildable — never pushed to GitHub)
+*.zip
+
+# Source material the project was derived from — not ours to republish.
+**/reference/
 *.sql
 *.sql.gz
 wp-*.sql*
