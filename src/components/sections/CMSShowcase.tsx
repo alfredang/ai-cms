@@ -67,6 +67,9 @@ export function CMSShowcase() {
               <Link href="#contact" className="btn-primary">
                 Request a demo
               </Link>
+              <Link href="/content-management-system#clients" className="btn-secondary">
+                Real Clients
+              </Link>
               <Link
                 href="https://github.com/alfredang/ai-cms"
                 target="_blank"
