@@ -16,6 +16,22 @@ export type TimelineStep = {
   accent?: "cyan" | "blue" | "purple" | "amber" | "green";
 };
 
+/** A live client deployment showcased on a service page. */
+export type ServiceClient = {
+  /** Client / company name. */
+  name: string;
+  /** Short industry line, e.g. "Halal F&B training · Singapore". */
+  category: string;
+  /** Public site we built / run for them. */
+  url: string;
+  /** Screenshot of the live site, served from /public. */
+  screenshot: string;
+  /** 2–3 sentence description of the business and what we delivered. */
+  description: string;
+  /** Optional highlight chips, e.g. "7 courses", "Halal-certified". */
+  highlights?: string[];
+};
+
 export type ServicePageContent = {
   slug: string;
   title: string;
@@ -37,6 +53,8 @@ export type ServicePageContent = {
   timeline?: TimelineStep[];
   benefits: { title: string; body: string }[];
   whatsIncluded: string[];
+  /** Live client deployments; rendered as a portfolio section when present. */
+  clients?: ServiceClient[];
   faq: { q: string; a: string }[];
   /** Source label sent with the lead form POST. */
   leadSource: string;
@@ -367,6 +385,17 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       "Admin AI Assist — Draft / Rewrite / Summarize / Suggest SEO meta",
       "Gmail OAuth2 lead-notification pipeline",
       "WordPress migration (SQL dump → posts + 301 redirects)",
+    ],
+    clients: [
+      {
+        name: "Al Mubin Training Pte Ltd",
+        category: "Halal F&B training provider · Singapore",
+        url: "https://almubinfctraining.com.sg/",
+        screenshot: "/clients/almubin-screenshot.webp",
+        description:
+          "Al Mubin Training delivers halal-certified food and beverage training on site at their clients' stalls, kitchens and outlets — halal handling and internal halal SOP, food safety and hygiene, workplace safety, kitchen operations, beverage handling and supervisory skills, taught in English and Malay by trainers who have worked the line themselves. We built and deployed their marketing site on this CMS: a full course catalogue, a gated safety-checklist lead magnet, and source-tagged enquiry forms that route straight to their inbox.",
+        highlights: ["7 courses", "Halal-certified", "On-site delivery", "Lead magnet + enquiry forms"],
+      },
     ],
     faq: [
       { q: "How is this different from WordPress?", a: "Next.js performance + native AI authoring + first-class SEO/JSON-LD + no plugin sprawl. The codebase is yours; we don't host you or charge per-seat." },

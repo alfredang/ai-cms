@@ -283,6 +283,85 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
           </Container>
         </section>
 
+        {/* Client portfolio */}
+        {content.clients && content.clients.length > 0 && (
+          <section id="clients" className="relative py-10 scroll-mt-20 overflow-hidden">
+            <div
+              className="glow-blob"
+              style={{
+                top: "10%",
+                right: "-5%",
+                width: 460,
+                height: 460,
+                background: "radial-gradient(circle, rgba(89,235,253,0.35) 0%, transparent 70%)",
+                opacity: 0.5,
+              }}
+            />
+            <Container className="relative">
+              <div className="max-w-3xl mb-8">
+                <div className="kicker mb-3">[ REAL CLIENTS ]</div>
+                <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
+                  Live on <span className="gradient-text">client domains</span> today.
+                </h2>
+              </div>
+              <div className="space-y-5">
+                {content.clients.map((c) => (
+                  <article key={c.name} className="glass card-hover p-6 md:p-8 relative overflow-hidden">
+                    <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-(--color-cyan) to-transparent" />
+                    <div className="grid md:grid-cols-2 gap-7 items-center">
+                      <a
+                        href={c.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={`Visit the ${c.name} website`}
+                        className="group block rounded-lg overflow-hidden border border-white/10 hover:border-(--color-cyan)/50 transition"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={c.screenshot}
+                          alt={`Screenshot of the ${c.name} website homepage`}
+                          width={1000}
+                          height={625}
+                          loading="lazy"
+                          className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300"
+                        />
+                      </a>
+                      <div className="min-w-0">
+                        <div className="kicker mb-2">{c.category}</div>
+                        <h3 className="font-display font-bold text-2xl text-white mb-3">{c.name}</h3>
+                        <p className="text-sm text-(--color-muted) leading-relaxed mb-5">
+                          {c.description}
+                        </p>
+                        {c.highlights && c.highlights.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-5">
+                            {c.highlights.map((h) => (
+                              <span
+                                key={h}
+                                className="font-mono text-[10px] px-2.5 py-1 rounded-full border border-(--color-cyan)/30 bg-(--color-cyan)/10 text-(--color-cyan)"
+                              >
+                                {h}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <a
+                          href={c.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={`Visit the ${c.name} website`}
+                          className="inline-flex items-center gap-1.5 text-sm font-mono text-(--color-cyan) hover:gap-2.5 transition-all"
+                        >
+                          Visit live site →
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </Container>
+          </section>
+        )}
+
         {/* FAQ */}
         <section className="relative py-10">
           <Container className="max-w-4xl">

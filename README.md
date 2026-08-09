@@ -45,6 +45,7 @@ Built for Tertiary Infotech Academy, the codebase is structured to be re-used as
 
 ### Lead generation in every page
 - **Dedicated service landing pages** with visual 5-step timeline, sticky lead form, FAQ accordion, benefits grid
+- **Client portfolio / social proof** — any service page can showcase live client deployments (screenshot, business description, highlight chips, link to the live site) by adding a `clients` array to its entry in [src/lib/service-pages.ts](src/lib/service-pages.ts); the section self-hides when omitted, so pages without clients are unaffected. Live on [/content-management-system](src/app/content-management-system/page.tsx) with Al Mubin Training Pte Ltd
 - **Persistent CTAs** — sticky Get-a-Quote button (desktop), tap-to-call + WhatsApp icons (mobile), floating WhatsApp widget above the fold
 - **Floating WhatsApp widget** ([src/components/ui/WhatsAppWidget.tsx](src/components/ui/WhatsAppWidget.tsx)) — an attention-pulsing launcher (halo pulse + expanding ripple ring, paused on hover/open and disabled under `prefers-reduced-motion`) opens a one-tap topic picker; each chip deep-links to `wa.me` with a pre-filled message. Hidden on `/admin/*`
 - **Source-tagged forms** — every form POSTs to `/api/contact` with a `source` label so leads are attributable per page
@@ -211,7 +212,8 @@ src/
     robots.ts
   components/
     layout/                   Navbar, Footer (DB-driven menus), Container
-    sections/                 Hero · AILmsTmsShowcase · ELearningShowcase · EdToolsShowcase · Services · WhyChooseUs · FeaturedPosts · ContactForm
+    sections/                 Hero · AILmsTmsShowcase · ELearningShowcase · CMSShowcase · MobileAppsShowcase · Services · WhyChooseUs · FeaturedEdTools · FeaturedPosts · ContactForm
+                              ServicePageTemplate (renders every service landing page, incl. the client portfolio)
     admin/                    Editor, PostEditorForm, AIAssistButton, MediaUploader, CredentialsForm
     ui/                       ChatBot (Nemo, admin-only) · WhatsAppWidget (public, pulsing launcher)
   db/                         Drizzle schema + connection
