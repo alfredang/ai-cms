@@ -201,18 +201,19 @@ export const MOBILE_APPS: MobileApp[] = [
       "A bright, fully offline learning app where children play through phonics, story-building and code puzzles — no login, no ads and no data collection.",
     about: [
       "AI4Kids is a friendly, fully offline learning app for children aged 4 to 16. Kids play and learn through four hands-on activities — from early phonics to simple coding — with no login, no ads and no data collection, so families can use it safely at home, in class or on the go.",
-      "The activities scale with age: Phonics Playground builds early reading for ages 4–6, Story Builder creates page-by-page stories for ages 7–9, and Code Puzzles introduce sequencing and logic for ages 10–12 — all in a native iPhone and iPad app designed for small hands.",
+      "The activities scale with age: Phonics Playground builds early reading for ages 4–6, Story Builder creates page-by-page stories for ages 7–9, and Code Puzzles introduce sequencing and logic for ages 10–12 — all in native iPhone, iPad and Android apps designed for small hands.",
     ],
     highlights: [
       "Four play-and-learn activities for ages 4–16",
       "Phonics, story-building and code puzzles",
       "Fully offline — no login, no ads, no data collection",
-      "Safe for home and classroom use",
+      "Native on iPhone, iPad and Android — safe for home and classroom use",
     ],
-    platform: "iPhone & iPad",
-    tech: "SwiftUI",
+    platform: "iPhone, iPad & Android",
+    tech: "SwiftUI · Jetpack Compose",
     accent: "green",
     ios: "https://apps.apple.com/app/id6780267161",
+    android: "https://play.google.com/store/apps/details?id=sg.com.tertiarycourses.ai4kids",
     github: "https://github.com/alfredang/ai4kidsapp",
   },
   {
