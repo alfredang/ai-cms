@@ -523,10 +523,10 @@ export const MOBILE_APPS: MobileApp[] = [
     tagline: "Your HR portal, in your pocket",
     category: "Business · HR",
     blurb:
-      "The native iPhone companion to the Tertiary HRMS portal — check leave balances, request leave, view payslips, browse the team directory and track expenses, all from your phone.",
+      "The native mobile companion to the Tertiary HRMS portal — check leave balances, request leave, view payslips, browse the team directory and track expenses, all from your phone.",
     about: [
-      "Tertiary HRMS is the native iPhone client for the Tertiary Infotech HR Management System. Sign in securely with email and password or OTP, then see your leave balances, expense claims and pending approvals at a glance on the dashboard.",
-      "Request leave with automatic working-day calculation, open authenticated payslips in a built-in PDF viewer, browse the team directory with richer details for managers, and review holidays, events and approved leave by month — plus weekly timesheets and your full employee profile. A genuine native SwiftUI app talking to the same secure backend that powers the HRMS web portal.",
+      "Tertiary HRMS is the native mobile client for the Tertiary Infotech HR Management System, on both iPhone and Android. Sign in securely with email and password or OTP, then see your leave balances, expense claims and pending approvals at a glance on the dashboard.",
+      "Request leave with automatic working-day calculation, open authenticated payslips in a built-in PDF viewer, browse the team directory with richer details for managers, and review holidays, events and approved leave by month — plus weekly timesheets and your full employee profile. Genuine native apps on each platform, talking to the same secure backend that powers the HRMS web portal.",
     ],
     highlights: [
       "Secure email/password or OTP sign-in with session persistence",
@@ -534,10 +534,11 @@ export const MOBILE_APPS: MobileApp[] = [
       "Request leave with automatic working-day calculation",
       "Native PDF payslips, team directory, calendar and timesheet",
     ],
-    platform: "iPhone",
-    tech: "SwiftUI · MVVM · PDFKit",
+    platform: "iPhone & Android",
+    tech: "SwiftUI · Jetpack Compose · MVVM",
     accent: "blue",
     ios: "https://apps.apple.com/sg/app/tertiary-hrms/id6759821144",
+    android: "https://play.google.com/store/apps/details?id=com.tertiaryinfotech.hrportal",
     github: "https://github.com/alfredang/hrmsapp",
   },
   {
