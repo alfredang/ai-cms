@@ -457,18 +457,19 @@ export const MOBILE_APPS: MobileApp[] = [
       "Share and discover free leftover food nearby — post a photo, location and pickup time window on a map so good food finds a neighbour instead of the bin. No account required.",
     about: [
       "FreeFood: Share Leftovers helps neighbours share surplus food instead of throwing it away. Post what you have with a photo, drop a pin on the map and set a pickup time window, and anyone nearby can discover it and arrange to collect — cutting waste and helping out at the same time.",
-      "Listings appear on an Apple Map so you can see what is available around you at a glance, and everything syncs through CloudKit's public database with no account required. A native SwiftUI app for iPhone.",
+      "The native iPhone app combines Apple Maps with CloudKit community listings, while the Android release pairs Jetpack Compose with OpenStreetMap and on-device Room storage. Both are designed for quick, account-free access.",
     ],
     highlights: [
       "Share leftover food with a photo and location",
       "Set a pickup time window on a map",
-      "Discover free food nearby on Apple Maps",
-      "No account required — syncs via CloudKit",
+      "Explore nearby listings on an interactive map",
+      "No account required on iPhone or Android",
     ],
-    platform: "iPhone",
-    tech: "SwiftUI · MapKit · CloudKit",
+    platform: "iPhone & Android",
+    tech: "SwiftUI · Jetpack Compose · Maps",
     accent: "green",
     ios: "https://apps.apple.com/sg/app/freefood-share-leftovers/id6782157783",
+    android: "https://play.google.com/store/apps/details?id=com.tertiaryinfotech.freefood",
     github: "https://github.com/alfredang/freefoodapp",
   },
   {
@@ -480,7 +481,7 @@ export const MOBILE_APPS: MobileApp[] = [
       "Check live Singapore carpark availability — see how many lots are free at carparks near you or your destination, sourced from LTA DataMall. No sign-in required.",
     about: [
       "SG Carpark Live shows real-time carpark availability across Singapore. Find how many lots are free at carparks near you or your destination before you set off, so you spend less time circling for a space.",
-      "Availability data is sourced from Singapore's LTA DataMall and updates live, with no sign-in or account required — a native SwiftUI app for iPhone.",
+      "Availability data is sourced from Singapore's LTA DataMall and updates live, with no sign-in or account required. Native SwiftUI and Jetpack Compose apps put the same essential parking information on iPhone and Android.",
     ],
     highlights: [
       "Live lot availability for Singapore carparks",
@@ -488,10 +489,11 @@ export const MOBILE_APPS: MobileApp[] = [
       "Data sourced from LTA DataMall",
       "No sign-in — just open and check",
     ],
-    platform: "iPhone",
-    tech: "SwiftUI · LTA DataMall",
+    platform: "iPhone & Android",
+    tech: "SwiftUI · Jetpack Compose · LTA DataMall",
     accent: "cyan",
     ios: "https://apps.apple.com/sg/app/sg-carpark-live/id6781785702",
+    android: "https://play.google.com/store/apps/details?id=com.tertiaryinfotech.sgcarpark",
     github: "https://github.com/alfredang/sgcarparkapp",
   },
   {
@@ -797,6 +799,31 @@ export const MOBILE_APPS: MobileApp[] = [
     accent: "amber",
     ios: "https://apps.apple.com/sg/app/localtourguides/id6787895187",
     github: "https://github.com/alfredang/localtourguidesapp",
+  },
+  {
+    id: "scanner",
+    name: "Tertiary Scanner",
+    tagline: "Scan, enhance, OCR & export",
+    category: "Productivity · Utilities",
+    blurb:
+      "Turn paper documents into clean, searchable digital files with automatic edge detection, image enhancement, on-device OCR and multi-page PDF or JPG export — fully offline.",
+    about: [
+      "Tertiary Scanner captures paper documents with automatic edge detection, perspective correction and multi-page scanning. Apply one-tap filters, rotate or refine each page, then recognise text and search your saved library by document name or content.",
+      "Export polished PDFs or JPGs directly from the app. Native SwiftUI and Jetpack Compose builds keep scanning, enhancement, OCR and document storage on the device, with no account, analytics or backend required.",
+    ],
+    highlights: [
+      "Automatic edge detection and perspective correction",
+      "Eight one-tap document enhancement filters",
+      "On-device OCR with searchable recognised text",
+      "Multi-page PDF and JPG export",
+      "Fully offline — documents stay on your device",
+    ],
+    platform: "iPhone, iPad & Android",
+    tech: "SwiftUI · Jetpack Compose · On-device OCR",
+    accent: "purple",
+    ios: "https://apps.apple.com/us/app/tertiary-scanner/id6779988762",
+    android: "https://play.google.com/store/apps/details?id=sg.com.tertiarycourses.scanner",
+    github: "https://github.com/alfredang/scannerapp",
   },
 ];
 
