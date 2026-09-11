@@ -27,7 +27,8 @@ export async function generateMetadata({
   const pageUrl = `${SITE_URL}/apps/${app.id}`;
   const shot = APP_SCREENSHOTS[app.id]?.[0];
   const title = `${app.name} — ${app.tagline} | Tertiary Infotech Academy`;
-  const description = `${app.blurb} Built by Tertiary Infotech Academy. Download on the App Store${app.android ? " and Google Play" : ""}.`;
+  const storeNames = app.ios && app.android ? "the App Store and Google Play" : app.android ? "Google Play" : "the App Store";
+  const description = `${app.blurb} Built by Tertiary Infotech Academy. Download on ${storeNames}.`;
   return {
     title,
     description,
@@ -63,6 +64,8 @@ export default async function AppDetailPage({
   const pageUrl = `${SITE_URL}/apps/${app.id}`;
   const shots = APP_SCREENSHOTS[app.id] ?? [];
   const leadSource = `app-${app.id}-page`;
+  const storeNames = app.ios && app.android ? "the App Store and Google Play" : app.android ? "Google Play" : "the App Store";
+  const downloadUrls = [app.ios, app.android].filter((url): url is string => Boolean(url));
 
   const appLd = {
     "@context": "https://schema.org",
@@ -72,7 +75,7 @@ export default async function AppDetailPage({
     operatingSystem: app.android ? "iOS, Android" : "iOS",
     description: app.about.join(" "),
     url: pageUrl,
-    ...(app.ios ? { downloadUrl: app.ios } : {}),
+    ...(downloadUrls.length ? { downloadUrl: downloadUrls } : {}),
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     author: { "@type": "Organization", name: "Tertiary Infotech Academy", url: SITE_URL },
     ...(shots.length ? { screenshot: shots } : {}),
@@ -202,7 +205,7 @@ export default async function AppDetailPage({
             <div className="glass p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-5">
               <div>
                 <h2 className="font-display text-xl md:text-2xl font-extrabold mb-1">Get {app.name}</h2>
-                <p className="text-sm text-(--color-muted)">Free on the {app.android ? "App Store and Google Play" : "App Store"}.</p>
+                <p className="text-sm text-(--color-muted)">Free on {storeNames}.</p>
               </div>
               <div className="flex flex-wrap items-center gap-3">
                 {app.ios && <AppStoreBadge href={app.ios} />}

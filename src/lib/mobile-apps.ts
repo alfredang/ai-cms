@@ -140,10 +140,11 @@ export const MOBILE_APPS: MobileApp[] = [
       "Pencil notes, scoring and local history",
       "Fully offline — no account, no network",
     ],
-    platform: "iPhone",
-    tech: "SwiftUI · XcodeGen",
+    platform: "iPhone & Android",
+    tech: "SwiftUI · Jetpack Compose · Offline",
     accent: "amber",
     ios: "https://apps.apple.com/app/id6779973622",
+    android: "https://play.google.com/store/apps/details?id=sg.com.tertiarycourses.sudoku",
     github: "https://github.com/alfredang/sudokuapp",
   },
   {
@@ -824,6 +825,30 @@ export const MOBILE_APPS: MobileApp[] = [
     ios: "https://apps.apple.com/us/app/tertiary-scanner/id6779988762",
     android: "https://play.google.com/store/apps/details?id=sg.com.tertiarycourses.scanner",
     github: "https://github.com/alfredang/scannerapp",
+  },
+  {
+    id: "tia-lms",
+    name: "TIA LMS",
+    tagline: "Courseware and classes on the go",
+    category: "Education · Training",
+    blurb:
+      "The native Android companion for Tertiary Infotech Academy learners and trainers — securely open assigned course materials, check upcoming classes and receive optional reminders.",
+    about: [
+      "TIA LMS gives existing Tertiary Infotech Academy learners and trainers a focused mobile view of their training. Sign in with an email one-time code, see assigned courses and open the slides, learner guides and activities available to your account.",
+      "A Singapore-time class calendar keeps upcoming sessions easy to find, with optional reminders before class. Learner and trainer views are separated by role, sessions are stored securely on-device, and a clearly labelled demo lets prospective users explore without an account.",
+    ],
+    highlights: [
+      "Passwordless email OTP for existing accounts",
+      "Personal courseware for assigned classes",
+      "Singapore-time monthly class calendar",
+      "Optional reminders before upcoming sessions",
+      "Learner and trainer role switching",
+    ],
+    platform: "Android",
+    tech: "Kotlin · Jetpack Compose · Firebase",
+    accent: "blue",
+    android: "https://play.google.com/store/apps/details?id=com.tertiaryinfotech.ailmstms",
+    github: "https://github.com/alfredang/ailmstms_android",
   },
 ];
 
