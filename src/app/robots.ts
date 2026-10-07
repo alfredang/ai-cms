@@ -7,7 +7,13 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        // Plain pagination (/blog?page=N) must stay crawlable: Google indexed
+        // it from inbound links while blocked ("Indexed, though blocked by
+        // robots.txt") because it could never read the canonical to /blog.
+        // Longest match wins, so this beats the shorter /blog?* and /*?page=
+        // disallows; facet URLs never start with ?page= (filterHref appends
+        // page last), so they stay blocked.
+        allow: ["/", "/blog?page="],
         disallow: [
           "/admin",
           "/api",
@@ -22,9 +28,10 @@ export default function robots(): MetadataRoute.Robots {
           "/*&tag=",
           "/*?q=",
           "/*?page=",
-          // Lead-attribution CTA params (?source=blog-…) produce a duplicate of
-          // every service page. Canonical already points at the clean URL.
-          "/*?source=",
+          // NOT blocked: lead-attribution CTA params (?source=blog-…). Blocking
+          // them got the bare URLs indexed ("Indexed, though blocked by
+          // robots.txt") because Google could not fetch the page to see its
+          // canonical. Left crawlable, they consolidate into the clean URL.
           // Legacy WooCommerce/WordPress query params still being probed.
           "/*?wc-ajax=",
           "/*?project_cat=",
