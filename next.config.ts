@@ -21,7 +21,18 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     // Dynamic redirects (from `redirects` DB table) are handled in middleware.
-    return [];
+    // Multi-segment WordPress archive URLs never reach /[slug]'s redirects
+    // lookup, so Google kept reporting them as 404s. Send them to the blog.
+    return [
+      { source: "/category/:path*", destination: "/blog", permanent: true },
+      { source: "/tag/:path*", destination: "/blog", permanent: true },
+      { source: "/author/:path*", destination: "/blog", permanent: true },
+      { source: "/:year(\\d{4})/:path*", destination: "/blog", permanent: true },
+      { source: "/blog/page/:n(\\d+)", destination: "/blog?page=:n", permanent: true },
+      // The WP import stored slugs that began with a U+2060 word joiner as
+      // "e281a0<slug>"; old links still carry the raw character.
+      { source: "/%E2%81%A0:slug", destination: "/e281a0:slug", permanent: true },
+    ];
   },
 };
 
