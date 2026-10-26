@@ -1,6 +1,6 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import { db } from "@/db";
-import { pages, redirects, categories } from "@/db/schema";
+import { pages, posts, redirects, categories } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
 import { Container } from "@/components/layout/Container";
 import { Navbar } from "@/components/layout/Navbar";
@@ -21,6 +21,14 @@ async function getPage(slug: string) {
     .where(and(eq(pages.slug, slug), eq(pages.status, "published")))
     .limit(1);
   return p;
+}
+
+function decodeSlug(slug: string) {
+  try {
+    return decodeURIComponent(slug);
+  } catch {
+    return slug;
+  }
 }
 
 export async function generateMetadata({
@@ -74,7 +82,20 @@ export default async function CmsPage({
   if (redir) permanentRedirect(redir.toPath);
 
   const page = await getPage(slug);
-  if (!page) notFound();
+  if (!page) {
+    // WordPress served posts at /<slug>.html. Ones without a redirects row
+    // still 404'd in Search Console, sometimes with trailing %20s in the link.
+    const legacy = decodeSlug(slug).trim().match(/^(.+)\.html$/);
+    if (legacy) {
+      const [post] = await db
+        .select({ slug: posts.slug })
+        .from(posts)
+        .where(and(eq(posts.slug, legacy[1]), eq(posts.status, "published")))
+        .limit(1);
+      if (post) permanentRedirect(`/blog/${post.slug}`);
+    }
+    notFound();
+  }
 
   const SITE_URL = "https://www.tertiaryinfotech.com";
   const pageUrl = `${SITE_URL}/${page.slug}`;
