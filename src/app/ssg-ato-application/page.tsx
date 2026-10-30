@@ -18,31 +18,33 @@ import { Container } from "@/components/layout/Container";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SsgAtoLeadForm } from "@/components/sections/SsgAtoLeadForm";
+import { RichText, stripMarkup } from "@/lib/rich-text";
 
 const PAGE_URL = "https://www.tertiaryinfotech.com/ssg-ato-application";
 
+const META_TITLE = "ATO Service in Singapore — SWDA ATO & OR Service";
+const META_DESC =
+  "ATO service in Singapore: we prepare your SWDA Organisation Registration (OR), policies, SOPs and course application, incl. IBF OR. Book a free consultation.";
+
 export const metadata: Metadata = {
-  title: "SSG ATO Application Singapore — Become a Registered Training Provider",
-  description:
-    "End-to-end consultancy for the SSG/TPGateway ATO application in Singapore. We prepare your QMS, policies, SOPs, course submission and audit-readiness. Book a free 30-min consultation.",
+  title: META_TITLE,
+  description: META_DESC,
   keywords:
-    "SSG ATO application Singapore, apply ATO Singapore, become accredited training organisation Singapore, TPGateway organisation registration, WSQ training provider registration, RTP registration Singapore",
+    "ATO service, ATO service in Singapore, SWDA ATO service, SWDA OR service, SWDA IBF OR service, SSG ATO application Singapore, apply ATO Singapore, become accredited training organisation Singapore, TPGateway organisation registration, RTP registration Singapore",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "website",
     locale: "en_SG",
     url: PAGE_URL,
-    title: "SSG ATO Application Singapore — Become a Registered Training Provider",
-    description:
-      "End-to-end consultancy for the SSG/TPGateway ATO application in Singapore. We prepare your QMS, policies, SOPs, course submission and audit-readiness.",
+    title: META_TITLE,
+    description: META_DESC,
     siteName: "Tertiary Infotech Academy",
-    images: [{ url: "/icon-192.png", width: 192, height: 192, alt: "SSG ATO Application — Tertiary Infotech Academy" }],
+    images: [{ url: "/icon-192.png", width: 192, height: 192, alt: "ATO Service in Singapore — Tertiary Infotech Academy" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SSG ATO Application Singapore — Become a Registered Training Provider",
-    description:
-      "End-to-end consultancy for the SSG/TPGateway ATO application. QMS, SOPs, course submission, audit-readiness — all in one engagement.",
+    title: META_TITLE,
+    description: META_DESC,
     images: ["/icon-192.png"],
   },
 };
@@ -55,7 +57,7 @@ const TIMELINE = [
     icon: HiMagnifyingGlass,
     accent: "cyan" as const,
     body:
-      "30-minute discovery call. We map your business, target training sector, financial position and existing training track record against SSG eligibility.",
+      "30-minute discovery call. We map your business, target training sector, financial position and existing training track record against SWDA eligibility.",
   },
   {
     id: "consultation",
@@ -82,7 +84,7 @@ const TIMELINE = [
     icon: HiRocketLaunch,
     accent: "amber" as const,
     body:
-      "We co-author your QMS, policies and SOPs, build your Course Application, prepare your learner agreement, and coach you for the onsite SSG assessment.",
+      "We co-author your QMS, policies and SOPs, build your Course Application, prepare your learner agreement, and coach you for the on-site SWDA assessment.",
   },
   {
     id: "become-ato",
@@ -91,7 +93,7 @@ const TIMELINE = [
     icon: HiCheckBadge,
     accent: "green" as const,
     body:
-      "TPGateway submission, half-day onsite SSG assessment, response handling, and final approval — your organisation goes live as a registered training provider.",
+      "TPGateway submission, half-day on-site SWDA assessment, response handling, and final approval — your organisation goes live as a SWDA-registered training provider.",
   },
 ];
 
@@ -159,7 +161,7 @@ const ELIGIBILITY = [
     icon: HiShieldCheck,
     title: "Clean compliance record",
     body:
-      "Management and adult educators must be free of SSG-related contractual breaches and relevant criminal offences in the last 5 years.",
+      "Management and adult educators must be free of SWDA (formerly SSG) contractual breaches and relevant criminal offences in the last 5 years.",
   },
   {
     icon: HiUsers,
@@ -188,43 +190,71 @@ const STAGE_2 = [
   "Website and brochure information disclosure (course, fees, funding, trainers, premises)",
   "Premises write-up + photographs of training and assessment rooms",
   "Rental invoice or lease agreement (no P.O. Box addresses)",
-  "Sample learner agreement / registration form with SkillsFuture Credit and SSG funding amounts",
+  "Sample learner agreement / registration form with SkillsFuture Credit and SWDA funding amounts",
   "Policies & Operations Manual covering Course Administration and Outcomes",
-  "Half-day onsite SSG assessment of your policies and operations",
+  "Half-day on-site SWDA assessment of your policies and operations",
 ];
 
 const FAQ = [
   {
-    q: "How much does the SSG ATO application cost?",
-    a: "The TPGateway application fee is S$545 (GST inclusive) and is non-refundable. Our consultancy fee is scoped per engagement after the free Consultation step — typically covering QMS authoring, policy/SOP build, course submission package and audit-readiness coaching.",
+    q: "What does your ATO service in Singapore include?",
+    a: "Our **ATO service in Singapore** covers eligibility review, the Policies and Operations Manual, SOPs, learner agreement, the TPGateway Organisation Registration and Course Application, and coaching for the half-day on-site SWDA assessment — one fixed-fee engagement.",
   },
   {
-    q: "How long does it take to become an SSG ATO?",
-    a: "Most engagements run 10–14 weeks from project start to approval, assuming Stage 1 eligibility (entity, financials, 1-year track record) is already in place. We confirm a concrete timeline at the Quotation step.",
+    q: "What is a SWDA OR service?",
+    a: "SSG and WSG merged into SWDA in July 2026, so first-time training providers now apply to SWDA for Organisation Registration (OR). A **SWDA OR service** prepares the OR application and the manual SWDA assesses against its \"System and Capabilities\" criteria.",
+  },
+  {
+    q: "Do you offer a SWDA IBF OR service for financial-sector courses?",
+    a: "Yes. If you plan to run IBF-accredited courses, our **SWDA IBF OR service** sequences your SWDA Organisation Registration with the IBF course accreditation, so the two applications use consistent policies, trainers and evidence. See our [IBF-STS course development](/wsq-course-development) work.",
+  },
+  {
+    q: "How much does the ATO application cost?",
+    a: "The TPGateway application fee is S$545 (GST inclusive) and is non-refundable. The fee for our **ATO service** is scoped per engagement after the free Consultation step — typically covering the manual, policy/SOP build, course submission package and audit-readiness coaching.",
+  },
+  {
+    q: "How long does it take to become an ATO?",
+    a: "Most **SWDA ATO service** engagements run 10–14 weeks from project start to approval, assuming eligibility (entity, financials, 1-year track record) is already in place. We confirm a concrete timeline at the Quotation step.",
   },
   {
     q: "Do I need an existing training track record?",
-    a: "Yes. SSG requires at least one year of training and education delivery, conducted regularly (at least quarterly), with documented lesson plans, assessment plans, attendance and learner feedback. We help you compile and present this evidence.",
+    a: "Yes. SWDA requires at least one year of training and education delivery, conducted regularly (at least quarterly), with documented lesson plans, assessment plans, attendance and learner feedback. We help you compile and present this evidence.",
   },
   {
     q: "What's the difference between Public, In-House and Both?",
     a: "Public TP serves the general public and corporate clients. In-House TP serves only your own employees. Both is a dual model. You must designate one category in your OR application — we'll help you choose based on your commercial strategy.",
   },
   {
-    q: "What happens at the onsite SSG assessment?",
-    a: "SSG conducts a half-day onsite assessment of your policies, operations, training premises and supporting evidence. We coach you through the entire flow — likely questions, document presentation and gap remediation before the visit.",
+    q: "What happens at the on-site SWDA assessment?",
+    a: "SWDA conducts a half-day on-site assessment of your policies, operations, training premises and supporting evidence. Our **SWDA OR service** coaches you through the entire flow — likely questions, document presentation and gap remediation before the visit.",
   },
   {
     q: "Can a previously terminated TP reapply?",
-    a: "Yes, but ex-RTPs must meet all current OR requirements and additionally develop an internal quality assurance manual addressing TPQA Criteria 2.1 and 2.4. We handle the full reapplication scope.",
+    a: "Yes, but ex-RTPs must meet all current OR requirements and additionally develop an internal quality assurance manual addressing TPQA Criteria 2.1 and 2.4. We handle the full reapplication scope — and our [TPQA service](/tpqa-consultancy) keeps you compliant afterwards.",
+  },
+];
+
+const OVERVIEW_CARDS = [
+  {
+    title: "SWDA ATO service",
+    body: "Our **SWDA ATO service** builds everything the assessor asks to see — the Policies and Operations Manual, closed-loop SOPs, annexes and evidence — then coaches your team for the on-site assessment.",
+  },
+  {
+    title: "SWDA OR service",
+    body: "A **SWDA OR service** for first-time training providers: eligibility checks, the TPGateway Organisation Registration, the OR declaration and the Course Application submitted together.",
+  },
+  {
+    title: "SWDA IBF OR service",
+    body: "Running financial-sector training? Our **SWDA IBF OR service** aligns your Organisation Registration with IBF-STS course accreditation so policies, trainers and evidence stay consistent.",
   },
 ];
 
 const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "SSG ATO Application Consultancy",
-  name: "SSG ATO Application Consultancy — Singapore",
+  serviceType: "ATO Service — SWDA Organisation Registration",
+  name: "ATO Service in Singapore",
+  alternateName: ["SWDA ATO service", "SWDA OR service", "SWDA IBF OR service", "SSG ATO application"],
   provider: {
     "@type": "Organization",
     name: "Tertiary Infotech Academy",
@@ -232,16 +262,16 @@ const serviceLd = {
   },
   areaServed: { "@type": "Country", name: "Singapore" },
   description:
-    "End-to-end consultancy to help Singapore organisations become an SSG-registered training provider (ATO) via TPGateway — covering Organisation Registration, Course Application, policies and audit-readiness.",
+    "End-to-end ATO service in Singapore that helps organisations become a SWDA (formerly SSG) registered training provider via TPGateway — covering Organisation Registration, Course Application, policies and audit-readiness.",
   url: PAGE_URL,
 };
 
 const howToLd = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: "How to apply for SSG Registered Training Provider (RTP) in Singapore",
+  name: "How to become a SWDA-registered training provider (ATO) in Singapore",
   description:
-    "Five-step consultancy process to take a Singapore organisation through the SSG/TPGateway ATO application — Discovery, Consultation, Quotation, Start Project, Become ATO.",
+    "Five-step ATO service process to take a Singapore organisation through the SWDA/TPGateway Organisation Registration — Discovery, Consultation, Quotation, Start Project, Become ATO.",
   totalTime: "P14W",
   estimatedCost: { "@type": "MonetaryAmount", currency: "SGD", value: "545" },
   step: TIMELINE.map((s, i) => ({
@@ -258,7 +288,7 @@ const faqLd = {
   mainEntity: FAQ.map((f) => ({
     "@type": "Question",
     name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
+    acceptedAnswer: { "@type": "Answer", text: stripMarkup(f.a) },
   })),
 };
 
@@ -269,7 +299,7 @@ const breadcrumbLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
     { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/#services` },
-    { "@type": "ListItem", position: 3, name: "SSG ATO Application", item: PAGE_URL },
+    { "@type": "ListItem", position: 3, name: "ATO Service", item: PAGE_URL },
   ],
 };
 
@@ -303,24 +333,24 @@ export default function SsgAtoApplicationPage() {
           <Container>
             <div className="grid lg:grid-cols-12 gap-8 items-start relative">
               <div className="lg:col-span-7">
-                <div className="kicker mb-4">[ SSG · TPGATEWAY · WSQ ]</div>
+                <div className="kicker mb-4">[ SWDA · ORGANISATION REGISTRATION · ATO ]</div>
                 <h1 className="font-display text-[clamp(2.25rem,5.2vw,3.75rem)] font-extrabold leading-[1.04] mb-5">
-                  Become an{" "}
-                  <span className="gradient-text">SSG-registered Training Provider</span>{" "}
-                  in Singapore.
+                  <span className="gradient-text">ATO Service in Singapore</span> — become a
+                  SWDA-registered training provider.
                 </h1>
                 <p className="text-(--color-muted) text-lg max-w-2xl mb-6">
-                  We take Singapore organisations end-to-end through the{" "}
+                  Our <strong className="text-white">ATO service</strong> takes Singapore
+                  organisations end-to-end through the SWDA (formerly SSG){" "}
                   <a
                     href="https://www.tpgateway.gov.sg/plan-courses/organisation-registration-for-first-time-training-provider/apply-for-organisation-registration"
                     target="_blank"
                     rel="noopener"
                     className="text-(--color-cyan) hover:underline"
                   >
-                    SSG/TPGateway Organisation Registration
+                    Organisation Registration on TPGateway
                   </a>{" "}
-                  and Course Application — QMS, policies, SOPs, learner agreement, course
-                  submission and the half-day onsite SSG assessment. Fixed-fee. Predictable
+                  and Course Application — policies, SOPs, learner agreement, course
+                  submission and the half-day on-site assessment. Fixed-fee. Predictable
                   timeline.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -360,13 +390,67 @@ export default function SsgAtoApplicationPage() {
           </Container>
         </section>
 
+        {/* OVERVIEW — keyword-rich long-form copy */}
+        <section id="overview" className="relative py-10 scroll-mt-20">
+          <Container className="max-w-4xl">
+            <div className="kicker mb-3">[ ATO SERVICE ]</div>
+            <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight mb-5">
+              What our ATO service in Singapore covers
+            </h2>
+            <div className="space-y-4 text-(--color-muted) leading-relaxed">
+              <p>
+                To receive SkillsFuture funding for your courses, your organisation must
+                first be registered as an Approved Training Organisation (ATO). Since July
+                2026, when SSG and WSG merged, that registration is handled by{" "}
+                <strong className="text-white">SWDA</strong> — the SkillsFuture and
+                Workforce Development Agency. Our <strong className="text-white">ATO service
+                in Singapore</strong> prepares everything SWDA needs to approve you, and
+                coaches your team until you are live.
+              </p>
+              <p>
+                SWDA assesses Organisation Registration against its &ldquo;System and
+                Capabilities&rdquo; framework — two criteria covering how your organisation is
+                run and how your training is delivered. Assessors look for closed-loop
+                processes: who does what, when, how it is recorded and how it is reviewed. Our{" "}
+                <strong className="text-white">ATO service</strong> writes those processes
+                into your Policies and Operations Manual, builds the annexes and evidence
+                behind them, and rehearses the on-site assessment with you.
+              </p>
+              <p>
+                Tertiary Infotech Academy is itself a registered training provider with a
+                Grade 1 TPQA result, so our <strong className="text-white">ATO service in
+                Singapore</strong> is built on what assessors actually ask for. After you are
+                approved, our{" "}
+                <Link href="/tpqa-consultancy" className="text-(--color-cyan) hover:underline">
+                  TPQA service
+                </Link>{" "}
+                and{" "}
+                <Link href="/wsq-course-development" className="text-(--color-cyan) hover:underline">
+                  WSQ courseware development
+                </Link>{" "}
+                keep you compliant.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4 mt-8">
+              {OVERVIEW_CARDS.map((c) => (
+                <div key={c.title} className="glass p-6">
+                  <h3 className="font-display font-bold text-lg mb-3">{c.title}</h3>
+                  <p className="text-sm text-(--color-muted) leading-relaxed">
+                    <RichText text={c.body} />
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
         {/* WHY ATO */}
         <section className="relative py-10">
           <Container>
             <div className="max-w-3xl mb-8">
               <div className="kicker mb-3">[ WHY BECOME AN ATO ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
-                Unlock <span className="gradient-text-warm">SSG funding</span>, public-sector
+                Unlock <span className="gradient-text-warm">SkillsFuture funding</span>, public-sector
                 contracts and a national audience.
               </h2>
             </div>
@@ -374,11 +458,11 @@ export default function SsgAtoApplicationPage() {
               {[
                 {
                   title: "SkillsFuture Credit access",
-                  body: "Learners can apply SSG subsidies and SkillsFuture Credit to your fees, removing a major adoption barrier.",
+                  body: "Learners can apply SWDA course-fee subsidies and SkillsFuture Credit to your fees, removing a major adoption barrier.",
                 },
                 {
                   title: "Government & enterprise procurement",
-                  body: "Public agencies and large corporates prioritise SSG-accredited TPs in vendor selection.",
+                  body: "Public agencies and large corporates prioritise SWDA-registered training providers in vendor selection.",
                 },
                 {
                   title: "WSQ programme scale",
@@ -482,12 +566,14 @@ export default function SsgAtoApplicationPage() {
             <div className="max-w-3xl mb-8">
               <div className="kicker mb-3">[ THE OFFICIAL PROCESS ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
-                How to apply for SSG Registered Training Provider (RTP) in Singapore
+                How to apply for SWDA Organisation Registration (OR) in Singapore
               </h2>
               <p className="text-(--color-muted) mt-4">
-                SSG/TPGateway Organisation Registration (OR) must be submitted together
+                SWDA Organisation Registration (OR) on TPGateway must be submitted together
                 with a Course Application (CA). Both must be approved before your
-                organisation is listed as an SSG-funded training provider. The fee is{" "}
+                organisation is listed as a SWDA-funded training provider — which is why our{" "}
+                <strong className="text-white">SWDA OR service</strong> prepares them as one
+                package. The fee is{" "}
                 <strong className="text-white">S$545 (GST inclusive, non-refundable)</strong>{" "}
                 and successful submission does not by itself constitute approval.
               </p>
@@ -529,8 +615,8 @@ export default function SsgAtoApplicationPage() {
                 Eligibility checklist
               </h3>
               <p className="text-(--color-muted) text-sm">
-                Before you submit, you'll need to satisfy SSG on all six fronts below. We
-                cover each in the free Consultation step.
+                Before you submit, you'll need to satisfy SWDA on all six fronts below. We
+                cover each in the free Consultation step of our ATO service.
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -582,26 +668,29 @@ export default function SsgAtoApplicationPage() {
                 <div className="kicker mb-3">[ WHAT WE DELIVER ]</div>
                 <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight mb-4">
                   A complete, audit-ready{" "}
-                  <span className="gradient-text">ATO submission package</span>.
+                  <span className="gradient-text">ATO service</span> package.
                 </h2>
                 <p className="text-(--color-muted)">
                   You bring the business, the trainers and the training track record. We
-                  build everything SSG asks to see.
+                  build everything SWDA asks to see.
                 </p>
               </div>
               <ul className="space-y-3">
                 {[
-                  "QMS, policies and SOPs aligned to Terms for Training Providers",
-                  "ATO submission package — OR + Course Application",
-                  "Sample learner agreement with SkillsFuture Credit and SSG funding terms",
+                  "Policies and Operations Manual and SOPs aligned to SWDA's OR criteria",
+                  "**SWDA OR service** — Organisation Registration + Course Application",
+                  "**SWDA IBF OR service** for providers adding IBF-accredited courses",
+                  "Sample learner agreement with SkillsFuture Credit and SWDA funding terms",
                   "Training premises write-up and evidence pack",
                   "Pre-audit gap assessment and remediation roadmap",
-                  "Audit-readiness coaching for the half-day onsite SSG assessment",
-                  "Post-approval support — TPQA readiness and ongoing compliance",
+                  "Audit-readiness coaching for the half-day on-site SWDA assessment",
+                  "Post-approval support — **TPQA service** and ongoing compliance",
                 ].map((line) => (
                   <li key={line} className="flex gap-3">
                     <span className="text-(--color-green) font-mono mt-0.5">✓</span>
-                    <span className="text-white/90">{line}</span>
+                    <span className="text-white/90">
+                      <RichText text={line} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -615,7 +704,7 @@ export default function SsgAtoApplicationPage() {
             <div className="mb-8">
               <div className="kicker mb-3">[ FAQ ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
-                Common questions about the SSG ATO application.
+                Common questions about our ATO service.
               </h2>
             </div>
             <div className="space-y-3">
@@ -633,7 +722,7 @@ export default function SsgAtoApplicationPage() {
                     </span>
                   </summary>
                   <p className="text-sm text-(--color-muted) leading-relaxed mt-3">
-                    {f.a}
+                    <RichText text={f.a} />
                   </p>
                 </details>
               ))}
@@ -668,7 +757,7 @@ export default function SsgAtoApplicationPage() {
             <p className="mt-5 text-center text-xs text-(--color-muted) font-mono">
               [ Looking at our other services?{" "}
               <Link href="/#services" className="hover:text-(--color-cyan)">
-                See all SSG services
+                See all SWDA compliance services
               </Link>{" "}
               ]
             </p>

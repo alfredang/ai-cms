@@ -42,9 +42,11 @@ Built for Tertiary Infotech Academy, the codebase is structured to be re-used as
 - **Service** + **HowTo** + **FAQPage** + **BreadcrumbList** schema on every service landing page
 - Dynamic `sitemap.xml` + `robots.txt`, regenerated on every content edit via `revalidatePath`
 - British / Singapore English spelling baked into the SEO skill
+- **Keyword-targeted service pages** — each service landing page owns a cluster of money keywords (e.g. `/tpqa-consultancy` → TPQA service · TPQA audit · CQC audit · PEI service; `/ssg-ato-application` → ATO service in Singapore · SWDA OR / IBF OR service; `/mobile-app-development` → mobile apps development in Singapore), carried through the title, meta description, H1, a long-form **overview** section, FAQ and Service JSON-LD at roughly 1 keyword per 100 words
+- **Inline SEO markup in copy** — service-page and homepage service copy accepts `**keyword**` (rendered bold) and `[anchor](/path)` (keyword-anchored internal link) via [src/lib/rich-text.tsx](src/lib/rich-text.tsx); [src/lib/markup.ts](src/lib/markup.ts) strips it for JSON-LD, meta tags and LLM prompts, so raw HTML never enters admin-editable content
 
 ### Lead generation in every page
-- **Dedicated service landing pages** with visual 5-step timeline, sticky lead form, FAQ accordion, benefits grid
+- **Dedicated service landing pages** with visual 5-step timeline, sticky lead form, keyword-rich overview, FAQ accordion, benefits grid — content lives in [src/lib/service-pages.ts](src/lib/service-pages.ts) and can be overridden per slug from `/admin/settings/service-pages`
 - **Client portfolio / social proof** — any service page can showcase live client deployments (screenshot, business description, highlight chips, link to the live site) by adding a `clients` array to its entry in [src/lib/service-pages.ts](src/lib/service-pages.ts); the section self-hides when omitted, so pages without clients are unaffected. Live on [/content-management-system](src/app/content-management-system/page.tsx) with Al Mubin Training Pte Ltd
 - **Persistent CTAs** — sticky Get-a-Quote button (desktop), tap-to-call + WhatsApp icons (mobile), floating WhatsApp widget above the fold
 - **Floating WhatsApp widget** ([src/components/ui/WhatsAppWidget.tsx](src/components/ui/WhatsAppWidget.tsx)) — an attention-pulsing launcher (halo pulse + expanding ripple ring, paused on hover/open and disabled under `prefers-reduced-motion`) opens a one-tap topic picker; each chip deep-links to `wa.me` with a pre-filled message. Hidden on `/admin/*`
@@ -222,7 +224,10 @@ src/
     anthropic-auth.ts         buildClaudeEnv() for the Agent SDK subprocess
     chatbot-settings.ts       AI Chatbot system prompt + FAQ read/write
     secrets.ts                AES-256-GCM credentials vault
-    site-content.ts           Static feature copy
+    site-content.ts           Static feature copy + homepage SERVICES grid
+    service-pages.ts          Service landing-page content (hero, overview, timeline, FAQ, SEO meta)
+    rich-text.tsx             RichText — renders **bold** + [link](/path) markup in copy
+    markup.ts                 Markup regex + stripMarkup() (JSX-free, safe for jobs/scripts)
     site-settings.ts          Brand identity loader
     ai/claude.ts              Admin AI Assist runner
 scripts/

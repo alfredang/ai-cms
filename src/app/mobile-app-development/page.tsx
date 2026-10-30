@@ -20,33 +20,35 @@ import { Footer } from "@/components/layout/Footer";
 import { MobileAppLeadForm } from "@/components/sections/MobileAppLeadForm";
 import { MobileAppCard } from "@/components/sections/MobileAppCard";
 import { MOBILE_APPS } from "@/lib/mobile-apps";
+import { RichText, stripMarkup } from "@/lib/rich-text";
 
 const PAGE_URL = "https://www.tertiaryinfotech.com/mobile-app-development";
 const SITE_URL = "https://www.tertiaryinfotech.com";
 const OG_IMAGE = "/icon-192.png";
 
+const META_TITLE = "Mobile Apps Development in Singapore — Native iOS & Android";
+const META_DESC =
+  "Mobile apps development in Singapore: native iOS and Android apps in SwiftUI and Jetpack Compose, shipped to the App Store and Google Play. Book a free call.";
+
 export const metadata: Metadata = {
-  title: "Mobile App Development Singapore — Native iOS & Android Apps",
-  description:
-    "We design, build and publish native iOS and Android apps — SwiftUI and Jetpack Compose, shipped to the App Store and Google Play. See the apps we've launched. Book a free 30-min scoping call.",
+  title: META_TITLE,
+  description: META_DESC,
   keywords:
-    "mobile app development Singapore, native iOS app development, Android app development Singapore, SwiftUI app development, Jetpack Compose, App Store submission, Google Play submission, custom mobile app developer Singapore",
+    "mobile apps development in Singapore, mobile app development Singapore, mobile app developer Singapore, native iOS app development, Android app development Singapore, SwiftUI app development, Jetpack Compose, App Store submission, Google Play submission",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "website",
     locale: "en_SG",
     url: PAGE_URL,
-    title: "Mobile App Development Singapore — Native iOS & Android Apps",
-    description:
-      "Native iOS and Android apps designed, built and shipped to the App Store and Google Play. See the apps we've launched.",
+    title: META_TITLE,
+    description: META_DESC,
     siteName: "Tertiary Infotech Academy",
-    images: [{ url: OG_IMAGE, width: 192, height: 192, alt: "Tertiary Infotech Academy — Mobile App Development" }],
+    images: [{ url: OG_IMAGE, width: 192, height: 192, alt: "Mobile apps development in Singapore — Tertiary Infotech Academy" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mobile App Development Singapore — Native iOS & Android Apps",
-    description:
-      "Native iOS and Android apps designed, built and shipped to the App Store and Google Play.",
+    title: META_TITLE,
+    description: META_DESC,
     images: [OG_IMAGE],
   },
 };
@@ -150,24 +152,29 @@ const CAPABILITIES = [
 ];
 
 const INCLUDED = [
-  "Discovery and feature scoping for your app",
+  "Discovery and feature scoping — the first step of **mobile apps development in Singapore** with us",
   "Native iOS app (SwiftUI) and/or Android app (Jetpack Compose)",
   "Backend / shared API where the app needs live data, accounts or payments",
   "Push notifications, in-app purchase and payment integration",
   "On-device frameworks — VisionKit, CoreLocation, Metal, PencilKit, ML",
   "App Store + Google Play submission and review handling",
+  "Local Singapore team for workshops, testing and handover",
   "CI/CD pipeline for automated, signed releases",
   "Source handover — you own the code, the signing assets and the listings",
 ];
 
 const FAQ = [
   {
+    q: "Why choose a local team for mobile apps development in Singapore?",
+    a: "A local team for **mobile apps development in Singapore** means workshops in your time zone, on-site testing with your users, and familiarity with Singapore requirements such as PDPA and local payment methods like PayNow. You also deal directly with the engineers who build the app.",
+  },
+  {
     q: "Do you build native apps or cross-platform?",
-    a: "Both, depending on the job. Our shipped apps are native — SwiftUI on iOS and Kotlin / Jetpack Compose on Android — which gives the best performance and access to platform frameworks like VisionKit, Metal and PencilKit. For simpler apps that need to launch on both stores fast, we also build with Expo / React Native. We recommend the right approach in the Discovery call.",
+    a: "Both, depending on the job. Our **mobile apps development** work is mostly native — SwiftUI on iOS and Kotlin / Jetpack Compose on Android — which gives the best performance and access to platform frameworks like VisionKit, Metal and PencilKit. For simpler apps that need to launch on both stores fast, we also build with Expo / React Native. We recommend the right approach in the Discovery call.",
   },
   {
     q: "Can you publish to the App Store and Google Play for us?",
-    a: "Yes. We handle the full submission for both stores — provisioning, signing, the data-safety and privacy declarations, screenshots and the review back-and-forth. We've shipped multiple apps live on both stores and know the policy traps that cause rejections.",
+    a: "Yes. Our **mobile apps development in Singapore** includes the full submission for both stores — provisioning, signing, the data-safety and privacy declarations, screenshots and the review back-and-forth. We've shipped multiple apps live on both stores and know the policy traps that cause rejections.",
   },
   {
     q: "Do you build the backend too?",
@@ -191,11 +198,11 @@ const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "Mobile App Development",
-  name: "Mobile App Development — Singapore",
+  name: "Mobile Apps Development in Singapore",
   provider: { "@type": "Organization", name: "Tertiary Infotech Academy", url: SITE_URL },
   areaServed: { "@type": "Country", name: "Singapore" },
   description:
-    "End-to-end native iOS and Android app development — SwiftUI and Jetpack Compose, backend APIs, and App Store / Google Play submission.",
+    "End-to-end mobile apps development in Singapore — native iOS and Android apps in SwiftUI and Jetpack Compose, backend APIs, and App Store / Google Play submission.",
   url: PAGE_URL,
 };
 
@@ -223,7 +230,7 @@ const faqLd = {
   mainEntity: FAQ.map((f) => ({
     "@type": "Question",
     name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
+    acceptedAnswer: { "@type": "Answer", text: stripMarkup(f.a) },
   })),
 };
 
@@ -255,14 +262,15 @@ export default function MobileAppDevelopmentPage() {
           <Container>
             <div className="grid lg:grid-cols-12 gap-8 items-start relative">
               <div className="lg:col-span-7">
-                <div className="kicker mb-4">[ iOS · ANDROID · SHIPPED ON THE STORES ]</div>
+                <div className="kicker mb-4">[ iOS · ANDROID · MADE IN SINGAPORE ]</div>
                 <h1 className="font-display text-[clamp(2.25rem,5.2vw,3.75rem)] font-extrabold leading-[1.04] mb-5">
-                  We design, build and ship{" "}
-                  <span className="gradient-text">native mobile apps</span>.
+                  <span className="gradient-text">Mobile Apps Development</span>{" "}
+                  in Singapore — native iOS &amp; Android.
                 </h1>
                 <p className="text-(--color-muted) text-lg max-w-2xl mb-6">
-                  Native iOS and Android apps in SwiftUI and Jetpack Compose — from a
-                  Singapore home-cook marketplace to MRT route planning, GPS run tracking,
+                  End-to-end <strong className="text-white">mobile apps development in
+                  Singapore</strong>: native iOS and Android apps in SwiftUI and Jetpack
+                  Compose — from a Singapore home-cook marketplace to MRT route planning, GPS run tracking,
                   OCR business cards and offline games. We take the idea to the App Store
                   and Google Play, and hand you the keys.
                 </p>
@@ -349,6 +357,47 @@ export default function MobileAppDevelopmentPage() {
         </section>
 
         {/* PROCESS / TIMELINE */}
+        {/* OVERVIEW — keyword-rich long-form copy */}
+        <section id="overview" className="relative py-10 scroll-mt-20">
+          <Container className="max-w-4xl">
+            <div className="kicker mb-3">[ MOBILE APPS DEVELOPMENT ]</div>
+            <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight mb-5">
+              Mobile apps development in Singapore, from idea to the stores
+            </h2>
+            <div className="space-y-4 text-(--color-muted) leading-relaxed">
+              <p>
+                Most businesses don&apos;t need another agency that hands over a prototype and
+                disappears. They need an app that is live on the App Store and Google Play,
+                passes review, and can be updated without drama. That is how we approach{" "}
+                <strong className="text-white">mobile apps development in Singapore</strong>:
+                every engagement ends with a published app, signed releases and the source
+                code in your hands.
+              </p>
+              <p>
+                We build natively — SwiftUI on iOS and Jetpack Compose on Android — so your
+                app feels at home on each platform and can use camera, location, on-device
+                AI and payments without workarounds. When an app needs accounts, payments
+                or live data, the same team builds the API behind it. When it needs to
+                launch on both stores quickly, we recommend a cross-platform build instead.
+              </p>
+              <p>
+                Our <strong className="text-white">mobile apps development</strong> portfolio
+                above is proof, not mock-ups: {IOS_COUNT} apps live on the App Store and{" "}
+                {ANDROID_COUNT} on Google Play, built and maintained by our team in Singapore.
+                Need a two-sided platform? See our{" "}
+                <Link href="/marketplace-development" className="text-(--color-cyan) hover:underline">
+                  marketplace app development
+                </Link>
+                . Want AI inside the app? Our{" "}
+                <Link href="/ai-agent-deployment" className="text-(--color-cyan) hover:underline">
+                  AI agent deployment
+                </Link>{" "}
+                team works alongside the mobile engineers.
+              </p>
+            </div>
+          </Container>
+        </section>
+
         <section id="process" className="relative py-10 scroll-mt-20">
           <Container>
             <div className="max-w-3xl mb-10">
@@ -441,7 +490,9 @@ export default function MobileAppDevelopmentPage() {
                 {INCLUDED.map((line) => (
                   <li key={line} className="flex gap-3">
                     <span className="text-(--color-green) font-mono mt-0.5">✓</span>
-                    <span className="text-white/90">{line}</span>
+                    <span className="text-white/90">
+                      <RichText text={line} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -455,7 +506,7 @@ export default function MobileAppDevelopmentPage() {
             <div className="mb-8">
               <div className="kicker mb-3">[ FAQ ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
-                Common questions about building a mobile app.
+                Common questions about mobile apps development in Singapore.
               </h2>
             </div>
             <div className="space-y-3">
@@ -465,7 +516,9 @@ export default function MobileAppDevelopmentPage() {
                     <span className="font-display font-semibold text-base text-white">{f.q}</span>
                     <span className="text-(--color-cyan) font-mono text-lg transition group-open:rotate-45">+</span>
                   </summary>
-                  <p className="text-sm text-(--color-muted) leading-relaxed mt-3">{f.a}</p>
+                  <p className="text-sm text-(--color-muted) leading-relaxed mt-3">
+                    <RichText text={f.a} />
+                  </p>
                 </details>
               ))}
             </div>

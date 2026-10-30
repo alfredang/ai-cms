@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "AI-powered LMS & TMS built for Singapore training providers — automate WSQ compliance, pass TPQA audits, and integrate with SSG out of the box. Book a free consultation.",
   keywords:
-    "AI LMS Singapore, WSQ LMS, TMS for training providers, SSG ATO application Singapore, TPQA compliance Singapore, e-attendance SSG, training management system Singapore",
+    "AI LMS Singapore, WSQ LMS, TMS for training providers, ATO service in Singapore, SWDA ATO service, SWDA OR service, SWDA IBF OR service, TPQA service, TPQA audit, CQC audit, PEI service, WSQ courseware development, SWDA courseware development, AI agent deployment, agentic AI development, AI transformation evaluation and consultation, mobile apps development in Singapore",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

@@ -23,9 +23,9 @@ export const SERVICES = [
     icon: HiClipboardDocumentList,
     title: "Course Development",
     description:
-      "End-to-end development of accredited courses across Singapore's training frameworks — competency mapping, lesson plans, assessments and submission packages.",
+      "**WSQ courseware development** and **SWDA courseware development** across Singapore's training frameworks — competency mapping, lesson plans, assessments and submission packages.",
     features: [
-      "WSQ course development",
+      "WSQ courseware development",
       "CASL course development",
       "IBF-STS / FTS course development",
       "PWM course development",
@@ -37,9 +37,9 @@ export const SERVICES = [
   {
     id: "ato",
     icon: HiBuildingLibrary,
-    title: "ATO Application",
+    title: "ATO Service",
     description:
-      "Become an Approved Training Organisation (ATO) — we prepare your QMS, policies and SOPs and walk you through the SSG application from start to finish.",
+      "Our **ATO service in Singapore** makes you an Approved Training Organisation — policies, SOPs and the SWDA Organisation Registration (OR), including IBF OR, from start to finish.",
     features: [
       "QMS, policies & SOPs",
       "ATO submission package",
@@ -53,9 +53,9 @@ export const SERVICES = [
   {
     id: "tpqa",
     icon: HiCheckBadge,
-    title: "TPQA Consultancy",
+    title: "TPQA Service",
     description:
-      "Stay TPQA-compliant year-round. We run mock audits, fix gaps in your training-operations evidence, and prepare your team for the live SSG audit.",
+      "A year-round **TPQA service** — mock **TPQA audit**, evidence remediation, **CQC audit** responses and **PEI service** support, through to the live SWDA assessment.",
     features: [
       "Mock TPQA audit",
       "Evidence & documentation review",
@@ -103,9 +103,9 @@ export const SERVICES = [
   {
     id: "ai",
     icon: HiSparkles,
-    title: "Full Stack AI-Enabled Solutions",
+    title: "AI Transformation & Solutions",
     description:
-      "Production AI systems, automations and bespoke software — from agentic workflows to full-stack web tools and mobile apps.",
+      "**AI transformation evaluation and consultation**, then production AI systems, automations and bespoke software — from agentic workflows to full-stack web tools.",
     features: [
       "Agentic AI · n8n · Claude Code · OpenCLAW",
       "Harness Systems integration",
@@ -137,7 +137,7 @@ export const SERVICES = [
     icon: HiDevicePhoneMobile,
     title: "Mobile App Development",
     description:
-      "Native iOS and Android apps — SwiftUI and Jetpack Compose — designed, built and shipped to the App Store and Google Play. See the apps we've launched.",
+      "**Mobile apps development in Singapore** — native iOS and Android apps in SwiftUI and Jetpack Compose, shipped to the App Store and Google Play.",
     features: [
       "Native iOS (SwiftUI) & Android (Compose)",
       "Backend / shared API when you need one",
@@ -185,7 +185,7 @@ export const SERVICES = [
     icon: HiBolt,
     title: "AI Agent Deployment",
     description:
-      "Production deployment of agentic AI — OpenClaw, Hermes Agent, Nebula and bespoke Claude agents wired into your existing systems.",
+      "**AI agent deployment** and **agentic AI development** — OpenClaw, Hermes Agent, Nebula and bespoke Claude agents wired into your existing systems.",
     features: [
       "OpenClaw · Hermes Agent · Nebula",
       "Custom Claude Agent SDK builds",

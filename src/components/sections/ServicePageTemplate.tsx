@@ -11,6 +11,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ServiceLeadForm } from "@/components/sections/ServiceLeadForm";
 import type { ServicePageContent, TimelineStep } from "@/lib/service-pages";
+import { RichText, stripMarkup } from "@/lib/rich-text";
 
 const STEP_ICONS = [
   HiMagnifyingGlass, // Discovery
@@ -79,7 +80,7 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
     mainEntity: content.faq.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      acceptedAnswer: { "@type": "Answer", text: stripMarkup(f.a) },
     })),
   };
 
@@ -127,7 +128,9 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
                   className="font-display text-[clamp(2.25rem,5.2vw,3.75rem)] font-extrabold leading-[1.04] mb-5"
                   dangerouslySetInnerHTML={{ __html: content.hero.headlineHtml }}
                 />
-                <p className="text-(--color-muted) text-lg max-w-2xl mb-6">{content.hero.subhead}</p>
+                <p className="text-(--color-muted) text-lg max-w-2xl mb-6">
+                  <RichText text={content.hero.subhead} />
+                </p>
                 <div className="flex flex-wrap gap-3">
                   <a href="#book" className="btn-primary">
                     Book a consultation →
@@ -154,6 +157,41 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
           </Container>
         </section>
 
+        {/* Overview — long-form, keyword-rich copy */}
+        {content.overview && (
+          <section id="overview" className="relative py-10 scroll-mt-20">
+            <Container className="max-w-4xl">
+              <div className="kicker mb-3">{content.overview.kicker ?? "[ OVERVIEW ]"}</div>
+              <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight mb-5">
+                {content.overview.heading}
+              </h2>
+              <div className="space-y-4 text-(--color-muted) leading-relaxed">
+                {content.overview.paragraphs.map((p, i) => (
+                  <p key={i}>
+                    <RichText text={p} />
+                  </p>
+                ))}
+              </div>
+              {content.overview.sections && content.overview.sections.length > 0 && (
+                <div className="grid md:grid-cols-2 gap-4 mt-8">
+                  {content.overview.sections.map((sec) => (
+                    <div key={sec.heading} className="glass p-6">
+                      <h3 className="font-display font-bold text-lg mb-3">{sec.heading}</h3>
+                      <div className="space-y-3 text-sm text-(--color-muted) leading-relaxed">
+                        {sec.paragraphs.map((p, i) => (
+                          <p key={i}>
+                            <RichText text={p} />
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </Container>
+          </section>
+        )}
+
         {/* Benefits */}
         <section className="relative py-10">
           <Container>
@@ -168,7 +206,9 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
                 <div key={b.title} className="glass card-hover p-6 relative overflow-hidden">
                   <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-(--color-cyan) to-transparent" />
                   <h3 className="font-display font-bold text-lg mb-2">{b.title}</h3>
-                  <p className="text-sm text-(--color-muted) leading-relaxed">{b.body}</p>
+                  <p className="text-sm text-(--color-muted) leading-relaxed">
+                    <RichText text={b.body} />
+                  </p>
                 </div>
               ))}
             </div>
@@ -186,7 +226,9 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
                   <span className="gradient-text">{content.title}</span>.
                 </h2>
                 {content.processIntro && (
-                  <p className="text-(--color-muted) mt-3">{content.processIntro}</p>
+                  <p className="text-(--color-muted) mt-3">
+                    <RichText text={content.processIntro} />
+                  </p>
                 )}
               </div>
 
@@ -219,7 +261,9 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
                             </span>
                           )}
                           <h3 className="font-display font-bold text-lg mb-2">{s.title}</h3>
-                          <p className="text-sm text-(--color-muted) leading-relaxed">{s.body}</p>
+                          <p className="text-sm text-(--color-muted) leading-relaxed">
+                            <RichText text={s.body} />
+                          </p>
                         </div>
                       </li>
                     );
@@ -251,7 +295,9 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
                           )}
                         </div>
                         <h3 className="font-display font-bold text-base mb-1.5">{s.title}</h3>
-                        <p className="text-sm text-(--color-muted) leading-relaxed">{s.body}</p>
+                        <p className="text-sm text-(--color-muted) leading-relaxed">
+                            <RichText text={s.body} />
+                          </p>
                       </div>
                     </li>
                   );
@@ -275,7 +321,9 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
                 {content.whatsIncluded.map((line) => (
                   <li key={line} className="flex gap-3">
                     <span className="text-(--color-green) font-mono mt-0.5">✓</span>
-                    <span className="text-white/90">{line}</span>
+                    <span className="text-white/90">
+                      <RichText text={line} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -383,7 +431,9 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
                       +
                     </span>
                   </summary>
-                  <p className="text-sm text-(--color-muted) leading-relaxed mt-3">{f.a}</p>
+                  <p className="text-sm text-(--color-muted) leading-relaxed mt-3">
+                    <RichText text={f.a} />
+                  </p>
                 </details>
               ))}
             </div>

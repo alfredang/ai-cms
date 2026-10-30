@@ -14,6 +14,7 @@ import { runClaudeWithSystemPrompt } from "@/lib/ai/claude";
 import { renderAndUploadCover } from "@/lib/post-cover";
 import { getR2Config } from "@/lib/r2";
 import { SERVICES } from "@/lib/site-content";
+import { stripMarkup } from "@/lib/markup";
 import { slugify } from "@/lib/slugify";
 import {
   getRecentVideos,
@@ -52,7 +53,7 @@ async function getSetting<T = string>(key: string, fallback: T): Promise<T> {
 }
 
 function buildInternalLinkCatalog(): string {
-  const lines = SERVICES.map((s) => `- ${s.href} — ${s.title}: ${s.description.slice(0, 120)}`);
+  const lines = SERVICES.map((s) => `- ${s.href} — ${s.title}: ${stripMarkup(s.description).slice(0, 120)}`);
   lines.unshift("- /blog — index of all Tertiary Infotech Academy journal posts");
   lines.unshift("- /contact — lead-capture form (CTA target with ?source=blog-… tokens)");
   return lines.join("\n");

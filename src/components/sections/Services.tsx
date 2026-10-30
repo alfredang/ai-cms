@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { SERVICES } from "@/lib/site-content";
 import { getHomepageCopy } from "@/lib/site-settings";
 import { HiArrowRight } from "react-icons/hi2";
+import { RichText } from "@/lib/rich-text";
 
 const accentMap: Record<string, { glow: string; text: string; line: string }> = {
   blue: {
@@ -46,7 +47,9 @@ function ServiceCard({ s }: { s: Service }) {
       />
       <Icon className={`w-9 h-9 ${a.text} mb-5`} />
       <h3 className="font-display font-bold text-xl text-white mb-3">{s.title}</h3>
-      <p className="text-sm text-(--color-muted) mb-5 leading-relaxed">{s.description}</p>
+      <p className="text-sm text-(--color-muted) mb-5 leading-relaxed">
+        <RichText text={s.description} />
+      </p>
       <ul className="space-y-2 mb-6">
         {s.features.map((f) => (
           <li key={f} className="text-sm text-white/80 flex gap-2.5">

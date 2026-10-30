@@ -1,4 +1,4 @@
-// Content + metadata for the 5 dedicated service pages.
+// Content + metadata for the dedicated service pages.
 // Pages compose this with components/sections/ServicePageTemplate.
 //
 // Admin can override any of these fields per slug via the `settings` table
@@ -44,9 +44,21 @@ export type ServicePageContent = {
   meta: {
     title: string;
     description: string;
+    /** Comma-separated target keywords for <meta name="keywords">. */
+    keywords?: string;
   };
   /** "Service type" used in Schema.org Service @type. */
   serviceType: string;
+  /**
+   * Long-form, keyword-rich overview rendered under the hero. Copy fields across
+   * this type accept `**keyword**` markup, rendered bold by RichText.
+   */
+  overview?: {
+    kicker?: string;
+    heading: string;
+    paragraphs: string[];
+    sections?: { heading: string; paragraphs: string[] }[];
+  };
   /** Short intro above the timeline section. */
   processIntro?: string;
   /** Process / journey steps with optional visual timeline rendering. */
@@ -206,97 +218,183 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
   },
   "ai-solutions": {
     slug: "ai-solutions",
-    title: "AI Solutions",
+    title: "AI Transformation Evaluation & Consultation",
     leadSource: "ai-solutions-page",
-    serviceType: "AI Software Consultancy",
-    processIntro: "From discovery to production deployment in agile 2-week sprints.",
+    serviceType: "AI Transformation Evaluation and Consultation",
+    processIntro:
+      "From evaluation to production deployment — a clear roadmap first, then agile 2-week sprints.",
     timeline: [
-      { title: "Discovery", duration: "Week 0 · free", accent: "cyan", body: "30-min call. We map the use case, success metrics, existing systems and integration constraints." },
-      { title: "Workshop", duration: "Week 1", accent: "blue", body: "Half-day technical discovery: architecture, data flow, model selection, security, deployment target." },
-      { title: "Quotation", duration: "Week 2", accent: "purple", body: "Fixed-fee proposal with timeline + acceptance criteria per sprint." },
-      { title: "Build & Iterate", duration: "Weeks 3+", accent: "amber", body: "2-week sprints with weekly demos. Production-grade Next.js / React Native / Claude agents." },
-      { title: "Go Live", duration: "End of project", accent: "green", body: "Production deployment, observability dashboards, runbooks, 30-day post-launch support." },
+      { title: "Discovery", duration: "Week 0 · free", accent: "cyan", body: "30-min call. We map your business goals, current systems and where AI could genuinely move the numbers." },
+      { title: "AI Evaluation", duration: "Weeks 1–2", accent: "blue", body: "Process, data and skills readiness review, plus a ranked list of use cases scored on value, effort and risk." },
+      { title: "Roadmap & Quote", duration: "Week 3", accent: "purple", body: "**AI transformation consultation** workshop with your leadership: the roadmap, the architecture and a fixed-fee proposal for the first build." },
+      { title: "Build & Iterate", duration: "Weeks 4+", accent: "amber", body: "**Agentic AI development** in 2-week sprints with weekly demos — Claude agents, n8n automations, Next.js and mobile apps." },
+      { title: "Go Live", duration: "End of project", accent: "green", body: "Production deployment, observability dashboards, runbooks, staff training and 30-day post-launch support." },
     ],
     hero: {
-      kicker: "[ AGENTIC AI · CLAUDE CODE · BESPOKE ]",
+      kicker: "[ AI EVALUATION · CONSULTATION · AGENTIC AI ]",
       headlineHtml:
-        'Production <span class="gradient-text">Agentic AI</span> and bespoke software for organisations.',
+        '<span class="gradient-text">AI Transformation Evaluation &amp; Consultation</span> for Singapore organisations.',
       subhead:
-        "From AI-powered admin assistants to internal CRMs to public-facing AI tools — built with Claude Code, n8n, and a 12-year track record in Singapore EdTech.",
+        "Independent **AI transformation evaluation and consultation**, then hands-on **agentic AI development** — from AI-powered admin assistants to internal tools and public-facing AI products, backed by a 12-year track record in Singapore EdTech.",
     },
     meta: {
-      title: "AI Solutions Singapore — Agentic AI, n8n, Claude Code, Bespoke Web & Mobile",
+      title: "AI Transformation Evaluation & Consultation Singapore",
       description:
-        "Custom AI agents, automations and full-stack web/mobile apps for Singapore SMEs and training providers. Built with Claude Agent SDK, n8n and modern stacks. Book a free scoping call.",
+        "AI transformation evaluation and consultation for Singapore organisations: readiness review, use-case roadmap, then agentic AI development. Book a free call.",
+      keywords:
+        "AI transformation evaluation and consultation, AI transformation consultation Singapore, AI readiness assessment, AI consultancy Singapore, agentic AI development, AI strategy roadmap, AI solutions Singapore",
+    },
+    overview: {
+      kicker: "[ AI TRANSFORMATION ]",
+      heading: "AI transformation evaluation and consultation, before you build",
+      paragraphs: [
+        "Most AI projects fail for business reasons, not technical ones: the wrong process was automated, the data wasn't ready, or nobody owned the result. Our **AI transformation evaluation and consultation** service starts by finding where AI will actually pay off in your organisation — and where it won't — before a single line of code is written.",
+        "The **AI transformation evaluation** looks at your workflows, systems, data quality and team skills, then scores each candidate use case on value, effort and risk. The **AI transformation consultation** turns that evaluation into a practical roadmap your leadership can approve: what to build first, what it costs, how success is measured and who owns it.",
+        "Because we also build, the roadmap is grounded in delivery. When you're ready, the same team moves into **agentic AI development** and [AI agent deployment](/ai-agent-deployment), so nothing is lost between the consultants and the engineers.",
+      ],
+      sections: [
+        {
+          heading: "AI transformation evaluation",
+          paragraphs: [
+            "A structured review covering process mapping, data readiness, security and PDPA considerations, existing systems and staff capability. You get a scored use-case register and a frank view of quick wins versus long bets.",
+          ],
+        },
+        {
+          heading: "AI transformation consultation",
+          paragraphs: [
+            "Leadership workshops that turn the evaluation into a phased roadmap — architecture, model choice, build-versus-buy, change management and KPIs. Our **AI transformation consultation** is vendor-neutral: we recommend what fits, including tools we don't build.",
+          ],
+        },
+        {
+          heading: "Agentic AI development",
+          paragraphs: [
+            "**Agentic AI development** with the Claude Agent SDK and n8n: agents that draft documents, triage enquiries, summarise leads and fill compliance forms, wired into Gmail, Slack, your CRM and your custom APIs.",
+          ],
+        },
+        {
+          heading: "Bespoke software and apps",
+          paragraphs: [
+            "Production-grade Next.js web tools and native mobile apps when the roadmap calls for them — see our [mobile apps development in Singapore](/mobile-app-development) and [AI LMS / TMS](/learning-management-system) work.",
+          ],
+        },
+      ],
     },
     benefits: [
       {
-        title: "Agentic AI workflows",
-        body: "Claude-powered agents that perform real work — draft posts, summarise leads, triage support, fill compliance forms.",
+        title: "Evaluation before investment",
+        body: "The evaluation tells you which use cases are worth funding — with value, effort and risk scored — before you commit budget.",
       },
       {
-        title: "n8n automation",
-        body: "Visual workflow automation connecting Gmail, Slack, GSuite, Stripe, Notion, your CRM and your custom APIs.",
+        title: "A roadmap leadership can approve",
+        body: "Our **AI transformation consultation** produces a phased plan with costs, owners and KPIs, not a slide deck of buzzwords.",
+      },
+      {
+        title: "Agentic AI development",
+        body: "Claude-powered agents that perform real work — draft posts, summarise leads, triage support, fill compliance forms — plus n8n automation across your tools.",
       },
       {
         title: "Bespoke web / mobile apps",
-        body: "Production-grade Next.js, React Native and Expo apps. AppStore + Play Store deployment included.",
-      },
-      {
-        title: "Harness Systems integration",
-        body: "End-to-end CI/CD, observability, secret management for your AI deployments.",
+        body: "Production-grade Next.js and native iOS / Android apps, with App Store and Google Play submission included.",
       },
     ],
     whatsIncluded: [
-      "Scoping workshop + technical discovery (1–2 weeks)",
+      "**AI transformation evaluation** — process, data, systems and skills readiness review",
+      "Scored use-case register (value · effort · risk)",
+      "**AI transformation consultation** workshops and a phased roadmap",
       "Architecture proposal with cost + timeline guarantees",
-      "Iterative delivery in 2-week sprints with weekly demos",
+      "**Agentic AI development** in 2-week sprints with weekly demos",
       "Production deployment on your infra or our Coolify-managed cluster",
-      "Documentation, runbooks and 30-day post-launch support",
+      "Documentation, runbooks, staff training and 30-day post-launch support",
     ],
     faq: [
+      {
+        q: "What is an AI transformation evaluation?",
+        a: "An **AI transformation evaluation** is a structured review of your processes, data, systems and team skills that identifies where AI will add measurable value. The output is a scored list of use cases and a recommendation on where to start.",
+      },
+      {
+        q: "How long does AI transformation evaluation and consultation take?",
+        a: "Typically 2–3 weeks in total: one to two weeks of evaluation, then a roadmap workshop with your leadership. Larger organisations with several business units may take longer — we confirm scope after Discovery.",
+      },
+      {
+        q: "Do you also build what you recommend?",
+        a: "Yes. After the **AI transformation consultation** you can take the roadmap to any vendor, or have us carry it into **agentic AI development** and production deployment. There's no obligation to build with us.",
+      },
       {
         q: "Do you use OpenAI or Claude?",
         a: "Default is Claude (Anthropic) via the Claude Agent SDK — better at long-horizon tasks, transparent reasoning, and works with your OAuth subscription instead of metered API. We can use OpenAI on request.",
       },
       {
         q: "What's the typical project size?",
-        a: "Small workflow automations: 1–2 weeks. Internal tools / dashboards: 4–8 weeks. Full bespoke product: 3+ months. We confirm scope after Discovery.",
-      },
-      {
-        q: "Do you do mobile apps?",
-        a: "Yes — Expo + React Native, native iOS / Android. We also handle store submission and review.",
+        a: "Small workflow automations: 1–2 weeks. Internal tools / dashboards: 4–8 weeks. Full bespoke product: 3+ months. We confirm scope after the evaluation.",
       },
       {
         q: "Can you work with our existing dev team?",
-        a: "Yes — we routinely embed with internal teams for pair-programming, code review and Claude-Code training.",
+        a: "Yes — we routinely embed with internal teams for pair-programming, code review and Claude Code training.",
       },
     ],
   },
   "wsq-course-development": {
     slug: "wsq-course-development",
-    title: "WSQ Course Development",
+    title: "WSQ Courseware Development",
     leadSource: "course-dev-page",
-    serviceType: "Course Development",
-    processIntro: "From competency mapping to SSG submission package — typically 6–10 weeks per course.",
+    serviceType: "WSQ Courseware Development",
+    processIntro:
+      "From competency mapping to SWDA submission — typically 6–10 weeks per course.",
     timeline: [
       { title: "Discovery", duration: "Week 0 · free", accent: "cyan", body: "30-min call. We confirm sector, framework (WSQ / CASL / IBF-STS / PWM), target competencies and audience." },
-      { title: "Scoping", duration: "Week 1", accent: "blue", body: "Competency mapping draft, learning outcomes, course structure, assessment strategy." },
+      { title: "Scoping", duration: "Week 1", accent: "blue", body: "Competency mapping draft, learning outcomes, course structure and assessment strategy." },
       { title: "Quotation", duration: "Week 2", accent: "purple", body: "Fixed-fee proposal scoped to course duration and assessment complexity." },
-      { title: "Build", duration: "Weeks 3–8", accent: "amber", body: "Lesson plans, slide decks, assessor guides, trainer guide, industry-engagement evidence pack." },
-      { title: "SSG Submission", duration: "Weeks 8–10", accent: "green", body: "Complete Course Application package on TPGateway. We walk you through the submission flow." },
+      { title: "Build", duration: "Weeks 3–8", accent: "amber", body: "Slide deck, Lesson Plan, Learner Guide, Facilitator Guide, Assessment Plan and assessments." },
+      { title: "SWDA Submission", duration: "Weeks 8–10", accent: "green", body: "Complete Course Proposal package on TPGateway, plus support through SWDA's clarification rounds." },
     ],
     hero: {
-      kicker: "[ COURSE DEV · WSQ · IBF-STS · PWM ]",
+      kicker: "[ WSQ · SWDA · IBF-STS · PWM ]",
       headlineHtml:
-        '<span class="gradient-text">WSQ Course Development</span> end-to-end.',
+        '<span class="gradient-text">WSQ Courseware Development</span> for Singapore training providers.',
       subhead:
-        "From competency mapping through lesson plans, assessment plans and SSG submission package — for WSQ, CASL, IBF-STS / FTS and PWM frameworks.",
+        "End-to-end **WSQ courseware development** and **SWDA courseware development** — competency mapping, slide decks, Lesson Plans, Learner Guides and assessments — for WSQ, CASL, IBF-STS / FTS and PWM frameworks.",
     },
     meta: {
-      title: "WSQ Course Development Singapore — Competency Mapping, Lesson Plans, SSG Submission",
+      title: "WSQ Courseware Development Singapore — SWDA-Ready",
       description:
-        "End-to-end accredited course development for Singapore training providers. WSQ, CASL, IBF-STS and PWM frameworks. We handle competency mapping, lesson plans and SSG submission.",
+        "WSQ courseware development for Singapore training providers: slides, Lesson Plans, Learner Guides and assessments built to SWDA standards. Book a free call.",
+      keywords:
+        "WSQ courseware development, SWDA courseware development, WSQ course development Singapore, WSQ lesson plan, WSQ learner guide, WSQ assessment development, IBF-STS course development, CASL course development",
+    },
+    overview: {
+      kicker: "[ WSQ COURSEWARE ]",
+      heading: "WSQ courseware development that passes SWDA review",
+      paragraphs: [
+        "Accredited courses live or die on their courseware. SWDA (the SkillsFuture and Workforce Development Agency, formerly SSG) checks that every learning outcome, knowledge and ability statement, duration and assessment method in your courseware matches the Course Proposal it approved — word for word. Our **WSQ courseware development** service is built around that rule.",
+        "Every course we build comes from a single source of content, so the slide deck, Lesson Plan, Learner Guide and assessments always agree with each other and with the approved proposal. That's what makes our **SWDA courseware development** hold up in clarification rounds, Course Quality Checks and periodic checks on training delivery.",
+        "We have developed and delivered WSQ courses for our own academy for over a decade, so our courseware reflects what trainers and assessors actually need in the classroom — not just what a template asks for.",
+      ],
+      sections: [
+        {
+          heading: "SWDA courseware development",
+          paragraphs: [
+            "**SWDA courseware development** covers the Course Proposal, competency mapping to the Skills Framework TSC, and the full courseware suite. We handle SWDA's clarification rounds and keep the approved version as the single source of truth.",
+          ],
+        },
+        {
+          heading: "Lesson Plans and Learner Guides",
+          paragraphs: [
+            "Hour-by-hour Lesson Plans, Learner Guides with self-study content, Facilitator Guides and Assessment Plans — each with version control, so you can always show which version was deployed in which course run.",
+          ],
+        },
+        {
+          heading: "Assessments that test the Ability",
+          paragraphs: [
+            "Written assessments for knowledge and practical performance or case-study instruments for abilities, each with a model-answer marking guide. Questions are open-ended and pitched at the TSC proficiency level.",
+          ],
+        },
+        {
+          heading: "Ready for audit",
+          paragraphs: [
+            "Courseware built this way is ready for a CQC audit and for your [TPQA service](/tpqa-consultancy) review. New to accreditation? Pair it with our [ATO service in Singapore](/ssg-ato-application).",
+          ],
+        },
+      ],
     },
     benefits: [
       {
@@ -304,43 +402,51 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
         body: "Courses mapped to WSQ Competency Units, Critical Core Skills (CCS) or IBF-STS competencies depending on your sector.",
       },
       {
-        title: "Lesson + assessment plans",
-        body: "Hour-by-hour lesson plans, structured assessment plans (formative + summative) and assessor guides.",
+        title: "Complete courseware suite",
+        body: "We deliver slide decks, Lesson Plans, Learner Guides, Facilitator Guides, Assessment Plans and assessments — all aligned from one source.",
       },
       {
-        title: "Industry engagement",
-        body: "Documented industry consultation and learner-feedback analysis — required artefacts for SSG approval.",
+        title: "Verbatim to the approved proposal",
+        body: "Our **SWDA courseware development** copies learning outcomes, K/A statements, durations and assessment methods exactly from the approved Course Proposal.",
       },
       {
         title: "Submission-ready",
-        body: "Full Course Application package compliant with TPGateway requirements; we walk you through the submission.",
+        body: "Full Course Proposal package compliant with TPGateway requirements; we walk you through submission and SWDA's clarification rounds.",
       },
     ],
     whatsIncluded: [
       "Competency mapping to WSQ / CASL / IBF-STS / PWM",
       "Course outline + module breakdown",
-      "Hour-by-hour lesson plans",
-      "Assessment plan + assessor guides",
-      "Trainer guide + slide deck",
+      "**WSQ courseware development** — slide deck, Lesson Plan and Learner Guide",
+      "Facilitator Guide and Assessment Plan",
+      "Written and practical assessments with marking guides",
       "Industry engagement & learner-feedback evidence pack",
-      "TPGateway Course Application submission package",
+      "**SWDA courseware development** — TPGateway Course Proposal submission package",
     ],
     faq: [
       {
+        q: "What does WSQ courseware development include?",
+        a: "Our **WSQ courseware development** includes competency mapping, the slide deck, Lesson Plan, Learner Guide, Facilitator Guide, Assessment Plan and the assessments with marking guides, plus the Course Proposal package for submission.",
+      },
+      {
+        q: "What is SWDA courseware development?",
+        a: "SSG and WSG merged into SWDA in July 2026, so courseware for accredited WSQ courses is now reviewed by SWDA. **SWDA courseware development** means building courseware that matches the SWDA-approved Course Proposal exactly and survives its quality checks.",
+      },
+      {
         q: "Which frameworks do you cover?",
-        a: "WSQ, Critical Core Skills (CCS), IBF-STS / FTS, PWM, and CASL. Other frameworks on request.",
+        a: "WSQ, Critical Core Skills (CCS), IBF-STS / FTS, PWM and CASL. Other frameworks on request.",
       },
       {
-        q: "Do you handle CASL courses?",
-        a: "Yes — CASL course development is a frequent engagement, including competency mapping and submission to relevant accreditation bodies.",
+        q: "How long does WSQ courseware development take?",
+        a: "Typically 6–10 weeks per course depending on length (in-classroom hours), assessment complexity and SME availability.",
       },
       {
-        q: "How long does course development take?",
-        a: "Typical engagement: 6–10 weeks per course depending on length (in-classroom hours), assessment complexity and SME availability.",
+        q: "Can you fix courseware that failed a CQC audit?",
+        a: "Yes. We rebuild the courseware against the approved Course Proposal and prepare the Improvement Plan — see our [CQC audit support](/tpqa-consultancy).",
       },
       {
         q: "Can you also deliver the course?",
-        a: "We focus on development. Through our network we can recommend qualified ACLP-certified trainers if needed.",
+        a: "We focus on development. Through our network we can recommend qualified trainers if needed.",
       },
     ],
   },
@@ -457,36 +563,74 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
     slug: "ai-agent-deployment",
     title: "AI Agent Deployment",
     leadSource: "ai-agent-page",
-    serviceType: "AI Agent Deployment",
+    serviceType: "AI Agent Deployment and Agentic AI Development",
     hero: {
-      kicker: "[ OPENCLAW · HERMES · NEBULA ]",
+      kicker: "[ AGENTIC AI · OPENCLAW · HERMES · CLAUDE ]",
       headlineHtml:
-        'Production <span class="gradient-text">AI Agent</span> deployment for your business.',
+        '<span class="gradient-text">AI Agent Deployment</span> &amp; agentic AI development in Singapore.',
       subhead:
-        "Deploy OpenClaw, Hermes Agent, Nebula or bespoke Claude Agent SDK builds into your existing systems — webhooks, n8n flows, REST APIs, customer-facing chat. Observability and cost guardrails included.",
+        "Production **AI agent deployment** and **agentic AI development** — OpenClaw, Hermes Agent, Nebula or bespoke Claude Agent SDK builds wired into your systems through webhooks, n8n flows, REST APIs and customer-facing chat. Observability and cost guardrails included.",
     },
     meta: {
-      title: "AI Agent Deployment Singapore — OpenClaw, Hermes Agent, Nebula, Claude Agent SDK",
+      title: "AI Agent Deployment & Agentic AI Development Singapore",
       description:
-        "Production deployment of agentic AI — OpenClaw, Hermes, Nebula and custom Claude agents wired into your systems with observability + cost guardrails. Book a free scoping call.",
+        "AI agent deployment and agentic AI development for Singapore businesses — OpenClaw, Hermes Agent and custom Claude agents with cost guardrails. Book a free call.",
+      keywords:
+        "AI agent deployment, agentic AI development, AI agent deployment Singapore, agentic AI Singapore, OpenClaw deployment, Hermes Agent, Claude Agent SDK development, AI agent integration",
     },
-    processIntro: "From use-case to production-ready agent in 4–6 weeks.",
+    overview: {
+      kicker: "[ AGENTIC AI ]",
+      heading: "From agentic AI development to production AI agent deployment",
+      paragraphs: [
+        "A demo agent is easy. An agent that runs every day against your real systems, stays inside its permissions and doesn't surprise you with a bill is not. Our **AI agent deployment** service closes that gap: we pick or build the right agent, connect it to your tools, and put the monitoring and cost limits around it that production needs.",
+        "**Agentic AI development** is where we build what off-the-shelf agents can't do — custom tools, MCP servers for your proprietary systems, multi-step workflows and human-in-the-loop approvals. Whether you deploy an existing agent or commission a bespoke one, every deployment ships with evals, audit trails and a runbook your team can operate.",
+        "Not sure where agents fit yet? Start with our [AI transformation evaluation and consultation](/ai-solutions) to find the use cases worth automating.",
+      ],
+      sections: [
+        {
+          heading: "AI agent deployment",
+          paragraphs: [
+            "**AI agent deployment** of OpenClaw, Hermes Agent, Nebula, Copilot Studio agents and others on your infrastructure or ours — with secrets management, access controls, logging and on-call handover.",
+          ],
+        },
+        {
+          heading: "Agentic AI development",
+          paragraphs: [
+            "Bespoke **agentic AI development** on the Claude Agent SDK: tool use, long-horizon planning, MCP servers and approval gates, built against your workflows and tested with an eval harness.",
+          ],
+        },
+        {
+          heading: "Channels and integrations",
+          paragraphs: [
+            "Agents that work where your people work — WhatsApp, Telegram, Slack, Teams, Discord and email — and reach into your CRM, HRMS, accounting, [LMS / TMS](/training-management-system) and CMS.",
+          ],
+        },
+        {
+          heading: "Guardrails in production",
+          paragraphs: [
+            "Per-agent token budgets with auto-cutoff, latency and error tracing, and an eval run on every prompt change — so your agents stay predictable after go-live.",
+          ],
+        },
+      ],
+    },
+    processIntro: "From use case to a production-ready agent in 4–6 weeks.",
     timeline: [
       { title: "Discovery", duration: "Week 0 · free", accent: "cyan", body: "30-min call. Define the use case, success metrics, target systems and constraints." },
       { title: "Workshop", duration: "Week 1", accent: "blue", body: "Half-day technical workshop. Agent selection (OpenClaw / Hermes / Nebula / custom), tool integrations, security boundaries." },
       { title: "Quotation", duration: "Week 2", accent: "purple", body: "Fixed-fee proposal with sprint plan and acceptance criteria." },
-      { title: "Build & Iterate", duration: "Weeks 3–5", accent: "amber", body: "Agent build with weekly demos. Observability dashboards, cost limits, eval harness." },
+      { title: "Build & Iterate", duration: "Weeks 3–5", accent: "amber", body: "**Agentic AI development** with weekly demos. Observability dashboards, cost limits, eval harness." },
       { title: "Go Live", duration: "Week 6", accent: "green", body: "Production deployment, runbooks, on-call handover, 30-day post-launch support." },
     ],
     benefits: [
-      { title: "Battle-tested agents", body: "OpenClaw (open-source autonomous agent), Hermes Agent (Singapore-built workflow agent), Nebula (research + planning agent). We pick the right one for your use case." },
-      { title: "Custom Claude Agent SDK builds", body: "Bespoke agents on the official Anthropic SDK — tool use, MCP servers, long-horizon planning, with your Claude subscription token (no metered API)." },
+      { title: "Battle-tested agents", body: "OpenClaw (open-source autonomous agent), Hermes Agent (Singapore-built workflow agent), Nebula (research + planning agent). We start by picking the right one for your use case." },
+      { title: "Custom agentic AI development", body: "Bespoke **agentic AI development** on the official Claude Agent SDK — tool use, MCP servers, long-horizon planning, with your Claude subscription token (no metered API)." },
       { title: "Integration-first", body: "n8n flows, Slack / Teams bots, webhook endpoints, REST APIs into your CRM / HRMS / accounting / LMS / CMS." },
       { title: "Observability + cost guardrails", body: "Per-agent token usage, latency, error tracing. Daily / monthly cost caps with auto-cutoff. No surprise bills." },
     ],
     whatsIncluded: [
       "Agent selection workshop + architecture proposal",
-      "Production deployment of chosen agent stack",
+      "Production deployment of the chosen agent stack",
+      "Bespoke **agentic AI development** where off-the-shelf agents fall short",
       "Supported AI agents — OpenClaw · Hermes Agent · Nebula · Copilot Studio Agent and others",
       "Model-agnostic selection — Claude Code · Codex · MiniMax · Kimi · DeepSeek · OpenRouter",
       "Connect to multiple channels — WhatsApp · Telegram · Slack · Discord and more",
@@ -494,6 +638,8 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       "30-day post-launch support",
     ],
     faq: [
+      { q: "What does AI agent deployment involve?", a: "**AI agent deployment** covers choosing the agent, connecting it to your systems and channels, setting permissions and cost limits, adding monitoring and evals, and handing over a runbook. Most deployments go live in 4–6 weeks." },
+      { q: "What's the difference between agentic AI development and deploying an existing agent?", a: "Deploying an existing agent (OpenClaw, Hermes, Nebula) is faster when it already fits your use case. **Agentic AI development** builds a custom agent on the Claude Agent SDK when you need proprietary tools, bespoke workflows or approval gates. We recommend one or the other in the Discovery call." },
       { q: "What's OpenClaw, Hermes Agent, Nebula?", a: "OpenClaw is our open-source autonomous coding agent; Hermes is a Singapore-built workflow orchestration agent; Nebula is a research + planning agent. We'll recommend the right one in the Discovery call." },
       { q: "Can we use our existing Anthropic API key?", a: "We strongly recommend a Claude subscription OAuth token (`claude setup-token`) — it's a flat fee instead of per-call billing. The Claude Agent SDK supports both." },
       { q: "How do you prevent runaway costs?", a: "Per-agent and per-tenant token budgets with auto-cutoff, full audit trail in observability dashboards, and an eval harness that runs on every prompt change." },
@@ -502,71 +648,126 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
   },
   "tpqa-consultancy": {
     slug: "tpqa-consultancy",
-    title: "TPQA Consultancy",
+    title: "TPQA Service",
     leadSource: "tpqa-page",
-    serviceType: "TPQA Consultancy",
-    processIntro: "Pre-audit to post-audit — we're with you across all 4 TPQA Criteria.",
+    serviceType: "TPQA Service and TPQA Audit Consultancy",
+    processIntro:
+      "From gap assessment to the live **TPQA audit** — our **TPQA service** covers all 3 TPQA Criteria.",
     timeline: [
-      { title: "Discovery", duration: "Week 0 · free", accent: "cyan", body: "30-min call. Where are you in the TPQA cycle? Any prior audit findings or corrective actions?" },
-      { title: "Gap Assessment", duration: "Week 1", accent: "blue", body: "Half-day pre-audit workshop or remote review of your QMS, SOPs, course evidence and outcomes data." },
-      { title: "Quotation", duration: "Week 2", accent: "purple", body: "Fixed-fee remediation roadmap with priority-ranked actions per Indicator." },
-      { title: "Mock Audit & Fix", duration: "Weeks 3–6", accent: "amber", body: "On-site mock TPQA audit, evidence-pack builds, trainer interview prep, gap closure." },
-      { title: "Live SSG Audit", duration: "On-site day", accent: "green", body: "We're on-site during the actual SSG TPQA audit — interview coaching and real-time clarifications." },
+      { title: "Discovery", duration: "Week 0 · free", accent: "cyan", body: "30-min call. Where are you in the TPQA cycle? Any prior audit findings, CQC observations or corrective actions?" },
+      { title: "Gap Assessment", duration: "Week 1", accent: "blue", body: "Half-day pre-audit workshop or remote review of your Policies and Operations Manual, SOPs, course-run evidence and outcomes data." },
+      { title: "Quotation", duration: "Week 2", accent: "purple", body: "Fixed-fee remediation roadmap with priority-ranked actions per TPQA sub-item." },
+      { title: "Mock Audit & Fix", duration: "Weeks 3–6", accent: "amber", body: "Mock audit, evidence-pack builds, adult-educator interview prep and gap closure." },
+      { title: "Live TPQA Audit", duration: "On-site day", accent: "green", body: "We support you through the live SWDA **TPQA audit** — interview coaching and real-time clarifications." },
     ],
     hero: {
-      kicker: "[ TPQA · MOCK AUDIT · COMPLIANCE ]",
+      kicker: "[ TPQA · CQC · PEI · COMPLIANCE ]",
       headlineHtml:
-        '<span class="gradient-text">TPQA Consultancy</span> — stay compliant year-round.',
+        '<span class="gradient-text">TPQA Service</span> &amp; TPQA audit support in Singapore.',
       subhead:
-        "Mock TPQA audits, evidence-pack remediation, gap-assessment roadmaps and on-site audit support for SSG-registered training providers in Singapore.",
+        "A complete **TPQA service** for SWDA (formerly SSG) registered training providers — mock **TPQA audit**, evidence-pack remediation, **CQC audit** responses and **PEI service** support, from gap assessment to the live on-site assessment.",
     },
     meta: {
-      title: "TPQA Consultancy Singapore — Mock Audits, Compliance Remediation, On-Site Support",
+      title: "TPQA Service & TPQA Audit Singapore — CQC & PEI Support",
       description:
-        "TPQA mock audits, evidence-pack remediation and on-site audit support for SSG-registered training providers. Stay compliant year-round. Free assessment call.",
+        "TPQA service and TPQA audit preparation for SWDA-registered training providers in Singapore, plus CQC audit and PEI service support. Book a free call.",
+      keywords:
+        "TPQA service, TPQA audit, CQC audit, PEI service, TPQA consultancy Singapore, TPQA audit preparation, SWDA TPQA, course quality check SWDA, private education institution registration",
+    },
+    overview: {
+      kicker: "[ TPQA SERVICE ]",
+      heading: "What our TPQA service covers",
+      paragraphs: [
+        "The Training Provider Quality Assessment (TPQA) is how SWDA — the SkillsFuture and Workforce Development Agency, formed when SSG and WSG merged in July 2026 — checks that a registered training provider runs a sound, well-governed training operation. Our **TPQA service** takes you from scattered files to an organised, evidence-backed submission, using the same method that earned Tertiary Infotech Academy a Grade 1 result in our own **TPQA audit**.",
+        "A **TPQA audit** covers three Criteria: Criterion 1 Administration & Governance, Criterion 2 Course Quality Assurance, and Criterion 3 Outcomes. Assessors sample learner records per course run, ask for the source report behind every outcome figure, and check that your Policies and Operations Manual matches what your team actually does. Our **TPQA service** maps every sub-item of the current requirements to a manual heading, an annex and a piece of filed evidence, so nothing is left for the assessor to chase.",
+        "Quality doesn't stop at the provider level. Accredited WSQ courses also face SWDA's Course Quality Check, and private education institutions have their own obligations. That's why our **TPQA service** also includes **CQC audit** support and a **PEI service** — one consultant across all of your quality reviews.",
+      ],
+      sections: [
+        {
+          heading: "TPQA audit preparation",
+          paragraphs: [
+            "We run a mock **TPQA audit** against the current TPQA Requirements, Document Submission List and Self-Assessment Checklist, then hand you a priority-ranked gap list. Every gap comes with the fix, not just the finding.",
+            "Before the live assessment, we coach your management representative and adult educators so their answers match the evidence on file.",
+          ],
+        },
+        {
+          heading: "CQC audit support",
+          paragraphs: [
+            "SWDA runs a Course Quality Check (CQC) on accredited WSQ courses. When a **CQC audit** returns observations, you have 14 working days to reply with an Improvement Plan.",
+            "We rebuild the courseware against the approved Course Proposal through our [WSQ courseware development](/wsq-course-development) team, draft the Improvement Plan in SWDA's format and prepare reply packs for periodic checks on training delivery.",
+          ],
+        },
+        {
+          heading: "PEI service",
+          paragraphs: [
+            "Private Education Institutions (PEIs) must meet registration and quality requirements under the Private Education Act. Our **PEI service** applies the same discipline we use for TPQA — policies, SOPs, closed-loop processes and evidence filing — so your documentation stands up to review.",
+          ],
+        },
+        {
+          heading: "TPQA service between audits",
+          paragraphs: [
+            "TPQA is not a one-off. We keep your evidence current between cycles — quarterly strategic-plan reviews, marketing approvals, adult-educator deployment records and e-attendance rules — so the next audit is a review, not a rebuild.",
+            "Not yet registered? Start with our [ATO service in Singapore](/ssg-ato-application).",
+          ],
+        },
+      ],
     },
     benefits: [
       {
         title: "Mock TPQA audit",
-        body: "Full half-day mock audit modelled on SSG's actual TPQA process — across all 4 Criteria and 14 Indicators.",
+        body: "A full mock audit modelled on SWDA's actual process — across all 3 TPQA Criteria and every sub-item in the current requirements.",
       },
       {
         title: "Evidence & documentation review",
-        body: "We review your QMS, SOPs, course administration evidence, learner-management records and outcomes data — gap-list with priority.",
+        body: "We review your Policies and Operations Manual, SOPs, course-run records, learner-management records and outcomes data, then rank every gap by audit risk.",
       },
       {
         title: "Gap remediation roadmap",
-        body: "Concrete fixes for every gap, ranked by audit-risk. We help you build the missing evidence, not just identify it.",
+        body: "Concrete fixes for every gap, ranked by audit risk. Our **TPQA service** builds the missing evidence with you — not just a list of findings.",
       },
       {
-        title: "On-site audit support",
-        body: "We're on-site during the SSG TPQA audit to support your team — interview coaching, evidence presentation, real-time clarifications.",
+        title: "CQC audit and PEI support",
+        body: "**CQC audit** Improvement Plans and periodic-check replies for your WSQ courses, plus a **PEI service** for private education institutions.",
       },
     ],
     whatsIncluded: [
       "Pre-audit gap-assessment workshop",
-      "Mock TPQA audit (half-day on-site or remote)",
-      "Detailed gap report with priority-ranked remediation actions",
-      "Evidence-pack templates (Criterion 1–4)",
-      "Hands-on remediation support (typically 2–6 weeks)",
-      "On-site presence during the live SSG TPQA audit",
+      "Mock **TPQA audit** (half-day on-site or remote)",
+      "Gap report with priority-ranked remediation actions",
+      "Policies and Operations Manual mapped to every TPQA sub-item",
+      "Evidence-pack templates for Criteria 1–3",
+      "**CQC audit** Improvement Plan and periodic-check reply packs",
+      "**PEI service** — policies, SOPs and documentation for private education institutions",
+      "Support during the live SWDA **TPQA audit**",
     ],
     faq: [
       {
+        q: "What does your TPQA service include?",
+        a: "Our **TPQA service** covers a gap assessment, a mock **TPQA audit**, remediation of your manual and evidence packs, and support through the live assessment. It's a fixed-fee engagement scoped after a free call.",
+      },
+      {
         q: "When should we engage a TPQA consultant?",
-        a: "Two ideal windows: (a) 3–6 months before your scheduled TPQA audit, or (b) immediately after receiving a corrective action plan to remediate gaps.",
+        a: "Two ideal windows: (a) 3–6 months before your scheduled assessment, or (b) immediately after receiving a corrective action plan to remediate gaps.",
       },
       {
         q: "What if we've already failed a TPQA audit?",
-        a: "We've helped recover ATOs from formal Conditional Approval status. Engagement starts with reviewing the SSG corrective-action letter and building a remediation roadmap.",
+        a: "We've helped recover ATOs from formal Conditional Approval status. Engagement starts with reviewing SWDA's corrective-action letter and building a remediation roadmap.",
       },
       {
-        q: "Do you cover all 4 TPQA Criteria?",
-        a: "Yes — Governance, Course Administration, Outcomes, and Continuous Improvement. We provide evidence templates for each Indicator.",
+        q: "How many criteria does a TPQA audit cover?",
+        a: "Three: Criterion 1 Administration & Governance, Criterion 2 Course Quality Assurance and Criterion 3 Outcomes. Our **TPQA service** provides evidence templates for every sub-item.",
+      },
+      {
+        q: "What is a CQC audit?",
+        a: "A Course Quality Check (CQC) is SWDA's review of an accredited WSQ course's courseware and delivery. If your **CQC audit** returns observations, you must reply with an Improvement Plan within 14 working days. We prepare the plan and the corrected courseware.",
+      },
+      {
+        q: "Do you offer a PEI service?",
+        a: "Yes. Our **PEI service** helps private education institutions put in place the policies, SOPs and evidence that registration under the Private Education Act requires.",
       },
       {
         q: "Do you provide TPQA training for our internal team?",
-        a: "Yes — half-day or full-day workshops for ATO management and adult educators on TPQA Criteria interpretation.",
+        a: "Yes — half-day or full-day workshops for management and adult educators on interpreting the TPQA Criteria.",
       },
     ],
   },
