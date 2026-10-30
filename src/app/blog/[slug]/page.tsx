@@ -69,7 +69,7 @@ export async function generateMetadata({
   const canonical = post.canonicalUrl ?? `/blog/${post.slug}`;
   const ogImage = post.ogImage ?? post.featuredImage ?? "/icon-192.png";
   return {
-    title: post.seoTitle ?? post.title,
+    title: post.seoTitle ? { absolute: post.seoTitle } : post.title,
     description: post.seoDescription ?? post.excerpt ?? undefined,
     keywords: post.seoKeywords ?? undefined,
     alternates: { canonical },

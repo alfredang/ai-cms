@@ -19,11 +19,15 @@ export function ContactForm() {
     const message = preferred
       ? `Preferred demo slot: ${formatPreferred(preferred)}\n\n${payload.message ?? ""}`
       : payload.message;
+    const requestedSource = new URLSearchParams(window.location.search).get("source");
+    const source = requestedSource && /^[a-zA-Z0-9_-]{1,100}$/.test(requestedSource)
+      ? requestedSource
+      : window.location.pathname === "/contact" ? "contact" : "home";
     try {
       const r = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...payload, message, source: "home", turnstileToken }),
+        body: JSON.stringify({ ...payload, message, source, turnstileToken }),
       });
       if (!r.ok) throw new Error(await r.text());
       setState("ok");
