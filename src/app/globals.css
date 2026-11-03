@@ -353,6 +353,18 @@ body::before {
   25%      { transform: rotate(-10deg); }
   75%      { transform: rotate(10deg); }
 }
+/* WhatsApp badge circling the launcher. Rest angle 45deg = top-right, which
+   is where it sits when motion is reduced. */
+.robot-orbit { transform: rotate(45deg); animation: robot-orbit 6s linear infinite; }
+.robot-orbit-badge { transform: rotate(-45deg); animation: robot-orbit-counter 6s linear infinite; }
+@keyframes robot-orbit {
+  from { transform: rotate(45deg); }
+  to   { transform: rotate(405deg); }
+}
+@keyframes robot-orbit-counter {
+  from { transform: rotate(-45deg); }
+  to   { transform: rotate(-405deg); }
+}
 .robot-tip { animation: robot-tip-in 320ms cubic-bezier(.22,.61,.36,1) both; transform-origin: bottom right; }
 @keyframes robot-tip-in {
   from { opacity: 0; transform: translateY(8px) scale(0.92); }
@@ -366,6 +378,8 @@ body::before {
   .robot-eyes,
   .robot-antenna,
   .robot-greet,
+  .robot-orbit,
+  .robot-orbit-badge,
   .robot-tip { animation: none; }
   .robot-launcher::before { opacity: 0; }
 }

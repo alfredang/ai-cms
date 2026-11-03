@@ -194,10 +194,13 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
           )}
         </span>
         {!open && (
-          <span
-            aria-hidden="true"
-            className="absolute top-0.5 right-0.5 w-3.5 h-3.5 rounded-full bg-[#01C982] border-2 border-[#0C0D1A]"
-          />
+          // WhatsApp badge orbiting the ring; the inner span counter-rotates
+          // so the logo stays upright.
+          <span aria-hidden="true" className="robot-orbit pointer-events-none absolute inset-0">
+            <span className="robot-orbit-badge absolute -top-2.5 left-1/2 -ml-[11px] w-[22px] h-[22px] rounded-full bg-[#25D366] border-2 border-[#0C0D1A] grid place-items-center shadow-[0_0_12px_rgba(37,211,102,0.6)]">
+              <FaWhatsapp className="w-3 h-3 text-white" />
+            </span>
+          </span>
         )}
       </button>
     </>
