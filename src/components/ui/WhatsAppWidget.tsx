@@ -1,15 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa6";
 import { HiXMark, HiArrowUpRight } from "react-icons/hi2";
+import { RobotAvatar } from "./RobotAvatar";
 
 /**
  * Public-site floating WhatsApp widget. Replaces the Nemo chatbot on the
- * customer-facing site (the chatbot now lives in /admin). Clicking the bubble
- * opens a small "visual queries helper" — a set of one-tap topics that each
- * deep-link to WhatsApp with a pre-filled message.
+ * customer-facing site (the chatbot now lives in /admin). The launcher is an
+ * animated robot mascot that occasionally pops a speech bubble promoting one
+ * of our services. Clicking the robot opens a small "visual queries helper" —
+ * a set of one-tap topics that each deep-link to WhatsApp with a pre-filled
+ * message.
  */
 
 // One-tap topics. `label` shows on the chip; `text` is pre-filled into WhatsApp.
@@ -23,19 +26,103 @@ const QUERIES: { label: string; text: string }[] = [
   { label: "Pricing & quotation", text: "Hi! Could you send me pricing and a quotation?" },
 ];
 
+// Speech-bubble tips the robot pops up now and then. `text` is pre-filled into
+// WhatsApp when the visitor taps the bubble.
+const TIPS: { message: string; text: string }[] = [
+  { message: "Hi there! Need help getting your SSG/IBF ATO approved?", text: "Hi! I need help with my SSG/IBF ATO application." },
+  { message: "Building a WSQ course? We develop courseware end-to-end.", text: "Hi! I'd like to discuss WSQ/CASL course development." },
+  { message: "Want an AI agent working for your business 24/7?", text: "Hi! I'm interested in your AI agent services for my organisation." },
+  { message: "Running a training centre? Ask me for an LMS / TMS demo.", text: "Hi! Can I see a demo of your LMS / TMS?" },
+  { message: "Preparing for a TPQA audit? Our team can get you audit-ready.", text: "Hi! I need help preparing for a TPQA audit." },
+  { message: "Need a native iOS or Android app built?", text: "Hi! I'd like to discuss building a native iOS / Android mobile app." },
+  { message: "Not sure where to start? Book a free consultation!", text: "Hi Tertiary Infotech Academy! I'd like to book a free consultation." },
+];
+const TIP_FIRST_DELAY = 6000;
+const TIP_GAP = 18000;
+const TIP_VISIBLE = 8000;
+const TIP_MAX_PER_VISIT = 4;
+const TIPS_MUTED_KEY = "robot-tips-muted";
+
 export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [tip, setTip] = useState<number | null>(null);
+  const [shown, setShown] = useState(0);
+  const [offset, setOffset] = useState(0);
+  const [muted, setMuted] = useState(false);
+  const isAdmin = pathname?.startsWith("/admin") ?? false;
+
+  // Random starting tip so returning visitors see variety; respect a mute
+  // from earlier in this browser session.
+  useEffect(() => {
+    setOffset(Math.floor(Math.random() * TIPS.length));
+    if (sessionStorage.getItem(TIPS_MUTED_KEY)) setMuted(true);
+  }, []);
+
+  // Tip scheduler: show a bubble, hide it, wait, show the next one.
+  useEffect(() => {
+    if (isAdmin || open || muted) return;
+    if (tip !== null) {
+      const t = setTimeout(() => setTip(null), TIP_VISIBLE);
+      return () => clearTimeout(t);
+    }
+    if (shown >= TIP_MAX_PER_VISIT) return;
+    const t = setTimeout(() => {
+      setTip((offset + shown) % TIPS.length);
+      setShown((n) => n + 1);
+    }, shown === 0 ? TIP_FIRST_DELAY : TIP_GAP);
+    return () => clearTimeout(t);
+  }, [isAdmin, open, muted, tip, shown, offset]);
 
   // Customer-facing widget — never render inside the admin area.
-  if (pathname?.startsWith("/admin")) return null;
+  if (isAdmin) return null;
 
   const digits = phone.replace(/[^\d]/g, "");
   const waLink = (text?: string) =>
     `https://wa.me/${digits}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
 
+  const muteTips = () => {
+    setTip(null);
+    setMuted(true);
+    sessionStorage.setItem(TIPS_MUTED_KEY, "1");
+  };
+  const activeTip = tip !== null && !open && !muted ? TIPS[tip] : null;
+
   return (
     <>
+      {activeTip && (
+        <div
+          key={tip}
+          role="status"
+          aria-live="polite"
+          className="robot-tip fixed bottom-[6.5rem] right-6 z-50 w-[min(78vw,270px)]"
+        >
+          <a
+            href={waLink(activeTip.text)}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Chat with us on WhatsApp"
+            className="block rounded-2xl rounded-br-sm border border-[#59EBFD]/30 bg-[#0C0D1A] px-4 py-3 pr-9 shadow-[0_0_40px_rgba(89,235,253,0.18)] hover:border-[#59EBFD]/60 transition"
+          >
+            <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-[#59EBFD]/80">
+              TIA Bot
+            </span>
+            <span className="mt-1 block text-sm leading-snug text-white/90">{activeTip.message}</span>
+            <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[#F6AE64]">
+              Chat with us
+              <HiArrowUpRight className="w-3.5 h-3.5" />
+            </span>
+          </a>
+          <button
+            onClick={muteTips}
+            aria-label="Dismiss tips"
+            className="absolute top-2 right-2 w-6 h-6 grid place-items-center rounded-md text-white/40 hover:text-white hover:bg-white/10 transition"
+          >
+            <HiXMark className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
       {open && (
         <div
           role="dialog"
@@ -43,8 +130,8 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
           className="fixed bottom-24 right-6 z-50 w-[min(92vw,360px)] glass rounded-2xl flex flex-col overflow-hidden border border-white/15 shadow-2xl"
         >
           <header className="flex items-center gap-3 px-4 py-3 bg-[#0B6E4F]/15 border-b border-white/10">
-            <span className="w-9 h-9 rounded-full bg-[#0B6E4F] grid place-items-center shrink-0">
-              <FaWhatsapp className="w-5 h-5 text-white" />
+            <span className="w-10 h-10 rounded-full bg-gradient-to-br from-[#5C00E5] to-[#59EBFD] grid place-items-center shrink-0">
+              <RobotAvatar className="w-8 h-8" />
             </span>
             <div className="min-w-0">
               <h3 className="font-bold leading-tight">Chat with us</h3>
@@ -91,15 +178,26 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
       )}
 
       <button
-        onClick={() => setOpen((o) => !o)}
-        aria-label={open ? "Close WhatsApp menu" : "Chat on WhatsApp"}
+        onClick={() => {
+          setTip(null);
+          setOpen((o) => !o);
+        }}
+        aria-label={open ? "Close chat menu" : "Chat with us on WhatsApp"}
         aria-expanded={open}
-        className="wa-launcher fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#0B6E4F] shadow-[0_8px_30px_rgba(11,110,79,0.45)] flex items-center justify-center hover:scale-105 transition"
+        className="robot-launcher fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-br from-[#5C00E5] to-[#59EBFD] p-[2px] flex items-center justify-center hover:scale-105 transition"
       >
-        {open ? (
-          <HiXMark className="w-7 h-7 text-white" />
-        ) : (
-          <FaWhatsapp className="w-7 h-7 text-white" />
+        <span className="w-full h-full rounded-full bg-[#0C0D1A] grid place-items-center overflow-hidden">
+          {open ? (
+            <HiXMark className="w-7 h-7 text-[#59EBFD]" />
+          ) : (
+            <RobotAvatar className={`w-12 h-12 ${activeTip ? "robot-greet" : ""}`} />
+          )}
+        </span>
+        {!open && (
+          <span
+            aria-hidden="true"
+            className="absolute top-0.5 right-0.5 w-3.5 h-3.5 rounded-full bg-[#01C982] border-2 border-[#0C0D1A]"
+          />
         )}
       </button>
     </>

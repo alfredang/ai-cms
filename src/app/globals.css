@@ -300,36 +300,74 @@ body::before {
 }
 .btn-secondary:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(89, 235, 253, 0.4); }
 
-/* Floating WhatsApp launcher — attention pulse + expanding ripple ring */
-.wa-launcher {
-  animation: wa-pulse 2s ease-in-out infinite;
+/* Floating robot chat launcher — glow pulse, idle float, blink, antenna glow */
+.robot-launcher {
+  animation: robot-pulse 2.4s ease-in-out infinite;
 }
-.wa-launcher::before {
+.robot-launcher::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: #0B6E4F;
+  background: linear-gradient(135deg, #5C00E5, #59EBFD);
   z-index: -1;
-  animation: wa-ring 2s ease-out infinite;
+  animation: robot-ring 2.4s ease-out infinite;
 }
-@keyframes wa-pulse {
-  0%, 100% { box-shadow: 0 8px 30px rgba(11, 110, 79, 0.45), 0 0 0 0 rgba(11, 110, 79, 0.55); }
-  50%      { box-shadow: 0 8px 30px rgba(11, 110, 79, 0.45), 0 0 0 10px rgba(11, 110, 79, 0); }
+@keyframes robot-pulse {
+  0%, 100% { box-shadow: 0 8px 30px rgba(89, 235, 253, 0.30), 0 0 0 0 rgba(89, 235, 253, 0.45); }
+  50%      { box-shadow: 0 8px 30px rgba(92, 0, 229, 0.40), 0 0 0 10px rgba(89, 235, 253, 0); }
 }
-@keyframes wa-ring {
-  0%   { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(1.9); opacity: 0; }
+@keyframes robot-ring {
+  0%   { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.8); opacity: 0; }
 }
 /* Stop competing for attention once the user engages */
-.wa-launcher:hover,
-.wa-launcher[aria-expanded="true"] { animation: none; }
-.wa-launcher:hover::before,
-.wa-launcher[aria-expanded="true"]::before { animation: none; opacity: 0; }
+.robot-launcher:hover,
+.robot-launcher[aria-expanded="true"] { animation: none; }
+.robot-launcher:hover::before,
+.robot-launcher[aria-expanded="true"]::before { animation: none; opacity: 0; }
+
+.robot-float { animation: robot-float 3s ease-in-out infinite; }
+@keyframes robot-float {
+  0%, 100% { transform: translateY(1.5px); }
+  50%      { transform: translateY(-1.5px); }
+}
+.robot-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: robot-blink 4.5s ease-in-out infinite;
+}
+@keyframes robot-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95%           { transform: scaleY(0.1); }
+}
+.robot-antenna { animation: robot-antenna 1.6s ease-in-out infinite; }
+@keyframes robot-antenna {
+  0%, 100% { fill: #F6AE64; filter: drop-shadow(0 0 0 rgba(246, 174, 100, 0)); }
+  50%      { fill: #FFD9A8; filter: drop-shadow(0 0 3px rgba(246, 174, 100, 0.9)); }
+}
+/* Little head-tilt "hello" while a tip bubble is showing */
+.robot-greet { animation: robot-greet 1.2s ease-in-out 2; }
+@keyframes robot-greet {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-10deg); }
+  75%      { transform: rotate(10deg); }
+}
+.robot-tip { animation: robot-tip-in 320ms cubic-bezier(.22,.61,.36,1) both; transform-origin: bottom right; }
+@keyframes robot-tip-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.92); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .wa-launcher,
-  .wa-launcher::before { animation: none; }
-  .wa-launcher::before { opacity: 0; }
+  .robot-launcher,
+  .robot-launcher::before,
+  .robot-float,
+  .robot-eyes,
+  .robot-antenna,
+  .robot-greet,
+  .robot-tip { animation: none; }
+  .robot-launcher::before { opacity: 0; }
 }
 
 .reveal { animation: reveal-up 600ms cubic-bezier(.22,.61,.36,1) both; }
