@@ -217,7 +217,7 @@ const appsLd = {
       "@type": "SoftwareApplication",
       name: app.name,
       applicationCategory: app.category,
-      operatingSystem: app.android ? "iOS, Android" : "iOS",
+      operatingSystem: [app.ios && "iOS", app.android && "Android"].filter(Boolean).join(", "),
       description: app.blurb,
       ...(app.ios ? { url: app.ios } : app.github ? { url: app.github } : {}),
     },

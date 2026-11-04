@@ -72,7 +72,7 @@ export default async function AppDetailPage({
     "@type": "SoftwareApplication",
     name: app.name,
     applicationCategory: app.category,
-    operatingSystem: app.android ? "iOS, Android" : "iOS",
+    operatingSystem: [app.ios && "iOS", app.android && "Android"].filter(Boolean).join(", "),
     description: app.about.join(" "),
     url: pageUrl,
     ...(downloadUrls.length ? { downloadUrl: downloadUrls } : {}),
