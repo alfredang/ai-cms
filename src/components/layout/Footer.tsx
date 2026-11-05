@@ -44,6 +44,7 @@ function formatWhatsapp(digits: string): string {
 const COMPANY_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
+  { label: "App Terms", href: "/terms/mobile-apps" },
   { label: "Contact", href: "/contact" },
 ];
 

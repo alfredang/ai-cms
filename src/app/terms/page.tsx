@@ -89,6 +89,16 @@ export default function TermsPage() {
                   incorporated in Singapore. By accessing or using the Services,
                   you agree to be bound by these Terms.
                 </p>
+                <p className="mt-3">
+                  Our mobile apps are covered separately by our{" "}
+                  <a
+                    href="/terms/mobile-apps"
+                    className="text-(--color-cyan) hover:underline"
+                  >
+                    Mobile App Terms of Service
+                  </a>
+                  .
+                </p>
               </section>
 
               <section>
