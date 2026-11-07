@@ -90,10 +90,10 @@ export default async function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
-      <main className="pt-16">
+      <main>
         <section className="py-10">
           <Container>
-            <div className="max-w-3xl mb-10">
+            <div className="mb-6">
               <div className="kicker mb-4">[ CONTACT ]</div>
               <h1 className="font-display text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[1.05]">
                 Let&apos;s build something <span className="gradient-text">together</span>.
@@ -104,7 +104,7 @@ export default async function ContactPage() {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8 mb-12">
+            <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8 mb-6">
               <div className="glass p-7 rounded-2xl space-y-5">
                 <div className="flex items-start gap-3">
                   <HiMapPin className="w-5 h-5 mt-0.5 shrink-0 text-(--color-cyan)" />

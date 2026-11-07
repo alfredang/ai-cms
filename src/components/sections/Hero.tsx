@@ -2,13 +2,14 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { HiArrowUpRight } from "react-icons/hi2";
 import { getHomepageCopy, getHeroKpis } from "@/lib/site-settings";
+import { HeroCircuit } from "@/components/sections/HeroCircuit";
 
 export async function Hero() {
   const [copy, kpis] = await Promise.all([getHomepageCopy(), getHeroKpis()]);
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100vh-4rem)] flex flex-col pt-6 md:pt-8 pb-4 overflow-hidden"
+      className="relative pt-6 md:pt-8 pb-4 overflow-hidden"
     >
       {/* layered background effects */}
       <div className="grid-bg" />
@@ -47,22 +48,6 @@ export async function Hero() {
         }}
       />
 
-      {/* orbiting particles around the right edge */}
-      <div className="absolute top-1/2 right-[12%] hidden lg:block pointer-events-none">
-        <div
-          className="orbit-dot bg-(--color-cyan) shadow-[0_0_12px_4px_rgba(89,235,253,0.7)]"
-          style={{ ["--orbit-r" as string]: "220px" }}
-        />
-        <div
-          className="orbit-dot bg-(--color-purple-light) shadow-[0_0_10px_3px_rgba(135,87,242,0.7)]"
-          style={{ ["--orbit-r" as string]: "300px", animationDuration: "20s", animationDirection: "reverse" }}
-        />
-        <div
-          className="orbit-dot bg-(--color-amber) shadow-[0_0_10px_3px_rgba(246,174,100,0.7)]"
-          style={{ ["--orbit-r" as string]: "380px", animationDuration: "26s" }}
-        />
-      </div>
-
       {/* film-grain overlay */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.05]"
@@ -73,42 +58,44 @@ export async function Hero() {
         }}
       />
 
-      <Container width="full" className="relative z-10 flex-1 flex flex-col">
-        <div className="reveal kicker mb-5 inline-flex items-center gap-2 px-3.5 py-1.5 border border-white/15 rounded-full bg-white/3 backdrop-blur">
-          <span className="w-1.5 h-1.5 rounded-full bg-(--color-cyan) animate-pulse" />
-          {copy.heroKicker}
+      <Container width="full" className="relative z-10">
+        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-center">
+          <div className="min-w-0">
+            <div className="reveal kicker mb-4">[ {copy.heroKicker} ]</div>
+
+            <h1
+              className="reveal reveal-d1 halo font-display font-extrabold leading-[1.02] [text-wrap:balance]"
+              style={{
+                fontSize: "clamp(2.25rem, 4.5vw, 4.5rem)",
+                letterSpacing: "-0.025em",
+              }}
+            >
+              <span dangerouslySetInnerHTML={{ __html: copy.heroHeadlineHtml }} />
+              <span className="cursor-blink" aria-hidden />
+            </h1>
+
+            <p
+              className="reveal reveal-d2 mt-4 text-(--color-muted) leading-relaxed"
+              style={{ fontSize: "clamp(1.125rem, 1.35vw, 1.5rem)" }}
+              dangerouslySetInnerHTML={{ __html: copy.heroSubheadHtml }}
+            />
+
+            <div className="reveal reveal-d3 mt-6 flex flex-wrap gap-3">
+              <Link href={copy.heroCtaPrimaryHref} className="btn-primary">
+                {copy.heroCtaPrimaryLabel}
+                <span aria-hidden>→</span>
+              </Link>
+              <Link href={copy.heroCtaSecondaryHref} className="btn-secondary">
+                {copy.heroCtaSecondaryLabel}
+              </Link>
+            </div>
+          </div>
+          <div className="reveal reveal-d2 hidden lg:block">
+            <HeroCircuit />
+          </div>
         </div>
 
-        <h1
-          className="reveal reveal-d1 halo font-display font-extrabold leading-[1.02] [text-wrap:balance]"
-          style={{
-            fontSize: "clamp(2.25rem, 4.5vw, 4.5rem)",
-            letterSpacing: "-0.025em",
-          }}
-        >
-          <span dangerouslySetInnerHTML={{ __html: copy.heroHeadlineHtml }} />
-          <span className="cursor-blink" aria-hidden />
-        </h1>
-
-        <p
-          className="reveal reveal-d2 mt-8 text-(--color-muted) max-w-3xl leading-relaxed"
-          style={{ fontSize: "clamp(1.125rem, 1.35vw, 1.5rem)" }}
-          dangerouslySetInnerHTML={{ __html: copy.heroSubheadHtml }}
-        />
-
-        <div className="reveal reveal-d3 mt-10 flex flex-wrap gap-3">
-          <Link href={copy.heroCtaPrimaryHref} className="btn-primary">
-            {copy.heroCtaPrimaryLabel}
-            <span aria-hidden>→</span>
-          </Link>
-          <Link href={copy.heroCtaSecondaryHref} className="btn-secondary">
-            {copy.heroCtaSecondaryLabel}
-          </Link>
-        </div>
-
-        <div className="flex-1" />
-
-        <div className="reveal reveal-d4 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden max-w-[1400px]">
+        <div className="reveal reveal-d4 mt-6 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/10 rounded-xl overflow-hidden">
           {kpis.map((k, i) => (
             <Stat key={`${k.label}-${i}`} {...k} />
           ))}
@@ -147,13 +134,13 @@ function Stat({
         {label}
       </div>
       {sublabel && (
-        <div className="mt-1.5 text-[11px] text-white/45 leading-snug">{sublabel}</div>
+        <div className="mt-1.5 text-xs text-white/60 leading-snug">{sublabel}</div>
       )}
     </>
   );
 
   const cls =
-    "group block bg-(--color-bg-elevated) px-5 py-6 md:py-7 text-center hover:bg-(--color-bg-elevated)/70 transition";
+    "group block bg-(--color-bg-elevated) px-5 py-4 md:py-5 text-center hover:bg-(--color-bg-elevated)/70 transition";
 
   return href ? (
     <a

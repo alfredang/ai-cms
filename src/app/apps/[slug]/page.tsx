@@ -222,9 +222,11 @@ export default async function AppDetailPage({
             className="glow-blob"
             style={{ top: "10%", left: "0", width: 460, height: 460, background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)" }}
           />
-          <Container className="max-w-4xl relative">
-            <div className="text-center mb-7">
+          <Container className="relative">
+            <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center">
+              <div className="min-w-0">
               <div className="kicker mb-3">[ WANT AN APP LIKE {app.name.toUpperCase()}? ]</div>
+              <div className="min-w-0">
               <h2 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.08] mb-3">
                 We design, build and ship{" "}
                 <span className="gradient-text">native mobile apps</span>.
@@ -242,6 +244,8 @@ export default async function AppDetailPage({
               </Link>{" "}
               page ]
             </p>
+              </div>
+            </div>
           </Container>
         </section>
       </main>

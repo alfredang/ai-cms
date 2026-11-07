@@ -7,6 +7,8 @@ import { ELearningShowcase } from "@/components/sections/ELearningShowcase";
 import { MobileAppsShowcase } from "@/components/sections/MobileAppsShowcase";
 import { CMSShowcase } from "@/components/sections/CMSShowcase";
 import { Services } from "@/components/sections/Services";
+import { SsgServices } from "@/components/sections/SsgServices";
+import { AiServices } from "@/components/sections/AiServices";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { FeaturedEdTools } from "@/components/sections/FeaturedEdTools";
 import { FeaturedPosts } from "@/components/sections/FeaturedPosts";
@@ -46,6 +48,8 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
+        <SsgServices />
+        <AiServices />
         <AILmsTmsShowcase />
         <ELearningShowcase />
         <CMSShowcase />

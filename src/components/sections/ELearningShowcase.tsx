@@ -35,7 +35,7 @@ export function ELearningShowcase() {
         }}
       />
       <Container className="relative">
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-14 items-start">
+        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 items-start">
           <div className="relative">
             <div className="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-(--color-cyan)/25 via-transparent to-(--color-purple)/30 blur-2xl" />
             <div className="relative glass p-6 sm:p-8 overflow-hidden">
@@ -69,12 +69,12 @@ export function ELearningShowcase() {
           </div>
 
           <div>
-            <div className="kicker mb-5">[ NEW · MULTI-TENANT PRODUCT ]</div>
+            <div className="kicker mb-3">[ NEW · MULTI-TENANT PRODUCT ]</div>
             <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-extrabold leading-[1.05]">
               AI-powered{" "}
               <span className="gradient-text">multi-tenant e-Learning</span> platform.
             </h2>
-            <p className="mt-6 text-(--color-muted) text-lg max-w-xl">
+            <p className="mt-4 text-(--color-muted) text-lg">
               Built on Claude AI — the platform lets academies, course developers
               and learners launch, sell and certify online courses on a single
               secure platform.
@@ -82,12 +82,12 @@ export function ELearningShowcase() {
             <ul className="mt-8 space-y-2.5">
               {FEATURES.map((f) => (
                 <li key={f} className="flex gap-3 text-sm">
-                  <HiCheckCircle className="text-(--color-purple) shrink-0 mt-0.5 w-5 h-5" />
+                  <HiCheckCircle className="text-(--color-purple-light) shrink-0 mt-0.5 w-5 h-5" />
                   <span className="text-white/85">{f}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link href="#contact" className="btn-primary">
                 Request a demo
               </Link>

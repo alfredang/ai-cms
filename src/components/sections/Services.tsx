@@ -39,7 +39,7 @@ function ServiceCard({ s }: { s: Service }) {
     </span>
   );
   return (
-    <article key={s.id} className="card-hover glass p-7 relative overflow-hidden group">
+    <article key={s.id} className="card-hover glass p-6 relative overflow-hidden group">
       <div className={`absolute top-0 inset-x-0 h-px bg-gradient-to-r ${a.line}`} />
       <div
         className="absolute -top-12 -right-12 w-40 h-40 rounded-full opacity-0 group-hover:opacity-60 transition duration-500"
@@ -74,40 +74,21 @@ function ServiceCard({ s }: { s: Service }) {
 
 export async function Services() {
   const copy = await getHomepageCopy();
-  const ssg = SERVICES.filter((s) => "category" in s && s.category === "ssg");
   const ai = SERVICES.filter((s) => "category" in s && s.category === "ai");
 
   return (
     <>
-      {/* SSG Services — rendered first */}
-      <section id="ssg-services" className="relative py-4 scroll-mt-20">
+      {/* Platforms and apps we build. SSG and AI Services have their own sections. */}
+      <section id="solutions" className="relative py-6 scroll-mt-20">
         <Container>
-          <div className="max-w-5xl mb-8 ml-auto text-right">
-            <div className="kicker mb-4">{copy.ssgKicker}</div>
+          <div className="mb-6">
+            <div className="kicker mb-3">{copy.servicesKicker}</div>
             <h2
               className="font-display text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[1.05]"
-              dangerouslySetInnerHTML={{ __html: copy.ssgHeadlineHtml }}
+              dangerouslySetInnerHTML={{ __html: copy.servicesHeadlineHtml }}
             />
           </div>
-          <div className="grid md:grid-cols-3 gap-4">
-            {ssg.map((s) => (
-              <ServiceCard key={s.id} s={s} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* AI Services — rendered below */}
-      <section id="ai-services" className="relative py-10 scroll-mt-20">
-        <Container>
-          <div className="max-w-5xl mb-8">
-            <div className="kicker mb-4">{copy.aiKicker}</div>
-            <h2
-              className="font-display text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[1.05]"
-              dangerouslySetInnerHTML={{ __html: copy.aiHeadlineHtml }}
-            />
-          </div>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {ai.map((s) => (
               <ServiceCard key={s.id} s={s} />
             ))}

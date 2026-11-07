@@ -95,7 +95,7 @@ export async function Navbar() {
             <a
               href={`tel:${contact.tel.replace(/\s+/g, "")}`}
               aria-label="Call us"
-              className="w-9 h-9 inline-flex items-center justify-center rounded-md text-(--color-cyan) hover:bg-white/5 transition"
+              className="w-11 h-11 inline-flex items-center justify-center rounded-md text-(--color-cyan) hover:bg-white/5 transition"
             >
               <HiPhone className="w-5 h-5" />
             </a>
@@ -106,7 +106,7 @@ export async function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
-              className="w-9 h-9 inline-flex items-center justify-center rounded-md text-(--color-green) hover:bg-white/5 transition"
+              className="w-11 h-11 inline-flex items-center justify-center rounded-md text-(--color-green) hover:bg-white/5 transition"
             >
               <FaWhatsapp className="w-5 h-5" />
             </a>

@@ -46,10 +46,13 @@ Built for Tertiary Infotech Academy, the codebase is structured to be re-used as
 - **Inline SEO markup in copy** — service-page and homepage service copy accepts `**keyword**` (rendered bold) and `[anchor](/path)` (keyword-anchored internal link) via [src/lib/rich-text.tsx](src/lib/rich-text.tsx); [src/lib/markup.ts](src/lib/markup.ts) strips it for JSON-LD, meta tags and LLM prompts, so raw HTML never enters admin-editable content
 
 ### Lead generation in every page
-- **Dedicated service landing pages** with visual 5-step timeline, sticky lead form, keyword-rich overview, FAQ accordion, benefits grid — content lives in [src/lib/service-pages.ts](src/lib/service-pages.ts) and can be overridden per slug from `/admin/settings/service-pages`
-- **Client portfolio / social proof** — any service page can showcase live client deployments (screenshot, business description, highlight chips, link to the live site) by adding a `clients` array to its entry in [src/lib/service-pages.ts](src/lib/service-pages.ts); the section self-hides when omitted, so pages without clients are unaffected. Live on [/content-management-system](src/app/content-management-system/page.tsx) with Al Mubin Training Pte Ltd
+- **Full SSG Services list** ([src/components/sections/SsgServices.tsx](src/components/sections/SsgServices.tsx)) — WSQ & CASL, IBF, PWM, CPD and SCTP development, SWDA, IBF and PEI ATO applications, TPQA and CQC consultancy, each with its own landing page and a named free check, beside a homepage lead form
+- **AI Services** ([src/components/sections/AiServices.tsx](src/components/sections/AiServices.tsx)) — AI as a Service with a virtual Forward Deployed Engineer and industry blocks, AI agent deployment, and customised Claude Code, Codex, Microsoft Copilot and Gemini training
+- **Dedicated service landing pages** with first-viewport lead form and free-check offer, buyer pains, keyword-rich overview, benefits, visual timeline, FAQ accordion and related services — content lives in [src/lib/service-pages.ts](src/lib/service-pages.ts), [ssg-service-pages.ts](src/lib/ssg-service-pages.ts) and [ai-service-pages.ts](src/lib/ai-service-pages.ts), and can be overridden per slug from `/admin/settings/service-pages`
+- **Live mobile portfolio counts** — iOS and Android apps live on the stores, calculated from [src/lib/mobile-apps.ts](src/lib/mobile-apps.ts)
+- **Client portfolio / social proof** — any service page can showcase live client deployments (screenshot, business description, highlights, link to the live site) by adding a `clients` array to its entry in [src/lib/service-pages.ts](src/lib/service-pages.ts); the section self-hides when omitted, so pages without clients are unaffected. Live on [/content-management-system](src/app/content-management-system/page.tsx) with Al Mubin Training Pte Ltd
 - **Persistent CTAs** — sticky Get-a-Quote button (desktop), tap-to-call + WhatsApp icons (mobile), floating robot chat widget above the fold
-- **Floating robot chat widget** ([src/components/ui/WhatsAppWidget.tsx](src/components/ui/WhatsAppWidget.tsx) + [RobotAvatar.tsx](src/components/ui/RobotAvatar.tsx)) — a cute animated robot mascot launcher (idle float, blinking eyes, glowing antenna, gradient halo pulse, a WhatsApp badge orbiting the ring) that occasionally pops a speech bubble promoting a service (ATO, WSQ courseware, AI agents, LMS/TMS, TPQA, mobile apps, free consultation) — tap the bubble to open WhatsApp pre-filled with that topic; max 4 tips per visit, dismissable for the session. Clicking the robot opens a one-tap topic picker that deep-links to `wa.me`. All motion is disabled under `prefers-reduced-motion`; hidden on `/admin/*`
+- **Floating robot chat widget** ([src/components/ui/WhatsAppWidget.tsx](src/components/ui/WhatsAppWidget.tsx) + [RobotAvatar.tsx](src/components/ui/RobotAvatar.tsx)) — a cute animated robot mascot launcher (idle float, blinking eyes, glowing antenna, gradient halo pulse, a WhatsApp badge orbiting the ring) that occasionally pops a speech bubble promoting a service (ATO, WSQ 2.0, TPQA Grade 1, IBF, PEI, CQC, SCTP, AI as a Service, AI training, AI agents, LMS/TMS, mobile apps) — tap the bubble to open WhatsApp pre-filled with that topic; max 4 tips per visit, dismissable for the session. Clicking the robot opens a one-tap topic picker that deep-links to `wa.me`. All motion is disabled under `prefers-reduced-motion`; hidden on `/admin/*`
 - **Source-tagged forms** — every form POSTs to `/api/contact` with a `source` label so leads are attributable per page
 - **Gmail OAuth2 notification pipeline** — every submission lands in `/admin/leads` *and* emails sales in under 1 second, as a branded HTML card (lead details, message, one-click **Reply** button) with `Reply-To` set to the enquirer so a reply goes straight back to them
 - **Automatic enquirer acknowledgement** — the same submission triggers a branded auto-reply to the lead confirming a response **within 3 business days**, CC'd to the sales inbox and carrying a direct escalation contact (email + WhatsApp) if no follow-up arrives. Both emails send independently, so neither can suppress the other or fail the request. Subject, body, CC and an on/off toggle are editable at [/admin/settings/lead-email](src/app/admin/settings/lead-email/page.tsx) — see [src/lib/email.ts](src/lib/email.ts)
@@ -101,7 +104,7 @@ Built for Tertiary Infotech Academy, the codebase is structured to be re-used as
 ### Platform — auth, security, design
 - **Auth.js v5** — credentials provider with bcrypt, JWT sessions, persistent 10-year sliding cookie, middleware-protected `/admin/*`
 - **Never-logout admin** — cookie-presence guard everywhere; no code path in the admin chrome calls `auth()` and risks emitting a clearing `Set-Cookie`
-- **Sci-fi / robotics design system** — dark theme, Exo 2 + Inter, cyan/purple/amber accents, animated glow gradients, custom Tailwind 4 design tokens
+- **Sci-fi / robotics design system** — dark theme, Exo 2 + Inter, cyan/purple/amber accents, animated glow gradients, custom Tailwind 4 design tokens. House rules (no dead space, no gaps, no chips, no template layouts) are in [.claude/skills/frontend-design/SKILL.md](.claude/skills/frontend-design/SKILL.md)
 
 ## Tech Stack
 
@@ -126,7 +129,7 @@ Built for Tertiary Infotech Academy, the codebase is structured to be re-used as
 ```
 ┌────────────────────────────────────────────────────────────────────┐
 │                       Public site (Next.js)                        │
-│   Hero · LMS/TMS showcase · e-Learning · Services · Blog · Leads   │
+│   Hero · SSG + AI Services · LMS/TMS · Apps · Blog · Lead forms    │
 │   AI chatbot widget (Claude Agent SDK · OAuth subscription)      │
 └────────────────────────────┬───────────────────────────────────────┘
                              │
@@ -187,7 +190,7 @@ Visit:
 ```
 src/
   app/
-    page.tsx                  Landing (Hero, LMS/TMS, e-Learning, Services, FeaturedPosts, ContactForm)
+    page.tsx                  Landing (Hero, SsgServices, AiServices, LMS/TMS, e-Learning, CMS, Mobile, Services, FeaturedPosts, ContactForm)
     blog/[slug]/page.tsx      Single post
     [slug]/page.tsx           Dynamic CMS page (with redirects lookup)
     admin/
@@ -214,7 +217,7 @@ src/
     robots.ts
   components/
     layout/                   Navbar, Footer (DB-driven menus), Container
-    sections/                 Hero · AILmsTmsShowcase · ELearningShowcase · CMSShowcase · MobileAppsShowcase · Services · WhyChooseUs · FeaturedEdTools · FeaturedPosts · ContactForm
+    sections/                 Hero · HeroCircuit · SsgServices · AiServices · AILmsTmsShowcase · ELearningShowcase · CMSShowcase · MobileAppsShowcase · Services · WhyChooseUs · FeaturedEdTools · FeaturedPosts · ContactForm
                               ServicePageTemplate (renders every service landing page, incl. the client portfolio)
     admin/                    Editor, PostEditorForm, AIAssistButton, MediaUploader, CredentialsForm
     ui/                       ChatBot (Nemo, admin-only) · WhatsAppWidget (public, pulsing launcher)

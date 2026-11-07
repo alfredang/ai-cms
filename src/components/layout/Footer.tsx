@@ -17,6 +17,7 @@ import {
   FaGithub,
 } from "react-icons/fa6";
 import { HiMapPin, HiEnvelope, HiPhone } from "react-icons/hi2";
+import { SERVICES } from "@/lib/site-content";
 
 const SOCIAL_ICONS: Record<SocialLink["platform"], React.ComponentType<{ className?: string }>> = {
   facebook: FaFacebookF,
@@ -53,6 +54,9 @@ const SSG_TOOLS_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "CP Generator", href: "https://ssg-cp-generator.streamlit.app/", external: true },
 ];
 
+const SSG_SERVICE_LINKS = SERVICES.filter((s) => s.category === "ssg");
+const AI_SERVICE_LINKS = SERVICES.filter((s) => s.category === "ai-service");
+
 const NAVIGATE_LINKS: { label: string; href: string; external?: boolean }[] = [
   { label: "Tertiary Courses", href: "https://www.tertiarycourses.com.sg/", external: true },
   { label: "Tertiary Exams", href: "https://exams.tertiaryinfotech.com/", external: true },
@@ -75,7 +79,7 @@ export async function Footer() {
   return (
     <footer className="relative mt-10 border-t border-(--color-border) bg-(--color-bg-elevated)">
       <Container className="py-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 xl:grid-cols-[minmax(300px,1fr)_minmax(82px,0.35fr)_minmax(120px,0.45fr)_minmax(250px,0.75fr)_minmax(300px,0.95fr)] gap-8 xl:gap-6 2xl:gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 xl:grid-cols-[minmax(210px,1fr)_minmax(180px,0.5fr)_minmax(225px,0.6fr)_minmax(205px,0.55fr)_minmax(200px,0.85fr)] gap-8 xl:gap-6 2xl:gap-10">
           <div className="lg:col-span-3 xl:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               {brand.logoUrl ? (
@@ -109,7 +113,7 @@ export async function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/10 bg-white/3 text-white/70 hover:text-(--color-cyan) hover:border-(--color-cyan)/50 hover:bg-(--color-cyan)/5 transition"
+                    className="w-11 h-11 flex items-center justify-center rounded-full border border-white/10 bg-white/3 text-white/70 hover:text-(--color-cyan) hover:border-(--color-cyan)/50 hover:bg-(--color-cyan)/5 transition"
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -126,10 +130,26 @@ export async function Footer() {
                 </Link>
               ))}
             </nav>
+            <div className="kicker mt-4 mb-3">[ AI SERVICES ]</div>
+            <nav aria-label="AI services" className="flex flex-col gap-2 text-sm">
+              {AI_SERVICE_LINKS.map((it) => (
+                <Link key={it.id} href={it.href} className="text-white/80 hover:text-(--color-cyan) transition">
+                  {it.title}
+                </Link>
+              ))}
+            </nav>
           </div>
           <div className="lg:col-span-2 xl:col-span-1">
-            <div className="kicker mb-3">[ SSG TOOLS ]</div>
-            <nav className="flex flex-col gap-2 text-sm">
+            <div className="kicker mb-3">[ SSG SERVICES ]</div>
+            <nav aria-label="SSG services" className="flex flex-col gap-2 text-sm">
+              {SSG_SERVICE_LINKS.map((it) => (
+                <Link key={it.id} href={it.href} className="xl:whitespace-nowrap text-white/80 hover:text-(--color-cyan) transition">
+                  {it.title}
+                </Link>
+              ))}
+            </nav>
+            <div className="kicker mt-4 mb-3">[ SSG TOOLS ]</div>
+            <nav aria-label="SSG tools" className="flex flex-col gap-2 text-sm">
               {SSG_TOOLS_LINKS.map((it) => (
                 <a
                   key={it.href}

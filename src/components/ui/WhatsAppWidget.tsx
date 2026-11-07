@@ -18,24 +18,31 @@ import { RobotAvatar } from "./RobotAvatar";
 // One-tap topics. `label` shows on the chip; `text` is pre-filled into WhatsApp.
 const QUERIES: { label: string; text: string }[] = [
   { label: "Book a free consultation", text: "Hi Tertiary Infotech Academy! I'd like to book a free consultation." },
-  { label: "SSG/IBF ATO applications", text: "Hi! I need help with my SSG/IBF ATO application." },
+  { label: "SWDA, IBF or PEI ATO application", text: "Hi! I need help with an ATO application (SWDA, IBF or PEI)." },
+  { label: "WSQ, CASL, IBF, PWM, CPD or SCTP course", text: "Hi! I'd like to discuss developing a course (WSQ, CASL, IBF, PWM, CPD or SCTP)." },
+  { label: "TPQA or CQC consultancy", text: "Hi! I need help with TPQA or a CQC." },
   { label: "LMS / TMS demo", text: "Hi! Can I see a demo of your LMS / TMS?" },
-  { label: "AI agent services enquiries", text: "Hi! I'm interested in your AI agent services for my organisation." },
+  { label: "AI agents or AI as a Service", text: "Hi! I'm interested in AI agents or AI as a Service for my organisation." },
+  { label: "Claude Code, Codex, Copilot or Gemini training", text: "Hi! I'd like customised AI training for my company." },
   { label: "Mobile apps development", text: "Hi! I'd like to discuss building a native iOS / Android mobile app." },
-  { label: "WSQ/CASL course development", text: "Hi! I'd like to discuss WSQ/CASL course development." },
   { label: "Pricing & quotation", text: "Hi! Could you send me pricing and a quotation?" },
 ];
 
 // Speech-bubble tips the robot pops up now and then. `text` is pre-filled into
 // WhatsApp when the visitor taps the bubble.
 const TIPS: { message: string; text: string }[] = [
-  { message: "Hi there! Need help getting your SSG/IBF ATO approved?", text: "Hi! I need help with my SSG/IBF ATO application." },
-  { message: "Building a WSQ course? We develop courseware end-to-end.", text: "Hi! I'd like to discuss WSQ/CASL course development." },
+  { message: "New SWDA ATO rules? We build the mock-up website and prep your on-site.", text: "Hi! I need help with my SWDA ATO application, including the mock-up website and on-site assessment." },
+  { message: "Can your new course still be WSQ? Ask me about a free route check.", text: "Hi! I'd like a free WSQ 2.0 route check for my course." },
+  { message: "Got a CQC outcome from SWDA? The clock is running. Let's talk.", text: "Hi! I've received a CQC outcome and need help with it." },
+  { message: "Aiming for TPQA Grade 1? It opens up to 90% funding and SCTP.", text: "Hi! I'd like to aim for TPQA Grade 1. Can you help?" },
+  { message: "IBF is hard to get. We can provide the Assessor Coach and SME.", text: "Hi! I'd like help with an IBF application, including the Assessor Coach and SME." },
+  { message: "Starting a private school? We help set up your PEI boards too.", text: "Hi! I'd like help with PEI registration and the Academic and Examination Boards." },
+  { message: "Planning an SCTP? We advise on 2–5 month design and job placement.", text: "Hi! I'd like advice on an SCTP programme and job placement services." },
+  { message: "Want an AI engineer without the hire? Ask about AI as a Service.", text: "Hi! I'd like to know about your virtual Forward Deployed Engineer service." },
+  { message: "Copilot or Gemini seats going unused? We train on your own work.", text: "Hi! I'd like customised AI training for my company." },
   { message: "Want an AI agent working for your business 24/7?", text: "Hi! I'm interested in your AI agent services for my organisation." },
   { message: "Running a training centre? Ask me for an LMS / TMS demo.", text: "Hi! Can I see a demo of your LMS / TMS?" },
-  { message: "Preparing for a TPQA audit? Our team can get you audit-ready.", text: "Hi! I need help preparing for a TPQA audit." },
   { message: "Need a native iOS or Android app built?", text: "Hi! I'd like to discuss building a native iOS / Android mobile app." },
-  { message: "Not sure where to start? Book a free consultation!", text: "Hi Tertiary Infotech Academy! I'd like to book a free consultation." },
 ];
 const TIP_FIRST_DELAY = 6000;
 const TIP_GAP = 18000;
@@ -102,9 +109,9 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
             target="_blank"
             rel="noopener noreferrer"
             title="Chat with us on WhatsApp"
-            className="block rounded-2xl rounded-br-sm border border-[#59EBFD]/30 bg-[#0C0D1A] px-4 py-3 pr-9 shadow-[0_0_40px_rgba(89,235,253,0.18)] hover:border-[#59EBFD]/60 transition"
+            className="block rounded-2xl rounded-br-sm border border-[#59EBFD]/30 bg-[#0C0D1A] px-4 py-3 pr-11 shadow-[0_0_40px_rgba(89,235,253,0.18)] hover:border-[#59EBFD]/60 transition"
           >
-            <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-[#59EBFD]/80">
+            <span className="block font-mono text-xs uppercase tracking-[0.2em] text-[#59EBFD]/80">
               TIA Bot
             </span>
             <span className="mt-1 block text-sm leading-snug text-white/90">{activeTip.message}</span>
@@ -116,7 +123,7 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
           <button
             onClick={muteTips}
             aria-label="Dismiss tips"
-            className="absolute top-2 right-2 w-6 h-6 grid place-items-center rounded-md text-white/40 hover:text-white hover:bg-white/10 transition"
+            className="absolute top-0 right-0 w-11 h-11 grid place-items-center rounded-md text-white/40 hover:text-white hover:bg-white/10 transition"
           >
             <HiXMark className="w-4 h-4" />
           </button>
@@ -140,7 +147,7 @@ export function WhatsAppWidget({ phone = "6588666375" }: { phone?: string }) {
             <button
               onClick={() => setOpen(false)}
               aria-label="Close"
-              className="ml-auto w-8 h-8 grid place-items-center rounded-md text-white/60 hover:text-white hover:bg-white/5 transition"
+              className="ml-auto w-11 h-11 grid place-items-center rounded-md text-white/60 hover:text-white hover:bg-white/5 transition"
             >
               <HiXMark className="w-5 h-5" />
             </button>

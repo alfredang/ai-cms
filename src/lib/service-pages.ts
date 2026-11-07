@@ -5,6 +5,9 @@
 // using the key `service_page:<slug>` (JSONB). See getServicePageOverride() in
 // site-settings.ts; defaults in this file are the fallback.
 
+import { AI_SERVICE_PAGES } from "@/lib/ai-service-pages";
+import { SSG_SERVICE_PAGES } from "@/lib/ssg-service-pages";
+
 export type TimelineStep = {
   /** Short title, e.g. "Discovery", "Quotation". */
   title: string;
@@ -68,11 +71,30 @@ export type ServicePageContent = {
   /** Live client deployments; rendered as a portfolio section when present. */
   clients?: ServiceClient[];
   faq: { q: string; a: string }[];
+  /** Pains the visitor recognises; rendered directly under the hero. */
+  pains?: { title: string; body: string }[];
+  /** A grid of blocks under the pains, such as industries, products or tracks. */
+  showcase?: {
+    id: string;
+    kicker: string;
+    heading: string;
+    intro?: string;
+    items: { title: string; body: string; meta?: string }[];
+  };
+  /** The free check offered beside the hero form. */
+  offer?: {
+    title: string;
+    bullets: string[];
+    buttonLabel: string;
+    placeholder: string;
+  };
   /** Source label sent with the lead form POST. */
   leadSource: string;
 };
 
 export const SERVICE_PAGES: Record<string, ServicePageContent> = {
+  ...SSG_SERVICE_PAGES,
+  ...AI_SERVICE_PAGES,
   "training-management-system": {
     slug: "training-management-system",
     title: "Training Management System (TMS)",
@@ -335,36 +357,65 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
   },
   "wsq-course-development": {
     slug: "wsq-course-development",
-    title: "WSQ Courseware Development",
+    title: "WSQ & CASL Course Development",
+    offer: {
+      title: "Free WSQ 2.0 route check",
+      bullets: [
+        "Can your course still be WSQ under WSQ 2.0?",
+        "Annex C, a CEB letter, or non-WSQ through CASL?",
+        "What will the assessor flag first?",
+      ],
+      buttonLabel: "Check my course route →",
+      placeholder: "What is the course, which sector is it for, and is it new or a renewal?",
+    },
+    pains: [
+      {
+        title: "Most new courses can no longer be WSQ",
+        body: "Since 1 May 2026 a new WSQ modular course must match SWDA's Annex C or carry a Course Endorsement Body's letter. Otherwise SWDA will not process it, however good the courseware.",
+      },
+      {
+        title: "First-time providers face new tests too",
+        body: "A first WSQ application comes with SWDA Organisation Registration: a mock-up website or brochure showing nine disclosure items, then a half-day on-site assessment. [We provide both](/ssg-ato-application).",
+      },
+      {
+        title: "Two clarification rounds, then Fail Audit",
+        body: "If the assessor's findings are not closed within two rounds, the application can fail and a new one needs a new fee. Getting the proposal right the first time matters.",
+      },
+      {
+        title: "Courseware must match the approved proposal",
+        body: "Learning outcomes, K&A text, durations and assessment methods are checked against the approved Course Proposal, and small drifts become CQC findings later.",
+      },
+    ],
     leadSource: "course-dev-page",
     serviceType: "WSQ Courseware Development",
     processIntro:
       "From competency mapping to SWDA submission — typically 6–10 weeks per course.",
     timeline: [
-      { title: "Discovery", duration: "Week 0 · free", accent: "cyan", body: "30-min call. We confirm sector, framework (WSQ / CASL / IBF-STS / PWM), target competencies and audience." },
+      { title: "Route Check", duration: "Week 0 · free", accent: "cyan", body: "30-min call. We test the course against WSQ 2.0: Annex C, a CEB letter, or non-WSQ through CASL." },
       { title: "Scoping", duration: "Week 1", accent: "blue", body: "Competency mapping draft, learning outcomes, course structure and assessment strategy." },
       { title: "Quotation", duration: "Week 2", accent: "purple", body: "Fixed-fee proposal scoped to course duration and assessment complexity." },
       { title: "Build", duration: "Weeks 3–8", accent: "amber", body: "Slide deck, Lesson Plan, Learner Guide, Facilitator Guide, Assessment Plan and assessments." },
       { title: "SWDA Submission", duration: "Weeks 8–10", accent: "green", body: "Complete Course Proposal package on TPGateway, plus support through SWDA's clarification rounds." },
     ],
     hero: {
-      kicker: "[ WSQ · SWDA · IBF-STS · PWM ]",
+      kicker: "[ WSQ 2.0 · CASL · SWDA ]",
       headlineHtml:
-        '<span class="gradient-text">WSQ Courseware Development</span> for Singapore training providers.',
+        '<span class="gradient-text">WSQ &amp; CASL course development</span> that gets past SWDA\'s new entry rules.',
       subhead:
-        "End-to-end **WSQ courseware development** and **SWDA courseware development** — competency mapping, slide decks, Lesson Plans, Learner Guides and assessments — for WSQ, CASL, IBF-STS / FTS and PWM frameworks.",
+        "End-to-end **WSQ courseware development**, **CASL course development** and **SWDA courseware development** — route check, competency mapping, Course Proposal, slide decks, Lesson Plans, Learner Guides and assessments.",
     },
     meta: {
-      title: "WSQ Courseware Development Singapore — SWDA-Ready",
+      title: "WSQ & CASL Course Development Singapore — SWDA-Ready",
       description:
-        "WSQ courseware development for Singapore training providers: slides, Lesson Plans, Learner Guides and assessments built to SWDA standards. Book a free call.",
+        "WSQ courseware development and CASL course development in Singapore: route check, Course Proposal, slides, Lesson Plans. Book a free route check.",
       keywords:
-        "WSQ courseware development, SWDA courseware development, WSQ course development Singapore, WSQ lesson plan, WSQ learner guide, WSQ assessment development, IBF-STS course development, CASL course development",
+        "WSQ courseware development, CASL course development, SWDA courseware development, WSQ 2.0, WSQ course development Singapore, WSQ lesson plan, WSQ learner guide, WSQ assessment development, IBF-STS course development, CASL course development",
     },
     overview: {
       kicker: "[ WSQ COURSEWARE ]",
       heading: "WSQ courseware development that passes SWDA review",
       paragraphs: [
+        "Start with the route. Under WSQ 2.0, a new modular course needs an Annex C match or a Course Endorsement Body's letter, and SWDA's stated default for everything else is non-WSQ through CASL, the Course Approval Skills List, where at least 50% of the course's skills are on the list. That decision comes before any drafting, and our **CASL course development** service covers that route in full.",
         "Accredited courses live or die on their courseware. SWDA (the SkillsFuture and Workforce Development Agency, formerly SSG) checks that every learning outcome, knowledge and ability statement, duration and assessment method in your courseware matches the Course Proposal it approved — word for word. Our **WSQ courseware development** service is built around that rule.",
         "Every course we build comes from a single source of content, so the slide deck, Lesson Plan, Learner Guide and assessments always agree with each other and with the approved proposal. That's what makes our **SWDA courseware development** hold up in clarification rounds, Course Quality Checks and periodic checks on training delivery.",
         "We have developed and delivered WSQ courses for our own academy for over a decade, so our courseware reflects what trainers and assessors actually need in the classroom — not just what a template asks for.",
@@ -415,7 +466,8 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       },
     ],
     whatsIncluded: [
-      "Competency mapping to WSQ / CASL / IBF-STS / PWM",
+      "WSQ 2.0 route check — Annex C, CEB letter or CASL",
+      "Competency mapping to WSQ TSCs or CASL skills",
       "Course outline + module breakdown",
       "**WSQ courseware development** — slide deck, Lesson Plan and Learner Guide",
       "Facilitator Guide and Assessment Plan",
@@ -434,7 +486,19 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       },
       {
         q: "Which frameworks do you cover?",
-        a: "WSQ, Critical Core Skills (CCS), IBF-STS / FTS, PWM and CASL. Other frameworks on request.",
+        a: "WSQ and **CASL course development** here, plus dedicated services for [IBF courses](/ibf-course-development), [PWM courses](/pwm-course-development), [CPD courses](/cpd-course-development) and [SCTP modules](/sctp-module-development).",
+      },
+      {
+        q: "Can you help with the mock-up website and on-site assessment?",
+        a: "Yes. New applicants need a mock-up website or brochure and a half-day on-site assessment through SWDA Organisation Registration. We build the mock-up and rehearse the assessment with your team under our [SWDA ATO application](/ssg-ato-application) service.",
+      },
+      {
+        q: "What is CASL course development?",
+        a: "CASL is SWDA's Course Approval Skills List. **CASL course development** builds a non-WSQ course where at least 50% of the skills are on that list, which can qualify it for Tier 2 funding. SWDA expects it to be examinable, so it still needs a real assessment.",
+      },
+      {
+        q: "Can our new course still be WSQ?",
+        a: "Only with an Annex C match or a Course Endorsement Body's letter. We check this in the free route call, before you spend anything on drafting.",
       },
       {
         q: "How long does WSQ courseware development take?",
@@ -442,7 +506,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       },
       {
         q: "Can you fix courseware that failed a CQC audit?",
-        a: "Yes. We rebuild the courseware against the approved Course Proposal and prepare the Improvement Plan — see our [CQC audit support](/tpqa-consultancy).",
+        a: "Yes. We rebuild the courseware against the approved Course Proposal and prepare the Improvement Plan — see our [CQC consultancy](/cqc-consultancy).",
       },
       {
         q: "Can you also deliver the course?",
@@ -562,21 +626,61 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
   "ai-agent-deployment": {
     slug: "ai-agent-deployment",
     title: "AI Agent Deployment",
+    offer: {
+      title: "Free AI agent fit check",
+      bullets: [
+        "Which agent suits your work: hosted or self-hosted?",
+        "Is it actually available for your team in Singapore?",
+        "What should it be allowed to touch?",
+      ],
+      buttonLabel: "Check my agent fit →",
+      placeholder: "What do you want an AI agent to do, and which systems would it need to work with?",
+    },
+    pains: [
+      {
+        title: "An always-on agent holds the keys",
+        body: "These agents can read your email, use your logins and act while you sleep. Without clear permissions and approval points, one mistake or poisoned input can travel far.",
+      },
+      {
+        title: "Availability and lock-in catch people out",
+        body: "Several new agents launched with limited regions, waitlists or betas, and hosted ones tie you to one vendor's model. We check what actually works for a Singapore business.",
+      },
+      {
+        title: "Setup is the easy part",
+        body: "Getting an agent running takes an afternoon. Keeping it useful, secure and within budget, every day, against your real systems is where most deployments fail.",
+      },
+    ],
+    showcase: {
+      id: "agents",
+      kicker: "[ AGENTS WE DEPLOY ]",
+      heading: "Self-hosted or hosted: we help you pick, deploy and govern it",
+      intro: "Availability, pricing and features change quickly, so we check the current position for your team before you commit.",
+      items: [
+        { title: "OpenClaw", meta: "SELF-HOSTED · OPEN SOURCE", body: "Open-source, always-on agent we deploy on your infrastructure, connected to your channels and tools." },
+        { title: "Hermes Agent", meta: "SELF-HOSTED · OPEN SOURCE", body: "Open-source agent with memory and scheduled work, run on your own server so that your data stays with you." },
+        { title: "Meta Muse", meta: "HOSTED · META", body: "Personal agent that works through WhatsApp with its own secure cloud computer and approvals for actions." },
+        { title: "OpenAI Dots", meta: "HOSTED · OPENAI", body: "Always-on agents inside ChatGPT that also work through Slack and Microsoft Teams, with custom rules for action." },
+        { title: "Grok Bot", meta: "HOSTED · XAI", body: "A team of always-on bots with routines triggered by schedules or events, and team bots for Slack." },
+        { title: "Cue", meta: "HOSTED · MANUS", body: "Always-on agent from Manus for delegating ongoing work. We check how it fits your use case and regions." },
+        { title: "Claude Duet", meta: "HOSTED · ANTHROPIC", body: "Proactive Claude agent that watches connected apps and brings you what needs attention. In research preview." },
+        { title: "Gemini Spark", meta: "HOSTED · GOOGLE", body: "Google's agent inside the Gemini app, a natural fit for businesses already running on Google Workspace." },
+      ],
+    },
     leadSource: "ai-agent-page",
     serviceType: "AI Agent Deployment and Agentic AI Development",
     hero: {
-      kicker: "[ AGENTIC AI · OPENCLAW · HERMES · CLAUDE ]",
+      kicker: "[ OPENCLAW · HERMES · MUSE · DOTS · GROK BOT · CUE · DUET · SPARK ]",
       headlineHtml:
         '<span class="gradient-text">AI Agent Deployment</span> &amp; agentic AI development in Singapore.',
       subhead:
-        "Production **AI agent deployment** and **agentic AI development** — OpenClaw, Hermes Agent, Nebula or bespoke Claude Agent SDK builds wired into your systems through webhooks, n8n flows, REST APIs and customer-facing chat. Observability and cost guardrails included.",
+        "Production **AI agent deployment** and **agentic AI development**: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bot, Cue, Claude Duet, Gemini Spark or a bespoke agent, set up with the permissions, approvals and cost limits your business needs.",
     },
     meta: {
       title: "AI Agent Deployment & Agentic AI Development Singapore",
       description:
-        "AI agent deployment and agentic AI development for Singapore businesses — OpenClaw, Hermes Agent and custom Claude agents with cost guardrails. Book a free call.",
+        "AI agent deployment in Singapore: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bot, Claude Duet and Gemini Spark, with guardrails. Book a free agent fit check.",
       keywords:
-        "AI agent deployment, agentic AI development, AI agent deployment Singapore, agentic AI Singapore, OpenClaw deployment, Hermes Agent, Claude Agent SDK development, AI agent integration",
+        "AI agent deployment, agentic AI development, AI agent deployment Singapore, Meta Muse, OpenAI Dots, Grok Bot, Manus Cue, Claude Duet, Gemini Spark, agentic AI Singapore, OpenClaw deployment, Hermes Agent, Claude Agent SDK development, AI agent integration",
     },
     overview: {
       kicker: "[ AGENTIC AI ]",
@@ -590,7 +694,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
         {
           heading: "AI agent deployment",
           paragraphs: [
-            "**AI agent deployment** of OpenClaw, Hermes Agent, Nebula, Copilot Studio agents and others on your infrastructure or ours — with secrets management, access controls, logging and on-call handover.",
+            "**AI agent deployment** of OpenClaw, Hermes Agent, Copilot Studio agents and others on your infrastructure or ours, plus secure setup of hosted agents such as Meta Muse, OpenAI Dots, Grok Bot, Cue, Claude Duet and Gemini Spark — with secrets management, access controls, logging and on-call handover.",
           ],
         },
         {
@@ -616,13 +720,13 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
     processIntro: "From use case to a production-ready agent in 4–6 weeks.",
     timeline: [
       { title: "Discovery", duration: "Week 0 · free", accent: "cyan", body: "30-min call. Define the use case, success metrics, target systems and constraints." },
-      { title: "Workshop", duration: "Week 1", accent: "blue", body: "Half-day technical workshop. Agent selection (OpenClaw / Hermes / Nebula / custom), tool integrations, security boundaries." },
+      { title: "Workshop", duration: "Week 1", accent: "blue", body: "Half-day technical workshop. Agent selection (self-hosted, hosted or custom), tool integrations, security boundaries." },
       { title: "Quotation", duration: "Week 2", accent: "purple", body: "Fixed-fee proposal with sprint plan and acceptance criteria." },
       { title: "Build & Iterate", duration: "Weeks 3–5", accent: "amber", body: "**Agentic AI development** with weekly demos. Observability dashboards, cost limits, eval harness." },
       { title: "Go Live", duration: "Week 6", accent: "green", body: "Production deployment, runbooks, on-call handover, 30-day post-launch support." },
     ],
     benefits: [
-      { title: "Battle-tested agents", body: "OpenClaw (open-source autonomous agent), Hermes Agent (Singapore-built workflow agent), Nebula (research + planning agent). We start by picking the right one for your use case." },
+      { title: "The right agent, not the newest", body: "We compare self-hosted agents such as OpenClaw and Hermes with hosted ones such as Muse, Dots, Grok Bot, Cue, Duet and Spark, then recommend what fits your data, budget and region." },
       { title: "Custom agentic AI development", body: "Bespoke **agentic AI development** on the official Claude Agent SDK — tool use, MCP servers, long-horizon planning, with your Claude subscription token (no metered API)." },
       { title: "Integration-first", body: "n8n flows, Slack / Teams bots, webhook endpoints, REST APIs into your CRM / HRMS / accounting / LMS / CMS." },
       { title: "Observability + cost guardrails", body: "Per-agent token usage, latency, error tracing. Daily / monthly cost caps with auto-cutoff. No surprise bills." },
@@ -631,7 +735,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       "Agent selection workshop + architecture proposal",
       "Production deployment of the chosen agent stack",
       "Bespoke **agentic AI development** where off-the-shelf agents fall short",
-      "Supported AI agents — OpenClaw · Hermes Agent · Nebula · Copilot Studio Agent and others",
+      "Supported AI agents — OpenClaw · Hermes · Meta Muse · OpenAI Dots · Grok Bot · Cue · Claude Duet · Gemini Spark · Copilot Studio",
       "Model-agnostic selection — Claude Code · Codex · MiniMax · Kimi · DeepSeek · OpenRouter",
       "Connect to multiple channels — WhatsApp · Telegram · Slack · Discord and more",
       "Tools & skills integration — GitHub · Remotion · Hyperframe · Google Workspace · Obsidian and more",
@@ -639,8 +743,10 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
     ],
     faq: [
       { q: "What does AI agent deployment involve?", a: "**AI agent deployment** covers choosing the agent, connecting it to your systems and channels, setting permissions and cost limits, adding monitoring and evals, and handing over a runbook. Most deployments go live in 4–6 weeks." },
-      { q: "What's the difference between agentic AI development and deploying an existing agent?", a: "Deploying an existing agent (OpenClaw, Hermes, Nebula) is faster when it already fits your use case. **Agentic AI development** builds a custom agent on the Claude Agent SDK when you need proprietary tools, bespoke workflows or approval gates. We recommend one or the other in the Discovery call." },
-      { q: "What's OpenClaw, Hermes Agent, Nebula?", a: "OpenClaw is our open-source autonomous coding agent; Hermes is a Singapore-built workflow orchestration agent; Nebula is a research + planning agent. We'll recommend the right one in the Discovery call." },
+      { q: "What's the difference between agentic AI development and deploying an existing agent?", a: "Deploying an existing agent (such as OpenClaw or Hermes) is faster when it already fits your use case. **Agentic AI development** builds a custom agent on the Claude Agent SDK when you need proprietary tools, bespoke workflows or approval gates. We recommend one or the other in the Discovery call." },
+      { q: "What are OpenClaw and Hermes Agent?", a: "They are open-source agents you can run on your own infrastructure, which keeps your data and memory under your control. We deploy them and connect them to your channels and systems." },
+      { q: "Are Muse, Dots, Grok Bot, Cue, Duet and Spark available in Singapore?", a: "It varies, and it changes quickly: several launched with regional limits, waitlists or betas. We check the current position before you commit, and suggest a self-hosted option if one you want isn't available." },
+      { q: "Is it safe to give an AI agent access to our systems?", a: "Only with limits. We set permissions, separate accounts, approval points for anything sensitive, and logs of what the agent did, before it goes live." },
       { q: "Can we use our existing Anthropic API key?", a: "We strongly recommend a Claude subscription OAuth token (`claude setup-token`) — it's a flat fee instead of per-call billing. The Claude Agent SDK supports both." },
       { q: "How do you prevent runaway costs?", a: "Per-agent and per-tenant token budgets with auto-cutoff, full audit trail in observability dashboards, and an eval harness that runs on every prompt change." },
       { q: "Can you integrate with our existing systems?", a: "Yes — Slack, Teams, Gmail, n8n, webhook endpoints, REST APIs to your CRM / HRMS / accounting / LMS. Custom MCP servers for proprietary tools." },
@@ -648,7 +754,35 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
   },
   "tpqa-consultancy": {
     slug: "tpqa-consultancy",
-    title: "TPQA Service",
+    title: "TPQA Consultancy",
+    offer: {
+      title: "Free TPQA Grade 1 readiness review",
+      bullets: [
+        "How close are you to Grade 1 across the 3 criteria?",
+        "Is your manual truly written in your own context?",
+        "Are your people ready to answer without a consultant?",
+      ],
+      buttonLabel: "Check my Grade 1 readiness →",
+      placeholder: "When is your TPQA due, what grade did you last receive, and do you have any open findings?",
+    },
+    pains: [
+      {
+        title: "Grade 1 opens the funding tier your competitors want",
+        body: "SWDA says providers must attain TPQA Grade 1 to offer Tier 1 courses, funded up to 90% at the enhanced rate, against up to 70% on Tier 2. That includes the SkillsFuture Career Transition Programme (SCTP).",
+      },
+      {
+        title: "Falling short of Grade 2 puts your registration at risk",
+        body: "Not obtaining at least Grade 2, or failing to undergo or submit for TPQA, can lead SWDA to terminate your RTP status or contract. Terminations are public.",
+      },
+      {
+        title: "Your consultant cannot be in the room",
+        body: "SWDA's advisory says consultants may not sit in or take part in the on-site assessment. Your own people must explain and defend every process themselves.",
+      },
+      {
+        title: "Generic manuals are a warning sign",
+        body: "SWDA has warned about providers holding near-identical documents and scores with that in mind. A template pack with no real context can hurt more than it helps.",
+      },
+    ],
     leadSource: "tpqa-page",
     serviceType: "TPQA Service and TPQA Audit Consultancy",
     processIntro:
@@ -658,21 +792,21 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       { title: "Gap Assessment", duration: "Week 1", accent: "blue", body: "Half-day pre-audit workshop or remote review of your Policies and Operations Manual, SOPs, course-run evidence and outcomes data." },
       { title: "Quotation", duration: "Week 2", accent: "purple", body: "Fixed-fee remediation roadmap with priority-ranked actions per TPQA sub-item." },
       { title: "Mock Audit & Fix", duration: "Weeks 3–6", accent: "amber", body: "Mock audit, evidence-pack builds, adult-educator interview prep and gap closure." },
-      { title: "Live TPQA Audit", duration: "On-site day", accent: "green", body: "We support you through the live SWDA **TPQA audit** — interview coaching and real-time clarifications." },
+      { title: "Your TPQA Assessment", duration: "Before and after", accent: "green", body: "Your team attends the SWDA **TPQA audit** without us, as SWDA requires. We rehearse with process owners before it and help with clarifications afterwards." },
     ],
     hero: {
-      kicker: "[ TPQA · CQC · PEI · COMPLIANCE ]",
+      kicker: "[ TPQA · TPQA 2.0 FROM 2027 ]",
       headlineHtml:
-        '<span class="gradient-text">TPQA Service</span> &amp; TPQA audit support in Singapore.',
+        '<span class="gradient-text">TPQA Grade 1</span> consultancy for up to 90% funding and SCTP eligibility.',
       subhead:
-        "A complete **TPQA service** for SWDA (formerly SSG) registered training providers — mock **TPQA audit**, evidence-pack remediation, **CQC audit** responses and **PEI service** support, from gap assessment to the live on-site assessment.",
+        "Grade 1 is the gateway to Tier 1 funding of up to 90% and to SCTP. Our **TPQA service** for SWDA (formerly SSG) registered training providers gets you ready for it — mock **TPQA audit**, evidence-pack remediation, and process-owner rehearsal, with [CQC](/cqc-consultancy) and [PEI](/pei-ato-application) support when you need it, from gap assessment up to the day your own team faces the assessment.",
     },
     meta: {
-      title: "TPQA Service & TPQA Audit Singapore — CQC & PEI Support",
+      title: "TPQA Grade 1 Consultancy Singapore — Tier 1 Funding & SCTP",
       description:
-        "TPQA service and TPQA audit preparation for SWDA-registered training providers in Singapore, plus CQC audit and PEI service support. Book a free call.",
+        "Aim for TPQA Grade 1, required for Tier 1 courses funded up to 90% and SCTP. TPQA service with mock audit and rehearsal. Book a free readiness review.",
       keywords:
-        "TPQA service, TPQA audit, CQC audit, PEI service, TPQA consultancy Singapore, TPQA audit preparation, SWDA TPQA, course quality check SWDA, private education institution registration",
+        "TPQA Grade 1, TPQA Grade 1 consultancy, Tier 1 funding, 90% funding SWDA, SCTP eligibility, TPQA service, TPQA audit, CQC audit, PEI service, TPQA consultancy Singapore, TPQA audit preparation, SWDA TPQA, course quality check SWDA, private education institution registration",
     },
     overview: {
       kicker: "[ TPQA SERVICE ]",
@@ -687,12 +821,13 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
           heading: "TPQA audit preparation",
           paragraphs: [
             "We run a mock **TPQA audit** against the current TPQA Requirements, Document Submission List and Self-Assessment Checklist, then hand you a priority-ranked gap list. Every gap comes with the fix, not just the finding.",
-            "Before the live assessment, we coach your management representative and adult educators so their answers match the evidence on file.",
+            "SWDA's advisory says consultants cannot sit in or take part in the on-site assessment, even if identified as staff. So before the assessment, each process owner rehearses, and your management representative and adult educators learn to explain the evidence on file themselves. TPQA 2.0 is due from 2027, so we also check which version applies to you.",
           ],
         },
         {
           heading: "CQC audit support",
           paragraphs: [
+            "Full details are on our [CQC consultancy](/cqc-consultancy) page.",
             "SWDA runs a Course Quality Check (CQC) on accredited WSQ courses. When a **CQC audit** returns observations, you have 14 working days to reply with an Improvement Plan.",
             "We rebuild the courseware against the approved Course Proposal through our [WSQ courseware development](/wsq-course-development) team, draft the Improvement Plan in SWDA's format and prepare reply packs for periodic checks on training delivery.",
           ],
@@ -700,6 +835,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
         {
           heading: "PEI service",
           paragraphs: [
+            "See our [PEI ATO application](/pei-ato-application) page for registration.",
             "Private Education Institutions (PEIs) must meet registration and quality requirements under the Private Education Act. Our **PEI service** applies the same discipline we use for TPQA — policies, SOPs, closed-loop processes and evidence filing — so your documentation stands up to review.",
           ],
         },
@@ -713,6 +849,10 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       ],
     },
     benefits: [
+      {
+        title: "Grade 1 as the target",
+        body: "We work to the **Grade 1** standard from the start, using how a Grade 1 pack was actually built, because that is what opens Tier 1 funding and SCTP.",
+      },
       {
         title: "Mock TPQA audit",
         body: "A full mock audit modelled on SWDA's actual process — across all 3 TPQA Criteria and every sub-item in the current requirements.",
@@ -738,12 +878,13 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       "Evidence-pack templates for Criteria 1–3",
       "**CQC audit** Improvement Plan and periodic-check reply packs",
       "**PEI service** — policies, SOPs and documentation for private education institutions",
-      "Support during the live SWDA **TPQA audit**",
+      "Process-owner rehearsal before the SWDA **TPQA audit** (consultants cannot attend it)",
+      "Help with clarification requests after the assessment",
     ],
     faq: [
       {
         q: "What does your TPQA service include?",
-        a: "Our **TPQA service** covers a gap assessment, a mock **TPQA audit**, remediation of your manual and evidence packs, and support through the live assessment. It's a fixed-fee engagement scoped after a free call.",
+        a: "Our **TPQA service** covers a gap assessment, a mock **TPQA audit**, remediation of your manual and evidence packs, and rehearsal for your team before the live assessment, which SWDA does not allow consultants to attend. It's a fixed-fee engagement scoped after a free call.",
       },
       {
         q: "When should we engage a TPQA consultant?",
@@ -752,6 +893,18 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       {
         q: "What if we've already failed a TPQA audit?",
         a: "We've helped recover ATOs from formal Conditional Approval status. Engagement starts with reviewing SWDA's corrective-action letter and building a remediation roadmap.",
+      },
+      {
+        q: "Why does TPQA Grade 1 matter?",
+        a: "SWDA says providers must attain **TPQA Grade 1** to offer Tier 1 SWDA-funded courses. Tier 1 is funded up to 70%, or up to 90% at the enhanced rate, compared with up to 50% and 70% on Tier 2. It covers course types including [SCTP](/sctp-module-development), which also has its own entry route, so Grade 1 is necessary but not sufficient on its own.",
+      },
+      {
+        q: "Can you attend the TPQA assessment with us?",
+        a: "No. SWDA's advisory says consultants may not sit in or take part in the on-site assessment, even if identified as staff. We prepare your own people to run it confidently.",
+      },
+      {
+        q: "Can you guarantee a TPQA grade?",
+        a: "No. SWDA samples, interviews staff and reads originals, so no consultant can honestly promise a grade. We can make your submission complete and your people ready.",
       },
       {
         q: "How many criteria does a TPQA audit cover?",

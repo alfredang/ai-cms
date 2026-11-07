@@ -77,9 +77,9 @@ const PROJECTS: Project[] = [
 ];
 
 const typeBadge: Record<Project["type"], string> = {
-  "Voice + Web Chat": "bg-(--color-purple)/20 text-(--color-purple-light) border-(--color-purple)/40",
-  "Voice Agent": "bg-(--color-cyan)/15 text-(--color-cyan) border-(--color-cyan)/30",
-  "Web Chatbot": "bg-(--color-amber)/15 text-(--color-amber) border-(--color-amber)/30",
+  "Voice + Web Chat": "text-(--color-purple-light)",
+  "Voice Agent": "text-(--color-cyan)",
+  "Web Chatbot": "text-(--color-amber)",
 };
 
 const CAPABILITIES = [
@@ -96,7 +96,7 @@ export default function AiChatbotPortfolioPage() {
     <>
       <Navbar />
       <main>
-        <section className="relative pt-12 pb-16 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div className="grid-bg opacity-60" />
           <div
             className="glow-blob"
@@ -108,11 +108,11 @@ export default function AiChatbotPortfolioPage() {
           />
           <Container className="relative">
             <div className="kicker mb-4">[ AI CHATBOT PORTFOLIO ]</div>
-            <h1 className="font-display text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] max-w-4xl">
+            <h1 className="font-display text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05]">
               Live AI <span className="gradient-text">voice agents</span> &amp;{" "}
               <span className="gradient-text-warm">web chatbots</span>.
             </h1>
-            <p className="mt-6 text-lg text-(--color-muted) max-w-3xl">
+            <p className="mt-4 text-lg text-(--color-muted)">
               Production deployments combining Retell AI voice, Gemini chat, and n8n workflows — built,
               shipped, and running for real customers in Singapore. Try the demos, read the source.
             </p>
@@ -125,7 +125,7 @@ export default function AiChatbotPortfolioPage() {
           </Container>
         </section>
 
-        <section id="projects" className="pb-20">
+        <section id="projects" className="pb-6">
           <Container>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {PROJECTS.map((p) => (
@@ -136,18 +136,12 @@ export default function AiChatbotPortfolioPage() {
                       <div className="kicker mb-1 truncate">{p.category}</div>
                       <h2 className="font-display font-bold text-2xl text-white truncate">{p.name}</h2>
                     </div>
-                    <span className={`shrink-0 font-mono text-[10px] px-2 py-1 rounded border ${typeBadge[p.type]}`}>
+                    <span className={`shrink-0 font-mono text-xs ${typeBadge[p.type]}`}>
                       {p.type}
                     </span>
                   </div>
                   <p className="text-sm text-(--color-muted) leading-relaxed mb-5 flex-1">{p.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {p.stack.map((s) => (
-                      <span key={s} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-(--color-muted)">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="font-mono text-xs text-(--color-muted) mb-4">{p.stack.join(" · ")}</p>
                   <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-4 border-t border-white/8">
                     <a
                       href={p.live}
@@ -172,17 +166,17 @@ export default function AiChatbotPortfolioPage() {
           </Container>
         </section>
 
-        <section className="relative py-20 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div
             className="glow-blob"
             style={{ bottom: "-20%", left: "40%", width: 500, height: 500, background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)", opacity: 0.3 }}
           />
           <Container className="relative">
             <div className="kicker mb-4">[ WHAT WE BUILD ]</div>
-            <h2 className="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-extrabold leading-tight mb-8 max-w-3xl">
+            <h2 className="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-extrabold leading-tight mb-4">
               From a phone call to a fully automated funnel — <span className="gradient-text">on your stack</span>.
             </h2>
-            <ul className="grid md:grid-cols-2 gap-3 max-w-4xl">
+            <ul className="grid md:grid-cols-2 gap-3">
               {CAPABILITIES.map((c) => (
                 <li key={c} className="flex items-start gap-3 glass px-5 py-4">
                   <HiCheckCircle className="text-(--color-cyan) mt-0.5 shrink-0" />
@@ -193,7 +187,7 @@ export default function AiChatbotPortfolioPage() {
           </Container>
         </section>
 
-        <section id="consult" className="py-20">
+        <section id="consult" className="py-6">
           <Container>
             <div className="grid lg:grid-cols-5 gap-10 items-start">
               <div className="lg:col-span-2">

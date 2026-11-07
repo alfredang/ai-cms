@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { TurnstileWidget } from "@/components/forms/TurnstileWidget";
 
 export function MobileAppLeadForm({
@@ -10,6 +10,7 @@ export function MobileAppLeadForm({
   compact?: boolean;
   source?: string;
 }) {
+  const briefId = useId();
   const [state, setState] = useState<"idle" | "sending" | "ok" | "err">("idle");
   const [msg, setMsg] = useState<string>("");
   const [turnstileToken, setTurnstileToken] = useState<string>("");
@@ -44,13 +45,13 @@ export function MobileAppLeadForm({
         <Input name="phone" label="Phone (Singapore)" />
       </div>
       <div>
-        <label className="kicker block mb-2" htmlFor="app-brief">Tell us about your app</label>
+        <label className="kicker block mb-2" htmlFor={briefId}>Tell us about your app</label>
         <textarea
-          id="app-brief"
+          id={briefId}
           name="message"
           required
           rows={4}
-          className="w-full px-4 py-3 rounded-lg bg-white/3 border border-white/10 focus:outline-none focus:border-(--color-cyan) focus:ring-2 focus:ring-(--color-cyan)/20 transition placeholder:text-white/30"
+          className="w-full px-4 py-3 rounded-lg bg-white/3 border border-white/10 focus:outline-none focus:border-(--color-cyan) focus:ring-2 focus:ring-(--color-cyan)/20 transition placeholder:text-white/50"
           placeholder="E.g. A native iOS / Android app that does […]. We need it on the App Store and Google Play. We have / don't yet have designs and a backend…"
         />
       </div>
@@ -93,7 +94,8 @@ function Input({
   type?: string;
   required?: boolean;
 }) {
-  const id = `app-${name}`;
+  const uid = useId();
+  const id = `${uid}-${name}`;
   return (
     <div>
       <label className="kicker block mb-2" htmlFor={id}>

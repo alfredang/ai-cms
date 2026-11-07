@@ -99,40 +99,35 @@ const TIMELINE = [
 
 const ACCENT: Record<
   string,
-  { ring: string; iconText: string; chip: string; glow: string; line: string }
+  { ring: string; iconText: string; glow: string; line: string }
 > = {
   cyan: {
     ring: "border-(--color-cyan)/40",
     iconText: "text-(--color-cyan)",
-    chip: "bg-(--color-cyan)/10 text-(--color-cyan)",
     glow: "rgba(89,235,253,0.35)",
     line: "from-(--color-cyan)",
   },
   blue: {
     ring: "border-(--color-cyan)/40",
     iconText: "text-(--color-cyan)",
-    chip: "bg-(--color-cyan)/10 text-(--color-cyan)",
     glow: "rgba(89,235,253,0.3)",
     line: "from-(--color-cyan)",
   },
   purple: {
     ring: "border-(--color-purple)/50",
     iconText: "text-(--color-purple-light)",
-    chip: "bg-(--color-purple)/15 text-(--color-purple-light)",
     glow: "rgba(92,0,229,0.45)",
     line: "from-(--color-purple)",
   },
   amber: {
     ring: "border-(--color-amber)/50",
     iconText: "text-(--color-amber)",
-    chip: "bg-(--color-amber)/10 text-(--color-amber)",
     glow: "rgba(246,174,100,0.35)",
     line: "from-(--color-amber)",
   },
   green: {
     ring: "border-(--color-green)/50",
     iconText: "text-(--color-green)",
-    chip: "bg-(--color-green)/10 text-(--color-green)",
     glow: "rgba(1,201,130,0.35)",
     line: "from-(--color-green)",
   },
@@ -180,10 +175,10 @@ const ELIGIBILITY = [
 const STAGE_1 = [
   "ACRA / ROS registration documents and entity name compliance check",
   "Latest IRAS Notice of Assessment (positive trade income required)",
-  "Mandatory declarations — SSG Act 2016, SDL Act 1979, PEA 2009, EduTrust, WSQ",
+  "Mandatory declarations under the SWDA Act 2026 and the Employment of Foreign Manpower Act",
   "1-year training track record template + supporting evidence",
   "Target training group selection — Public TP, In-House TP, or both",
-  "Completed OR Declaration Form (current March 2026 version)",
+  "Completed OR Declaration Form (current version)",
 ];
 
 const STAGE_2 = [
@@ -193,6 +188,21 @@ const STAGE_2 = [
   "Sample learner agreement / registration form with SkillsFuture Credit and SWDA funding amounts",
   "Policies & Operations Manual covering Course Administration and Outcomes",
   "Half-day on-site SWDA assessment of your policies and operations",
+];
+
+const NEW_REQUIREMENTS = [
+  {
+    title: "Mock-up website, built for you",
+    body: "SWDA's Stage 2 asks for a mock-up website or brochure showing nine items, from nett fees to named trainers. We build it to the marketing guidelines, so you don't need a developer.",
+  },
+  {
+    title: "On-site assessment, rehearsed",
+    body: "SWDA goes through the half-day assessment requirement by requirement. We rehearse your process owners until they can show the manual, the process and a real record for each.",
+  },
+  {
+    title: "Course and organisation, together",
+    body: "Organisation Registration is filed with a Course Application, and both must be approved. We prepare them as one case, including the WSQ 2.0 route check for your course.",
+  },
 ];
 
 const FAQ = [
@@ -225,8 +235,12 @@ const FAQ = [
     a: "Public TP serves the general public and corporate clients. In-House TP serves only your own employees. Both is a dual model. You must designate one category in your OR application — we'll help you choose based on your commercial strategy.",
   },
   {
+    q: "Can you build the mock-up website SWDA asks for?",
+    a: "Yes. Stage 2 asks for a mock-up website or sample brochure showing nine disclosure items, including course fees, funding validity and the names of senior management and trainers. We build it to SWDA's marketing guidelines and check it before you submit.",
+  },
+  {
     q: "What happens at the on-site SWDA assessment?",
-    a: "SWDA conducts a half-day on-site assessment of your policies, operations, training premises and supporting evidence. Our **SWDA OR service** coaches you through the entire flow — likely questions, document presentation and gap remediation before the visit.",
+    a: "SWDA conducts a half-day on-site assessment of your policies, operations, training premises and supporting evidence. Our **SWDA OR service** rehearses the entire flow with your process owners — showing each requirement in the manual, the process and one real record. Ask SWDA before any consultant attends: some officers have asked that no external consultant be present.",
   },
   {
     q: "Can a previously terminated TP reapply?",
@@ -309,7 +323,7 @@ export default function SsgAtoApplicationPage() {
       <Navbar />
       <main>
         {/* HERO */}
-        <section className="relative py-10 md:py-14 overflow-hidden">
+        <section className="relative py-6 md:py-8 overflow-hidden">
           <div
             className="glow-blob"
             style={{
@@ -350,17 +364,17 @@ export default function SsgAtoApplicationPage() {
                     Organisation Registration on TPGateway
                   </a>{" "}
                   and Course Application — policies, SOPs, learner agreement, course
-                  submission and the half-day on-site assessment. Fixed-fee. Predictable
+                  submission, the mock-up website and the half-day on-site assessment. Fixed-fee. Predictable
                   timeline.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mb-6">
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-cyan)/10 text-(--color-cyan) border border-(--color-cyan)/30">
+                  <span className="text-xs font-mono text-(--color-cyan)">
                     10–14 week typical timeline
                   </span>
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-purple)/15 text-(--color-purple-light) border border-(--color-purple)/40">
+                  <span className="text-xs font-mono text-(--color-purple-light)">
                     Fixed-fee engagement
                   </span>
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-amber)/10 text-(--color-amber) border border-(--color-amber)/30">
+                  <span className="text-xs font-mono text-(--color-amber)">
                     Free 30-min consultation
                   </span>
                 </div>
@@ -370,7 +384,7 @@ export default function SsgAtoApplicationPage() {
                   </a>
                   <a
                     href="#timeline"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/15 text-white/85 hover:border-(--color-cyan)/50 hover:text-(--color-cyan) transition"
+                    className="btn-secondary"
                   >
                     See the 5-step process
                   </a>
@@ -391,13 +405,27 @@ export default function SsgAtoApplicationPage() {
         </section>
 
         {/* OVERVIEW — keyword-rich long-form copy */}
-        <section id="overview" className="relative py-10 scroll-mt-20">
-          <Container className="max-w-4xl">
+        <section className="relative py-4">
+          <Container>
+            <div className="kicker mb-3">[ THE NEW REQUIREMENTS, HANDLED ]</div>
+            <div className="grid lg:grid-cols-3 gap-px bg-white/8 border border-white/8 rounded-2xl overflow-hidden">
+              {NEW_REQUIREMENTS.map((r) => (
+                <div key={r.title} className="bg-(--color-bg-elevated) p-5">
+                  <h2 className="font-display font-bold text-lg text-white leading-snug">{r.title}</h2>
+                  <p className="mt-2 text-sm text-(--color-muted) leading-relaxed">{r.body}</p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        <section id="overview" className="relative py-6 scroll-mt-20">
+          <Container>
             <div className="kicker mb-3">[ ATO SERVICE ]</div>
             <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight mb-5">
               What our ATO service in Singapore covers
             </h2>
-            <div className="space-y-4 text-(--color-muted) leading-relaxed">
+            <div className="space-y-3 text-(--color-muted) leading-relaxed lg:columns-2 lg:gap-8 [&>p]:break-inside-avoid">
               <p>
                 To receive SkillsFuture funding for your courses, your organisation must
                 first be registered as an Approved Training Organisation (ATO). Since July
@@ -445,9 +473,9 @@ export default function SsgAtoApplicationPage() {
         </section>
 
         {/* WHY ATO */}
-        <section className="relative py-10">
+        <section className="relative py-6">
           <Container>
-            <div className="max-w-3xl mb-8">
+            <div className="mb-6">
               <div className="kicker mb-3">[ WHY BECOME AN ATO ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 Unlock <span className="gradient-text-warm">SkillsFuture funding</span>, public-sector
@@ -483,9 +511,9 @@ export default function SsgAtoApplicationPage() {
         </section>
 
         {/* TIMELINE */}
-        <section id="timeline" className="relative py-10 scroll-mt-20">
+        <section id="timeline" className="relative py-6 scroll-mt-20">
           <Container>
-            <div className="max-w-3xl mb-10">
+            <div className="mb-6">
               <div className="kicker mb-3">[ OUR 5-STEP PROCESS ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 Discovery → Consultation → Quotation → Start Project →{" "}
@@ -512,7 +540,7 @@ export default function SsgAtoApplicationPage() {
                       </div>
                       <div className="text-center">
                         <span
-                          className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-mono ${a.chip} mb-2`}
+                          className={`block text-xs font-mono ${a.iconText} mb-2`}
                         >
                           {s.duration}
                         </span>
@@ -542,11 +570,11 @@ export default function SsgAtoApplicationPage() {
                     <div className="glass p-5">
                       <div className="flex items-center gap-2 mb-2">
                         <span
-                          className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${a.chip}`}
+                          className={`text-xs font-mono ${a.iconText}`}
                         >
                           Step {i + 1}
                         </span>
-                        <span className="text-[11px] font-mono text-(--color-muted)">
+                        <span className="text-xs font-mono text-(--color-muted)">
                           {s.duration}
                         </span>
                       </div>
@@ -561,9 +589,9 @@ export default function SsgAtoApplicationPage() {
         </section>
 
         {/* HOW TO APPLY — long form content */}
-        <section className="relative py-10">
+        <section className="relative py-6">
           <Container>
-            <div className="max-w-3xl mb-8">
+            <div className="mb-6">
               <div className="kicker mb-3">[ THE OFFICIAL PROCESS ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 How to apply for SWDA Organisation Registration (OR) in Singapore
@@ -610,7 +638,7 @@ export default function SsgAtoApplicationPage() {
               </div>
             </div>
 
-            <div className="max-w-3xl mb-6">
+            <div className="mb-6">
               <h3 className="font-display font-bold text-xl mb-3">
                 Eligibility checklist
               </h3>
@@ -636,7 +664,7 @@ export default function SsgAtoApplicationPage() {
               })}
             </div>
 
-            <p className="mt-8 text-xs text-(--color-muted) font-mono max-w-3xl">
+            <p className="mt-4 text-xs text-(--color-muted) font-mono">
               [ Sources: TPGateway —{" "}
               <a
                 href="https://www.tpgateway.gov.sg/plan-courses/organisation-registration-for-first-time-training-provider/apply-for-organisation-registration"
@@ -661,7 +689,7 @@ export default function SsgAtoApplicationPage() {
         </section>
 
         {/* WHAT'S INCLUDED */}
-        <section className="relative py-10">
+        <section className="relative py-6">
           <Container>
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div>
@@ -683,7 +711,8 @@ export default function SsgAtoApplicationPage() {
                   "Sample learner agreement with SkillsFuture Credit and SWDA funding terms",
                   "Training premises write-up and evidence pack",
                   "Pre-audit gap assessment and remediation roadmap",
-                  "Audit-readiness coaching for the half-day on-site SWDA assessment",
+                  "**Mock-up website** or brochure showing SWDA's nine disclosure items",
+                  "Rehearsal for the half-day on-site SWDA assessment, requirement by requirement",
                   "Post-approval support — **TPQA service** and ongoing compliance",
                 ].map((line) => (
                   <li key={line} className="flex gap-3">
@@ -699,15 +728,15 @@ export default function SsgAtoApplicationPage() {
         </section>
 
         {/* FAQ */}
-        <section className="relative py-10">
-          <Container className="max-w-4xl">
-            <div className="mb-8">
+        <section className="relative py-6">
+          <Container>
+            <div className="mb-6">
               <div className="kicker mb-3">[ FAQ ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 Common questions about our ATO service.
               </h2>
             </div>
-            <div className="space-y-3">
+            <div className="grid lg:grid-cols-2 gap-3 items-start fill-lg-2">
               {FAQ.map((f) => (
                 <details
                   key={f.q}
@@ -731,7 +760,7 @@ export default function SsgAtoApplicationPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="relative py-10 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div
             className="glow-blob"
             style={{
@@ -742,8 +771,9 @@ export default function SsgAtoApplicationPage() {
               background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)",
             }}
           />
-          <Container className="max-w-4xl relative">
-            <div className="text-center mb-8">
+          <Container className="relative">
+            <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center">
+              <div className="min-w-0">
               <div className="kicker mb-3">[ START YOUR ATO JOURNEY ]</div>
               <h2 className="font-display text-[clamp(2rem,4.5vw,3rem)] font-extrabold leading-[1.05] mb-4">
                 Ready to apply? <span className="gradient-text">Talk to a consultant.</span>
@@ -752,15 +782,18 @@ export default function SsgAtoApplicationPage() {
                 Free 30-minute consultation. We'll tell you what's realistic for your
                 organisation before you spend a dollar.
               </p>
-            </div>
-            <SsgAtoLeadForm />
-            <p className="mt-5 text-center text-xs text-(--color-muted) font-mono">
+                        <p className="mt-3 text-xs text-(--color-muted) font-mono">
               [ Looking at our other services?{" "}
               <Link href="/#services" className="hover:text-(--color-cyan)">
                 See all SWDA compliance services
               </Link>{" "}
               ]
             </p>
+              </div>
+              <div className="min-w-0">
+                <SsgAtoLeadForm />
+              </div>
+            </div>
           </Container>
         </section>
       </main>

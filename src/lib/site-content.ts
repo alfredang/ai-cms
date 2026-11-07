@@ -15,55 +15,161 @@ import {
   HiUserGroup,
   HiBolt,
   HiDevicePhoneMobile,
+  HiBanknotes,
+  HiWrenchScrewdriver,
+  HiClock,
+  HiArrowsRightLeft,
+  HiDocumentMagnifyingGlass,
 } from "react-icons/hi2";
+import type { IconType } from "react-icons";
 
-export const SERVICES = [
+import { ANDROID_LIVE_COUNT, IOS_LIVE_COUNT } from "@/lib/mobile-apps";
+
+type Service = {
+  id: string;
+  icon: IconType;
+  title: string;
+  group?: string;
+  description: string;
+  /** The free check offered as the lead hook. */
+  offer?: string;
+  /** Short products or areas line shown on AI Services cards. */
+  list?: string;
+  features: string[];
+  accent: "blue" | "cyan" | "purple";
+  href: string;
+  category: "ssg" | "ai" | "ai-service";
+};
+
+export const SERVICES: Service[] = [
   {
-    id: "course-dev",
+    id: "wsq-casl",
     icon: HiClipboardDocumentList,
-    title: "Course Development",
+    title: "WSQ & CASL Course Development",
+    group: "Course development",
     description:
-      "**WSQ courseware development** and **SWDA courseware development** across Singapore's training frameworks — competency mapping, lesson plans, assessments and submission packages.",
-    features: [
-      "WSQ courseware development",
-      "CASL course development",
-      "IBF-STS / FTS course development",
-      "PWM course development",
-    ],
+      "**WSQ courseware development** and **CASL course development** under the new WSQ 2.0 rules, from the route check to Course Proposal and full courseware.",
+    offer: "Free WSQ 2.0 route check",
+    features: ["WSQ 2.0 route check", "CASL course development", "Course Proposal", "Full courseware"],
     accent: "blue" as const,
     href: "/wsq-course-development",
     category: "ssg" as const,
   },
   {
-    id: "ato",
-    icon: HiBuildingLibrary,
-    title: "ATO Service",
+    id: "ibf-course",
+    icon: HiBanknotes,
+    title: "IBF Course Development",
+    group: "Course development",
     description:
-      "Our **ATO service in Singapore** makes you an Approved Training Organisation — policies, SOPs and the SWDA Organisation Registration (OR), including IBF OR, from start to finish.",
-    features: [
-      "QMS, policies & SOPs",
-      "ATO submission package",
-      "Pre-audit gap assessment",
-      "Audit-readiness coaching",
-    ],
+      "**IBF course development** for IBF-STS, FTS and Core FAA/SFA CPD courses, built from the TSC, with the Assessor Coach and financial-sector SME provided.",
+    offer: "Free IBF course go/no-go",
+    features: ["IBF-STS & FTS", "TSC mapping", "Course Prospectus", "Marks-based rubric"],
     accent: "blue" as const,
+    href: "/ibf-course-development",
+    category: "ssg" as const,
+  },
+  {
+    id: "pwm-course",
+    icon: HiWrenchScrewdriver,
+    title: "PWM Course Development",
+    group: "Course development",
+    description:
+      "**PWM course development** for Progressive Wage Model sectors, with the right TSCs, entry evidence and courseware that suits frontline workers.",
+    offer: "Free PWM course scoping check",
+    features: ["Entry-route check", "Sector & TSC mapping", "Course Proposal", "Frontline courseware"],
+    accent: "blue" as const,
+    href: "/pwm-course-development",
+    category: "ssg" as const,
+  },
+  {
+    id: "cpd-course",
+    icon: HiClock,
+    title: "CPD Course Development",
+    group: "Course development",
+    description:
+      "**CPD course development**, plus advice on how to get approved by CPD authorisation bodies such as TAEPP, IBF and professional societies in Singapore.",
+    offer: "Free CPD mapping check",
+    features: ["TAEPP & societies", "Core FAA/SFA CPD", "Approval advice", "CPD tracking"],
+    accent: "blue" as const,
+    href: "/cpd-course-development",
+    category: "ssg" as const,
+  },
+  {
+    id: "sctp-module",
+    icon: HiArrowsRightLeft,
+    title: "SCTP Module Development",
+    group: "Course development",
+    description:
+      "**SCTP module development**: multi-module training of 2–5 months that meets job demand, plus consultancy on the job placement services needed for eligibility.",
+    offer: "Free SCTP readiness check",
+    features: ["2–5 month design", "Job placement consultancy", "Industry projects", "Partner MOUs"],
+    accent: "blue" as const,
+    href: "/sctp-module-development",
+    category: "ssg" as const,
+  },
+  {
+    id: "swda-ato",
+    icon: HiBuildingLibrary,
+    title: "SWDA ATO Application",
+    group: "ATO applications",
+    description:
+      "Our **ATO service in Singapore** and **SWDA OR service** cover the new requirements end to end, including the **mock-up website** and rehearsal for the on-site assessment.",
+    offer: "Free ATO readiness check",
+    features: ["Stage 1 & 2 documents", "Policies & Operations Manual", "Course Application", "On-site preparation"],
+    accent: "cyan" as const,
     href: "/ssg-ato-application",
+    category: "ssg" as const,
+  },
+  {
+    id: "ibf-ato",
+    icon: HiBuildingOffice2,
+    title: "IBF ATO Application",
+    group: "ATO applications",
+    description:
+      "IBF is notoriously hard to get approved. Our **SWDA IBF OR service** starts with an honest go/no-go and can provide the Assessor Coach and financial-sector SME.",
+    offer: "Free IBF ATO go/no-go",
+    features: ["Track record review", "Organisation Criteria", "Quality Manual", "Fit and Proper"],
+    accent: "cyan" as const,
+    href: "/ibf-ato-application",
+    category: "ssg" as const,
+  },
+  {
+    id: "pei-ato",
+    icon: HiAcademicCap,
+    title: "PEI ATO Application",
+    group: "ATO applications",
+    description:
+      "A **PEI service** for Private Education Institution registration under the ERF, including help setting up your Academic and Examination Boards.",
+    offer: "Free PEI route check",
+    features: ["Route check", "Boards & managers", "Premises & contracts", "Site inspection"],
+    accent: "cyan" as const,
+    href: "/pei-ato-application",
     category: "ssg" as const,
   },
   {
     id: "tpqa",
     icon: HiCheckBadge,
-    title: "TPQA Service",
+    title: "TPQA Consultancy",
+    group: "Quality & audit",
     description:
-      "A year-round **TPQA service** — mock **TPQA audit**, evidence remediation, **CQC audit** responses and **PEI service** support, through to the live SWDA assessment.",
-    features: [
-      "Mock TPQA audit",
-      "Evidence & documentation review",
-      "Gap remediation roadmap",
-      "On-site audit support",
-    ],
-    accent: "cyan" as const,
+      "Aim for **TPQA Grade 1**, the requirement for Tier 1 courses funded up to 90% and SCTP. A **TPQA service** with mock **TPQA audit**, remediation and rehearsal.",
+    offer: "Free TPQA Grade 1 readiness review",
+    features: ["Mock TPQA audit", "Evidence review", "Gap remediation", "Team rehearsal"],
+    accent: "purple" as const,
     href: "/tpqa-consultancy",
+    category: "ssg" as const,
+  },
+  {
+    id: "cqc",
+    icon: HiDocumentMagnifyingGlass,
+    title: "CQC Consultancy",
+    group: "Quality & audit",
+    description:
+      "**CQC audit** support when SWDA checks a live course: Improvement Plans, courseware rebuilds and periodic-check replies against tight deadlines.",
+    offer: "Free CQC outcome review",
+    features: ["Improvement Plans", "Courseware rebuilds", "Periodic checks", "Deployed versions traced"],
+    accent: "purple" as const,
+    href: "/cqc-consultancy",
     category: "ssg" as const,
   },
   {
@@ -104,8 +210,10 @@ export const SERVICES = [
     id: "ai",
     icon: HiSparkles,
     title: "AI Transformation & Solutions",
+    offer: "Free AI transformation evaluation",
+    list: "Agentic AI · n8n · Claude Code · OpenClaw · Harness Systems",
     description:
-      "**AI transformation evaluation and consultation**, then production AI systems, automations and bespoke software — from agentic workflows to full-stack web tools.",
+      "**AI transformation evaluation and consultation**, then production AI systems, automations and bespoke software, from agentic workflows to full-stack tools.",
     features: [
       "Agentic AI · n8n · Claude Code · OpenCLAW",
       "Harness Systems integration",
@@ -114,7 +222,7 @@ export const SERVICES = [
     ],
     accent: "purple" as const,
     href: "/ai-solutions",
-    category: "ai" as const,
+    category: "ai-service" as const,
   },
   {
     id: "marketplace",
@@ -137,7 +245,7 @@ export const SERVICES = [
     icon: HiDevicePhoneMobile,
     title: "Mobile App Development",
     description:
-      "**Mobile apps development in Singapore** — native iOS and Android apps in SwiftUI and Jetpack Compose, shipped to the App Store and Google Play.",
+      `**Mobile apps development in Singapore** — native apps with a live portfolio of **${IOS_LIVE_COUNT} iOS apps** on the App Store and **${ANDROID_LIVE_COUNT} Android apps** on Google Play.`,
     features: [
       "Native iOS (SwiftUI) & Android (Compose)",
       "Backend / shared API when you need one",
@@ -185,16 +293,44 @@ export const SERVICES = [
     icon: HiBolt,
     title: "AI Agent Deployment",
     description:
-      "**AI agent deployment** and **agentic AI development** — OpenClaw, Hermes Agent, Nebula and bespoke Claude agents wired into your existing systems.",
+      "**AI agent deployment** and **agentic AI development**, set up safely in your business, with permissions, approvals and cost limits from day one.",
+    offer: "Free AI agent fit check",
+    list: "OpenClaw · Hermes · Meta Muse · OpenAI Dots · Grok Bot · Cue · Claude Duet · Gemini Spark",
     features: [
-      "OpenClaw · Hermes Agent · Nebula",
+      "OpenClaw · Hermes · Muse · Dots · Grok Bot",
       "Custom Claude Agent SDK builds",
       "Webhook + n8n + API integration",
       "Observability + cost guardrails",
     ],
     accent: "purple" as const,
     href: "/ai-agent-deployment",
-    category: "ai" as const,
+    category: "ai-service" as const,
+  },
+  {
+    id: "aiaas",
+    icon: HiCpuChip,
+    title: "AI as a Service (AIaaS)",
+    offer: "Free AI workflow audit",
+    list: "Finance · Marketing · Legal · Retail · HR · Sales · Operations · More",
+    description:
+      "A **virtual Forward Deployed Engineer** learns how your company works, deploys AI into your real workflows and keeps optimising them, without you hiring an AI team.",
+    features: ["Virtual FDE", "Workflow mapping", "Integrations & guardrails", "Any industry"],
+    accent: "cyan" as const,
+    href: "/ai-as-a-service",
+    category: "ai-service" as const,
+  },
+  {
+    id: "ai-training",
+    icon: HiBookOpen,
+    title: "AI Training for Business",
+    offer: "Free training needs check",
+    list: "Claude Code · Codex · Microsoft Copilot · Gemini",
+    description:
+      "**Corporate AI training** customised and contextualised to your company, so your people practise on their own workflows and use cases, not generic demos.",
+    features: ["Claude Code", "Codex", "Microsoft Copilot", "Gemini"],
+    accent: "blue" as const,
+    href: "/ai-training-for-business",
+    category: "ai-service" as const,
   },
 ];
 

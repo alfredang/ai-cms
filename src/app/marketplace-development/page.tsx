@@ -104,32 +104,27 @@ const TIMELINE = [
 
 const ACCENT: Record<
   string,
-  { ring: string; iconText: string; chip: string }
+  { ring: string; iconText: string }
 > = {
   cyan: {
     ring: "border-(--color-cyan)/40",
     iconText: "text-(--color-cyan)",
-    chip: "bg-(--color-cyan)/10 text-(--color-cyan)",
   },
   blue: {
     ring: "border-(--color-cyan)/40",
     iconText: "text-(--color-cyan)",
-    chip: "bg-(--color-cyan)/10 text-(--color-cyan)",
   },
   purple: {
     ring: "border-(--color-purple)/50",
     iconText: "text-(--color-purple-light)",
-    chip: "bg-(--color-purple)/15 text-(--color-purple-light)",
   },
   amber: {
     ring: "border-(--color-amber)/50",
     iconText: "text-(--color-amber)",
-    chip: "bg-(--color-amber)/10 text-(--color-amber)",
   },
   green: {
     ring: "border-(--color-green)/50",
     iconText: "text-(--color-green)",
-    chip: "bg-(--color-green)/10 text-(--color-green)",
   },
 };
 
@@ -248,7 +243,7 @@ export default function MarketplaceDevelopmentPage() {
       <Navbar />
       <main>
         {/* HERO */}
-        <section className="relative py-10 md:py-14 overflow-hidden">
+        <section className="relative py-6 md:py-8 overflow-hidden">
           <div
             className="glow-blob"
             style={{
@@ -289,13 +284,13 @@ export default function MarketplaceDevelopmentPage() {
                   .
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mb-6">
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-cyan)/10 text-(--color-cyan) border border-(--color-cyan)/30">
+                  <span className="text-xs font-mono text-(--color-cyan)">
                     Web first, then native apps
                   </span>
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-purple)/15 text-(--color-purple-light) border border-(--color-purple)/40">
+                  <span className="text-xs font-mono text-(--color-purple-light)">
                     Fixed-scope, phased delivery
                   </span>
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-amber)/10 text-(--color-amber) border border-(--color-amber)/30">
+                  <span className="text-xs font-mono text-(--color-amber)">
                     You own the code
                   </span>
                 </div>
@@ -305,7 +300,7 @@ export default function MarketplaceDevelopmentPage() {
                   </a>
                   <a
                     href="#process"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/15 text-white/85 hover:border-(--color-cyan)/50 hover:text-(--color-cyan) transition"
+                    className="btn-secondary"
                   >
                     See how we build
                   </a>
@@ -328,16 +323,16 @@ export default function MarketplaceDevelopmentPage() {
         </section>
 
         {/* WHAT YOU GET — surfaces grid */}
-        <section className="relative py-10">
+        <section className="relative py-6">
           <Container>
-            <div className="max-w-3xl mb-8">
+            <div className="mb-6">
               <div className="kicker mb-3">[ WHAT WE BUILD ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 One marketplace, <span className="gradient-text-warm">three front doors</span>,
                 one source of truth.
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 fill-2-3">
               {SURFACES.map((s) => {
                 const Icon = s.icon;
                 return (
@@ -354,7 +349,7 @@ export default function MarketplaceDevelopmentPage() {
         </section>
 
         {/* CASE STUDY — Potluckhub */}
-        <section className="relative py-10">
+        <section className="relative py-6">
           <Container>
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
@@ -390,7 +385,7 @@ export default function MarketplaceDevelopmentPage() {
                     href={LIVE}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/15 text-white/85 hover:border-(--color-cyan)/50 hover:text-(--color-cyan) transition"
+                    className="btn-secondary"
                   >
                     Visit potluckhub.io
                   </a>
@@ -412,9 +407,9 @@ export default function MarketplaceDevelopmentPage() {
         </section>
 
         {/* PROCESS / TIMELINE */}
-        <section id="process" className="relative py-10 scroll-mt-20">
+        <section id="process" className="relative py-6 scroll-mt-20">
           <Container>
-            <div className="max-w-3xl mb-10">
+            <div className="mb-6">
               <div className="kicker mb-3">[ OUR 5-STEP PROCESS ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 Discovery → Design & API → Quotation → Build →{" "}
@@ -441,7 +436,7 @@ export default function MarketplaceDevelopmentPage() {
                       </div>
                       <div className="text-center">
                         <span
-                          className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-mono ${a.chip} mb-2`}
+                          className={`block text-xs font-mono ${a.iconText} mb-2`}
                         >
                           {s.duration}
                         </span>
@@ -470,10 +465,10 @@ export default function MarketplaceDevelopmentPage() {
                     </div>
                     <div className="glass p-5">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${a.chip}`}>
+                        <span className={`text-xs font-mono ${a.iconText}`}>
                           Step {i + 1}
                         </span>
-                        <span className="text-[11px] font-mono text-(--color-muted)">
+                        <span className="text-xs font-mono text-(--color-muted)">
                           {s.duration}
                         </span>
                       </div>
@@ -488,7 +483,7 @@ export default function MarketplaceDevelopmentPage() {
         </section>
 
         {/* WHAT'S INCLUDED */}
-        <section className="relative py-10">
+        <section className="relative py-6">
           <Container>
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div>
@@ -523,15 +518,15 @@ export default function MarketplaceDevelopmentPage() {
         </section>
 
         {/* FAQ */}
-        <section className="relative py-10">
-          <Container className="max-w-4xl">
-            <div className="mb-8">
+        <section className="relative py-6">
+          <Container>
+            <div className="mb-6">
               <div className="kicker mb-3">[ FAQ ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 Common questions about building a marketplace.
               </h2>
             </div>
-            <div className="space-y-3">
+            <div className="grid lg:grid-cols-2 gap-3 items-start fill-lg-2">
               {FAQ.map((f) => (
                 <details
                   key={f.q}
@@ -553,7 +548,7 @@ export default function MarketplaceDevelopmentPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="relative py-10 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div
             className="glow-blob"
             style={{
@@ -564,8 +559,9 @@ export default function MarketplaceDevelopmentPage() {
               background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)",
             }}
           />
-          <Container className="max-w-4xl relative">
-            <div className="text-center mb-8">
+          <Container className="relative">
+            <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center">
+              <div className="min-w-0">
               <div className="kicker mb-3">[ START YOUR BUILD ]</div>
               <h2 className="font-display text-[clamp(2rem,4.5vw,3rem)] font-extrabold leading-[1.05] mb-4">
                 Have a marketplace idea?{" "}
@@ -575,15 +571,18 @@ export default function MarketplaceDevelopmentPage() {
                 Free 30-minute scoping call. We'll tell you what to build first and what it
                 realistically takes before you commit a dollar.
               </p>
-            </div>
-            <MarketplaceLeadForm />
-            <p className="mt-5 text-center text-xs text-(--color-muted) font-mono">
+                        <p className="mt-3 text-xs text-(--color-muted) font-mono">
               [ Looking at our other services?{" "}
               <Link href="/#services" className="hover:text-(--color-cyan)">
                 See all services
               </Link>{" "}
               ]
             </p>
+              </div>
+              <div className="min-w-0">
+                <MarketplaceLeadForm />
+              </div>
+            </div>
           </Container>
         </section>
       </main>

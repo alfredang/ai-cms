@@ -131,8 +131,8 @@ export default async function CmsPage({
   return (
     <>
       <Navbar />
-      <main className="pt-16">
-        <Container className="max-w-3xl py-16">
+      <main>
+        <Container className="max-w-3xl py-6">
           <h1 className="text-3xl md:text-5xl font-bold mb-6">{page.title}</h1>
           {githubUrl && (
             <a
@@ -155,7 +155,7 @@ export default async function CmsPage({
         </Container>
 
         {/* Consultation form — embedded on every DB-driven page so every URL doubles as a lead-gen funnel. */}
-        <section className="relative py-16 border-t border-white/5">
+        <section className="relative py-6 border-t border-white/5">
           <div
             className="glow-blob"
             style={{
@@ -167,7 +167,7 @@ export default async function CmsPage({
               opacity: 0.35,
             }}
           />
-          <Container className="max-w-5xl relative">
+          <Container className="relative">
             <div className="grid lg:grid-cols-[1fr_1fr] gap-10 items-start">
               <div>
                 <div className="kicker mb-3">[ FREE CONSULTATION ]</div>

@@ -32,9 +32,9 @@ export const metadata: Metadata = {
 };
 
 const productBadge: Record<string, string> = {
-  LMS: "bg-(--color-cyan)/15 text-(--color-cyan) border-(--color-cyan)/30",
-  TMS: "bg-(--color-amber)/15 text-(--color-amber) border-(--color-amber)/30",
-  "LMS + TMS": "bg-(--color-purple)/20 text-(--color-purple-light) border-(--color-purple)/40",
+  LMS: "text-(--color-cyan)",
+  TMS: "text-(--color-amber)",
+  "LMS + TMS": "text-(--color-purple-light)",
 };
 
 export default function RealClientsPage() {
@@ -42,26 +42,26 @@ export default function RealClientsPage() {
     <>
       <Navbar />
       <main>
-        <section className="relative pt-12 pb-16 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div className="grid-bg opacity-60" />
           <div className="glow-blob" style={{ top: "-20%", left: "10%", width: 500, height: 500, background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)" }} />
           <div className="glow-blob" style={{ top: "20%", right: "0%", width: 420, height: 420, background: "radial-gradient(circle, #59EBFD 0%, transparent 70%)" }} />
           <Container className="relative">
             <div className="kicker mb-4">[ REAL CLIENTS ]</div>
-            <h1 className="font-display text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] max-w-4xl">
+            <h1 className="font-display text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05]">
               Real clients running our{" "}
               <span className="gradient-text">AI Powered LMS &amp; TMS</span>.
             </h1>
-            <p className="mt-6 text-lg text-(--color-muted) max-w-3xl">
+            <p className="mt-4 text-lg text-(--color-muted)">
               Production deployments for Singapore training providers and professional bodies —
               live, in use, and serving learners every day.
             </p>
           </Container>
         </section>
 
-        <section className="pb-20">
+        <section className="pb-6">
           <Container>
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-4 fill-md-2">
               {CLIENTS.map((c) => (
                 <article key={c.name} className="card-hover glass p-7 relative overflow-hidden">
                   <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-(--color-cyan) to-transparent" />
@@ -78,7 +78,7 @@ export default function RealClientsPage() {
                         <h2 className="font-display font-bold text-2xl text-white truncate">{c.name}</h2>
                       </div>
                     </div>
-                    <span className={`shrink-0 font-mono text-[10px] px-2 py-1 rounded border ${productBadge[c.product]}`}>
+                    <span className={`shrink-0 font-mono text-xs ${productBadge[c.product]}`}>
                       {c.product}
                     </span>
                   </div>
@@ -88,7 +88,7 @@ export default function RealClientsPage() {
                       {c.metrics.map((m) => (
                         <div key={m.label} className="bg-(--color-bg-elevated) px-3 py-3 text-center">
                           <div className="font-display font-bold text-lg text-white">{m.value}</div>
-                          <div className="text-[10px] text-(--color-muted) font-mono uppercase mt-0.5">{m.label}</div>
+                          <div className="text-xs text-(--color-muted) font-mono uppercase mt-0.5">{m.label}</div>
                         </div>
                       ))}
                     </div>
@@ -121,11 +121,11 @@ export default function RealClientsPage() {
           </Container>
         </section>
 
-        <section className="relative py-20 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div className="glow-blob" style={{ bottom: "-20%", left: "40%", width: 500, height: 500, background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)", opacity: 0.3 }} />
           <Container className="relative">
             <div className="kicker mb-4">[ WHAT CLIENTS SAY ]</div>
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-4 fill-md-2">
               {TESTIMONIALS.map((t) => (
                 <blockquote key={t.quote} className="glass p-7 relative">
                   <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-(--color-cyan) to-transparent" />
@@ -139,7 +139,7 @@ export default function RealClientsPage() {
           </Container>
         </section>
 
-        <section className="py-20">
+        <section className="py-6">
           <Container>
             <div className="glass p-10 md:p-14 relative overflow-hidden text-center">
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-(--color-cyan) to-transparent" />

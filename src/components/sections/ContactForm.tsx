@@ -42,17 +42,30 @@ export function ContactForm() {
   return (
     <section id="contact" className="relative py-4 overflow-hidden">
       <div className="glow-blob" style={{ top: "10%", right: "0", width: 480, height: 480, background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)" }} />
-      <Container className="max-w-4xl relative">
-        <div className="text-center mb-6">
-          <div className="kicker mb-4">[ GET IN TOUCH ]</div>
+      <Container className="relative">
+        <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center">
+        <div className="min-w-0">
+          <div className="kicker mb-3">[ GET IN TOUCH ]</div>
           <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.05] mb-4">
             Talk to <span className="gradient-text">us</span>.
           </h2>
           <p className="text-(--color-muted) text-lg">
-            Tell us about your training program or AI project. We respond within one business day.
+            Tell us about your training programme or AI project. We respond within one business day.
           </p>
+          <ol className="mt-4 space-y-2 text-sm text-white/85">
+            {[
+              "You tell us what you need, in your own words",
+              "A consultant replies within one business day",
+              "We arrange a free 30-minute consultation and tell you what's realistic",
+            ].map((step, i) => (
+              <li key={step} className="flex gap-3">
+                <span className="font-mono text-(--color-cyan)" aria-hidden>0{i + 1}</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
         </div>
-        <form onSubmit={onSubmit} className="glass p-8 md:p-10 space-y-5">
+        <form onSubmit={onSubmit} className="glass p-6 space-y-4 min-w-0">
           <div className="grid md:grid-cols-2 gap-5">
             <Input name="name" label="Your name" required />
             <Input name="email" label="Email" type="email" required />
@@ -94,6 +107,7 @@ export function ContactForm() {
           )}
           <TurnstileWidget onToken={setTurnstileToken} />
         </form>
+        </div>
       </Container>
     </section>
   );

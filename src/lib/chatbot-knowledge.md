@@ -103,6 +103,27 @@ Full-service application to become an SSG **Approved Training Organisation**.
 Common ICP: existing training providers seeking ATO status, or organisations
 spinning up a training arm to access SSG funding.
 
+### AI Services
+
+- AI as a Service (AIaaS), a virtual Forward Deployed Engineer — `/ai-as-a-service`
+- AI Agent Deployment: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bot, Cue by Manus, Claude Duet, Gemini Spark — `/ai-agent-deployment`
+- AI Training for Business: Claude Code, Codex, Microsoft Copilot, Gemini, customised to the company — `/ai-training-for-business`
+- AI Transformation & Solutions — `/ai-solutions`
+
+### Other SSG services
+
+SSG is now part of SWDA. Each page offers a free check in a 30-minute consultation.
+
+- IBF Course Development — `/ibf-course-development`
+- PWM Course Development — `/pwm-course-development`
+- CPD Course Development — `/cpd-course-development`
+- SCTP Module Development — `/sctp-module-development`
+- IBF ATO Application — `/ibf-ato-application`
+- PEI ATO Application — `/pei-ato-application`
+- CQC Consultancy — `/cqc-consultancy`
+
+Never promise an approval, a pass or a TPQA grade: the regulator decides.
+
 ### TPQA Consultancy — `/tpqa-consultancy`
 
 Keep ATOs TPQA-compliant year-round.
@@ -110,7 +131,7 @@ Keep ATOs TPQA-compliant year-round.
 - Mock TPQA audit + scored report
 - Evidence + documentation review
 - Gap remediation roadmap
-- On-site support during the live SSG audit
+- Process-owner rehearsal before the SWDA assessment (SWDA does not allow consultants to attend the on-site assessment)
 - Annual retainer or one-off scoping
 
 Typical engagement: 4–8 weeks, fixed-fee.

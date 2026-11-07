@@ -944,3 +944,8 @@ export const MOBILE_APPS: MobileApp[] = [
 export function getMobileApp(slug: string): MobileApp | undefined {
   return MOBILE_APPS.find((a) => a.id === slug);
 }
+
+/** Live portfolio counts: an app counts as live once it has a store link. */
+export const IOS_LIVE_COUNT = MOBILE_APPS.filter((a) => a.ios).length;
+export const ANDROID_LIVE_COUNT = MOBILE_APPS.filter((a) => a.android).length;
+export const BOTH_STORES_COUNT = MOBILE_APPS.filter((a) => a.ios && a.android).length;

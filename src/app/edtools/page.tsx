@@ -65,7 +65,7 @@ export default function EdToolsIndex() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <Navbar />
       <main>
-        <section className="relative pt-24 pb-12 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div className="grid-bg opacity-60" />
           <div
             className="glow-blob"
@@ -79,10 +79,10 @@ export default function EdToolsIndex() {
           />
           <Container className="relative">
             <div className="kicker mb-4">[ FREE ED TOOLS ]</div>
-            <h1 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.1] max-w-4xl">
+            <h1 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.1]">
               <span className="gradient-text">{EDTOOLS.length}+ Free Ed Tools</span> for trainers &amp; educators.
             </h1>
-            <p className="mt-5 text-(--color-muted) text-lg max-w-3xl">
+            <p className="mt-4 text-(--color-muted) text-lg">
               A growing library of free, browser-based teaching and training tools we built for our own classrooms —
               live polls, collaborative boards, cyber labs, analytics, finance and statistics workbenches. Every tool
               is <span className="text-white/80">free to use</span>, runs in the browser, and{" "}
@@ -99,21 +99,21 @@ export default function EdToolsIndex() {
                 Want these inside your own LMS? →
               </Link>
             </div>
-            <div className="mt-8 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-x-4">
               {ED_TOOL_CATEGORIES.map((cat) => (
                 <a
                   key={cat}
                   href={`#${slugifyCat(cat)}`}
-                  className="text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-(--color-cyan) hover:border-(--color-cyan)/40 transition"
+                  className="inline-block py-2 text-xs font-mono text-white/70 hover:text-(--color-cyan) transition"
                 >
-                  {cat} <span className="text-white/30">{grouped[cat].length}</span>
+                  {cat} <span className="text-white/60">{grouped[cat].length}</span>
                 </a>
               ))}
             </div>
           </Container>
         </section>
 
-        <section id="tools" className="pb-12">
+        <section id="tools" className="pb-6">
           <Container>
             <div className="space-y-8">
               {ED_TOOL_CATEGORIES.map((cat) => {
@@ -125,7 +125,7 @@ export default function EdToolsIndex() {
                   <div
                     key={cat}
                     id={slugifyCat(cat)}
-                    className="glass rounded-2xl p-6 md:p-8 relative overflow-hidden scroll-mt-24"
+                    className="glass rounded-2xl p-5 md:p-6 relative overflow-hidden scroll-mt-24"
                   >
                     <div
                       className="pointer-events-none absolute -top-20 -right-16 w-64 h-64 rounded-full opacity-20 blur-3xl"
@@ -151,7 +151,7 @@ export default function EdToolsIndex() {
                       </div>
                     </div>
 
-                    <div className="relative grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-4 fill-2-3">
                       {tools.map((t) => {
                         const shot = getEdToolScreenshot(t.slug);
                         return (
@@ -160,7 +160,7 @@ export default function EdToolsIndex() {
                             href={`/edtools/${t.slug}`}
                             className="group rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-(--color-cyan)/40 transition flex flex-col overflow-hidden"
                           >
-                            <div className="relative aspect-[16/10] bg-black/40 border-b border-white/10 overflow-hidden">
+                            <div className="relative aspect-[16/10] max-h-56 w-full bg-black/40 border-b border-white/10 overflow-hidden">
                               {shot ? (
                                 // eslint-disable-next-line @next/next/no-img-element
                                 <img
@@ -177,9 +177,6 @@ export default function EdToolsIndex() {
                                   {t.name.charAt(0)}
                                 </div>
                               )}
-                              <span className="absolute top-2 left-2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-(--color-cyan)/15 text-(--color-cyan) border border-(--color-cyan)/30">
-                                FREE
-                              </span>
                             </div>
                             <div className="p-4 flex flex-col flex-1">
                               <div className="flex items-start justify-between gap-3 mb-1.5">
@@ -191,16 +188,9 @@ export default function EdToolsIndex() {
                               <p className="text-sm text-(--color-muted) line-clamp-2 leading-relaxed flex-1">
                                 {t.description}
                               </p>
-                              <div className="mt-3 flex flex-wrap gap-1">
-                                {(t.stack ?? []).slice(0, 3).map((s) => (
-                                  <span
-                                    key={s}
-                                    className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-white/50 border border-white/10"
-                                  >
-                                    {s}
-                                  </span>
-                                ))}
-                              </div>
+                              <p className="mt-3 font-mono text-xs text-(--color-cyan)">
+                                FREE{(t.stack ?? []).slice(0, 3).map((s) => ` · ${s}`).join("")}
+                              </p>
                             </div>
                           </Link>
                         );
@@ -213,7 +203,7 @@ export default function EdToolsIndex() {
           </Container>
         </section>
 
-        <section className="relative py-20 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div
             className="glow-blob"
             style={{

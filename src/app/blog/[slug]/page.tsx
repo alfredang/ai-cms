@@ -199,11 +199,11 @@ export default async function PostPage({
                   )}
                 </div>
                 {(category || tagRows.length > 0) && (
-                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4">
                     {category && (
                       <Link
                         href={`/blog?category=${category.slug}`}
-                        className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] uppercase tracking-wider bg-yellow-400/10 text-yellow-300 border border-yellow-400/30 hover:bg-yellow-400/20 transition"
+                        className="inline-flex items-center gap-1.5 py-1 text-xs font-mono uppercase tracking-wider text-(--color-amber) hover:underline"
                       >
                         <HiFolder className="w-3 h-3" />
                         {category.name}
@@ -213,7 +213,7 @@ export default async function PostPage({
                       <Link
                         key={t.slug}
                         href={`/blog?tag=${t.slug}`}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 transition"
+                        className="inline-flex items-center gap-1 py-1 text-xs font-mono text-white/70 hover:text-(--color-cyan) transition"
                       >
                         <HiTag className="w-3 h-3" />
                         {t.name}

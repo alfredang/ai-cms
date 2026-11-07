@@ -38,19 +38,19 @@ export function CMSShowcase() {
         }}
       />
       <Container className="relative">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 items-start">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-start">
           <div>
-            <div className="kicker mb-5">[ AI-POWERED CMS ]</div>
+            <div className="kicker mb-3">[ AI-POWERED CMS ]</div>
             <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-extrabold leading-[1.05]">
               AI-powered{" "}
               <span className="gradient-text">CMS for organizations</span>.
             </h2>
-            <p className="mt-6 text-(--color-muted) text-lg max-w-xl">
+            <p className="mt-4 text-(--color-muted) text-lg">
               A self-hosted, production-grade CMS platform on Next.js 16, Postgres and
               Drizzle. Bring your Claude subscription OAuth token and get a AI chatbot,
               AI authoring, and a TipTap editor.
             </p>
-            <p className="mt-5 font-display font-bold text-xl max-w-xl">
+            <p className="mt-3 font-display font-bold text-xl">
               <span className="gradient-text-warm">
                 No recurring cost, No vendor lock-in, Fully Customizable.
               </span>
@@ -63,7 +63,7 @@ export function CMSShowcase() {
                 </li>
               ))}
             </ul>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link href="#contact" className="btn-primary">
                 Request a demo
               </Link>

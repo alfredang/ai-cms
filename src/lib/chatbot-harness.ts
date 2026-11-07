@@ -72,7 +72,7 @@ const PRODUCT_CATALOG: CatalogEntry[] = [
   {
     keywords: ["tpqa", "tpqa audit", "audit"],
     answer:
-      "Yes — we offer **TPQA consultancy**: mock audits, gap closure, policy & procedure templates, and we sit in on the actual TPQA visit. Want to **book a free scoping call**?",
+      "Yes — we offer **TPQA consultancy**: mock audits, gap closure, contextualised policies and procedures, and rehearsal for your own team, aiming for Grade 1, which SWDA requires for Tier 1 courses funded up to 90% and for SCTP. SWDA does not allow consultants to attend the on-site assessment, so we prepare your people to run it. Want to **book a free scoping call**?",
   },
   {
     keywords: ["wsq course", "course development", "courseware"],
@@ -82,7 +82,7 @@ const PRODUCT_CATALOG: CatalogEntry[] = [
   {
     keywords: ["ai agent", "agentic", "claude agent", "agent deployment"],
     answer:
-      "Yes — we deploy production **Agentic AI**: OpenClaw, Hermes, Nebula, or bespoke Claude Agent SDK builds wired into your inbox, CRM, n8n flows or chat. Self-hosted, OAuth-subscription auth (no metered API). Want a **scoping call**?",
+      "Yes — we deploy production **Agentic AI**: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bot, Claude Duet, Gemini Spark, or bespoke Claude Agent SDK builds wired into your inbox, CRM, n8n flows or chat. Self-hosted, OAuth-subscription auth (no metered API). Want a **scoping call**?",
   },
   {
     keywords: ["ai solution", "full-stack ai", "ai consultancy"],

@@ -6,27 +6,27 @@ import type { MobileApp } from "@/lib/mobile-apps";
 const ACCENT: Record<MobileApp["accent"], { line: string; chip: string; glow: string }> = {
   cyan: {
     line: "from-(--color-cyan) to-transparent",
-    chip: "bg-(--color-cyan)/10 text-(--color-cyan) border-(--color-cyan)/30",
+    chip: "text-(--color-cyan)",
     glow: "from-(--color-cyan)/25",
   },
   blue: {
     line: "from-(--color-cyan) to-transparent",
-    chip: "bg-(--color-cyan)/10 text-(--color-cyan) border-(--color-cyan)/30",
+    chip: "text-(--color-cyan)",
     glow: "from-(--color-cyan)/25",
   },
   purple: {
     line: "from-(--color-purple) to-transparent",
-    chip: "bg-(--color-purple)/15 text-(--color-purple-light) border-(--color-purple)/40",
+    chip: "text-(--color-purple-light)",
     glow: "from-(--color-purple)/30",
   },
   amber: {
     line: "from-(--color-amber) to-transparent",
-    chip: "bg-(--color-amber)/10 text-(--color-amber) border-(--color-amber)/30",
+    chip: "text-(--color-amber)",
     glow: "from-(--color-amber)/25",
   },
   green: {
     line: "from-(--color-green) to-transparent",
-    chip: "bg-(--color-green)/10 text-(--color-green) border-(--color-green)/30",
+    chip: "text-(--color-green)",
     glow: "from-(--color-green)/25",
   },
 };
@@ -48,12 +48,12 @@ export function MobileAppCard({ app }: { app: MobileApp }) {
           </h3>
           <p className="text-sm text-(--color-cyan) mt-0.5">{app.tagline}</p>
         </div>
-        <span className={`shrink-0 px-2.5 py-1 rounded-full text-[10px] font-mono border ${a.chip}`}>
+        <span className={`shrink-0 text-xs font-mono ${a.chip}`}>
           {app.category}
         </span>
       </div>
       <p className="text-sm text-(--color-muted) leading-relaxed flex-1">{app.blurb}</p>
-      <p className="mt-4 text-[11px] font-mono text-white/45">{app.tech}</p>
+      <p className="mt-4 text-xs font-mono text-white/60">{app.tech}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         {app.ios && (
           <StoreLink href={app.ios} label="App Store" icon={<FaApple className="w-3.5 h-3.5" />} />

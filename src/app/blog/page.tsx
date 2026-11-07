@@ -221,13 +221,13 @@ export default async function BlogIndex({
               </form>
               <div>
                 <div className="kicker mb-2">Categories</div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-x-4">
                   <Link
                     href={filterHref({ category: null, page: 1 })}
-                    className={`px-3 py-1.5 rounded-full border text-xs font-mono transition ${
+                    className={`inline-block py-2 border-b-2 text-xs font-mono transition ${
                       !selectedCategory
-                        ? "bg-(--color-cyan)/15 border-(--color-cyan)/40 text-(--color-cyan)"
-                        : "bg-white/3 border-white/10 text-white/70 hover:text-white hover:border-white/30"
+                        ? "border-(--color-cyan) text-(--color-cyan)"
+                        : "border-transparent text-white/70 hover:text-white"
                     }`}
                   >
                     All
@@ -236,10 +236,10 @@ export default async function BlogIndex({
                     <Link
                       key={c.id}
                       href={filterHref({ category: c.slug, page: 1 })}
-                      className={`px-3 py-1.5 rounded-full border text-xs font-mono transition ${
+                      className={`inline-block py-2 border-b-2 text-xs font-mono transition ${
                         selectedCategory === c.slug
-                          ? "bg-(--color-cyan)/15 border-(--color-cyan)/40 text-(--color-cyan)"
-                          : "bg-white/3 border-white/10 text-white/70 hover:text-white hover:border-white/30"
+                          ? "border-(--color-cyan) text-(--color-cyan)"
+                          : "border-transparent text-white/70 hover:text-white"
                       }`}
                     >
                       {c.name}
@@ -251,13 +251,13 @@ export default async function BlogIndex({
               {allTags.length > 0 && (
                 <div>
                   <div className="kicker mb-2">Tags</div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-x-4">
                     <Link
                       href={filterHref({ tag: null, page: 1 })}
-                      className={`px-3 py-1 rounded-full border text-xs transition ${
+                      className={`inline-block py-2 border-b-2 text-xs font-mono transition ${
                         !selectedTag
-                          ? "bg-(--color-purple)/15 border-(--color-purple)/40 text-(--color-purple)"
-                          : "bg-white/3 border-white/10 text-white/60 hover:text-white hover:border-white/30"
+                          ? "border-(--color-purple-light) text-(--color-purple-light)"
+                          : "border-transparent text-white/70 hover:text-white"
                       }`}
                     >
                       All
@@ -266,10 +266,10 @@ export default async function BlogIndex({
                       <Link
                         key={t.id}
                         href={filterHref({ tag: t.slug, page: 1 })}
-                        className={`px-3 py-1 rounded-full border text-xs transition ${
+                        className={`inline-block py-2 border-b-2 text-xs font-mono transition ${
                           selectedTag === t.slug
-                            ? "bg-(--color-purple)/15 border-(--color-purple)/40 text-(--color-purple)"
-                            : "bg-white/3 border-white/10 text-white/60 hover:text-white hover:border-white/30"
+                            ? "border-(--color-purple-light) text-(--color-purple-light)"
+                            : "border-transparent text-white/70 hover:text-white"
                         }`}
                       >
                         #{t.name}
@@ -278,7 +278,7 @@ export default async function BlogIndex({
                     {allTags.length > TOP_TAG_LIMIT && (
                       <Link
                         href="/blog/tags"
-                        className="px-3 py-1 rounded-full border text-xs transition border-(--color-cyan)/40 text-(--color-cyan) hover:bg-(--color-cyan)/10"
+                        className="inline-block py-2 text-xs font-mono text-(--color-cyan) hover:underline"
                       >
                         See all {allTags.length} tags →
                       </Link>
@@ -295,7 +295,7 @@ export default async function BlogIndex({
           </Container>
         </section>
 
-        <section className="pb-24 pt-6">
+        <section className="py-6">
           <Container>
             {items.length === 0 ? (
               <p className="text-(--color-muted) font-mono">[ NO POSTS MATCH ]</p>
@@ -385,8 +385,8 @@ export default async function BlogIndex({
                     href={filterHref({ page: n })}
                     className={`px-3 py-2 rounded-md border text-sm font-mono transition ${
                       n === safePage
-                        ? "bg-(--color-cyan)/15 border-(--color-cyan)/40 text-(--color-cyan)"
-                        : "bg-white/3 border-white/10 text-white/70 hover:text-white hover:border-white/30"
+                        ? "border-(--color-cyan) text-(--color-cyan)"
+                        : "border-transparent text-white/70 hover:text-white"
                     }`}
                   >
                     {n}

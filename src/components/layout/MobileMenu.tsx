@@ -19,7 +19,7 @@ export function MobileMenu({ links }: { links: MenuLink[] }) {
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center justify-center w-10 h-10 rounded-md border border-(--color-border) bg-white/5 hover:bg-white/10 transition"
+        className="inline-flex items-center justify-center w-11 h-11 rounded-md border border-(--color-border) bg-white/5 hover:bg-white/10 transition"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

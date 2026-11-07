@@ -43,7 +43,7 @@ export default async function AllTagsPage() {
     <>
       <Navbar />
       <main>
-        <section className="relative pt-24 pb-10 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div className="grid-bg opacity-60" />
           <div
             className="glow-blob"
@@ -74,7 +74,7 @@ export default async function AllTagsPage() {
           </Container>
         </section>
 
-        <section className="pb-24">
+        <section className="pb-6">
           <Container>
             <div className="flex flex-wrap gap-2">
               {sorted.map((t) => {
@@ -83,10 +83,10 @@ export default async function AllTagsPage() {
                   <Link
                     key={t.id}
                     href={`/blog?tag=${encodeURIComponent(t.slug)}`}
-                    className="px-3 py-1.5 rounded-full border text-sm transition bg-white/3 border-white/10 text-white/70 hover:text-white hover:border-(--color-cyan)/40 hover:bg-(--color-cyan)/5"
+                    className="inline-block py-2 font-mono text-sm text-white/80 hover:text-(--color-cyan) transition"
                   >
                     #{t.name}
-                    <span className="ml-2 text-xs text-white/40">{count}</span>
+                    <span className="ml-2 text-xs text-white/60">{count}</span>
                   </Link>
                 );
               })}

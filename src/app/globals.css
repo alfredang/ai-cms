@@ -384,6 +384,39 @@ body::before {
   .robot-launcher::before { opacity: 0; }
 }
 
+/* Grids with no blank cells: the last card spans whatever is left on its row. */
+@media (min-width: 640px) {
+  .fill-2 > :last-child:nth-child(odd) { grid-column: span 2; }
+}
+@media (min-width: 768px) {
+  .fill-md-2 > :last-child:nth-child(odd) { grid-column: span 2; }
+}
+@media (min-width: 1024px) {
+  .fill-lg-2 > :last-child:nth-child(odd) { grid-column: span 2; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .fill-2-3 > :last-child:nth-child(odd) { grid-column: span 2; }
+}
+@media (min-width: 1024px) {
+  .fill-2-3 > :last-child:nth-child(3n + 2) { grid-column: span 2; }
+  .fill-2-3 > :last-child:nth-child(3n + 1) { grid-column: span 3; }
+}
+
+/* Hero circuit: rings turn, pulses travel along the traces. */
+.circuit-spin,
+.circuit-spin-reverse { transform-box: fill-box; transform-origin: center; }
+.circuit-spin { animation: circuit-turn 60s linear infinite; }
+.circuit-spin-reverse { animation: circuit-turn 40s linear infinite reverse; }
+@keyframes circuit-turn { to { transform: rotate(360deg); } }
+.circuit-node rect { transition: stroke-opacity 200ms ease-out, fill 200ms ease-out; }
+.circuit-node:hover rect,
+.circuit-node:focus-visible rect { stroke-opacity: 1; fill: #14162A; }
+.circuit-node:focus-visible { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+  .circuit-spin, .circuit-spin-reverse { animation: none; }
+  .circuit-pulse { display: none; }
+}
+
 .reveal { animation: reveal-up 600ms cubic-bezier(.22,.61,.36,1) both; }
 .reveal-d1 { animation-delay: 80ms; }
 .reveal-d2 { animation-delay: 160ms; }

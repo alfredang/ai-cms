@@ -19,7 +19,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileAppLeadForm } from "@/components/sections/MobileAppLeadForm";
 import { MobileAppCard } from "@/components/sections/MobileAppCard";
-import { MOBILE_APPS } from "@/lib/mobile-apps";
+import { ANDROID_LIVE_COUNT, IOS_LIVE_COUNT, MOBILE_APPS } from "@/lib/mobile-apps";
+import { MobileAppCounts } from "@/components/sections/MobileAppCounts";
 import { RichText, stripMarkup } from "@/lib/rich-text";
 
 const PAGE_URL = "https://www.tertiaryinfotech.com/mobile-app-development";
@@ -28,7 +29,7 @@ const OG_IMAGE = "/icon-192.png";
 
 const META_TITLE = "Mobile Apps Development in Singapore — Native iOS & Android";
 const META_DESC =
-  "Mobile apps development in Singapore: native iOS and Android apps in SwiftUI and Jetpack Compose, shipped to the App Store and Google Play. Book a free call.";
+  `Mobile apps development in Singapore with ${IOS_LIVE_COUNT} iOS and ${ANDROID_LIVE_COUNT} Android apps live on the stores. Native SwiftUI and Compose. Book a free scoping call.`;
 
 export const metadata: Metadata = {
   title: META_TITLE,
@@ -53,8 +54,8 @@ export const metadata: Metadata = {
   },
 };
 
-const IOS_COUNT = MOBILE_APPS.filter((a) => a.ios).length;
-const ANDROID_COUNT = MOBILE_APPS.filter((a) => a.android).length;
+const IOS_COUNT = IOS_LIVE_COUNT;
+const ANDROID_COUNT = ANDROID_LIVE_COUNT;
 
 const TIMELINE = [
   {
@@ -104,12 +105,12 @@ const TIMELINE = [
   },
 ];
 
-const ACCENT: Record<string, { ring: string; iconText: string; chip: string }> = {
-  cyan: { ring: "border-(--color-cyan)/40", iconText: "text-(--color-cyan)", chip: "bg-(--color-cyan)/10 text-(--color-cyan)" },
-  blue: { ring: "border-(--color-cyan)/40", iconText: "text-(--color-cyan)", chip: "bg-(--color-cyan)/10 text-(--color-cyan)" },
-  purple: { ring: "border-(--color-purple)/50", iconText: "text-(--color-purple-light)", chip: "bg-(--color-purple)/15 text-(--color-purple-light)" },
-  amber: { ring: "border-(--color-amber)/50", iconText: "text-(--color-amber)", chip: "bg-(--color-amber)/10 text-(--color-amber)" },
-  green: { ring: "border-(--color-green)/50", iconText: "text-(--color-green)", chip: "bg-(--color-green)/10 text-(--color-green)" },
+const ACCENT: Record<string, { ring: string; iconText: string }> = {
+  cyan: { ring: "border-(--color-cyan)/40", iconText: "text-(--color-cyan)" },
+  blue: { ring: "border-(--color-cyan)/40", iconText: "text-(--color-cyan)" },
+  purple: { ring: "border-(--color-purple)/50", iconText: "text-(--color-purple-light)" },
+  amber: { ring: "border-(--color-amber)/50", iconText: "text-(--color-amber)" },
+  green: { ring: "border-(--color-green)/50", iconText: "text-(--color-green)" },
 };
 
 const CAPABILITIES = [
@@ -250,7 +251,7 @@ export default function MobileAppDevelopmentPage() {
       <Navbar />
       <main>
         {/* HERO */}
-        <section className="relative py-10 md:py-14 overflow-hidden">
+        <section className="relative py-6 md:py-8 overflow-hidden">
           <div
             className="glow-blob"
             style={{ top: "-10%", left: "-5%", width: 520, height: 520, background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)" }}
@@ -274,26 +275,19 @@ export default function MobileAppDevelopmentPage() {
                   OCR business cards and offline games. We take the idea to the App Store
                   and Google Play, and hand you the keys.
                 </p>
-                <div className="flex flex-wrap items-center gap-3 mb-6">
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-cyan)/10 text-(--color-cyan) border border-(--color-cyan)/30">
-                    <FaApple className="inline w-3.5 h-3.5 mr-1.5 -mt-0.5" />
-                    {IOS_COUNT} on the App Store
-                  </span>
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-green)/10 text-(--color-green) border border-(--color-green)/30">
-                    <FaGooglePlay className="inline w-3 h-3 mr-1.5 -mt-0.5" />
-                    {ANDROID_COUNT} on Google Play
-                  </span>
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-(--color-purple)/15 text-(--color-purple-light) border border-(--color-purple)/40">
-                    You own the code
-                  </span>
-                </div>
+                <p className="font-mono text-sm mb-6">
+                  <span className="text-(--color-cyan)">{IOS_COUNT} iOS APPS LIVE</span>
+                  <span className="text-(--color-muted)"> · </span>
+                  <span className="text-(--color-green)">{ANDROID_COUNT} ANDROID APPS LIVE</span>
+                  <span className="text-(--color-muted)"> · YOU OWN THE CODE</span>
+                </p>
                 <div className="flex flex-wrap gap-3">
                   <a href="#book" className="btn-primary">
                     Book my scoping call →
                   </a>
                   <a
                     href="#apps"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/15 text-white/85 hover:border-(--color-cyan)/50 hover:text-(--color-cyan) transition"
+                    className="btn-secondary"
                   >
                     See the apps we&apos;ve shipped
                   </a>
@@ -310,10 +304,13 @@ export default function MobileAppDevelopmentPage() {
         </section>
 
         {/* APP SHOWCASE */}
-        <section id="apps" className="relative py-10 scroll-mt-20">
+        <section id="apps" className="relative py-6 scroll-mt-20">
           <Container>
-            <div className="max-w-3xl mb-8">
+            <div className="mb-6">
               <div className="kicker mb-3">[ APPS WE&apos;VE SHIPPED ]</div>
+            <div className="mb-4">
+              <MobileAppCounts />
+            </div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 Real apps, <span className="gradient-text-warm">live on the stores</span>.
               </h2>
@@ -322,7 +319,7 @@ export default function MobileAppDevelopmentPage() {
                 App Store, Google Play or the source on GitHub.
               </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 fill-2-3">
               {MOBILE_APPS.map((app) => (
                 <MobileAppCard key={app.id} app={app} />
               ))}
@@ -331,16 +328,16 @@ export default function MobileAppDevelopmentPage() {
         </section>
 
         {/* CAPABILITIES */}
-        <section className="relative py-10">
+        <section className="relative py-6">
           <Container>
-            <div className="max-w-3xl mb-8">
+            <div className="mb-6">
               <div className="kicker mb-3">[ WHAT WE BUILD ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 Everything a real app needs,{" "}
                 <span className="gradient-text">end to end</span>.
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 fill-2-3">
               {CAPABILITIES.map((c) => {
                 const Icon = c.icon;
                 return (
@@ -358,13 +355,13 @@ export default function MobileAppDevelopmentPage() {
 
         {/* PROCESS / TIMELINE */}
         {/* OVERVIEW — keyword-rich long-form copy */}
-        <section id="overview" className="relative py-10 scroll-mt-20">
-          <Container className="max-w-4xl">
+        <section id="overview" className="relative py-6 scroll-mt-20">
+          <Container>
             <div className="kicker mb-3">[ MOBILE APPS DEVELOPMENT ]</div>
             <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight mb-5">
               Mobile apps development in Singapore, from idea to the stores
             </h2>
-            <div className="space-y-4 text-(--color-muted) leading-relaxed">
+            <div className="space-y-3 text-(--color-muted) leading-relaxed lg:columns-2 lg:gap-8 [&>p]:break-inside-avoid">
               <p>
                 Most businesses don&apos;t need another agency that hands over a prototype and
                 disappears. They need an app that is live on the App Store and Google Play,
@@ -398,9 +395,9 @@ export default function MobileAppDevelopmentPage() {
           </Container>
         </section>
 
-        <section id="process" className="relative py-10 scroll-mt-20">
+        <section id="process" className="relative py-6 scroll-mt-20">
           <Container>
-            <div className="max-w-3xl mb-10">
+            <div className="mb-6">
               <div className="kicker mb-3">[ OUR 5-STEP PROCESS ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 Discovery → Design → Quotation → Build →{" "}
@@ -424,7 +421,7 @@ export default function MobileAppDevelopmentPage() {
                         </span>
                       </div>
                       <div className="text-center">
-                        <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-mono ${a.chip} mb-2`}>
+                        <span className={`block text-xs font-mono ${a.iconText} mb-2`}>
                           {s.duration}
                         </span>
                         <h3 className="font-display font-bold text-lg mb-2">{s.title}</h3>
@@ -448,10 +445,10 @@ export default function MobileAppDevelopmentPage() {
                     </div>
                     <div className="glass p-5">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${a.chip}`}>
+                        <span className={`text-xs font-mono ${a.iconText}`}>
                           Step {i + 1}
                         </span>
-                        <span className="text-[11px] font-mono text-(--color-muted)">{s.duration}</span>
+                        <span className="text-xs font-mono text-(--color-muted)">{s.duration}</span>
                       </div>
                       <h3 className="font-display font-bold text-base mb-1.5">{s.title}</h3>
                       <p className="text-sm text-(--color-muted) leading-relaxed">{s.body}</p>
@@ -464,7 +461,7 @@ export default function MobileAppDevelopmentPage() {
         </section>
 
         {/* WHAT'S INCLUDED */}
-        <section className="relative py-10">
+        <section className="relative py-6">
           <Container>
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div>
@@ -501,15 +498,15 @@ export default function MobileAppDevelopmentPage() {
         </section>
 
         {/* FAQ */}
-        <section className="relative py-10">
-          <Container className="max-w-4xl">
-            <div className="mb-8">
+        <section className="relative py-6">
+          <Container>
+            <div className="mb-6">
               <div className="kicker mb-3">[ FAQ ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
                 Common questions about mobile apps development in Singapore.
               </h2>
             </div>
-            <div className="space-y-3">
+            <div className="grid lg:grid-cols-2 gap-3 items-start fill-lg-2">
               {FAQ.map((f) => (
                 <details key={f.q} className="glass p-5 group [&_summary::-webkit-details-marker]:hidden">
                   <summary className="cursor-pointer flex justify-between items-center gap-4">
@@ -526,13 +523,14 @@ export default function MobileAppDevelopmentPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="relative py-10 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div
             className="glow-blob"
             style={{ top: "10%", left: "0", width: 480, height: 480, background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)" }}
           />
-          <Container className="max-w-4xl relative">
-            <div className="text-center mb-8">
+          <Container className="relative">
+            <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center">
+              <div className="min-w-0">
               <div className="kicker mb-3">[ START YOUR BUILD ]</div>
               <h2 className="font-display text-[clamp(2rem,4.5vw,3rem)] font-extrabold leading-[1.05] mb-4">
                 Have an app idea?{" "}
@@ -542,15 +540,18 @@ export default function MobileAppDevelopmentPage() {
                 Free 30-minute scoping call. We&apos;ll tell you what to build first, native
                 or cross-platform, and what it realistically takes before you commit a dollar.
               </p>
-            </div>
-            <MobileAppLeadForm />
-            <p className="mt-5 text-center text-xs text-(--color-muted) font-mono">
+                        <p className="mt-3 text-xs text-(--color-muted) font-mono">
               [ Looking at our other services?{" "}
               <Link href="/#services" className="hover:text-(--color-cyan)">
                 See all services
               </Link>{" "}
               ]
             </p>
+              </div>
+              <div className="min-w-0">
+                <MobileAppLeadForm />
+              </div>
+            </div>
           </Container>
         </section>
       </main>

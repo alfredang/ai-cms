@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { TurnstileWidget } from "@/components/forms/TurnstileWidget";
 
 export function MarketplaceLeadForm({ compact = false }: { compact?: boolean }) {
+  const briefId = useId();
   const [state, setState] = useState<"idle" | "sending" | "ok" | "err">("idle");
   const [msg, setMsg] = useState<string>("");
   const [turnstileToken, setTurnstileToken] = useState<string>("");
@@ -38,13 +39,13 @@ export function MarketplaceLeadForm({ compact = false }: { compact?: boolean }) 
         <Input name="phone" label="Phone (Singapore)" />
       </div>
       <div>
-        <label className="kicker block mb-2" htmlFor="mkt-brief">Tell us about your marketplace</label>
+        <label className="kicker block mb-2" htmlFor={briefId}>Tell us about your marketplace</label>
         <textarea
-          id="mkt-brief"
+          id={briefId}
           name="message"
           required
           rows={4}
-          className="w-full px-4 py-3 rounded-lg bg-white/3 border border-white/10 focus:outline-none focus:border-(--color-cyan) focus:ring-2 focus:ring-(--color-cyan)/20 transition placeholder:text-white/30"
+          className="w-full px-4 py-3 rounded-lg bg-white/3 border border-white/10 focus:outline-none focus:border-(--color-cyan) focus:ring-2 focus:ring-(--color-cyan)/20 transition placeholder:text-white/50"
           placeholder="E.g. A two-sided marketplace matching [suppliers] with [buyers]. We want a web app first, then iOS and Android. We have / don't yet have designs and an API…"
         />
       </div>
@@ -87,7 +88,8 @@ function Input({
   type?: string;
   required?: boolean;
 }) {
-  const id = `mkt-${name}`;
+  const uid = useId();
+  const id = `${uid}-${name}`;
   return (
     <div>
       <label className="kicker block mb-2" htmlFor={id}>

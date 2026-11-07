@@ -8,19 +8,19 @@ export function AILmsTmsShowcase() {
     <section id="ai-lms-tms" className="relative pt-4 pb-6 overflow-hidden">
       <div className="glow-blob" style={{ bottom: "-20%", left: "30%", width: 600, height: 600, background: "radial-gradient(circle, #5C00E5 0%, transparent 70%)", opacity: 0.35 }} />
       <Container className="relative">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 items-center">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
           <div>
-            <div className="kicker mb-5">[ FLAGSHIP PRODUCT ]</div>
+            <div className="kicker mb-3">[ FLAGSHIP PRODUCT ]</div>
             <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-extrabold leading-[1.05]">
               AI-powered integrated <span className="gradient-text">LMS &amp; TMS</span>{" "}
               for WSQ training providers.
             </h2>
-            <p className="mt-6 text-(--color-muted) text-lg max-w-xl">
+            <p className="mt-4 text-(--color-muted) text-lg">
               One platform for course delivery, learner tracking, attendance, certification, and
               audit-ready reporting — supercharged by AI for course creation, marking, and
               learner support.
             </p>
-            <ul className="mt-8 space-y-3.5">
+            <ul className="mt-4 space-y-2">
               {AI_LMS_TMS_FEATURES.map((f) => (
                 <li key={f} className="flex gap-3">
                   <HiCheckCircle className="text-(--color-cyan) shrink-0 mt-1 w-5 h-5" />
@@ -28,7 +28,7 @@ export function AILmsTmsShowcase() {
                 </li>
               ))}
             </ul>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link href="#contact" className="btn-primary">Request a demo</Link>
               <Link href="/real-clients" className="btn-secondary">Real Clients</Link>
               <Link
@@ -44,7 +44,7 @@ export function AILmsTmsShowcase() {
 
           <div className="relative">
             <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-(--color-purple)/30 via-transparent to-(--color-cyan)/20 blur-2xl" />
-            <div className="relative glass p-8 overflow-hidden">
+            <div className="relative glass p-6 overflow-hidden">
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-(--color-cyan) to-transparent" />
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-(--color-purple) to-(--color-cyan) flex items-center justify-center">

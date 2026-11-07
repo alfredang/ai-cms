@@ -110,7 +110,7 @@ export default async function EdToolDetail({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <Navbar />
       <main>
-        <section className="relative pt-24 pb-12 overflow-hidden">
+        <section className="relative py-6 overflow-hidden">
           <div className="grid-bg opacity-60" aria-hidden="true" />
           <div
             className="glow-blob"
@@ -135,11 +135,11 @@ export default async function EdToolDetail({ params }: Props) {
             <div className="kicker mb-3 inline-flex items-center gap-2">
               <span className="text-(--color-cyan)">FREE</span> · {tool.category.toUpperCase()}
             </div>
-            <h1 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.1] max-w-4xl">
+            <h1 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.1]">
               <span className="gradient-text">Free {tool.name}</span>
             </h1>
-            <p className="mt-5 text-(--color-muted) text-lg max-w-3xl">{tool.description}</p>
-            <p className="mt-3 text-sm text-white/60 max-w-3xl">
+            <p className="mt-4 text-(--color-muted) text-lg">{tool.description}</p>
+            <p className="mt-3 text-sm text-white/60">
               A free, browser-based tool from{" "}
               <Link href="/edtools" className="text-(--color-cyan) hover:underline">
                 our library of {EDTOOLS.length}+ free Ed Tools
@@ -197,9 +197,9 @@ export default async function EdToolDetail({ params }: Props) {
           </section>
         )}
 
-        <section className="pb-12 pt-8">
+        <section className="pb-6">
           <Container>
-            <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 items-start">
+            <div className="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-start">
               <div className="space-y-10">
                 <div>
                   <h2 className="font-display text-2xl md:text-3xl font-bold mb-3">About {tool.name}</h2>
@@ -246,13 +246,7 @@ export default async function EdToolDetail({ params }: Props) {
                 {tool.stack && tool.stack.length > 0 && (
                   <div>
                     <h2 className="font-display text-2xl md:text-3xl font-bold mb-4">Built with</h2>
-                    <div className="flex flex-wrap gap-2">
-                      {tool.stack.map((s) => (
-                        <span key={s} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-white/80 font-mono">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
+                    <p className="font-mono text-sm text-white/80">{tool.stack.join(" · ")}</p>
                   </div>
                 )}
 
@@ -314,7 +308,7 @@ export default async function EdToolDetail({ params }: Props) {
           </Container>
         </section>
 
-        <section className="relative py-12 border-t border-white/5">
+        <section className="relative py-6 border-t border-white/5">
           <Container>
             <div className="flex items-baseline justify-between mb-6 flex-wrap gap-4">
               <h2 className="font-display text-2xl md:text-3xl font-bold">
@@ -343,7 +337,7 @@ export default async function EdToolDetail({ params }: Props) {
         </section>
 
         {/* Final lead CTA — repeated so visitors needn't scroll back up */}
-        <section className="relative py-16 overflow-hidden border-t border-white/5">
+        <section className="relative py-6 overflow-hidden border-t border-white/5">
           <div
             className="glow-blob"
             aria-hidden="true"

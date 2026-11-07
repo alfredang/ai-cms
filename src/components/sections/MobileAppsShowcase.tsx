@@ -3,9 +3,9 @@ import { Container } from "@/components/layout/Container";
 import { HiDevicePhoneMobile, HiArrowRight } from "react-icons/hi2";
 import { MOBILE_APPS } from "@/lib/mobile-apps";
 import { MobileAppCard } from "./MobileAppCard";
+import { MobileAppCounts } from "./MobileAppCounts";
 
 export function MobileAppsShowcase() {
-  const appCount = MOBILE_APPS.length;
   // Feature 6 apps on the homepage (Fractal lives on the full portfolio page).
   const featured = MOBILE_APPS.filter((a) => a.id !== "fractal").slice(0, 6);
   return (
@@ -23,8 +23,8 @@ export function MobileAppsShowcase() {
       />
       <Container className="relative">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-3xl">
-            <div className="kicker mb-5 flex items-center gap-2">
+          <div className="min-w-0">
+            <div className="kicker mb-3 flex items-center gap-2">
               <HiDevicePhoneMobile className="w-4 h-4 text-(--color-cyan)" />
               [ NATIVE iOS &amp; ANDROID · ON THE STORES ]
             </div>
@@ -32,10 +32,10 @@ export function MobileAppsShowcase() {
               We build &amp; ship{" "}
               <span className="gradient-text">native mobile apps</span>.
             </h2>
-            <p className="mt-6 text-(--color-muted) text-lg max-w-2xl">
+            <p className="mt-4 text-(--color-muted) text-lg">
               From a Singapore home-cook marketplace to MRT route planning, GPS run tracking,
-              OCR business cards and offline games — {appCount}{" "}native SwiftUI / Jetpack Compose
-              apps we&apos;ve designed, built and published to the App Store and Google Play.
+              OCR business cards and offline games — native SwiftUI and Jetpack Compose apps
+              we&apos;ve designed, built and published to the App Store and Google Play.
             </p>
           </div>
           <Link
@@ -46,13 +46,17 @@ export function MobileAppsShowcase() {
           </Link>
         </div>
 
-        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-6">
+          <MobileAppCounts />
+        </div>
+
+        <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {featured.map((app) => (
             <MobileAppCard key={app.id} app={app} />
           ))}
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-3">
           <Link href="/mobile-app-development" className="btn-primary">
             View all mobile apps →
           </Link>
