@@ -1,5 +1,5 @@
 ---
-name: frontend-design
+name: tia-frontend-design-site
 description: House UI and UX rules for the Tertiary Infotech Academy CMS — dark sci-fi/robotics look, dense layouts with no dead space or gaps, no chips or pills, no template-looking layouts, plus the rules for the navbar, footer, robot/WhatsApp chat launcher, forms, mobile and accessibility. Load before building, changing or reviewing ANY UI in this repo, including small spacing, layout, copy-placement, footer, nav or chatbot changes.
 ---
 
@@ -7,7 +7,7 @@ description: House UI and UX rules for the Tertiary Infotech Academy CMS — dar
 
 One design direction, kept consistent across every page. Do not invent new palettes, fonts or moods. The hard rules below come from repeated owner corrections, so do not undo them to make something "breathe".
 
-This is our own skill, not a stock template. It is the `ai-cms` edition of the group-wide `web-design` skill: `web-design` sets the standard for all our sites, and this file adds this site's theme, components and file paths. Everything needed for this repo is written out here, so it also works where `web-design` isn't installed.
+This is our own skill, not a stock template. It is the `ai-cms` edition of the group-wide `tia-frontend-design` skill: `tia-frontend-design` sets the standard for all our sites, and this file adds this site's theme, components and file paths. Everything needed for this repo is written out here, so it also works where `tia-frontend-design` isn't installed.
 
 When an older component breaks a rule here, this file wins. Do not copy the old pattern; see [Known violations](#known-violations).
 

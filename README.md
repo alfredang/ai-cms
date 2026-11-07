@@ -104,7 +104,7 @@ Built for Tertiary Infotech Academy, the codebase is structured to be re-used as
 ### Platform — auth, security, design
 - **Auth.js v5** — credentials provider with bcrypt, JWT sessions, persistent 10-year sliding cookie, middleware-protected `/admin/*`
 - **Never-logout admin** — cookie-presence guard everywhere; no code path in the admin chrome calls `auth()` and risks emitting a clearing `Set-Cookie`
-- **Sci-fi / robotics design system** — dark theme, Exo 2 + Inter, cyan/purple/amber accents, animated glow gradients, custom Tailwind 4 design tokens. House rules (no dead space, no gaps, no chips, no template layouts) are in [.claude/skills/frontend-design/SKILL.md](.claude/skills/frontend-design/SKILL.md)
+- **Sci-fi / robotics design system** — dark theme, Exo 2 + Inter, cyan/purple/amber accents, animated glow gradients, custom Tailwind 4 design tokens. House rules (no dead space, no gaps, no chips, no template layouts) are in [.claude/skills/tia-frontend-design-site/SKILL.md](.claude/skills/tia-frontend-design-site/SKILL.md)
 
 ## Tech Stack
 
