@@ -4,6 +4,7 @@ import { pages, posts } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
 import { EDTOOLS } from "@/lib/edtools-data";
 import { MOBILE_APPS } from "@/lib/mobile-apps";
+import { LEGACY_SEO_REDIRECTS } from "@/lib/legacy-seo-redirects";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tertiaryinfotech.com";
 
@@ -30,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .where(and(eq(posts.status, "published"), eq(posts.noIndex, false)))
       .catch(() => []),
   ]);
-  return [
+  const entries: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/ssg-ato-application`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/training-management-system`, changeFrequency: "monthly", priority: 0.9 },
@@ -56,6 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/hr-management-system`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/ai-agent-deployment`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/ai-as-a-service`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/ai-job-redesign`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/ai-training-for-business`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/contact`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/real-clients`, changeFrequency: "monthly", priority: 0.7 },
@@ -71,7 +73,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/terms`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/terms/mobile-apps`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/privacy`, changeFrequency: "yearly", priority: 0.3 },
-    ...allPages.map((p) => ({
+    ...allPages.filter((p) => !(p.slug in LEGACY_SEO_REDIRECTS)).map((p) => ({
       url: `${BASE}/${p.slug}`,
       lastModified: p.updatedAt,
       changeFrequency: "monthly" as const,
@@ -84,4 +86,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     })),
   ];
+  // A CMS row can share its slug with a coded route (e.g. tpqa-consultancy);
+  // keep the first entry, which is the coded route, so each URL appears once.
+  const seen = new Set<string>();
+  return entries.filter((e) => !seen.has(e.url) && seen.add(e.url));
 }

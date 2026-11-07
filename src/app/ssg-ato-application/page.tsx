@@ -22,15 +22,15 @@ import { RichText, stripMarkup } from "@/lib/rich-text";
 
 const PAGE_URL = "https://www.tertiaryinfotech.com/ssg-ato-application";
 
-const META_TITLE = "ATO Service in Singapore — SWDA ATO & OR Service";
+const META_TITLE = "SWDA & SSG ATO and OR Services in Singapore";
 const META_DESC =
-  "ATO service in Singapore: we prepare your SWDA Organisation Registration (OR), policies, SOPs and course application, incl. IBF OR. Book a free consultation.";
+  "SWDA ATO and OR services in Singapore (formerly SSG): Organisation Registration, policies, SOPs and course application, incl. IBF OR. Book a free consultation.";
 
 export const metadata: Metadata = {
   title: META_TITLE,
   description: META_DESC,
   keywords:
-    "ATO service, ATO service in Singapore, SWDA ATO service, SWDA OR service, SWDA IBF OR service, SSG ATO application Singapore, apply ATO Singapore, become accredited training organisation Singapore, TPGateway organisation registration, RTP registration Singapore",
+    "SWDA ATO services in Singapore, SSG ATO services in Singapore, SWDA OR services in Singapore, SSG OR services in Singapore, IBF OR services in Singapore, ATO service, ATO service in Singapore, SWDA ATO service, SWDA OR service, SWDA IBF OR service, SSG ATO application Singapore, apply ATO Singapore, become accredited training organisation Singapore, TPGateway organisation registration, RTP registration Singapore",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: "website",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: META_TITLE,
     description: META_DESC,
     siteName: "Tertiary Infotech Academy",
-    images: [{ url: "/icon-192.png", width: 192, height: 192, alt: "ATO Service in Singapore — Tertiary Infotech Academy" }],
+    images: [{ url: "/icon-192.png", width: 192, height: 192, alt: "SWDA and SSG ATO services in Singapore — Tertiary Infotech Academy" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -211,12 +211,16 @@ const FAQ = [
     a: "Our **ATO service in Singapore** covers eligibility review, the Policies and Operations Manual, SOPs, learner agreement, the TPGateway Organisation Registration and Course Application, and coaching for the half-day on-site SWDA assessment — one fixed-fee engagement.",
   },
   {
+    q: "Are SSG ATO services the same as SWDA ATO services?",
+    a: "Yes, it is the same need under the regulator's current name. SSG and WSG merged into SWDA in July 2026, so what many people still search for as **SSG ATO services** or **SSG OR services in Singapore** is now **SWDA ATO services** and **SWDA OR services**. You still apply on TPGateway.",
+  },
+  {
     q: "What is a SWDA OR service?",
     a: "SSG and WSG merged into SWDA in July 2026, so first-time training providers now apply to SWDA for Organisation Registration (OR). A **SWDA OR service** prepares the OR application and the manual SWDA assesses against its \"System and Capabilities\" criteria.",
   },
   {
     q: "Do you offer a SWDA IBF OR service for financial-sector courses?",
-    a: "Yes. If you plan to run IBF-accredited courses, our **SWDA IBF OR service** sequences your SWDA Organisation Registration with the IBF course accreditation, so the two applications use consistent policies, trainers and evidence. See our [IBF-STS course development](/wsq-course-development) work.",
+    a: "Yes. If you plan to run IBF-accredited courses, our **SWDA IBF OR service** sequences your SWDA Organisation Registration with the IBF course accreditation, so the two applications use consistent policies, trainers and evidence. See our [IBF OR services](/ibf-ato-application) and [IBF course development](/ibf-course-development).",
   },
   {
     q: "How much does the ATO application cost?",
@@ -250,16 +254,16 @@ const FAQ = [
 
 const OVERVIEW_CARDS = [
   {
-    title: "SWDA ATO service",
-    body: "Our **SWDA ATO service** builds everything the assessor asks to see — the Policies and Operations Manual, closed-loop SOPs, annexes and evidence — then coaches your team for the on-site assessment.",
+    title: "SWDA ATO services in Singapore",
+    body: "Our **SWDA ATO services**, still often searched as **SSG ATO services**, build everything the assessor asks to see — the Policies and Operations Manual, closed-loop SOPs, annexes and evidence — then coach your team for the on-site assessment.",
   },
   {
-    title: "SWDA OR service",
-    body: "A **SWDA OR service** for first-time training providers: eligibility checks, the TPGateway Organisation Registration, the OR declaration and the Course Application submitted together.",
+    title: "SWDA OR services in Singapore",
+    body: "**SWDA OR services** (formerly **SSG OR services**) for first-time training providers: eligibility checks, the TPGateway Organisation Registration, the OR declaration and the Course Application submitted together.",
   },
   {
-    title: "SWDA IBF OR service",
-    body: "Running financial-sector training? Our **SWDA IBF OR service** aligns your Organisation Registration with IBF-STS course accreditation so policies, trainers and evidence stay consistent.",
+    title: "IBF OR services in Singapore",
+    body: "Running financial-sector training? Our [IBF OR services](/ibf-ato-application) align your Organisation Registration with IBF-STS course accreditation so policies, trainers and evidence stay consistent.",
   },
 ];
 
@@ -267,8 +271,8 @@ const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "ATO Service — SWDA Organisation Registration",
-  name: "ATO Service in Singapore",
-  alternateName: ["SWDA ATO service", "SWDA OR service", "SWDA IBF OR service", "SSG ATO application"],
+  name: "SWDA ATO Services in Singapore",
+  alternateName: ["SSG ATO services in Singapore", "SWDA OR services in Singapore", "SSG OR services in Singapore", "IBF OR services in Singapore", "ATO service in Singapore", "SSG ATO application"],
   provider: {
     "@type": "Organization",
     name: "Tertiary Infotech Academy",
@@ -313,7 +317,7 @@ const breadcrumbLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
     { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/#services` },
-    { "@type": "ListItem", position: 3, name: "ATO Service", item: PAGE_URL },
+    { "@type": "ListItem", position: 3, name: "SWDA ATO Services", item: PAGE_URL },
   ],
 };
 
@@ -347,13 +351,13 @@ export default function SsgAtoApplicationPage() {
           <Container>
             <div className="grid lg:grid-cols-12 gap-8 items-start relative">
               <div className="lg:col-span-7">
-                <div className="kicker mb-4">[ SWDA · ORGANISATION REGISTRATION · ATO ]</div>
+                <div className="kicker mb-4">[ SWDA (FORMERLY SSG) · ATO · ORGANISATION REGISTRATION (OR) ]</div>
                 <h1 className="font-display text-[clamp(2.25rem,5.2vw,3.75rem)] font-extrabold leading-[1.04] mb-5">
-                  <span className="gradient-text">ATO Service in Singapore</span> — become a
-                  SWDA-registered training provider.
+                  <span className="gradient-text">SWDA ATO services in Singapore</span>, formerly SSG ATO —
+                  become a registered training provider.
                 </h1>
                 <p className="text-(--color-muted) text-lg max-w-2xl mb-6">
-                  Our <strong className="text-white">ATO service</strong> takes Singapore
+                  Our <strong className="text-white">SWDA ATO and OR services</strong> take Singapore
                   organisations end-to-end through the SWDA (formerly SSG){" "}
                   <a
                     href="https://www.tpgateway.gov.sg/plan-courses/organisation-registration-for-first-time-training-provider/apply-for-organisation-registration"
@@ -421,19 +425,20 @@ export default function SsgAtoApplicationPage() {
 
         <section id="overview" className="relative py-6 scroll-mt-20">
           <Container>
-            <div className="kicker mb-3">[ ATO SERVICE ]</div>
+            <div className="kicker mb-3">[ ATO SERVICES ]</div>
             <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight mb-5">
-              What our ATO service in Singapore covers
+              What our SWDA ATO services in Singapore cover
             </h2>
             <div className="space-y-3 text-(--color-muted) leading-relaxed lg:columns-2 lg:gap-8 [&>p]:break-inside-avoid">
               <p>
                 To receive SkillsFuture funding for your courses, your organisation must
                 first be registered as an Approved Training Organisation (ATO). Since July
                 2026, when SSG and WSG merged, that registration is handled by{" "}
-                <strong className="text-white">SWDA</strong> — the SkillsFuture and
-                Workforce Development Agency. Our <strong className="text-white">ATO service
-                in Singapore</strong> prepares everything SWDA needs to approve you, and
-                coaches your team until you are live.
+                <strong className="text-white">SWDA</strong> — the Skills and Workforce
+                Development Agency. Our <strong className="text-white">SWDA ATO services
+                in Singapore</strong>, which many people still search for as{" "}
+                <strong className="text-white">SSG ATO services</strong>, prepare everything
+                SWDA needs to assess you, and coach your team until you are live.
               </p>
               <p>
                 SWDA assesses Organisation Registration against its &ldquo;System and
@@ -733,7 +738,7 @@ export default function SsgAtoApplicationPage() {
             <div className="mb-6">
               <div className="kicker mb-3">[ FAQ ]</div>
               <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight">
-                Common questions about our ATO service.
+                Common questions about our SWDA ATO services.
               </h2>
             </div>
             <div className="grid lg:grid-cols-2 gap-3 items-start fill-lg-2">

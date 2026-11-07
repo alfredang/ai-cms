@@ -106,9 +106,10 @@ spinning up a training arm to access SSG funding.
 ### AI Services
 
 - AI as a Service (AIaaS), a virtual Forward Deployed Engineer — `/ai-as-a-service`
-- AI Agent Deployment: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bot, Cue by Manus, Claude Duet, Gemini Spark — `/ai-agent-deployment`
-- AI Training for Business: Claude Code, Codex, Microsoft Copilot, Gemini, customised to the company — `/ai-training-for-business`
+- AI Agents Deployment: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bots, Manus Cue, Claude Duet, Gemini Spark — `/ai-agent-deployment`
+- Customised AI Training for Business: Claude Code, Codex, Microsoft Copilot, Gemini, customised to the company — `/ai-training-for-business`
 - AI Transformation & Solutions — `/ai-solutions`
+- AI Job Design & Redesign, delivered as workplace learning consultation, with a check on WDG(JR+), LEA and NACE fit. The agency or programme decides any grant — `/ai-job-redesign`
 
 ### Other SSG services
 
@@ -118,9 +119,9 @@ SSG is now part of SWDA. Each page offers a free check in a 30-minute consultati
 - PWM Course Development — `/pwm-course-development`
 - CPD Course Development — `/cpd-course-development`
 - SCTP Module Development — `/sctp-module-development`
-- IBF ATO Application — `/ibf-ato-application`
-- PEI ATO Application — `/pei-ato-application`
-- CQC Consultancy — `/cqc-consultancy`
+- IBF ATO Services (IBF Organisation Registration) — `/ibf-ato-application`
+- PEI OR Application: OR-PEI for existing PEIs adding SWDA-funded courses, plus new PEI registration — `/pei-ato-application`
+- CQC Services & Consultation — `/cqc-consultancy`
 
 Never promise an approval, a pass or a TPQA grade: the regulator decides.
 

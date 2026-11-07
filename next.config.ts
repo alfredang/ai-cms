@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { LEGACY_SEO_REDIRECTS } from "./src/lib/legacy-seo-redirects";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -31,7 +32,15 @@ const nextConfig: NextConfig = {
       { source: "/blog/page/:n(\\d+)", destination: "/blog?page=:n", permanent: true },
       // The WP import stored slugs that began with a U+2060 word joiner as
       // "e281a0<slug>"; old links still carry the raw character.
+      // Listed first: the word-joiner rule below would otherwise add a hop.
+      { source: "/%E2%81%A0ato", destination: "/ssg-ato-application", permanent: true },
+      { source: "/%E2%81%A0tpqa", destination: "/tpqa-consultancy", permanent: true },
       { source: "/%E2%81%A0:slug", destination: "/e281a0:slug", permanent: true },
+      ...Object.entries(LEGACY_SEO_REDIRECTS).map(([slug, destination]) => ({
+        source: `/${slug}`,
+        destination,
+        permanent: true,
+      })),
     ];
   },
 };

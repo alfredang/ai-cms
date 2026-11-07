@@ -110,10 +110,10 @@ export const SERVICES: Service[] = [
   {
     id: "swda-ato",
     icon: HiBuildingLibrary,
-    title: "SWDA ATO Application",
+    title: "SWDA ATO Services",
     group: "ATO applications",
     description:
-      "Our **ATO service in Singapore** and **SWDA OR service** cover the new requirements end to end, including the **mock-up website** and rehearsal for the on-site assessment.",
+      "Our **SWDA ATO services in Singapore** and **SWDA OR services** (formerly SSG ATO and OR) cover the new requirements end to end, including the **mock-up website** and rehearsal for the on-site assessment.",
     offer: "Free ATO readiness check",
     features: ["Stage 1 & 2 documents", "Policies & Operations Manual", "Course Application", "On-site preparation"],
     accent: "cyan" as const,
@@ -123,10 +123,10 @@ export const SERVICES: Service[] = [
   {
     id: "ibf-ato",
     icon: HiBuildingOffice2,
-    title: "IBF ATO Application",
+    title: "IBF ATO Services",
     group: "ATO applications",
     description:
-      "IBF is notoriously hard to get approved. Our **SWDA IBF OR service** starts with an honest go/no-go and can provide the Assessor Coach and financial-sector SME.",
+      "IBF is notoriously hard to get approved. Our **IBF ATO and IBF OR services** start with an honest go/no-go and can provide the Assessor Coach and financial-sector SME.",
     offer: "Free IBF ATO go/no-go",
     features: ["Track record review", "Organisation Criteria", "Quality Manual", "Fit and Proper"],
     accent: "cyan" as const,
@@ -136,10 +136,10 @@ export const SERVICES: Service[] = [
   {
     id: "pei-ato",
     icon: HiAcademicCap,
-    title: "PEI ATO Application",
+    title: "PEI OR Application",
     group: "ATO applications",
     description:
-      "A **PEI service** for Private Education Institution registration under the ERF, including help setting up your Academic and Examination Boards.",
+      "**PEI OR application** for existing PEIs adding SWDA-funded courses, plus new PEI registration under the ERF, including your Academic and Examination Boards.",
     offer: "Free PEI route check",
     features: ["Route check", "Boards & managers", "Premises & contracts", "Site inspection"],
     accent: "cyan" as const,
@@ -149,10 +149,10 @@ export const SERVICES: Service[] = [
   {
     id: "tpqa",
     icon: HiCheckBadge,
-    title: "TPQA Consultancy",
+    title: "TPQA Services & Consultation",
     group: "Quality & audit",
     description:
-      "Aim for **TPQA Grade 1**, the requirement for Tier 1 courses funded up to 90% and SCTP. A **TPQA service** with mock **TPQA audit**, remediation and rehearsal.",
+      "**TPQA services in Singapore**, from a free **TPQA consultation** to a mock audit, remediation and rehearsal. Aim for **TPQA Grade 1**, the requirement for Tier 1 courses funded up to 90% and SCTP.",
     offer: "Free TPQA Grade 1 readiness review",
     features: ["Mock TPQA audit", "Evidence review", "Gap remediation", "Team rehearsal"],
     accent: "purple" as const,
@@ -162,10 +162,10 @@ export const SERVICES: Service[] = [
   {
     id: "cqc",
     icon: HiDocumentMagnifyingGlass,
-    title: "CQC Consultancy",
+    title: "CQC Services & Consultation",
     group: "Quality & audit",
     description:
-      "**CQC audit** support when SWDA checks a live course: Improvement Plans, courseware rebuilds and periodic-check replies against tight deadlines.",
+      "**CQC services and consultation** when SWDA checks a live course: Improvement Plans, courseware rebuilds and periodic-check replies against tight deadlines.",
     offer: "Free CQC outcome review",
     features: ["Improvement Plans", "Courseware rebuilds", "Periodic checks", "Deployed versions traced"],
     accent: "purple" as const,
@@ -213,7 +213,7 @@ export const SERVICES: Service[] = [
     offer: "Free AI transformation evaluation",
     list: "Agentic AI · n8n · Claude Code · OpenClaw · Harness Systems",
     description:
-      "**AI transformation evaluation and consultation**, then production AI systems, automations and bespoke software, from agentic workflows to full-stack tools.",
+      "**AI transformation in Singapore**: evaluation and consultation, then production AI systems, automations and bespoke software, from agentic workflows to full-stack tools.",
     features: [
       "Agentic AI · n8n · Claude Code · OpenCLAW",
       "Harness Systems integration",
@@ -291,13 +291,13 @@ export const SERVICES: Service[] = [
   {
     id: "ai-agent",
     icon: HiBolt,
-    title: "AI Agent Deployment",
+    title: "AI Agents Deployment",
     description:
-      "**AI agent deployment** and **agentic AI development**, set up safely in your business, with permissions, approvals and cost limits from day one.",
+      "**AI agents** and **agentic AI development**, deployed safely in your business, with permissions, approvals and cost limits from day one.",
     offer: "Free AI agent fit check",
-    list: "OpenClaw · Hermes · Meta Muse · OpenAI Dots · Grok Bot · Cue · Claude Duet · Gemini Spark",
+    list: "OpenClaw · Hermes · Meta Muse · OpenAI Dots · Grok Bots · Manus Cue · Claude Duet · Gemini Spark",
     features: [
-      "OpenClaw · Hermes · Muse · Dots · Grok Bot",
+      "OpenClaw · Hermes · Muse · Dots · Grok Bots",
       "Custom Claude Agent SDK builds",
       "Webhook + n8n + API integration",
       "Observability + cost guardrails",
@@ -313,7 +313,7 @@ export const SERVICES: Service[] = [
     offer: "Free AI workflow audit",
     list: "Finance · Marketing · Legal · Retail · HR · Sales · Operations · More",
     description:
-      "A **virtual Forward Deployed Engineer** learns how your company works, deploys AI into your real workflows and keeps optimising them, without you hiring an AI team.",
+      "**AI as a Service (AIaaS)**: a **virtual Forward Deployed Engineer** learns how your company works, deploys AI into your real workflows and keeps optimising them, without you hiring an AI team.",
     features: ["Virtual FDE", "Workflow mapping", "Integrations & guardrails", "Any industry"],
     accent: "cyan" as const,
     href: "/ai-as-a-service",
@@ -322,14 +322,27 @@ export const SERVICES: Service[] = [
   {
     id: "ai-training",
     icon: HiBookOpen,
-    title: "AI Training for Business",
+    title: "Customised AI Training for Business",
     offer: "Free training needs check",
     list: "Claude Code · Codex · Microsoft Copilot · Gemini",
     description:
-      "**Corporate AI training** customised and contextualised to your company, so your people practise on their own workflows and use cases, not generic demos.",
+      "**Customised AI training for business**, contextualised to your company, so your people practise on their own workflows and use cases, not generic demos.",
     features: ["Claude Code", "Codex", "Microsoft Copilot", "Gemini"],
     accent: "blue" as const,
     href: "/ai-training-for-business",
+    category: "ai-service" as const,
+  },
+  {
+    id: "ai-job-redesign",
+    icon: HiUserGroup,
+    title: "AI Job Design & Redesign",
+    offer: "Free AI job redesign check",
+    list: "Role mapping · Job scopes · Workplace learning · Grant fit",
+    description:
+      "**AI job design in Singapore**: **AI job redesign** for companies, delivered as **workplace learning consultation**, so that roles change with AI and the change lasts.",
+    features: ["Task and role mapping", "Redesigned job scopes", "Workplace learning plan", "WDG(JR+), LEA and NACE fit"],
+    accent: "cyan" as const,
+    href: "/ai-job-redesign",
     category: "ai-service" as const,
   },
 ];

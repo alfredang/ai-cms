@@ -71,6 +71,7 @@ export function ServicePageTemplate({ content }: { content: ServicePageContent }
     "@type": "Service",
     serviceType: content.serviceType,
     name: content.title,
+    alternateName: content.meta.alternateNames,
     provider: {
       "@type": "Organization",
       name: "Tertiary Infotech Academy",

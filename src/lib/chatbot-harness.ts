@@ -80,9 +80,14 @@ const PRODUCT_CATALOG: CatalogEntry[] = [
       "Yes — end-to-end **WSQ course development**: competency mapping, lesson plans, assessment plans, trainer guides, and SSG submission. 6–10 weeks per course. Want a **quote**?",
   },
   {
-    keywords: ["ai agent", "agentic", "claude agent", "agent deployment"],
+    keywords: ["ai agent", "agentic", "claude agent", "agent deployment", "meta muse", "openai dots", "grok bot", "manus"],
     answer:
-      "Yes — we deploy production **Agentic AI**: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bot, Claude Duet, Gemini Spark, or bespoke Claude Agent SDK builds wired into your inbox, CRM, n8n flows or chat. Self-hosted, OAuth-subscription auth (no metered API). Want a **scoping call**?",
+      "Yes — we deploy production **Agentic AI**: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bots, Manus Cue, Claude Duet, Gemini Spark, or bespoke Claude Agent SDK builds wired into your inbox, CRM, n8n flows or chat. Self-hosted, OAuth-subscription auth (no metered API). Want a **scoping call**?",
+  },
+  {
+    keywords: ["job redesign", "job design", "workplace learning"],
+    answer:
+      "Yes — we offer **AI job design and redesign** for companies, delivered as **workplace learning consultation**: task and role mapping, redesigned job scopes, a workplace learning plan and a check on WDG(JR+), LEA and NACE fit. The agency or programme decides any grant. Want a **free job redesign check**?",
   },
   {
     keywords: ["ai solution", "full-stack ai", "ai consultancy"],

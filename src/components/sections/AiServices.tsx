@@ -17,8 +17,8 @@ const ACCENT: Record<string, string> = {
 export async function AiServices() {
   const copy = await getHomepageCopy();
   const services = SERVICES.filter((s) => s.category === "ai-service");
-  // Lead with AIaaS, then agents, training and transformation.
-  const order = ["aiaas", "ai-agent", "ai-training", "ai"];
+  // Lead with AIaaS, then agents, training, transformation and job redesign.
+  const order = ["aiaas", "ai-agent", "ai-training", "ai", "ai-job-redesign"];
   services.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
 
   return (
@@ -35,7 +35,7 @@ export async function AiServices() {
           </h2>
         </div>
         <div className="grid lg:grid-cols-[0.7fr_1.6fr] gap-4 items-start">
-          <div className="lg:order-2 grid sm:grid-cols-2 gap-px bg-white/8 border border-white/8 rounded-2xl overflow-hidden self-stretch">
+          <div className="lg:order-2 grid sm:grid-cols-2 fill-2 gap-px bg-white/8 border border-white/8 rounded-2xl overflow-hidden self-stretch">
             {services.map((s) => {
               const Icon = s.icon;
               return (
@@ -66,7 +66,7 @@ export async function AiServices() {
               );
             })}
           </div>
-          <div className="lg:order-1 min-w-0">
+          <div className="lg:order-1 min-w-0 flex flex-col gap-4 self-stretch">
             <SsgQuickLeadForm
               services={services.map((s) => s.title)}
               source="home-ai-services"
@@ -79,6 +79,21 @@ export async function AiServices() {
               intro="A free 30-minute consultation on your workflows. We'll show you what's worth doing, and what isn't."
               noteLabel="Which team or workflow? (optional)"
             />
+            <div className="glass p-5 flex-1">
+              <div className="kicker mb-3">[ WHY TEAMS CALL US ]</div>
+              <ul className="space-y-2 text-sm text-white/85">
+                {[
+                  "We train teams and build with AI every day, so the advice comes from real use",
+                  "Independent of AI vendors and not affiliated with any of them",
+                  "Decisions about people, data and approvals stay with you",
+                ].map((line) => (
+                  <li key={line} className="flex gap-2">
+                    <span className="text-(--color-green) font-mono" aria-hidden>✓</span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
         <div className="mt-4">

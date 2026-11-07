@@ -24,6 +24,7 @@ const QUERIES: { label: string; text: string }[] = [
   { label: "LMS / TMS demo", text: "Hi! Can I see a demo of your LMS / TMS?" },
   { label: "AI agents or AI as a Service", text: "Hi! I'm interested in AI agents or AI as a Service for my organisation." },
   { label: "Claude Code, Codex, Copilot or Gemini training", text: "Hi! I'd like customised AI training for my company." },
+  { label: "AI job redesign or workplace learning", text: "Hi! I'd like to discuss AI job redesign and workplace learning for my company." },
   { label: "Mobile apps development", text: "Hi! I'd like to discuss building a native iOS / Android mobile app." },
   { label: "Pricing & quotation", text: "Hi! Could you send me pricing and a quotation?" },
 ];
@@ -40,6 +41,7 @@ const TIPS: { message: string; text: string }[] = [
   { message: "Planning an SCTP? We advise on 2–5 month design and job placement.", text: "Hi! I'd like advice on an SCTP programme and job placement services." },
   { message: "Want an AI engineer without the hire? Ask about AI as a Service.", text: "Hi! I'd like to know about your virtual Forward Deployed Engineer service." },
   { message: "Copilot or Gemini seats going unused? We train on your own work.", text: "Hi! I'd like customised AI training for my company." },
+  { message: "Is AI changing your team's roles? Ask me about AI job redesign.", text: "Hi! I'd like to discuss AI job redesign and workplace learning for my company." },
   { message: "Want an AI agent working for your business 24/7?", text: "Hi! I'm interested in your AI agent services for my organisation." },
   { message: "Running a training centre? Ask me for an LMS / TMS demo.", text: "Hi! Can I see a demo of your LMS / TMS?" },
   { message: "Need a native iOS or Android app built?", text: "Hi! I'd like to discuss building a native iOS / Android mobile app." },

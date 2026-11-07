@@ -418,22 +418,23 @@ export const SSG_SERVICE_PAGES: Record<string, ServicePageContent> = {
 
   "ibf-ato-application": {
     slug: "ibf-ato-application",
-    title: "IBF ATO Application",
+    title: "IBF ATO Services",
     leadSource: "ibf-ato-page",
     serviceType: "IBF ATO Application and Organisation Registration",
     hero: {
-      kicker: "[ IBF ORGANISATION REGISTRATION ]",
+      kicker: "[ IBF ATO · IBF ORGANISATION REGISTRATION (OR) ]",
       headlineHtml:
-        '<span class="gradient-text">IBF ATO application</span> — notoriously hard, so don\'t file it alone.',
+        '<span class="gradient-text">IBF ATO services in Singapore</span> — notoriously hard, so don\'t file it alone.',
       subhead:
-        "IBF is notoriously difficult to get approved. Our **IBF ATO application** service takes you through IBF Organisation Registration, starts with an honest go/no-go on your track record, and can provide the Assessor Coach and financial-sector SME you need.",
+        "IBF is notoriously difficult to get approved. Our **IBF ATO and IBF OR services in Singapore** take you through IBF Organisation Registration, starts with an honest go/no-go on your track record, and can provide the Assessor Coach and financial-sector SME you need.",
     },
     meta: {
-      title: "IBF ATO Application Singapore — Organisation Registration",
+      title: "IBF ATO & IBF OR Services in Singapore",
       description:
-        "IBF ATO application support for Singapore training providers: Organisation Registration, Quality Manual and FS track record. Book a free IBF ATO go/no-go today.",
+        "IBF ATO and IBF OR services in Singapore: Organisation Registration, Quality Manual and FS track record review for training providers. Book a free go/no-go.",
+      alternateNames: ["IBF OR Services in Singapore", "IBF ATO Services in Singapore", "IBF Organisation Registration", "IBF ATO Application"],
       keywords:
-        "IBF ATO application, IBF ATO service, SWDA IBF OR service, IBF Organisation Registration, IBF Organisation Eligibility, become IBF training provider, IBF approved training organisation",
+        "IBF ATO services in Singapore, IBF OR services in Singapore, IBF ATO application, IBF ATO service, IBF OR application, SWDA IBF OR service, IBF Organisation Registration, IBF Organisation Eligibility, become IBF training provider, IBF approved training organisation",
     },
     offer: {
       title: "Free IBF ATO go/no-go",
@@ -505,6 +506,7 @@ export const SSG_SERVICE_PAGES: Record<string, ServicePageContent> = {
       "Draft replies to IBF's questions",
     ],
     faq: [
+      { q: "What are IBF OR services?", a: "**IBF OR services** help a training provider prepare its IBF Organisation Registration (OR), formerly Organisation Eligibility: the track record review, Organisation Criteria mapping, Quality Manual and replies to IBF. Providers often search for the same work as **IBF ATO services in Singapore**." },
       { q: "What is an IBF ATO application?", a: "An **IBF ATO application** is the common name for IBF Organisation Registration, formerly Organisation Eligibility. It is how a provider is recognised to offer IBF-accredited financial-sector courses." },
       { q: "Can you provide the Assessor Coach and SME for our application?", a: "Yes. We can provide both for your application. Your own organisation still needs its financial-services track record, which is something only you can show." },
       { q: "Is IBF ATO the same as SWDA ATO?", a: "No. They are separate regulators with separate tests. You can hold both, but each needs its own file. See our [SWDA ATO application](/ssg-ato-application) service." },
@@ -517,27 +519,29 @@ export const SSG_SERVICE_PAGES: Record<string, ServicePageContent> = {
 
   "pei-ato-application": {
     slug: "pei-ato-application",
-    title: "PEI ATO Application",
+    title: "PEI OR Application",
     leadSource: "pei-ato-page",
-    serviceType: "PEI ATO Application and Private Education Institution Registration",
+    serviceType: "PEI OR Application (OR-PEI) and Private Education Institution Registration",
     hero: {
-      kicker: "[ PEI REGISTRATION · ENHANCED REGISTRATION FRAMEWORK ]",
+      kicker: "[ PEI OR APPLICATION · ENHANCED REGISTRATION FRAMEWORK ]",
       headlineHtml:
-        '<span class="gradient-text">PEI ATO application</span> — register your private school with SWDA.',
+        '<span class="gradient-text">PEI OR application in Singapore</span>, for new and existing private schools.',
       subhead:
-        "Our **PEI service** takes you through registration as a Private Education Institution under the Enhanced Registration Framework, and helps you set up the Academic Board and Examination Board you need. We are a registered PEI ourselves.",
+        "Our **PEI OR application** service covers both routes: **Organisation Registration for existing PEIs (OR-PEI)** to offer SWDA-funded courses, and registration as a new Private Education Institution under the Enhanced Registration Framework, including your Academic and Examination Boards. We are a registered PEI ourselves.",
     },
     meta: {
-      title: "PEI ATO Application Singapore — PEI Registration Service",
+      title: "PEI OR Application in Singapore — PEI Registration Service",
       description:
-        "PEI service for Singapore: Private Education Institution registration under the ERF, boards, premises, courses and site inspection. Book a free PEI route check.",
+        "PEI OR application in Singapore: OR-PEI for existing PEIs adding SWDA-funded courses, plus new PEI registration under the ERF. Book a free PEI route check.",
+      alternateNames: ["PEI OR Application in Singapore", "OR-PEI", "PEI ATO Application", "PEI Registration Singapore"],
       keywords:
-        "PEI ATO application, PEI service, PEI registration Singapore, private education institution registration, Enhanced Registration Framework, ERF application, SWDA PEI, course permission",
+        "PEI OR application in Singapore, PEI OR application, OR-PEI, Organisation Registration for PEI, PEI ATO application, PEI service, PEI registration Singapore, private education institution registration, Enhanced Registration Framework, ERF application, SWDA PEI, course permission",
     },
     offer: {
       title: "Free PEI route check",
       bullets: [
         "Do you need to be a PEI at all?",
+        "Already a PEI? Can you use the streamlined OR-PEI route?",
         "Does your company meet the entity and capital rules?",
         "Will your planned courses be permitted?",
       ],
@@ -566,11 +570,12 @@ export const SSG_SERVICE_PAGES: Record<string, ServicePageContent> = {
       kicker: "[ PEI SERVICE ]",
       heading: "What registering a Private Education Institution really involves",
       paragraphs: [
-        "A Private Education Institution (PEI) offers private education under the Private Education Act 2009. SWDA now regulates PEIs and administers EduTrust. People often search for a “**PEI ATO application**”, but PEI registration and SWDA's Organisation Registration are different things, so we start by checking which one you need.",
+        "A Private Education Institution (PEI) offers private education under the Private Education Act 2009. SWDA now regulates PEIs and administers EduTrust. PEI registration and SWDA's Organisation Registration (OR) are different things, and a “**PEI OR application**” is an existing PEI applying for OR. People also search for a “PEI ATO application”, so we start by checking which one you need.",
         "You apply through GoBusiness Licensing with Corppass. The stated fee is S$535 for registration and S$20 per course, and it is non-refundable. SWDA gives about 40 working days once an application is complete, but clarification rounds and the site inspection decide how long it really takes.",
         "Tertiary Infotech Academy went through this process as an applicant and is a registered PEI at tertiaryinfotech.edu.sg. Our **PEI service** uses what the regulator actually asked us, including management's harder questions after the inspection.",
       ],
       sections: [
+        { heading: "PEI OR application (OR-PEI)", paragraphs: ["Already a PEI and want to offer SWDA-funded courses? SWDA streamlined this route from 1 January 2026. Several supporting documents fall away because they were assessed under ERF. Non-EduTrust PEIs get a desktop evaluation of Systems and Capabilities instead of an on-site assessment. EduTrust-certified PEIs do not submit SOPs for that requirement and have no on-site assessment."] },
         { heading: "Course structure first", paragraphs: ["Full-time means at least one month, five days a week and three hours a day. We settle the course type, entry requirements and teacher qualifications before anything else."] },
         { heading: "Academic and Examination Boards", paragraphs: ["We help you set up both boards: composition, members' qualifications, appointment and acceptance letters and declarations, plus manager fit-and-proper checks."] },
         { heading: "Premises and contracts", paragraphs: ["At least one classroom plus an admin area, signage, capacity, student contracts, Form 12 and fee-collection limits."] },
@@ -593,6 +598,7 @@ export const SSG_SERVICE_PAGES: Record<string, ServicePageContent> = {
       { title: "After the grant", body: "Notifications, annual returns and renewal timing explained so that you stay compliant." },
     ],
     whatsIncluded: [
+      "**PEI OR application** (OR-PEI) for existing PEIs adding SWDA-funded courses",
       "**PEI service** route check and readiness review",
       "Course structure and entry requirements",
       "Academic Board and Examination Board set-up",
@@ -603,6 +609,8 @@ export const SSG_SERVICE_PAGES: Record<string, ServicePageContent> = {
       "Clarification replies and site-inspection preparation",
     ],
     faq: [
+      { q: "What is a PEI OR application?", a: "A **PEI OR application** is an existing Private Education Institution applying to SWDA for Organisation Registration, so that it can offer SWDA-funded courses as well. SWDA calls this OR-PEI and streamlined it from 1 January 2026. SWDA still decides each application." },
+      { q: "We are an SWDA-funded provider. Is becoming a PEI streamlined too?", a: "No. SWDA says ERF registration stays unchanged for an existing SWDA-funded provider applying to become a PEI, because it is set by the Private Education Act and Regulations." },
       { q: "What is a PEI ATO application?", a: "It is how people often describe registering as a **Private Education Institution** in Singapore. Strictly, it is PEI registration under the Enhanced Registration Framework, which is separate from an [SWDA ATO application](/ssg-ato-application)." },
       { q: "Who regulates PEIs now?", a: "SWDA exercises the functions under the Private Education Act 2009 and administers EduTrust." },
       { q: "Do I need to be a PEI for short courses?", a: "Not always. A part-time certificate alone does not need PEI registration, and courses of one month or 50 hours or less that are not diplomas or degrees do not need course permission. We check your exact plan." },
@@ -616,22 +624,23 @@ export const SSG_SERVICE_PAGES: Record<string, ServicePageContent> = {
 
   "cqc-consultancy": {
     slug: "cqc-consultancy",
-    title: "CQC Consultancy",
+    title: "CQC Services & Consultation",
     leadSource: "cqc-page",
     serviceType: "CQC Consultancy and Course Quality Check Support",
     hero: {
-      kicker: "[ COURSE QUALITY CHECK · PERIODIC CHECKS ]",
+      kicker: "[ CQC CONSULTATION · COURSE QUALITY CHECK · PERIODIC CHECKS ]",
       headlineHtml:
-        '<span class="gradient-text">CQC consultancy</span> when SWDA checks your course.',
+        '<span class="gradient-text">CQC services and consultation</span> when SWDA checks your course.',
       subhead:
-        "**CQC audit** support for accredited courses — request packs, **Improvement Plans** within the 14-working-day window, rebuilt courseware and periodic-check replies that show what you really delivered.",
+        "**CQC services and consultation** for accredited courses in Singapore: **CQC audit** request packs, **Improvement Plans** within the 14-working-day window, rebuilt courseware and periodic-check replies that show what you really delivered.",
     },
     meta: {
-      title: "CQC Consultancy Singapore — CQC Audit & Improvement Plans",
+      title: "CQC Services & Consultation Singapore — CQC Audit Support",
       description:
-        "CQC consultancy for SWDA Course Quality Checks: Improvement Plans, courseware rebuilds and periodic-check replies for RTPs. Book a free CQC review.",
+        "CQC services and consultation for SWDA Course Quality Checks: Improvement Plans, courseware rebuilds and periodic-check replies. Book a free CQC outcome review.",
+      alternateNames: ["CQC Services", "CQC Consultation", "CQC Consultancy", "Course Quality Check Support"],
       keywords:
-        "CQC consultancy, CQC audit, CQC audit Singapore, Course Quality Check SWDA, CQC Improvement Plan, SWDA periodic check, WSQ courseware audit, QMD periodic check reply",
+        "CQC services and consultation, CQC services, CQC consultation, CQC consultancy, CQC audit, CQC audit Singapore, Course Quality Check SWDA, CQC Improvement Plan, SWDA periodic check, WSQ courseware audit, QMD periodic check reply",
     },
     offer: {
       title: "Free CQC outcome review",
@@ -658,11 +667,11 @@ export const SSG_SERVICE_PAGES: Record<string, ServicePageContent> = {
       },
     ],
     overview: {
-      kicker: "[ CQC CONSULTANCY ]",
+      kicker: "[ CQC SERVICES ]",
       heading: "How SWDA checks a live course, and how to answer well",
       paragraphs: [
         "SWDA's Quality Management Division checks live courses in two ways. A **CQC audit** is a desk review of your Facilitator Guide, Lesson Plan, Learner Guide with slides, and Assessment Plan. A periodic check looks at delivery: courseware, assessment booklets, records, learner submissions and adult-educator CVs for named runs.",
-        "Our **CQC consultancy** starts with what SWDA wrote, in its own structure. We trace each observation to the approved Course Proposal, decide what has to change, and draft your Improvement Plan in SWDA's format.",
+        "Our **CQC services and consultation** start with what SWDA wrote, in its own structure. We trace each observation to the approved Course Proposal, decide what has to change, and draft your Improvement Plan in SWDA's format.",
         "We hold one line firmly: nothing is back-dated and no record is created after the fact. Remediated courseware carries a new version and the real date, and gaps are declared rather than hidden. That is what protects your registration.",
       ],
       sections: [
@@ -696,6 +705,7 @@ export const SSG_SERVICE_PAGES: Record<string, ServicePageContent> = {
       "Roll-out plan for your other courses",
     ],
     faq: [
+      { q: "What do your CQC services and consultation include?", a: "Our **CQC services and consultation** start with a free review of your SWDA email and due date, then cover request-pack checks, Improvement Plans, courseware rebuilds and periodic-check replies. You only engage us for the parts you need." },
       { q: "What is a CQC audit?", a: "A **CQC audit** is SWDA's Course Quality Check: a desk review of a live course's courseware against its approved Course Proposal." },
       { q: "How long do we have to respond?", a: "If you pass, you acknowledge within 3 working days. If an Improvement Plan is required, it is due within 14 working days. Always go by the dates in your own SWDA email." },
       { q: "What is the difference between a CQC and a periodic check?", a: "A CQC reviews the courseware itself. A periodic check audits delivery of specific named runs, so you must send what was actually deployed in those runs." },

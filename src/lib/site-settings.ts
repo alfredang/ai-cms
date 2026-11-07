@@ -168,6 +168,7 @@ export const DEFAULT_LEAD_SOURCE_LABELS: Record<string, string> = {
   "home-ai-services": "AI Services (Homepage)",
   "ai-aas-page": "Agentic (AI as a Service)",
   "ai-training-page": "Agentic (AI Training for Business)",
+  "ai-job-redesign-page": "Agentic (AI Job Redesign)",
   "ibf-course-page": "Courseware (IBF Course Dev)",
   "pwm-course-page": "Courseware (PWM Course Dev)",
   "cpd-course-page": "Courseware (CPD Course Dev)",

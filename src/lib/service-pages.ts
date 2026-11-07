@@ -49,6 +49,8 @@ export type ServicePageContent = {
     description: string;
     /** Comma-separated target keywords for <meta name="keywords">. */
     keywords?: string;
+    /** Other names people search for this service; Schema.org `alternateName`. */
+    alternateNames?: string[];
   };
   /** "Service type" used in Schema.org Service @type. */
   serviceType: string;
@@ -255,16 +257,17 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
     hero: {
       kicker: "[ AI EVALUATION · CONSULTATION · AGENTIC AI ]",
       headlineHtml:
-        '<span class="gradient-text">AI Transformation Evaluation &amp; Consultation</span> for Singapore organisations.',
+        '<span class="gradient-text">AI transformation in Singapore</span>: evaluation, consultation and agentic AI.',
       subhead:
-        "Independent **AI transformation evaluation and consultation**, then hands-on **agentic AI development** — from AI-powered admin assistants to internal tools and public-facing AI products, backed by a 12-year track record in Singapore EdTech.",
+        "**AI transformation in Singapore** that starts with an independent evaluation and consultation, then [AI job redesign](/ai-job-redesign) for the roles it touches and hands-on **agentic AI development** — from AI-powered admin assistants to internal tools and public-facing AI products, backed by a 12-year track record in Singapore EdTech.",
     },
     meta: {
-      title: "AI Transformation Evaluation & Consultation Singapore",
+      title: "AI Transformation in Singapore — Evaluation & Consultation",
       description:
-        "AI transformation evaluation and consultation for Singapore organisations: readiness review, use-case roadmap, then agentic AI development. Book a free call.",
+        "AI transformation in Singapore: readiness review, use-case roadmap and job redesign for your roles, then agentic AI development. Book a free evaluation call.",
+      alternateNames: ["AI Transformation in Singapore", "AI Transformation Consultation Singapore"],
       keywords:
-        "AI transformation evaluation and consultation, AI transformation consultation Singapore, AI readiness assessment, AI consultancy Singapore, agentic AI development, AI strategy roadmap, AI solutions Singapore",
+        "AI transformation in Singapore, AI transformation Singapore, AI transformation evaluation and consultation, AI transformation consultation Singapore, AI readiness assessment, AI consultancy Singapore, agentic AI development, AI strategy roadmap, AI solutions Singapore",
     },
     overview: {
       kicker: "[ AI TRANSFORMATION ]",
@@ -275,6 +278,12 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
         "Because we also build, the roadmap is grounded in delivery. When you're ready, the same team moves into **agentic AI development** and [AI agent deployment](/ai-agent-deployment), so nothing is lost between the consultants and the engineers.",
       ],
       sections: [
+        {
+          heading: "AI job redesign",
+          paragraphs: [
+            "When the roadmap changes how people work, our [AI job design and redesign](/ai-job-redesign) consultation reworks the affected roles through workplace learning, so that the change reaches daily work.",
+          ],
+        },
         {
           heading: "AI transformation evaluation",
           paragraphs: [
@@ -329,6 +338,10 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       "Documentation, runbooks, staff training and 30-day post-launch support",
     ],
     faq: [
+      {
+        q: "Do you also redesign the jobs AI affects?",
+        a: "Yes. Our [AI job design and redesign](/ai-job-redesign) service is delivered as workplace learning consultation for companies, and it follows on from the **AI transformation evaluation** when a roadmap changes how roles work.",
+      },
       {
         q: "What is an AI transformation evaluation?",
         a: "An **AI transformation evaluation** is a structured review of your processes, data, systems and team skills that identifies where AI will add measurable value. The output is a scored list of use cases and a recommendation on where to start.",
@@ -416,7 +429,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       heading: "WSQ courseware development that passes SWDA review",
       paragraphs: [
         "Start with the route. Under WSQ 2.0, a new modular course needs an Annex C match or a Course Endorsement Body's letter, and SWDA's stated default for everything else is non-WSQ through CASL, the Course Approval Skills List, where at least 50% of the course's skills are on the list. That decision comes before any drafting, and our **CASL course development** service covers that route in full.",
-        "Accredited courses live or die on their courseware. SWDA (the SkillsFuture and Workforce Development Agency, formerly SSG) checks that every learning outcome, knowledge and ability statement, duration and assessment method in your courseware matches the Course Proposal it approved — word for word. Our **WSQ courseware development** service is built around that rule.",
+        "Accredited courses live or die on their courseware. SWDA (the Skills and Workforce Development Agency, formerly SSG) checks that every learning outcome, knowledge and ability statement, duration and assessment method in your courseware matches the Course Proposal it approved — word for word. Our **WSQ courseware development** service is built around that rule.",
         "Every course we build comes from a single source of content, so the slide deck, Lesson Plan, Learner Guide and assessments always agree with each other and with the approved proposal. That's what makes our **SWDA courseware development** hold up in clarification rounds, Course Quality Checks and periodic checks on training delivery.",
         "We have developed and delivered WSQ courses for our own academy for over a decade, so our courseware reflects what trainers and assessors actually need in the classroom — not just what a template asks for.",
       ],
@@ -625,7 +638,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
   },
   "ai-agent-deployment": {
     slug: "ai-agent-deployment",
-    title: "AI Agent Deployment",
+    title: "AI Agents Deployment",
     offer: {
       title: "Free AI agent fit check",
       bullets: [
@@ -652,35 +665,36 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
     ],
     showcase: {
       id: "agents",
-      kicker: "[ AGENTS WE DEPLOY ]",
-      heading: "Self-hosted or hosted: we help you pick, deploy and govern it",
+      kicker: "[ AI AGENTS WE DEPLOY ]",
+      heading: "AI agents, self-hosted or hosted: we help you pick, deploy and govern them",
       intro: "Availability, pricing and features change quickly, so we check the current position for your team before you commit.",
       items: [
         { title: "OpenClaw", meta: "SELF-HOSTED · OPEN SOURCE", body: "Open-source, always-on agent we deploy on your infrastructure, connected to your channels and tools." },
         { title: "Hermes Agent", meta: "SELF-HOSTED · OPEN SOURCE", body: "Open-source agent with memory and scheduled work, run on your own server so that your data stays with you." },
-        { title: "Meta Muse", meta: "HOSTED · META", body: "Personal agent that works through WhatsApp with its own secure cloud computer and approvals for actions." },
+        { title: "Meta Muse", meta: "HOSTED · META", body: "Meta's personal AI agent, rolling out in the US first, that works through WhatsApp with its own secure cloud computer and approvals for actions." },
         { title: "OpenAI Dots", meta: "HOSTED · OPENAI", body: "Always-on agents inside ChatGPT that also work through Slack and Microsoft Teams, with custom rules for action." },
-        { title: "Grok Bot", meta: "HOSTED · XAI", body: "A team of always-on bots with routines triggered by schedules or events, and team bots for Slack." },
-        { title: "Cue", meta: "HOSTED · MANUS", body: "Always-on agent from Manus for delegating ongoing work. We check how it fits your use case and regions." },
+        { title: "Grok Bots", meta: "HOSTED · XAI", body: "xAI's Grok Bot: a team of always-on bots with routines triggered by schedules or events, and team bots for Slack." },
+        { title: "Manus Cue", meta: "HOSTED · MANUS", body: "Cue is a standalone personal-agent app from Manus, launched in invite-only early access. We check whether you can get it and how it fits your use case." },
         { title: "Claude Duet", meta: "HOSTED · ANTHROPIC", body: "Proactive Claude agent that watches connected apps and brings you what needs attention. In research preview." },
         { title: "Gemini Spark", meta: "HOSTED · GOOGLE", body: "Google's agent inside the Gemini app, a natural fit for businesses already running on Google Workspace." },
       ],
     },
     leadSource: "ai-agent-page",
-    serviceType: "AI Agent Deployment and Agentic AI Development",
+    serviceType: "AI Agents, AI Agent Deployment and Agentic AI Development",
     hero: {
-      kicker: "[ OPENCLAW · HERMES · MUSE · DOTS · GROK BOT · CUE · DUET · SPARK ]",
+      kicker: "[ OPENCLAW · HERMES · MUSE · DOTS · GROK BOTS · MANUS CUE · DUET · SPARK ]",
       headlineHtml:
-        '<span class="gradient-text">AI Agent Deployment</span> &amp; agentic AI development in Singapore.',
+        '<span class="gradient-text">AI agents</span>, deployed safely in Singapore: Meta Muse, OpenAI Dots, Grok Bots, Manus Cue and more.',
       subhead:
-        "Production **AI agent deployment** and **agentic AI development**: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bot, Cue, Claude Duet, Gemini Spark or a bespoke agent, set up with the permissions, approvals and cost limits your business needs.",
+        "Put **AI agents** to work with production **AI agent deployment** and **agentic AI development**: OpenClaw, Hermes, **Meta Muse**, **OpenAI Dots**, **Grok Bots**, **Manus Cue**, Claude Duet, Gemini Spark or a bespoke agent, set up with the permissions, approvals and cost limits your business needs.",
     },
     meta: {
-      title: "AI Agent Deployment & Agentic AI Development Singapore",
+      title: "AI Agents: Meta Muse, OpenAI Dots, Grok Bots & Manus Cue",
       description:
-        "AI agent deployment in Singapore: OpenClaw, Hermes, Meta Muse, OpenAI Dots, Grok Bot, Claude Duet and Gemini Spark, with guardrails. Book a free agent fit check.",
+        "AI agents deployed in Singapore with guardrails: Meta Muse, OpenAI Dots, Grok Bots, Manus Cue, OpenClaw, Hermes or bespoke builds. Book a free agent fit check.",
+      alternateNames: ["AI Agents", "AI Agent Deployment", "Agentic AI Development"],
       keywords:
-        "AI agent deployment, agentic AI development, AI agent deployment Singapore, Meta Muse, OpenAI Dots, Grok Bot, Manus Cue, Claude Duet, Gemini Spark, agentic AI Singapore, OpenClaw deployment, Hermes Agent, Claude Agent SDK development, AI agent integration",
+        "AI agents, AI agents Singapore, Meta Muse, OpenAI Dots, Grok Bots, Grok Bot, Manus Cue, Cue by Manus, AI agent deployment, agentic AI development, AI agent deployment Singapore, Claude Duet, Gemini Spark, agentic AI Singapore, OpenClaw deployment, Hermes Agent, Claude Agent SDK development, AI agent integration",
     },
     overview: {
       kicker: "[ AGENTIC AI ]",
@@ -694,7 +708,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
         {
           heading: "AI agent deployment",
           paragraphs: [
-            "**AI agent deployment** of OpenClaw, Hermes Agent, Copilot Studio agents and others on your infrastructure or ours, plus secure setup of hosted agents such as Meta Muse, OpenAI Dots, Grok Bot, Cue, Claude Duet and Gemini Spark — with secrets management, access controls, logging and on-call handover.",
+            "**AI agent deployment** of OpenClaw, Hermes Agent, Copilot Studio agents and others on your infrastructure or ours, plus secure setup of hosted agents such as Meta Muse, OpenAI Dots, Grok Bots, Manus Cue, Claude Duet and Gemini Spark — with secrets management, access controls, logging and on-call handover.",
           ],
         },
         {
@@ -726,7 +740,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       { title: "Go Live", duration: "Week 6", accent: "green", body: "Production deployment, runbooks, on-call handover, 30-day post-launch support." },
     ],
     benefits: [
-      { title: "The right agent, not the newest", body: "We compare self-hosted agents such as OpenClaw and Hermes with hosted ones such as Muse, Dots, Grok Bot, Cue, Duet and Spark, then recommend what fits your data, budget and region." },
+      { title: "The right agent, not the newest", body: "We compare self-hosted agents such as OpenClaw and Hermes with hosted ones such as Muse, Dots, Grok Bots, Cue, Duet and Spark, then recommend what fits your data, budget and region." },
       { title: "Custom agentic AI development", body: "Bespoke **agentic AI development** on the official Claude Agent SDK — tool use, MCP servers, long-horizon planning, with your Claude subscription token (no metered API)." },
       { title: "Integration-first", body: "n8n flows, Slack / Teams bots, webhook endpoints, REST APIs into your CRM / HRMS / accounting / LMS / CMS." },
       { title: "Observability + cost guardrails", body: "Per-agent token usage, latency, error tracing. Daily / monthly cost caps with auto-cutoff. No surprise bills." },
@@ -735,7 +749,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       "Agent selection workshop + architecture proposal",
       "Production deployment of the chosen agent stack",
       "Bespoke **agentic AI development** where off-the-shelf agents fall short",
-      "Supported AI agents — OpenClaw · Hermes · Meta Muse · OpenAI Dots · Grok Bot · Cue · Claude Duet · Gemini Spark · Copilot Studio",
+      "Supported AI agents — OpenClaw · Hermes · Meta Muse · OpenAI Dots · Grok Bots · Manus Cue · Claude Duet · Gemini Spark · Copilot Studio",
       "Model-agnostic selection — Claude Code · Codex · MiniMax · Kimi · DeepSeek · OpenRouter",
       "Connect to multiple channels — WhatsApp · Telegram · Slack · Discord and more",
       "Tools & skills integration — GitHub · Remotion · Hyperframe · Google Workspace · Obsidian and more",
@@ -745,7 +759,11 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       { q: "What does AI agent deployment involve?", a: "**AI agent deployment** covers choosing the agent, connecting it to your systems and channels, setting permissions and cost limits, adding monitoring and evals, and handing over a runbook. Most deployments go live in 4–6 weeks." },
       { q: "What's the difference between agentic AI development and deploying an existing agent?", a: "Deploying an existing agent (such as OpenClaw or Hermes) is faster when it already fits your use case. **Agentic AI development** builds a custom agent on the Claude Agent SDK when you need proprietary tools, bespoke workflows or approval gates. We recommend one or the other in the Discovery call." },
       { q: "What are OpenClaw and Hermes Agent?", a: "They are open-source agents you can run on your own infrastructure, which keeps your data and memory under your control. We deploy them and connect them to your channels and systems." },
-      { q: "Are Muse, Dots, Grok Bot, Cue, Duet and Spark available in Singapore?", a: "It varies, and it changes quickly: several launched with regional limits, waitlists or betas. We check the current position before you commit, and suggest a self-hosted option if one you want isn't available." },
+      { q: "What is Meta Muse?", a: "**Meta Muse** is Meta's personal AI agent, launched in September 2026 and rolling out first in the US. We check whether it is available for your team and how it should be set up." },
+      { q: "What is OpenAI Dots?", a: "**OpenAI Dots** are always-on agents with their own cloud computer, launched inside ChatGPT in September 2026. We help you decide what they may access and act on." },
+      { q: "What are Grok Bots?", a: "**Grok Bots** are built on Grok Bot from xAI: always-on bots that run routines from schedules or events, with Team Bots for shared use. We check the current beta terms before you commit." },
+      { q: "What is Manus Cue?", a: "**Manus Cue**, officially Cue, is a standalone personal-agent app from Manus, launched in invite-only early access in September 2026. We check whether you can get access and suggest alternatives if you can't." },
+      { q: "Are Muse, Dots, Grok Bots, Cue, Duet and Spark available in Singapore?", a: "It varies, and it changes quickly: several launched with regional limits, waitlists or betas. We are independent of these vendors and not affiliated with them, so we check the current position before you commit, and suggest a self-hosted option if one you want isn't available." },
       { q: "Is it safe to give an AI agent access to our systems?", a: "Only with limits. We set permissions, separate accounts, approval points for anything sensitive, and logs of what the agent did, before it goes live." },
       { q: "Can we use our existing Anthropic API key?", a: "We strongly recommend a Claude subscription OAuth token (`claude setup-token`) — it's a flat fee instead of per-call billing. The Claude Agent SDK supports both." },
       { q: "How do you prevent runaway costs?", a: "Per-agent and per-tenant token budgets with auto-cutoff, full audit trail in observability dashboards, and an eval harness that runs on every prompt change." },
@@ -754,7 +772,7 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
   },
   "tpqa-consultancy": {
     slug: "tpqa-consultancy",
-    title: "TPQA Consultancy",
+    title: "TPQA Services & Consultation",
     offer: {
       title: "Free TPQA Grade 1 readiness review",
       bullets: [
@@ -795,24 +813,25 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       { title: "Your TPQA Assessment", duration: "Before and after", accent: "green", body: "Your team attends the SWDA **TPQA audit** without us, as SWDA requires. We rehearse with process owners before it and help with clarifications afterwards." },
     ],
     hero: {
-      kicker: "[ TPQA · TPQA 2.0 FROM 2027 ]",
+      kicker: "[ TPQA CONSULTATION · TPQA 2.0 FROM 2027 ]",
       headlineHtml:
-        '<span class="gradient-text">TPQA Grade 1</span> consultancy for up to 90% funding and SCTP eligibility.',
+        '<span class="gradient-text">TPQA services in Singapore</span> — consultation for TPQA Grade 1, up to 90% funding and SCTP.',
       subhead:
-        "Grade 1 is the gateway to Tier 1 funding of up to 90% and to SCTP. Our **TPQA service** for SWDA (formerly SSG) registered training providers gets you ready for it — mock **TPQA audit**, evidence-pack remediation, and process-owner rehearsal, with [CQC](/cqc-consultancy) and [PEI](/pei-ato-application) support when you need it, from gap assessment up to the day your own team faces the assessment.",
+        "**TPQA Grade 1** is the gateway to Tier 1 funding of up to 90% and to SCTP. Our **TPQA services in Singapore** start with a free **TPQA consultation** for SWDA (formerly SSG) registered training providers, then get you ready for it — mock **TPQA audit**, evidence-pack remediation, and process-owner rehearsal, with [CQC](/cqc-consultancy) and [PEI](/pei-ato-application) support when you need it, from gap assessment up to the day your own team faces the assessment.",
     },
     meta: {
-      title: "TPQA Grade 1 Consultancy Singapore — Tier 1 Funding & SCTP",
+      title: "TPQA Services in Singapore — TPQA Grade 1 Consultation",
       description:
-        "Aim for TPQA Grade 1, required for Tier 1 courses funded up to 90% and SCTP. TPQA service with mock audit and rehearsal. Book a free readiness review.",
+        "TPQA services in Singapore: TPQA consultation, mock audit and rehearsal, aiming for TPQA Grade 1, needed for Tier 1 funding and SCTP. Book a free review.",
+      alternateNames: ["TPQA Services in Singapore", "TPQA Consultation in Singapore", "TPQA Grade 1 Consultancy", "TPQA Audit Consultancy"],
       keywords:
-        "TPQA Grade 1, TPQA Grade 1 consultancy, Tier 1 funding, 90% funding SWDA, SCTP eligibility, TPQA service, TPQA audit, CQC audit, PEI service, TPQA consultancy Singapore, TPQA audit preparation, SWDA TPQA, course quality check SWDA, private education institution registration",
+        "TPQA services in Singapore, TPQA consultation in Singapore, TPQA Grade 1, TPQA Grade 1 consultancy, Tier 1 funding, 90% funding SWDA, SCTP eligibility, TPQA service, TPQA audit, CQC audit, PEI service, TPQA consultancy Singapore, TPQA audit preparation, SWDA TPQA, course quality check SWDA, private education institution registration",
     },
     overview: {
-      kicker: "[ TPQA SERVICE ]",
-      heading: "What our TPQA service covers",
+      kicker: "[ TPQA SERVICES ]",
+      heading: "What our TPQA services in Singapore cover",
       paragraphs: [
-        "The Training Provider Quality Assessment (TPQA) is how SWDA — the SkillsFuture and Workforce Development Agency, formed when SSG and WSG merged in July 2026 — checks that a registered training provider runs a sound, well-governed training operation. Our **TPQA service** takes you from scattered files to an organised, evidence-backed submission, using the same method that earned Tertiary Infotech Academy a Grade 1 result in our own **TPQA audit**.",
+        "The Training Provider Quality Assessment (TPQA) is how SWDA — the Skills and Workforce Development Agency, formed when SSG and WSG merged in July 2026 — checks that a registered training provider runs a sound, well-governed training operation. Our **TPQA service** takes you from scattered files to an organised, evidence-backed submission, using the same method that earned Tertiary Infotech Academy a Grade 1 result in our own **TPQA audit**.",
         "A **TPQA audit** covers three Criteria: Criterion 1 Administration & Governance, Criterion 2 Course Quality Assurance, and Criterion 3 Outcomes. Assessors sample learner records per course run, ask for the source report behind every outcome figure, and check that your Policies and Operations Manual matches what your team actually does. Our **TPQA service** maps every sub-item of the current requirements to a manual heading, an annex and a piece of filed evidence, so nothing is left for the assessor to chase.",
         "Quality doesn't stop at the provider level. Accredited WSQ courses also face SWDA's Course Quality Check, and private education institutions have their own obligations. That's why our **TPQA service** also includes **CQC audit** support and a **PEI service** — one consultant across all of your quality reviews.",
       ],
@@ -885,6 +904,10 @@ export const SERVICE_PAGES: Record<string, ServicePageContent> = {
       {
         q: "What does your TPQA service include?",
         a: "Our **TPQA service** covers a gap assessment, a mock **TPQA audit**, remediation of your manual and evidence packs, and rehearsal for your team before the live assessment, which SWDA does not allow consultants to attend. It's a fixed-fee engagement scoped after a free call.",
+      },
+      {
+        q: "What happens in a TPQA consultation?",
+        a: "A **TPQA consultation** is a free 30-minute review of where you stand: how close you are to **TPQA Grade 1** across the three Criteria, whether your manual is truly written in your own context, and whether your people can answer without a consultant. You leave with the main gaps, whether or not you engage us.",
       },
       {
         q: "When should we engage a TPQA consultant?",
