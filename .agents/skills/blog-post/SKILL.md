@@ -275,3 +275,49 @@ Anchor text is still the money keyword phrase (never "click here"); the `title` 
 - Sync script: [scripts/push-to-remote.ts](../../../scripts/push-to-remote.ts)
 - Contact form / lead intake: [src/components/sections/ContactForm.tsx](../../../src/components/sections/ContactForm.tsx), [src/app/api/contact/route.ts](../../../src/app/api/contact/route.ts)
 - Related skills to load alongside: `seo-audit`, `lead-magnets`, `blog-cover-image`, `remote-db-sync`.
+
+## Rules imported from the group's latest blog skills (Nov 2026)
+
+Taken from `blog-pipeline` and `blog-publish` (`ai-mms`, Oct 2026) and `ai-pei`, adapted for this site. This file still wins on anything specific to this repo.
+
+**Scope and honesty**
+
+- A draft-only request does not authorise publishing. Only publish or sync when the user asked for that.
+- Treat facts the user gives you about an event as authoritative, but do not add unsupported quotes, outcomes or job titles.
+- Never invent likes, ratings, testimonials, attendance details or class photos. Do not reveal sensitive client data.
+- Check course URLs, availability, fees and funding claims against current data before writing them.
+- Write **SWDA** for the regulator. SSG merged into SWDA on 1 Jul 2026, so use "SSG" only in search keywords and old document titles.
+- Never promise an approval, a pass or a TPQA grade. SWDA and IBF decide.
+- Never say a consultant attends the TPQA on-site assessment; SWDA's advisory does not allow it.
+
+**Topics that bring in leads**
+
+Case studies from real work are the best performers: a concrete build log, what was learned, and a CTA to the matching service. Otherwise, write for what a buyer is searching for and route them to one service page:
+
+| Reader's question | Link to | `source` token example |
+|---|---|---|
+| Can my course still be WSQ? WSQ 2.0, CASL, entry criteria | `/wsq-course-development` | `blog-wsq-route` |
+| How do I get TPQA Grade 1, Tier 1 funding at up to 90%, or SCTP? | `/tpqa-consultancy` | `blog-tpqa-grade1` |
+| Why was my IBF application rejected? Assessor Coach, FS SME | `/ibf-ato-application`, `/ibf-course-development` | `blog-ibf-gonogo` |
+| What is new in SWDA ATO? Mock-up website, on-site assessment | `/ssg-ato-application` | `blog-ato-new-rules` |
+| Do I need a PEI? Academic and Examination Boards | `/pei-ato-application` | `blog-pei-route` |
+| I got a CQC outcome. What do I do? | `/cqc-consultancy` | `blog-cqc-outcome` |
+| How do I design an SCTP and its job placement? | `/sctp-module-development` | `blog-sctp` |
+| How do I become an approved CPD provider, such as for TAEPP? | `/cpd-course-development` | `blog-cpd-taepp` |
+
+**Images inside a post**
+
+- Compress photos before uploading to R2. Posts render them about 700–760px wide, so 1100px on the long edge is enough, at about JPEG quality 62, with a target under 150KB.
+- Never upscale; cap at the smaller of the target and the original size.
+- Crop from the original file rather than re-encoding a compressed copy, and look at the result before uploading.
+- Before deleting a superseded R2 object, confirm nothing in **production** still references it. A local check is not enough.
+
+**Editing existing content**
+
+- Do not round-trip a post through a lossy decode such as `errors='replace'`. Decode strictly, and check the result has no `�` and the same number of em-dashes.
+
+**Not imported, because it does not apply here**
+
+- `MMD_Blog`, SQL migrations and the OpenMage steps are specific to `ai-mms`.
+- FAQ `<details>` accordions: this repo renders from TipTap StarterKit, which has no `details` node, so they would be lost when the post is re-rendered. Keep FAQs as H3s.
+- List markers and `<pre>` fixes: `.prose-dark` already handles lists, and TipTap keeps `<pre>` newlines.

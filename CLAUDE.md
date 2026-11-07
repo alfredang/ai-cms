@@ -114,7 +114,9 @@ Every public form (contact form, SSG ATO consultation form, etc.) POSTs to `/api
 
 ### Design system
 
-Dark sci-fi/robotics aesthetic. Tailwind 4 with `@theme` design tokens in [src/app/globals.css](src/app/globals.css) — colors are CSS vars consumed as `(--color-cyan)`, `(--color-purple)`, etc. Utility classes: `glass`, `card-hover`, `btn-primary`, `kicker`, `gradient-text`, `gradient-text-warm`, `glow-blob`. Fonts: Exo 2 (display), Inter (sans), JetBrains Mono (mono) — already loaded in [src/app/layout.tsx](src/app/layout.tsx) via `next/font`; do not re-import Google Fonts elsewhere. All UI work in this repo should follow [.claude/skills/frontend-design/SKILL.md](.claude/skills/frontend-design/SKILL.md).
+Dark sci-fi/robotics aesthetic. Tailwind 4 with `@theme` design tokens in [src/app/globals.css](src/app/globals.css) — colors are CSS vars consumed as `(--color-cyan)`, `(--color-purple)`, etc. Utility classes: `glass`, `card-hover`, `btn-primary`, `kicker`, `gradient-text`, `gradient-text-warm`, `glow-blob`. Fonts: Exo 2 (display), Inter (sans), JetBrains Mono (mono) — already loaded in [src/app/layout.tsx](src/app/layout.tsx) via `next/font`; do not re-import Google Fonts elsewhere.
+
+**Load [.claude/skills/frontend-design/SKILL.md](.claude/skills/frontend-design/SKILL.md) before any UI or UX change, however small.** It holds the owner's hard rules (no dead space, no gaps, no chips, no template-looking layouts) and the requirements for the navbar, footer, chat launcher, forms, mobile, accessibility and admin tables. It is the site edition of the group-wide `web-design` skill in `~/.claude/skills/web-design/`. Do not install stock design skills. When you edit it, copy it to `.agents/skills/frontend-design/` and `.codex/skills/frontend-design/` so all tools stay in step.
 
 ## Deployment
 

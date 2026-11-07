@@ -79,3 +79,25 @@ Background = `#0a0118→#1a0533→#020611` diagonal gradient, with a `#5C00E5` p
 ## Adding a new layout variant
 
 If you need a different layout (e.g. quote card, code-card, listicle hero), prefer **a new endpoint** like `/api/ai/post-image-quote` over branching the existing one. The current endpoint is one-shape-fits-all by design; multiple shapes belong in sibling routes that share the same R2 upload path.
+
+## Rules imported from the group's latest blog skills (Nov 2026)
+
+Taken from `blog-publish` and `blog-pipeline` (`ai-mms`, Oct 2026) and `ai-pei` (Oct 2026), adapted for this site.
+
+- **A post is not finished until it has its generated cover.** A blank or fallback cover is what visitors notice as "not matching the other blogs". Check the production post afterwards.
+- **Look at the PNG before uploading.** Check how it appears on the blog card and on the post page.
+- **Verify the upload.** The R2 URL must return HTTP 200 with an image content type, and the production post HTML must reference it.
+- **Do not overwrite a cover someone uploaded by hand** unless asked. Only regenerated covers should be replaced automatically.
+- **Choose a short, specific kicker from the topic**, aligned to what this site sells:
+
+| Topic | Kicker examples |
+|---|---|
+| Course development | `WSQ · WSQ 2.0`, `CASL · Courses`, `IBF · Courses`, `PWM · Courses`, `CPD · TAEPP`, `SCTP · Modules` |
+| ATO applications | `SWDA · ATO`, `IBF · ATO`, `PEI · Registration` |
+| Quality and audit | `TPQA · Grade 1`, `CQC · Audit` |
+| Technology | `AI · Agents`, `TMS · LMS`, `Mobile · Apps` |
+
+**Not imported, because it does not apply here:**
+
+- The 1600×900 canvas and 32:9 safe band from `ai-mms`. This site uses 1200×750 because of how its cards crop.
+- The per-topic palettes from `ai-mms` and the green theme from `ai-pei`. This site keeps its cyan and purple tokens.
