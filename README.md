@@ -38,7 +38,7 @@ Built for Tertiary Infotech Academy, the codebase is structured to be re-used as
 - Per-route `generateMetadata` — title, description, canonical URL, OG (with image + locale + type), Twitter card
 - Sitewide **Organization** JSON-LD with social `sameAs[]`, taxID, postal address
 - **Article** + **BreadcrumbList** schema on every blog post (author, datePublished, dateModified, image, mainEntityOfPage)
-- **Shared editorial blog layout** — a cover-first reading column across every article, with Singapore publication dates, reading time, share/like controls and responsive long-form typography; existing article content and URLs stay intact.
+- **Shared editorial blog layout** — a short, wide banner on every article (headline left, an animated motif for the post's category right, drawn in HTML/SVG by `BlogBanner`), then one reading column with Singapore publication dates, reading time, share/like controls and responsive long-form typography; existing article content and URLs stay intact.
 - **LocalBusiness** schema on `/contact` with opening hours
 - **Service** + **HowTo** + **FAQPage** + **BreadcrumbList** schema on every service landing page
 - Dynamic `sitemap.xml` + `robots.txt`, regenerated on every content edit via `revalidatePath`
@@ -98,7 +98,7 @@ Built for Tertiary Infotech Academy, the codebase is structured to be re-used as
   - Per-post `Article` + `BreadcrumbList` JSON-LD, OG image, canonical URL, British/Singapore spelling
   - Deep internal links to service pages (LMS / TMS / ATO / TPQA / AI Solutions) so the post funnels traffic into lead-capture surfaces
   - In-body and bottom-of-post **lead-magnet CTAs** routing to `/contact` with `source` tagged for attribution
-  - Branded R2-hosted cover image auto-generated from the post title
+  - Branded R2-hosted cover image auto-generated from the post title (used on `/blog` cards and social previews; the post page shows the `BlogBanner` strip instead)
 - **Hourly local → prod DB sync** — content edited locally is pushed to production every hour over the bearer-token sync API, so the live site self-heals from the source-of-truth DB
 - **Resilient by design** — `blog_schedule_runs` is created on boot and every run is recorded; the schedule page loads tolerantly even before the first run exists, and a failed run never blocks the next one
 - **`POST /api/admin/sync/posts` debug probe** — a GET variant inspects what would sync without mutating prod

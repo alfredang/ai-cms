@@ -30,7 +30,7 @@ Every change to the cover image must obey **all** of these:
 - **Trigger from editor** — [src/components/admin/PostEditorForm.tsx](src/components/admin/PostEditorForm.tsx)
   - Called automatically after "Generate full post" when Claude returns a title.
   - The "✨ AI Regenerate Image" button on the Featured image card re-runs it with the current title + suggested category as the kicker.
-- **Consumed in** — [src/app/blog/page.tsx](src/app/blog/page.tsx) (list, inside `<div className="aspect-[16/10] overflow-hidden">`) and [src/app/blog/[slug]/page.tsx](src/app/blog/[slug]/page.tsx) (post detail, full bleed).
+- **Consumed in** — [src/app/blog/page.tsx](src/app/blog/page.tsx) (list, inside `<div className="aspect-[16/10] overflow-hidden">`) and OG/Twitter metadata. **Not shown on the post page**: [src/app/blog/[slug]/page.tsx](src/app/blog/[slug]/page.tsx) renders the short wide `BlogBanner` ([src/components/blog/BlogBanner.tsx](src/components/blog/BlogBanner.tsx)) instead, because the owner rejected the full 16:10 cover there as too big. Do not put the cover back on the post page.
 
 ## SVG anatomy (mental model)
 

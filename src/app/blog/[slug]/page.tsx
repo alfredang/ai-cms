@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ShareButtons } from "@/components/blog/ShareButtons";
 import { LikeButton } from "@/components/blog/LikeButton";
+import { BlogBanner } from "@/components/blog/BlogBanner";
 import { HiUser, HiCalendar, HiClock, HiArrowLeft } from "react-icons/hi2";
 import type { Metadata } from "next";
 
@@ -160,20 +161,8 @@ export default async function PostPage({
       <main>
         <Container className="blog-page">
           <article className="blog-article" data-blog-layout="editorial">
-            {post.featuredImage && (
-              <figure className="blog-article-cover">
-                {/* Existing covers retain their complete artwork and natural aspect ratio. */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={post.featuredImage}
-                  alt={post.title}
-                  width={1200}
-                  height={750}
-                  fetchPriority="high"
-                  decoding="async"
-                />
-              </figure>
-            )}
+            {/* Short wide banner; the 16:10 featuredImage is kept for /blog cards and OG only. */}
+            <BlogBanner title={post.title} categorySlug={category?.slug} categoryName={category?.name} />
             <header className="blog-article-header">
               <nav aria-label="Breadcrumb" className="blog-article-breadcrumb">
                 <Link href="/blog">Journal</Link>

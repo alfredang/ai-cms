@@ -28,6 +28,7 @@ The owner has asked for tighter spacing again and again ("reduce the gap", "remo
 | Homepage section | `py-4` to `py-6` | anything above `py-10` |
 | Inner-page section | `py-6` to `py-10` | `py-16` and up |
 | Inner-page hero | `py-10 md:py-14` at most | `pt-24`, `pt-32` |
+| Blog post banner | `BlogBanner` strip, ≈3.5:1 (240px tall at 1440px, 152px at 375px) | the full 16:10 card cover |
 | Section header to its grid | `mb-6` to `mb-8` | `mb-12` and up |
 | Kicker to heading | `mb-3` to `mb-4` | `mb-6` and up |
 | Heading to paragraph | `mt-3` to `mt-4` | `mt-8` and up |
