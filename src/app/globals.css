@@ -475,6 +475,7 @@ body::before {
 .blog-article .blog-article-body h2 { margin-top: 1.5em; line-height: 1.25; font-size: clamp(1.5rem, 2.8vw, 1.85rem); }
 .blog-article .blog-article-body h3 { margin-top: 1.4em; line-height: 1.35; }
 .blog-article-body :is(pre, table) { overflow-wrap: normal; }
+.blog-article-body :is(th, td) > p { margin: 0; }
 .blog-article-body pre code { padding: 0; background: none; }
 .blog-article-body iframe, .blog-article-body video { max-width: 100%; }
 .blog-article-body iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; }
