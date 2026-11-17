@@ -63,7 +63,7 @@ export function ShareButtons({ url, title }: Props) {
   }
 
   return (
-    <div className="flex items-center gap-2 flex-wrap">
+    <div className="blog-share-buttons" role="group" aria-label="Share this article">
       <span className="kicker mr-1">Share</span>
       {targets.map(({ key, label, href, Icon }) => (
         <a
@@ -72,7 +72,7 @@ export function ShareButtons({ url, title }: Props) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="w-9 h-9 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/3 text-white/70 hover:text-(--color-cyan) hover:border-(--color-cyan)/50 hover:bg-(--color-cyan)/5 transition"
+          className="w-11 h-11 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/3 text-white/70 hover:text-(--color-cyan) hover:border-(--color-cyan)/50 hover:bg-(--color-cyan)/5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-cyan)"
         >
           <Icon className="w-4 h-4" />
         </a>
@@ -81,12 +81,12 @@ export function ShareButtons({ url, title }: Props) {
         type="button"
         onClick={copy}
         aria-label="Copy link"
-        className="w-9 h-9 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/3 text-white/70 hover:text-(--color-cyan) hover:border-(--color-cyan)/50 hover:bg-(--color-cyan)/5 transition"
+        className="w-11 h-11 inline-flex items-center justify-center rounded-full border border-white/10 bg-white/3 text-white/70 hover:text-(--color-cyan) hover:border-(--color-cyan)/50 hover:bg-(--color-cyan)/5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-cyan)"
       >
         <HiLink className="w-4 h-4" />
       </button>
       {copied && (
-        <span className="text-xs text-(--color-cyan) font-mono">Copied!</span>
+        <span role="status" className="text-xs text-(--color-cyan) font-mono">Copied!</span>
       )}
     </div>
   );

@@ -30,7 +30,11 @@ Every change to the cover image must obey **all** of these:
 - **Trigger from editor** — [src/components/admin/PostEditorForm.tsx](src/components/admin/PostEditorForm.tsx)
   - Called automatically after "Generate full post" when Codex returns a title.
   - The "✨ AI Regenerate Image" button on the Featured image card re-runs it with the current title + suggested category as the kicker.
-- **Consumed in** — [src/app/blog/page.tsx](src/app/blog/page.tsx) (list, inside `<div className="aspect-[16/10] overflow-hidden">`) and [src/app/blog/[slug]/page.tsx](src/app/blog/[slug]/page.tsx) (post detail, full bleed).
+- **Consumed in** — [src/app/blog/page.tsx](src/app/blog/page.tsx) (list, inside `<div className="aspect-[16/10] overflow-hidden">`) and [src/app/blog/[slug]/page.tsx](src/app/blog/[slug]/page.tsx) (post detail, above the title in the centred reading column).
+
+## Article layout compatibility
+
+The shared `/blog/[slug]` template displays the cover above the breadcrumb and title, in the same reading column as the complete body. Preserve the complete cover and its natural aspect ratio (`width: 100%; height: auto`); embedded titles must remain legible and uncropped. The article is not a split cover/text grid. The blog index retains its 16:10 image well, so generated covers remain 1200 × 750. A layout-only change does not require regenerating or re-uploading any cover.
 
 ## SVG anatomy (mental model)
 

@@ -74,6 +74,12 @@ Two neighbouring sections must not use the same pattern with the same alignment.
 
 **Hero.** [HeroCircuit.tsx](src/components/sections/HeroCircuit.tsx) is this site's bespoke visual: our services wired into one agentic core, with each node linking to its page. Keep proof (the KPI strip) in the first viewport. Do not use a 2×2 grid of boxes. `ai-pei`'s fibre-optic globe sets the level of ambition, but it belongs to that site; this one needs its own idea.
 
+## Blog articles
+
+`/blog/[slug]` uses one centred reading column (54rem maximum): complete cover, breadcrumb, title, author/date/reading time, plain taxonomy links, a divided share/like row, and the uninterrupted body. This long-form reading measure is an intentional exception to the wide service-page layout. Follow the [blog-post layout contract](../blog-post/SKILL.md#shared-blog-article-layout).
+
+Do not place body text beside the cover or pull the opening section into a separate grid. Do not repeat the excerpt in a Summary card. Keep cover text uncropped, dates in Singapore time, mobile tables inside their scrolling container, and controls at least 44px. Reuse the site navbar/footer and dark theme.
+
 ## No chips
 
 "Chip" means any small rounded label: `rounded` or `rounded-full` with small padding, a tinted background or a border, wrapping a short word. That includes status, category, tag, platform and "new" labels, and pills around kickers.

@@ -88,6 +88,10 @@ You are the SEO expert for **Tertiary Infotech** (https://www.tertiaryinfotech.c
 - Color contrast: muted text `--color-muted` is `#AAA8B1` on `#060A14` — contrast ratio ≈ 9.7:1 (OK). White on cyan glow backgrounds — verify per-component.
 - Form labels must be programmatically associated (use `<label htmlFor>` or wrap input).
 
+## Blog layout verification
+
+For shared article layout changes, audit `/blog/[slug]` without rewriting post records: retain one H1, the existing canonical/meta/Article schema, the complete `contentHtml` body, taxonomy and attributed CTA destinations. The cover precedes the header; all body sections share one narrow reading column. Dates display in `Asia/Singapore`, and reading time is visible. Check the TPQA 2.0 post and older/longer articles at desktop and 375px; confirm tables or code do not cause page-level horizontal overflow. Keep screenshot inspection, live HTML checks and interactive browser verification distinct in the report.
+
 ## Deliverable Format
 
 When auditing, return a **prioritized table**:

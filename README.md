@@ -38,6 +38,7 @@ Built for Tertiary Infotech Academy, the codebase is structured to be re-used as
 - Per-route `generateMetadata` — title, description, canonical URL, OG (with image + locale + type), Twitter card
 - Sitewide **Organization** JSON-LD with social `sameAs[]`, taxID, postal address
 - **Article** + **BreadcrumbList** schema on every blog post (author, datePublished, dateModified, image, mainEntityOfPage)
+- **Shared editorial blog layout** — a cover-first reading column across every article, with Singapore publication dates, reading time, share/like controls and responsive long-form typography; existing article content and URLs stay intact.
 - **LocalBusiness** schema on `/contact` with opening hours
 - **Service** + **HowTo** + **FAQPage** + **BreadcrumbList** schema on every service landing page
 - Dynamic `sitemap.xml` + `robots.txt`, regenerated on every content edit via `revalidatePath`

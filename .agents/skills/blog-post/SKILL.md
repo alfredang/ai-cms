@@ -16,6 +16,18 @@ You are the in-house writer + publisher for the Tertiary Infotech Academy journa
 5. **No Anthropic API**: when drafting via tooling, only use the Codex Agent SDK path already wired into [src/app/api/ai/assist/route.ts](../../../src/app/api/ai/assist/route.ts). Never add an `sk-ant-api*` key. Manual drafting in conversation is preferred for editorial control.
 6. **Every link opens in a new tab**: every `<a>` in `contentHtml` — internal `/...` routes, external citations, `tertiarycourses.com.sg` deep links, and CTA links to `/contact` — **must** carry `target="_blank" rel="noopener noreferrer"`. The reader should never lose their place in the article. This is enforced by a post-processing pass in [src/lib/blog-jobs/link-enforcer.ts](../../../src/lib/blog-jobs/link-enforcer.ts), but write the attributes yourself so the raw HTML in the DB is correct from the start.
 
+## Shared blog article layout
+
+All `/blog/[slug]` pages use the editorial layout in `src/app/blog/[slug]/page.tsx`, styled by the `.blog-article*` rules in `src/app/globals.css`. The reference is [Tertiary Courses Singapore’s SQL article](https://www.tertiarycourses.com.sg/blog/sql-fundamentals-for-beginners-ai-agents); keep this site's dark theme, fonts and cyan/purple palette.
+
+- Use one centred reading column, capped at 54rem, within `Container`. The order is cover → breadcrumb → H1 → author/date/reading time → plain category/tag links → share/like row → complete article body → back-to-articles link.
+- Keep all body sections in one `.prose-dark.blog-article-body` container. Never put an introduction or the first H2 in a column beside the cover, split HTML at headings, or add a duplicate summary card above the opening paragraph.
+- Show the complete existing cover at its natural aspect ratio. Do not crop embedded cover text, regenerate covers for a layout-only task, or change the blog index's 16:10 cover contract.
+- Format visible publication dates in `Asia/Singapore`. Use the saved reading time when present, with a word-count fallback.
+- Metadata, canonical URLs, structured data, taxonomy, existing article links, tracked CTAs and real likes continue to come from their existing sources. A layout-only change does not require any post-row rewrite or database sync.
+- Check desktop and 375px mobile rendering, long titles, tables, code blocks, coverless posts and existing article links. Tables/code may scroll within their own container; the page must not overflow horizontally. Share and like controls need 44px touch targets and visible keyboard focus.
+- Verify a new post, an older post and a long article on production after deployment. Report screenshot inspection separately from interactive testing; never claim browser checks that were unavailable.
+
 ## Step-by-step workflow
 
 ### 1. Brief the post

@@ -75,7 +75,7 @@ export function LikeButton({
       disabled={pending}
       aria-pressed={liked}
       aria-label={liked ? "Unlike this post" : "Like this post"}
-      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition ${
+      className={`inline-flex min-h-11 items-center gap-2 px-4 py-2 rounded-full border text-xs font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-cyan) ${
         liked
           ? "bg-(--color-cyan)/15 border-(--color-cyan)/40 text-(--color-cyan)"
           : "bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:text-(--color-cyan) hover:border-(--color-cyan)/30"

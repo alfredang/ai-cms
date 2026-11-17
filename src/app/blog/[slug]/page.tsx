@@ -8,45 +8,28 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ShareButtons } from "@/components/blog/ShareButtons";
 import { LikeButton } from "@/components/blog/LikeButton";
-import { HiUser, HiCalendar, HiTag, HiFolder } from "react-icons/hi2";
+import { HiUser, HiCalendar, HiClock, HiArrowLeft } from "react-icons/hi2";
 import type { Metadata } from "next";
 
-function formatDateDMY(d: Date | null | undefined): string {
+function formatPublishedDate(d: Date | null | undefined): string {
   if (!d) return "";
-  const day = String(d.getDate()).padStart(2, "0");
-  const month = String(d.getMonth() + 1).padStart(2, "0");
-  return `${day}-${month}-${d.getFullYear()}`;
+  return new Intl.DateTimeFormat("en-SG", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "Asia/Singapore",
+  }).format(d);
 }
 
 export const dynamic = "force-dynamic";
 
 function stripLeadingImage(html: string, featuredImage: string | null | undefined): string {
-  if (!html) return "";
+  if (!html || !featuredImage) return html;
   const match = html.match(/^\s*(?:<p[^>]*>\s*)?<img[^>]*src=["']([^"']+)["'][^>]*>\s*(?:<\/p>)?/i);
   if (!match) return html;
   const src = match[1];
   if (featuredImage && src !== featuredImage) return html;
   return html.slice(match[0].length);
-}
-
-function splitIntroSection(html: string): { intro: string; rest: string } {
-  if (!html) return { intro: "", rest: "" };
-  // Prefer splitting at the second heading. If only one heading exists, split
-  // at the first heading that follows a paragraph. Otherwise pull the first
-  // paragraph as the intro/overview.
-  const headingRe = /<h[1-6][^>]*>/gi;
-  const headings = [...html.matchAll(headingRe)];
-  if (headings.length >= 2) {
-    const splitAt = headings[1].index ?? 0;
-    return { intro: html.slice(0, splitAt), rest: html.slice(splitAt) };
-  }
-  // Take the first paragraph (and any preceding heading) as intro.
-  const firstP = html.match(/<p[^>]*>[\s\S]*?<\/p>/i);
-  if (firstP && firstP.index !== undefined) {
-    const end = firstP.index + firstP[0].length;
-    return { intro: html.slice(0, end), rest: html.slice(end) };
-  }
-  return { intro: "", rest: html };
 }
 
 async function getPost(slug: string) {
@@ -114,7 +97,7 @@ export default async function PostPage({
     notFound();
   }
 
-  // Pull the post's category + tag chips for the header meta row.
+  // Keep taxonomy as plain text links in the shared article header.
   const [category, tagRows] = await Promise.all([
     post.categoryId
       ? db
@@ -131,8 +114,12 @@ export default async function PostPage({
       .where(eq(postTags.postId, post.id)),
   ]);
 
-  const bodyHtml = stripLeadingImage(post.contentHtml ?? "", post.featuredImage);
-  const { intro: introHtml, rest: restHtml } = splitIntroSection(bodyHtml);
+  // Older imports may contain their own H1s; keep the page title as the single H1.
+  const bodyHtml = stripLeadingImage(post.contentHtml ?? "", post.featuredImage)
+    .replace(/<(\/?)h1(\s[^>]*|)>/gi, "<$1h2$2>");
+  const readingTime = post.readingTime && post.readingTime > 0
+    ? post.readingTime
+    : Math.max(1, Math.ceil(bodyHtml.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length / 220));
 
   const SITE_URL = "https://www.tertiaryinfotech.com";
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
@@ -171,82 +158,76 @@ export default async function PostPage({
     <>
       <Navbar />
       <main>
-        <article className="pt-2 pb-6">
-          <Container className="max-w-4xl">
-            <div className="grid md:grid-cols-2 gap-8 items-start mb-6">
-              {post.featuredImage && (
-                // eslint-disable-next-line @next/next/no-img-element
+        <Container className="blog-page">
+          <article className="blog-article" data-blog-layout="editorial">
+            {post.featuredImage && (
+              <figure className="blog-article-cover">
+                {/* Existing covers retain their complete artwork and natural aspect ratio. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={post.featuredImage}
                   alt={post.title}
-                  className="w-full rounded-xl border border-white/10"
+                  width={1200}
+                  height={750}
+                  fetchPriority="high"
+                  decoding="async"
                 />
-              )}
-              <div>
-                <h1 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">
-                  {post.title}
-                </h1>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/55 text-xs font-mono mb-3">
-                  <span className="inline-flex items-center gap-1.5">
-                    <HiUser className="w-3.5 h-3.5 text-(--color-cyan)/80" />
-                    Author: Tertiary Infotech Academy
-                  </span>
-                  {post.publishedAt && (
-                    <span className="inline-flex items-center gap-1.5">
-                      <HiCalendar className="w-3.5 h-3.5 text-(--color-cyan)/80" />
-                      Created On: {formatDateDMY(post.publishedAt)}
-                    </span>
-                  )}
-                </div>
-                {(category || tagRows.length > 0) && (
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4">
-                    {category && (
-                      <Link
-                        href={`/blog?category=${category.slug}`}
-                        className="inline-flex items-center gap-1.5 py-1 text-xs font-mono uppercase tracking-wider text-(--color-amber) hover:underline"
-                      >
-                        <HiFolder className="w-3 h-3" />
-                        {category.name}
-                      </Link>
-                    )}
-                    {tagRows.map((t) => (
-                      <Link
-                        key={t.slug}
-                        href={`/blog?tag=${t.slug}`}
-                        className="inline-flex items-center gap-1 py-1 text-xs font-mono text-white/70 hover:text-(--color-cyan) transition"
-                      >
-                        <HiTag className="w-3 h-3" />
-                        {t.name}
-                      </Link>
-                    ))}
-                  </div>
+              </figure>
+            )}
+            <header className="blog-article-header">
+              <nav aria-label="Breadcrumb" className="blog-article-breadcrumb">
+                <Link href="/blog">Journal</Link>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">{post.title}</span>
+              </nav>
+              <h1>{post.title}</h1>
+              <div className="blog-article-meta">
+                <span>
+                  <HiUser aria-hidden="true" />
+                  Tertiary Infotech Academy
+                </span>
+                {post.publishedAt && (
+                  <time dateTime={post.publishedAt.toISOString()}>
+                    <HiCalendar aria-hidden="true" />
+                    {formatPublishedDate(post.publishedAt)}
+                  </time>
                 )}
-                <div className="mb-4 flex flex-wrap items-center gap-3">
-                  <ShareButtons url={postUrl} title={post.title} />
-                  <LikeButton slug={post.slug} initialCount={post.likeCount ?? 0} />
-                </div>
-                {post.excerpt && (
-                  <div className="mb-4 rounded-xl border border-white/10 bg-white/[0.04] p-4">
-                    <p className="kicker mb-1.5 text-cyan">Summary</p>
-                    <p className="text-white/70 text-sm italic leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                  </div>
-                )}
-                {introHtml && (
-                  <div
-                    className="prose-dark"
-                    dangerouslySetInnerHTML={{ __html: introHtml }}
-                  />
-                )}
+                <span>
+                  <HiClock aria-hidden="true" />
+                  {readingTime} min read
+                </span>
               </div>
+              {(category || tagRows.length > 0) && (
+                <div className="blog-article-taxonomy" aria-label="Article topics">
+                  {category && (
+                    <Link href={`/blog?category=${category.slug}`} className="blog-article-category">
+                      {category.name}
+                    </Link>
+                  )}
+                  {tagRows.map((t) => (
+                    <Link key={t.slug} href={`/blog?tag=${t.slug}`}>
+                      {t.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </header>
+            <div className="blog-article-actions">
+              <ShareButtons url={postUrl} title={post.title} />
+              <LikeButton slug={post.slug} initialCount={post.likeCount ?? 0} />
             </div>
             <div
-              className="prose-dark"
-              dangerouslySetInnerHTML={{ __html: restHtml }}
+              className="prose-dark blog-article-body"
+              dangerouslySetInnerHTML={{ __html: bodyHtml }}
             />
-          </Container>
-        </article>
+            <nav className="blog-article-footer" aria-label="More articles">
+              <Link href="/blog">
+                <HiArrowLeft aria-hidden="true" />
+                Back to all articles
+              </Link>
+            </nav>
+          </article>
+        </Container>
       </main>
       <Footer />
       <script
